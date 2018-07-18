@@ -1,0 +1,14 @@
+\subsection{MCS: Multi-Channel Set}
+\label{sec:MCS}
+When using MDC~\cite{baccichet2007content}, SVC~\cite{chu2009auction},
+or for emulating the CS model, it can be interesting for peers to
+belong to more than one team. To implement MCS, peers must replicate
+the LP2PLS protocol layers for each team (channel), except the buffer.
+
+The use of MDC is trivial: the higher the number received descriptions
+(channels), even partially, the higher the quality of the
+playback. However, when transmitting SVC media, peers should
+prioritize the reception of the most important layers. Finally, a
+pure CS service could be provided if the corresponding splitter
+announces one empty team and sends each chunk so many times as teams
+(with one peer/team) there are.

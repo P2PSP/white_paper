@@ -1,0 +1,31 @@
+\section{P2PSP (Peer-to-Peer Straightforwad Protocol}
+\label{sec:proposal}
+
+P2PSP provides broadcasting of media on the Internet. 
+Conceptually, P2PSP is organized in sets of rules
+%(\emph{sets of rules} in LP2PLS's jargon).
+Only the most basic set (DBS) is the only compulsory one. The rest of
+sets extend or modify the behevior of DBS, when applicable.
+
+%For now, our discussion will be restricted to the case $G=1$ (we will
+%suppose that there is only one team).
+
+%Let $N({\cal P}_i^j)$ denote the neighborhood of peer ${\cal
+%  P}_i^j$. It holds that the number of neighbors $|N({\cal
+%  P}_i^j)|\leq k; \forall i$, with $k$ the degree of team ${\cal P}^j;
+%\forall j$.
+
+% If a node detects that a chunk will be missing with a high
+% probability (the distance with the last played chunk is smaller than
+% a minimum threshold), the peer can request explicitally that chunk
+% to all its neighbors. Only the neighbors that have the lost chunk in
+% that moment will reply (the requests are not queued). Thinking if is
+% a good idea ... because it could be used for an attacker to collapse
+% their neighbors.
+
+\input{DBS}
+\input{IMS}
+\input{LRS}
+\input{ACS}
+%\input{TCS}
+\input{MCS}

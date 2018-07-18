@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\send}{\Rightarrow}
+\newcommand{\sendto}{\rightarrow}
+\algrenewcommand\algorithmicprocedure{\textbf{task}}
+
+\begin{algorithmic}
+
+  \Procedure{${\cal P}_i$.Join}{${\cal R}$}
+  \State $[{\cal S}] \gets {\cal R}$
+  \ForAll{${\cal S}_j\in {\cal S}$}
+  \State $[\mathtt{hello}] \sendto {\cal S}_j$
+  \If{$[{\cal T}_j] \gets {\cal S}_j$}
+  \State \textbf{Break}
+  \EndIf
+  %\State $\text{RTT}_k=$ \textbf{timeit} \textbf{wait for} $[\mathtt{hello}] \gets {\cal P}_k$ \textbf{with} timeout
+  \EndFor
+  %\State $T^*({\cal P}_i)=\{{\cal P}_k~|~\text{RTT}_k<\text{timeout}\}$
+  %\State $N({\cal P}_i)=\{\textbf{first}~K~{\cal P}_k \in T^*({\cal P}_i)~|~\text{RTT}_k < \text{RTT}_{k+1}\}$
+  \ForAll{${\cal P}_k\in {\cal T}_j$}
+  \State $[\mathtt{hello}] \sendto {\cal P}_k$
+  \EndFor
+  \EndProcedure
+  \newline
+  \Procedure{${\cal P}_k$.EchoHello()}{}
+  \While{True}
+  \State $[\mathtt{hello}] \gets {\cal P}_i$
+  %\State $[\mathtt{hello}] \sendto {\cal P}_i$
+  %\State $N({\cal P}_k) = N({\cal P}_k) \cup {\cal P}_i$
+  \State ${\cal T}_j = {\cal T}_j \cup {\cal P}_i$
+  \EndWhile
+  \EndProcedure
+  
+\end{algorithmic}
+
+\end{document}
+

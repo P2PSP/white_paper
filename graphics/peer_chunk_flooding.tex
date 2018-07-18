@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\send}{\Rightarrow}
+\newcommand{\sendto}{\rightarrow}
+\algrenewcommand\algorithmicprocedure{\textbf{task}}
+
+\begin{algorithmic}
+
+  \Procedure{${\cal P}_k$.ChunkFlooding()}{}
+  \While{True}
+  \State \textbf{wait for} $[x,\mathtt{chunk}] \gets {\cal S}_j$ \textbf{or} $[x,{\cal P}_i,\mathtt{chunk}] \gets {\cal P}_m$
+  \If{$\text{sender}={\cal S}_j$}
+  \ForAll {${\cal P}_n \in N({\cal P}_k)$}
+  \State $[x,{\cal P}_k,\mathtt{chunk}] \sendto {\cal P}_n$
+  \EndFor
+  \Else
+  \If{${\cal P}_m \notin N({\cal P}_k)$}
+  $N({\cal P}_k) = N({\cal P}_k) \cup {\cal P}_i$
+  \EndIf
+  \ForAll {${\cal P}_n \in N({\cal P}_k) \setminus {\cal P}_m$}
+  \If{${\cal P}_k \in G_{{\cal P}_n}[{\cal P}_i]$}
+  \State $[x,{\cal P}_i,\mathtt{chunk}] \sendto {\cal P}_n$
+  \EndIf
+  \EndFor
+  \EndIf
+  \EndWhile
+  \EndProcedure
+  
+\end{algorithmic}
+
+\end{document}
+

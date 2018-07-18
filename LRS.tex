@@ -1,0 +1,104 @@
+\subsection{LRS: Lost-chunk Recovery Set}
+\label{sec:LRS}
+LRS extends DBS. LRS should be implemented if error-prone
+communications are expected. LRS is based on the use of monitor peers
+(see Procedure~\ref{dbs:frcS}). The idea is: ${\cal S}$ will resend
+lost chunks to one or more the monitors when one or more monitors
+report their loss. To increase the probability of receiving the resent
+chunk on time (by normal peers), monitors halves the number of chunks
+in their buffers in relation to common peers. LRS only modifies the
+behavior of ${\cal S}$ and the monitors. Normal peers implement DBS.
+
+\begin{comment}
+LRS should be used when it is expected to have loss-prone
+communication links or when the bit-rate of the stream exceeds the
+uploading capacity of the nodes. Notice that the impact of using LSR
+for normal peers is null.
+
+P2PSP relies in UDP to transmit the chunks, and obviously, packet
+losses can happen. The impact of a packet loss in the QoS provided
+depends on where the packets are lost and who lost it. If a packet is
+lost in its trip between the splitter and a peer, this packet will be
+missed by all the team.
+
+\subsubsection{Monitor peers}
+The overlay administrator can create some special peers called, in
+short,\emph{monitors}. These peers are introduced to the rest of peers
+of the team as normal peers and behave like the rest of well-intended
+peers, churn included. Monitor peers can be asked by the splitter to
+check whether the operation of the team has and is been correct.
+
+\subsubsection{Selfish peers rejection}
+Another functionality of monitors is to tell the splitter which chunks
+have not been received on time (the consequence of receiving a lost
+too late is the same than not receiving it never). The splitter
+memorizes which chunk has been sent to each peer in the current
+round. If all monitors reports that a chunk has been lost, the
+splitter can determine which peer has been in charge of broadcasting
+that chunk and take note of this. If this problem happens a given
+number of times, the splitter can expell the unreliable peer from the
+team by stop sending to it futher chunks.
+
+\subsubsection{Lost chunk complains} A chunk is considered as lost when
+it must be played and the corresponding cell in the buffer is empty
+(there is no chunk inside). More specifically, monitors send to the
+splitter a [\textsf{lost chunk index} $x$] loss-report message when a
+chunk with index $x==\mathsf{chunk}.\mathrm{chunk\_index}$ is lost.
+
+\subsubsection{Retransmission of lost chunks}
+Using these complaining messages, the splitter considers that the
+chunk stored in the cell $x \% M$ has been lost if the number of
+complains is equal to the current number of monitors in the team. In
+this case, the splitter resends the lost chunk to a peer selected
+randomly.
+
+\subsubsection{Early complaining}
+In order to LRS works properly, monitors must identify the lost chunks
+before than the rest of peers (otherwise, the resent chunks could
+arrive late to the normal peers). A simple way to achieve this is by
+halving the buffer (size, measured in chunks) of the monitors. Thus,
+when a monitor is reporting a lost chunk, the rest of normal peers
+should be expecting to receive this chunk approximately in the middle
+of their buffers, and the resent chunk should be received just on
+time.
+\end{comment}
+
+\begin{comment}
+
+  The P2PSP relies on the UDP as the transport protocol and, obviously,
+packet losses can happen. The impact of a packet loss in the QoS
+offered by the team depends on where the packet is lost. If the packet
+is lost in the trip between the Splitter and a peer, this packet will
+be missed by all the peers of the team, included the monitor
+peers. However, if the packet is loss in the trip between two peers,
+only the destination peer will loss the chunk. Obviously, this last
+situation is less harmfull than the firt one.
+
+Only monitor peers tell the Splitter which chunks have not been
+received on time. More specifically, a monitor peer $P$ sends to the
+Splitter a \texttt{[lost chunk index $x$]} loss report message when a
+chunk with chunk-number $x$ has been lost. Using this information, the
+Splitter can enumerate the number of times that a chunk has been
+lost. In this framework, the LRS module defines that the Splitter
+resend a lost chunk stored in the location $x~\text{mod}~M$ of its
+buffer of chunks if the number of losses is equal to the number of
+monitor peers. The selected peer to resend this block will one of the
+monitor peers.
+
+Notice also that, in this case, monitor peers should become aware of a
+chunk loss some time before of that the rest of peers of the team send
+it to their players, in order to have enough time to resend the lost
+chunk from the monitor peer to the rest of peers of the team. A simple
+technique is send \texttt{[lost chunk index $x$]} lost report messages
+from the monitor peers to the Splitter when the $x$ chunk is missing
+at the half of the buffer. Thus, when a monitor peer realizes that a
+chunk could have been lost, the rest of peers are receiving those
+chunks that are approximately in the middle of their buffers. Now, if
+the buffer if large enought, the resent chunks should be received on
+time. This implies also that, if the LRS module is implemented, the
+buffer size should be doubled and therefore, it holds that
+\begin{equation}
+  B \leq 2|T|.
+\end{equation}
+
+\end{comment}

@@ -1,0 +1,114 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\send}{\Rightarrow}
+\newcommand{\sendto}{\rightarrow}
+\algrenewcommand\algorithmicprocedure{\textbf{task}}
+
+\begin{algorithmic}
+
+  \Procedure{${\cal P}_i$.Join}{${\cal R}$}
+  \State \textbf{wait for} $[{\cal S}_j] \gets {\cal R}$
+  \For{\textbf{wait for} ${\cal P}_k\in [{\cal T}_j] \gets {\cal S}_j$}
+  \State $[\mathtt{hello}] \sendto {\cal P}_k$
+  \State $\text{RTT}_k=$ \textbf{timeit} \textbf{wait for} $[\mathtt{hello}] \gets {\cal P}_k$ \textbf{with} timeout
+  \EndFor
+  \State $N({\cal P}_i)=\{{\cal P}_k~|~\text{RTT}_k<\text{timeout}\}$
+  \State $N^*({\cal P}_i)=\{\textbf{first}~K~{\cal P}_k \in N({\cal P}_i)~|~\text{RTT}_k < \text{RTT}_{k+1}\}$
+  \EndProcedure
+  
+  \Procedure{${\cal P}_o$.Leave}{${\cal S}_j$}
+  \State $[\mathtt{goodbye}] \sendto {\cal S}_j$
+  \For{${\cal P}_k\in N({\cal P}_o$}
+  $[\mathtt{goodbye}] \sendto {\cal P}_k$
+  \EndFor
+  \State \textbf{relay pending chunks}
+  \State \textbf{wait for} $[\mathtt{goodbye}] \gets {\cal S}_j$ \textbf{with} timeout
+  \While{timeout}
+  \State $[\mathtt{goodbye}] \sendto {\cal S}_j$
+  \State \textbf{wait for} $[\mathtt{goodbye}] \gets {\cal S}_j$ \textbf{with} timeout
+  \EndWhile
+  \EndProcedure
+
+  \Procedure{${\cal P}_k$.EchoHello()}{}
+  \While{True}
+  \State \textbf{wait for} $[\mathtt{hello}] \gets {\cal P}_i$
+  \State $[\mathtt{hello}] \sendto {\cal P}_i$
+  \State $N({\cal P}_k) = (N{\cal P}_k) \cup {\cal P}_i$
+  \EndWhile
+  \EndProcedure
+
+  \Procedure{${\cal P}_k$.ProcessGoodbye()}{}
+  \While{True}
+  \State \textbf{wait for} $[\mathtt{goodbye}] \gets {\cal P}_o$
+  \State $N({\cal P}_k)=N({\cal P}_k) \setminus {\cal P}_o$
+  \EndWhile
+  \EndProcedure
+
+  \Procedure{${\cal P}_k$.ShortestPathRouting()}{}
+  \ForAll {${\cal P}_i \in N({\cal P}_k)$}
+  \State $D[{\cal P}_i] = \infty$
+  \EndFor
+  \State $D[{\cal P}_k] = 0$
+  \ForAll {${\cal P}_i \in N^*({\cal P}_k)$}
+  \State $G[{\cal P}_i] = {\cal P}_i$
+  \EndFor
+  \ForAll {${\cal P}_i \in N^*({\cal P}_k)$}
+  \State $[G[\cdot]] \sendto {\cal P}_i$
+  \EndFor
+  \While{True}
+  \State $\text{found\_shorter\_route} = \text{false}$
+  \State $[D_{{\cal P}_n}^*[\cdot],G_{{\cal P}_n}^*[\cdot]] \gets$ \textbf{from any} ${\cal P}_n \in N^*({\cal P}_k)$
+  \ForAll {$D_{{\cal P}_n}^*[{\cal P}_i]\in D_{{\cal P}_k}^*[\cdot]$}
+  \State $\text{alternative\_distance}\_{\cal P}_i = D_{{\cal P}_n}^*[{\cal P}_i] + D[{\cal P}_n]$
+  \If{$\text{alternative\_distance}\_{\cal P}_i < D[{\cal P}_j]$}
+  \State $\text{found\_shorter\_route} = \text{true}$
+  \State $D[{\cal P}_i] = \text{alternative\_distance}$
+  \State $G[{\cal P}_i] = {\cal P}_n$
+  \EndIf
+  \EndFor
+  \If{$\text{found\_shorter\_route}$}
+  \ForAll {${\cal P}_i \in N^*({\cal P}_k)$}
+  \State $[D[\cdot],G[\cdot]] \sendto {\cal P}_i$
+  \EndFor
+  \EndIf
+  \EndWhile
+  \EndProcedure
+
+  \Procedure{${\cal P}_k$.ChunkFlooding()}{}
+  \While{True}
+  \State \textbf{wait for} $[x,\mathtt{chunk}] \gets {\cal S}_j$ \textbf{or} $[x,{\cal P}_i,\mathtt{chunk}] \gets {\cal P}_m$
+  \If{$\text{sender}={\cal S}_j$}
+  \ForAll {${\cal P}_n \in N^*({\cal P}_k)$}
+  \State $[x,{\cal P}_k,\mathtt{chunk}] \sendto {\cal P}_n$
+  \EndFor
+  \Else
+  \ForAll {${\cal P}_n \in N^*({\cal P}_k) \setminus {\cal P}_m$}
+  \If{${\cal P}_k \in G^*_{{\cal P}_n}[{\cal P}_i]$}
+  \State $[x,{\cal P}_i,\mathtt{chunk}] \sendto {\cal P}_n$
+  \EndIf
+  \EndFor
+  \EndIf
+  \EndWhile
+  \EndProcedure
+  
+  \Procedure{${\cal P}_k$.FreeRidingControl()}{}
+  \While{True}
+  \ForAll{${\cal P}_o\in N({\cal P}_k)$}
+  \State \&~\textbf{wait for} $[x,{\cal P}_i,\mathtt{chunk}] \gets {\cal P}_o$
+  \State ~~~\textbf{with} timeout \textbf{of} $L$ rounds
+  \State ~~~\textbf{on} timeout  $N({\cal P}_k)=N({\cal P}_k) \setminus {\cal P}_o$
+  \EndFor
+  \EndWhile
+  \EndProcedure
+  
+\end{algorithmic}
+
+\end{document}
+

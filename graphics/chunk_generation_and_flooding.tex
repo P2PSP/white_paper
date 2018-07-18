@@ -1,0 +1,15 @@
+\documentclass{article}
+\usepackage[pdftex]{graphicx}
+
+\begin{document}
+\pagestyle{empty}
+
+\def\imagetop#1{\vtop{\null\hbox{#1}}}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{ccc}
+  \imagetop{\includegraphics{splitter_chunk_generation}} &
+  \imagetop{\includegraphics{peer_chunk_flooding}}
+\end{tabular}
+}
+
+\end{document}

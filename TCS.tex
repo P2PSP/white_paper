@@ -1,0 +1,64 @@
+\subsection{Team Clustering Set}
+In some context, especially in flash-crowd situations, it can be
+interesting to have several teams broadcasting the same content. Two
+teams use the same content if it is verified that 
+
+If $f=1$, in order to limit the latency, the size of the teams must
+have a limit $N_\text{max}$ and the content provider should deploy so
+many teams as neccesary. All teams should be syncrhonized.
+
+\subsubsection{Tracker redirection}
+When an arriving peer wants to join a team, it should contact with a
+\emph{tracker} which will redirect it to a team (in fact, to a
+splitter) satisfiying that $N<N_\text{max}$.
+
+\subsubsection{Moving peer between teams}
+As it will be explained in Section~\ref{sec:latency_analysis}, it can
+be neccesary to move already incorporated peers between teams. To
+provide this functionality, the tracker sends to the origin splitter a
+message [move, peer, team]. The origin splitter sends to the peer a
+message [move, team]. Then, the moving peer joins the destination team
+and when all chunks of the buffer has been recived twice, the peer
+removes the neighbors that belongs to the origin team of its list of
+peers.
+
+%%
+
+Obviously, as a consequence of the churn, teams are dynamic. This
+means that peer can leave a team and join a different one, by their
+own choice. However, in some specific situations can be desirable to
+move peers from a team to other. For example, after a massive peers
+departure from several teams, it could be interesting to gather the
+remaining peers in only one team keeping a seamless playback
+(maintaining constant the latency). In a different situation, we would
+like to increase the number of teams, in order to provide a better
+QoS.
+
+\subsection{Multisplitter teams}
+
+\subsection{Team fission}
+A team can be divided into two (or more) teams, dividing the list of
+peers of the original splitter into two (or more) parts and using each
+of them in a different splitter. After that, peers will start
+receiving duplicated chunks. Due to peers forget those neighbors that
+do not send to them useful chunks (and a duplicated chunk is not
+useful). After a certain amount of time, that depends on the
+chunk-ratio and the constant $D_\text{max}$, those peers that receive
+chunks from the same splitter will forget the peers of the other(s)
+team(s).
+
+\subsection{Teams fussion}
+The main objective of merging teams is to reduce the bandwidth
+consumption at the provider side.  Two (or more) teams, served by
+their respective splitters can be merged only if each one of the peers
+that we want to move leaves the origin team and join the destination
+one, using the procedure described in
+Sections~\ref{sec:peer_departure}
+and~\ref{sec:peer_joining}. Basically, the splitter of the origin team
+stop sending chunk to their peers, which should contact the tracker,
+which always should redirect them to the same destination peer.
+
+However, there is an alternative techinque much more respectful with
+all peers of all the merged teams. Lets suppose that we have $S$ teams
+and that the content provider wants to reduce the bandwidth
+consumption to $S/2$. This can be achieved by 

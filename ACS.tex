@@ -1,0 +1,84 @@
+\subsection{ACS: Adaptive Chunk-rate Set}
+\label{sec:ACS}
+ACS relaxes the peer's upload requirements imposed by DBS. It should
+be used in if it is known that some peers can provide the capacity
+than others cannot, or when we want to mix the CS and P2P models,
+sending more chunks from $S$ to one or more monitors controlled by the
+contents provider.
+
+ACS is based on the idea of using the information that ${\cal S}$
+knows about the number of chunks that each peer has lost (see
+Procedure~\ref{dbs:frcS}), to send to those more reliable peers a
+higher number of chunks than to the others. In other words, ACS adapts
+the round-time of each peer to its capacity.
+
+Notice that ACS only affects the behavior of ${\cal S}$.
+
+\begin{comment}
+In most overlay configurations (which should exhibit a full-(or
+nearly-full) connected topology), all nodes should transmit exactly
+the same number of chunks. This that can be considered a disadvantage
+in some situations such as for example, in a ``pay-per-view''
+streaming service where the QoS must be guaranteed to all users, even
+if they can not send as fast as they receive.
+
+\subsubsection{Uploading capacity estimation}
+In full-connected teams, the number of chunks that a peer must
+retransmit depends on the number of chunks that the peer receives from
+the splitter. Moreover, the splitter can estimate the effective
+uploading capacity of the peers by checking the number of times that a
+peer has lost a chunk. This estimation can be used to maximizing the
+QoS by assigning a different chunk-rate to each peer, depending on its
+estimated capacity. In other words, if a peer does not loss chunks,
+then its chunk-rate will be increased and viceversa.
+
+\subsubsection{Adaptive chunk-rate (round-robin) scheduling}
+By default, the round cycle (the frequency that the splitter sends a
+chunk to a peer) of all peers is the same. ACS alters this by using,
+for a peer $P_i$, a team cycle proportional to the packet-loss-ratio
+of $P_i$. While $P_i$ is lossing chunks, the splitter will send to it
+less chunks and will send more chunks to the rest of the team. If the
+rest of the team can assume the extra transmission capacity that $P_i$
+can not afford, the overlay will be stable.
+\end{comment}
+
+\begin{comment}
+  All nodes of a team (peers and Splitter) that implements only the DBS
+transmitt exactly the same amount of media, which basically imply that
+if a peer can not fulfill this requirement it will be thrown off the
+team. This could be considered too demanding in some specific
+configurations, such as a team of colleagues that want to share a
+content regardless of who spends more transmission bandwidth or in PPV
+(Pay-Per-View) systems where the stream must be guaranteed to those
+users that have paid for receiving the stream.
+
+The number of chunks that ultimately a peer must retransmit depends
+exclusively on the number of chunks that the peer receives from the
+Splitter. Besides, the Splitter knows the performance of the peers of
+the team for the task of retransmitting the chunks by checking the
+number of times that the peers has lost a chunk. This knowledgment
+could be exploited by the Splitter to maximize the profiting of the
+team capacity by assigning a different chunk-rate to the peers
+depending on their reliability. In other words, if a peer does not
+loss chunks then a higher number of chunks is sent to it than to the
+rest of them.
+
+By default, as a consequence of the use of the Round-Robin scheduler
+(see Rule~\ref{rul:round-robin}) and supposing a constant bit-rate
+encoded media, the Splitter sends a chunk to each peer almost
+periodically. Moreover, peers use the reception of a chunk from the
+Splitter as a timing event to decide when to switch from the
+congestion avoidance control mode (see
+Rule~\ref{rul:congestion_avoidance_mode}) to the burst mode (see
+Rule~\ref{rul:burst_mode}). Taking into account all this information,
+the ACS proposes an adaptive Round-Robing scheduler in which the
+sending period of a chunk from the Splitter to a peer $P$ is
+proportional to the packet loss ratio of $P$. For example, lets
+suppose that peers $P_1$, $P_2$ and $P_3$ belongs to the same team and
+that in the last period of time $P_1$ has not lost chunks, $P_2$ has
+lost 2 chunks and $P_3$ has lost one chunk. In this situation, the
+next 7 chunks will be transmitted following the progression: $P_1,
+P_1, P_3, P_1, P_1, P_2, P_3$, if we also suppose that the peers are
+stores in the list of peers of the Splitter in order.
+
+\end{comment}

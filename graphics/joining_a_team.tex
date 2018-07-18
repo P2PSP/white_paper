@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\send}{\Rightarrow}
+\newcommand{\sendto}{\rightarrow}
+\newcommand{\recv}{\Leftarrow}
+\algrenewcommand\algorithmicprocedure{\textbf{task}}
+
+%\begin{algorithm}
+%  \caption{Joining a team.\label{joining_a_team}}
+
+  \begin{algorithmic}
+
+    \Procedure{${\cal R}$.ServePeers()}{}
+    \While{True}
+    \State \textbf{Wait for a connection from} ${\cal P}_i$
+    \For{${\cal S}_j\in{\cal S}$}
+    \If{$|{\cal T}_j|<N$} $[{\cal S}_j] \send {\cal P}_i$
+    \EndIf
+    \EndFor
+    \EndWhile
+    \EndProcedure
+    
+    \Procedure{${\cal R}$.UpdateFullness()}{}
+    \While{True}
+    \State $[|{\cal T}_j|] \gets$ ${\cal S}_j$
+    \EndWhile
+    \EndProcedure
+
+    \Procedure{${\cal S}_j$.ServePeers()}{}
+    \While{True}
+    \State \textbf{Wait for connection from} ${\cal P}_i$
+    \If{${\cal P}_i$ is joining}
+    \For{${\cal P}_k \in {\cal T}_j$} $[{\cal P}_k] \send {\cal P}_i$
+    \EndFor
+    \State ${\cal T}_j={\cal T}_j \cup {\cal P}_i$
+    \Else
+    \State ${\cal T}_j={\cal T}_j \setminus {\cal P}_i$
+    \EndIf
+    $[|{\cal T}_j|] \send {\cal R}$
+    \EndWhile
+    \EndProcedure
+
+    \Procedure{${\cal P}_k$.}{${\cal P}_i$}
+    \Comment{Reply a $[\mathtt{hello}]$ message.}
+    \State $[\mathtt{hello}] \sendto {\cal P}_i$
+    \EndProcedure
+    
+    \Procedure{${\cal P}_i$.Join}{${\cal R}$}
+    \Comment{Incoming peer ${\cal P}_i$ joins a team.}
+    \State $[[{\cal S}_j]] \gets$ \Call{${\cal R}$.GetSplitter}{${\cal P}_i$}
+    \Comment{Receive a splitter.}
+    \For{${\cal P}_k\in [[{\cal T}_j]] \gets$ \Call{${\cal S}_j$.GetPeers}{${\cal P}_i$}}
+    \Comment{Receive a list of peers.}
+    \State $[\mathtt{hello}] \sendto {\cal P}_k$
+    \State $[\mathtt{hello}] \gets {\cal P}_k$ \textbf{with timeout}
+    \EndFor
+    \EndProcedure
+
+  \end{algorithmic}
+%\end{algorithm}
+
+\end{document}
+

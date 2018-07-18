@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\send}{\Rightarrow}
+\newcommand{\sendto}{\rightarrow}
+\newcommand{\recv}{\Leftarrow}
+\algrenewcommand\algorithmicprocedure{\textbf{task}}
+
+\begin{algorithmic}
+
+  \Procedure{${\cal S}_j$.ServeJoiningPeers()}{}
+  \While{True}
+  \State \textbf{Wait for connection from} ${\cal P}_i$
+  \If{${\cal P}_i \notin {\cal T}_j$}
+  \ForAll{${\cal P}_k \in {\cal T}_j$}ç
+  \State $[{\cal P}_k] \send {\cal P}_i$
+  \EndFor
+  \State ${\cal T}_j={\cal T}_j \cup {\cal P}_i$
+  \Else
+  \State $[\mathtt{goodbye}] \sendto {\cal P}_i$
+  \State ${\cal T}_j={\cal T}_j \setminus {\cal P}_i$
+  \EndIf
+  \State $[|{\cal T}_j|] \send {\cal R}$
+  \EndWhile
+  \EndProcedure
+  
+\end{algorithmic}
+
+\end{document}
+

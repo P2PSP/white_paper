@@ -1,0 +1,228 @@
+\title{The LOCO-I Standard (ISO/IEC 14495-1)}
+
+\maketitle
+\tableofcontents
+
+\section*{Intro}
+\begin{itemize}
+\item LOCO-I~\cite{weinberger96} ({\sl LOw COmplexity, context-based,
+    lossless Image compression algorithm}), also named JPEG-LS (Joint
+  Photographic Expert Group - LosslesS), is a lossless stil image
+  codec based on context-based predictive coding and Golomb Coding.
+\item Developed by HP, that only offers the executable code in:
+  \texttt{http://www.hpl.hp.com/loco/locodown.htm}
+\end{itemize}
+
+\section{Encoder}
+\begin{enumerate}
+\item {\bf Initialization of the prediction contexts}:
+\begin{enumerate}
+\item Let $Q$ the actual context (there are $1094$ different
+  spatial contexts).
+\item Let $N[Q]$ the number of times that the context $Q$ has been
+found.
+\item Let $B[Q]$ the accumulated prediction error for the
+  context $Q$.
+\item Let $A[Q$ the sumatory of the absolute value of the
+  prediction residues for the context $Q$.
+\item Let $C[Q]$ the the bias cancellation values for the
+  context ${Q}$. These values are added to the predictions to try
+  that the predictions residues have a zero average. If this is not
+  satisfied, the compression ratio in reduced severelly because the
+  average of the real Lapace probability distribution of the residues
+  and the modeled probability distribution does not match. For this
+  reason, $C[Q]$ is proportional to $B[Q]/N[Q]$ that added to the
+  predictions, cancel the bias.
+  
+  % \item Sea $C[Q]$ los valores de cancelación del {\sl bias}. El {\sl
+  %     bias} es un valor que sumado a la predicción espacial provoca que
+  %   su media sea 0. Inicialmente $C[Q]\leftarrow 0~\forall Q$.
+\end{enumerate}
+
+\item {\bf Determination of the prediction context} ${\cal Q}$:
+  \begin{enumerate}
+  \item Compute the local gradient:
+
+    \fig{100}{LOCO-I_contexto_prediccion.png}
+
+    \begin{displaymath}
+      \begin{array}{rcl}
+        g_1 & \leftarrow & d-a\\
+        g_2 & \leftarrow & a-c\\
+        g_3 & \leftarrow & c-b\\
+        g_4 & \leftarrow & b-e
+      \end{array}
+    \end{displaymath}
+  \item Quantize the gradients:
+    \begin{displaymath}
+      q_i\leftarrow\left\{
+        \begin{array}{ll}
+          0 & \text{if~} g_i=0\\
+          1 & \text{if~} 1\le |g_i|\le 2\\
+          2 & \text{if~} 3\le |g_i|\le 6\\
+          3 & \text{if~} 7\le |g_i|\le 14\\
+          4 & \text{otherwise}
+        \end{array}
+      \right.
+    \end{displaymath}
+    for $i=1,2,3$ and
+    \begin{displaymath}
+      q_4\leftarrow\left\{
+        \begin{array}{ll}
+          0 & \text{if~} |g_4|<0\\
+          1 & \text{if~} 5\le g_4\\
+          2 & \text{otherwise}.
+        \end{array}
+      \right.
+    \end{displaymath}
+  \end{enumerate}
+  
+\item {\bf Compute the residue} $M(e)$:
+  \begin{enumerate}
+  \item The initial prediction:
+    \begin{displaymath}
+      \hat{s}\leftarrow\left\{
+        \begin{array}{ll}
+          \text{min}(a,b) & \text{if~} c\geq\text{max}(a,b) \\
+          \text{max}(a,b) & \text{if~} c\leq\text{min}(a,b) \\
+          a+b-c             & \text{otherwise}.
+        \end{array}
+      \right.
+    \end{displaymath}
+    
+  \item {\sl Bias} cancellation:
+    \begin{displaymath}
+      \hat{s}\leftarrow\left\{
+        \begin{array}{ll}
+          \hat{s}+C[Q] & \text{if~} g_1>0 \\
+          \hat{s}-C[Q] & \text{otherwise}.
+        \end{array}
+      \right.
+    \end{displaymath}
+    
+  \item Compute the prediction error:
+    \begin{displaymath}
+      e\leftarrow(s-\hat{s}) \text{~mod~}\beta,
+    \end{displaymath}
+    where $\beta$ is the number of bits/pixel. This produces a
+    projection of the residues from the dynamic range
+    $[-\alpha+1,\alpha-1]$ to $[-\alpha/2,\alpha/2-1]$, where
+    $\alpha=2^\beta$ is the size of the source alphabet.
+    
+  \item Shuffle the residues in order to get an exponiential (with
+    negative exponent) distribution of the probability of the
+    residues:
+    \begin{displaymath}
+      M(e)\leftarrow\left\{
+        \begin{array}{ll}
+          2e & \text{if~} e\ge 0\\
+          2|e|-1 & \text{otherwise}.
+        \end{array}
+      \right.
+    \end{displaymath}
+    After that, the residues are in the range $[0, 1, \cdots, 2^\beta-1]$
+  \end{enumerate}
+  
+\item {\bf Variable length encoding of $M(e)$ in the context $Q$}:
+  \begin{enumerate}
+  \item Output $\leftarrow$ a Rice code for $M(e)$ using the slope
+    $k=\lceil\log_2(A[Q])\rceil$.
+  \end{enumerate}
+  
+\item {\bf Update the context} $Q$:
+  \begin{enumerate}
+  \item $B[Q] \leftarrow B[Q] + e$.
+  \item $A[Q] \leftarrow A[Q] + |e|$.
+  \item If $N[Q]=\mathsf{RESET}$, then: (where
+    $64\le\mathsf{RESET}\le 256$)
+    \begin{enumerate}
+    \item $A[Q] \leftarrow A[Q]/2$.
+    \item $B[Q] \leftarrow B[Q]/2$.
+    \item $H[Q] \leftarrow N[Q]/2$.
+    \end{enumerate}
+  \item $N[Q] \leftarrow N[Q]+1$.
+  \item {\bf Update of $C[Q]$}: 
+    \begin{enumerate}
+    \item If $B[A]\le -N[Q]$, then:
+      \begin{enumerate}
+      \item $B[Q] \leftarrow B[Q]+N[Q]$.
+      \item If $C[Q]>-128$, then:
+        \begin{itemize}
+        \item $C[Q] \leftarrow C[Q]-1$.
+        \end{itemize}
+      \item If $B[Q]\le -N[Q]$, then:
+        \begin{itemize}
+        \item $B[Q] \leftarrow -N[Q]+1$.
+        \end{itemize}
+      \end{enumerate}
+    \item Else:
+      \begin{enumerate}
+      \item If $B[Q]>0$, then:
+        \begin{itemize}
+        \item $B[Q] \leftarrow B[Q]-N[Q]$.
+        \item If $C[Q]<127$, then:
+          \begin{itemize}
+          \item[$\star$] $C[Q] \leftarrow C[Q]+1$.
+          \end{itemize}
+        \item If $B[Q]>0$, then:
+          \begin{itemize}
+          \item[$\star$] $B[Q] \leftarrow 0$.
+          \end{itemize}
+        \end{itemize}
+      \end{enumerate}
+    \end{enumerate}
+  \end{enumerate}
+\end{enumerate}
+
+\section{Decoder}
+\begin{enumerate}
+\item Idem to Step 1 of the encoder.
+\item Idem to Step 2 of the encoder.
+\item Decode $M(e)$.
+\item Compute the initial prediction such as in Step 3.a of the
+  encoder.
+\item Add the bias to $\hat{s}$:
+  \begin{displaymath}
+    \hat{s}\leftarrow\left\{
+      \begin{array}{ll}
+        \hat{s}-C[Q] & \text{if~} g_1>0 \\
+        \hat{s}+C[Q] & \text{otherwise}.
+      \end{array}
+    \right.
+  \end{displaymath}
+\item Recover the original Laplace distribution for the residues:
+  \begin{displaymath}
+    e\leftarrow M^{-1}(M(e))=\left\{
+      \begin{array}{ll}
+        -M(e)/2-1 & \text{si~} M(e) \text{is~odd}\\
+        M(e)/2 & \text{otherwise}.
+      \end{array}
+    \right.
+  \end{displaymath}
+\item $s\leftarrow (e+\hat{s})\text{~mod~}\beta$.
+\item Update $Q$ as in Step 5 of the encoder.
+\end{enumerate}
+
+\section{The RLE mode}
+LOCO-I uses a Rice encoder that can be very redundant if the
+probability distributions are very narrow. To overcome this drawback,
+there is a special encoding mode for this situation that is triggered
+when $a=b=c=d$.
+
+The normal mode is re-started when if $s\ne a$ or the end of a line
+has been reached.
+
+\section*{Let's go to the lab!}
+\begin{itemize}
+\item Download the LOCO-I command line executables from
+  \url{http://www.hpl.hp.com/loco/locodown.htm}.
+  
+\item Fill the table:
+\begin{verbatim}
+ Codec | lena boats pepers zelda Average
+-------+---------------------------------
+LOCO-I | 
+\end{verbatim}
+\end{itemize}
+
+\bibliography{JPEG2000}

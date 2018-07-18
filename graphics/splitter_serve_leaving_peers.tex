@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\send}{\Rightarrow}
+\newcommand{\sendto}{\rightarrow}
+\newcommand{\recv}{\Leftarrow}
+\algrenewcommand\algorithmicprocedure{\textbf{task}}
+
+\begin{algorithmic}
+
+  \Procedure{${\cal S}_j$.ServeOutgoingPeers()}{}
+  \While{True}
+  \State $m \gets {\cal P}_o$
+  \If{$m == [\mathtt{goodbye}]$}
+  \State $[\mathtt{goodbye}] \sendto {\cal P}_o$
+  \State ${\cal T}_j={\cal T}_j \setminus {\cal P}_o$
+  \EndIf
+  \State $[|{\cal T}_j|] \send {\cal R}$
+  \EndWhile
+  \EndProcedure
+  
+\end{algorithmic}
+
+\end{document}
+

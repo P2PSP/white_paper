@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\send}{\Rightarrow}
+\newcommand{\sendto}{\rightarrow}
+\newcommand{\recv}{\Leftarrow}
+\algrenewcommand\algorithmicprocedure{\textbf{task}}
+
+\begin{algorithmic}
+
+  \Procedure{${\cal S}_j$.ServeIncomingPeers()}{}
+  \While{True}
+  \State \textbf{Wait for connection from} ${\cal P}_i$
+  \If{${\cal P}_i \notin {\cal T}_j$}
+  \For{${\cal P}_k \in {\cal T}_j$} $[{\cal P}_k] \send {\cal P}_i$
+  \EndFor
+  \State ${\cal T}_j={\cal T}_j \cup {\cal P}_i$
+  \Else
+  \State $[\mathtt{goodbye}] \sendto {\cal P}_i$
+  \State ${\cal T}_j={\cal T}_j \setminus {\cal P}_i$
+  \EndIf
+  \State $[|{\cal T}_j|] \send {\cal R}$
+  \EndWhile
+  \EndProcedure
+
+  \Procedure{${\cal S}_j$.ServeOutgoingPeers()}{}
+  \While{True}
+  \State $m \gets {\cal P}_o$
+  \If{$m == [\mathtt{goodbye}]$}
+  \State $[\mathtt{goodbye}] \sendto {\cal P}_o$
+  \State ${\cal T}_j={\cal T}_j \setminus {\cal P}_o$
+  \EndIf
+  \State $[|{\cal T}_j|] \send {\cal R}$
+  \EndWhile
+  \EndProcedure
+
+  \Procedure{${\cal S}_j$.FeedTeam()}{}
+  \State $x=0; i=0; r=0$
+  \While{True}
+  \State \textbf{wait for} $C$ \textbf{bytes} $[\mathtt{chunk}] \gets {\cal O}$
+  \State $[x,\mathtt{chunk}] \sendto {\cal P}_i$
+  \State $O[x]={\cal P}_i$
+  \State $i=(i+1)~\text{mod}~|{\cal T}_j|$
+  \State $x=(x+1)~\text{mod}~\mathtt{MAX\_CHUNK\_NUMBER}$
+  \If{$x=0$}
+  $r=(r+1)~\text{mod}~\mathtt{MAX\_ROUND\_NUMBER}$
+  \EndIf
+  \EndWhile
+  \EndProcedure
+  
+  \Procedure{${\cal S}_j$.FreeRidingControl()}{}
+  \While{True}
+  \State \textbf{wait for} $[\mathtt{lost~chunk}~x] \gets \textbf{all}~\{{\cal M}_0,\cdots, {\cal M}_{M-1}\}$
+  \State~~~\textbf{with timeout of $L$ rounds}
+  \If{\textbf{not timeout}}
+  ${\cal T}_j = {\cal T}_j \setminus O[x]$
+  \EndIf
+  \EndWhile
+  \EndProcedure
+  
+\end{algorithmic}
+
+\end{document}
+

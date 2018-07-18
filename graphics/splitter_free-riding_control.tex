@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\send}{\Rightarrow}
+\newcommand{\sendto}{\rightarrow}
+\newcommand{\recv}{\Leftarrow}
+\algrenewcommand\algorithmicprocedure{\textbf{task}}
+
+\begin{algorithmic}
+  
+  \Procedure{${\cal S}_j$.FreeRidingControl()}{}
+  \While{True}
+  \State \textbf{wait for} $[\mathtt{lost~chunk}~x] \gets \textbf{all}~\{{\cal M}_0,\cdots, {\cal M}_{M-1}\}$
+  \State~~~\textbf{with timeout of $L$ rounds}
+  \If{\textbf{not timeout}}
+  ${\cal T}_j = {\cal T}_j \setminus D[x]$
+  \EndIf
+  \EndWhile
+  \EndProcedure
+  
+\end{algorithmic}
+
+\end{document}
+

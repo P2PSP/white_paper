@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\send}{\Rightarrow}
+\newcommand{\sendto}{\rightarrow}
+\algrenewcommand\algorithmicprocedure{\textbf{task}}
+
+\begin{algorithmic}
+
+  \Procedure{${\cal P}_k$.ShortestPathComputation()}{}
+  \ForAll {${\cal P}_i \in {\cal T}_j$}
+  \State $D[{\cal P}_i] = \infty$
+  \EndFor
+  \State $D[{\cal P}_k] = 0$
+  \ForAll {${\cal P}_i \in {\cal T}_j$}
+  \State $G[{\cal P}_i] = {\cal P}_i$
+  \EndFor
+  \ForAll {${\cal P}_i \in N({\cal P}_k)$}
+  \State $[D[\cdot], G[\cdot]] \sendto {\cal P}_i$
+  \EndFor
+  \While{True}
+  \State $\text{found\_shorter\_route} = \text{False}$
+  \State $[D_{{\cal P}_n}[\cdot],G_{{\cal P}_n}[\cdot]] \gets$ \textbf{from any} ${\cal P}_n \in N({\cal P}_k)$
+  \ForAll {$D_{{\cal P}_n}[{\cal P}_i]\in D_{{\cal P}_k}[\cdot]$}
+  \State $\text{alternative\_distance}\_{\cal P}_i = D_{{\cal P}_n}[{\cal P}_i] + D[{\cal P}_n]$
+  \If{$\text{alternative\_distance}\_{\cal P}_i < D[{\cal P}_j]$}
+  \State $\text{found\_shorter\_route} = \text{true}$
+  \State $D[{\cal P}_i] = \text{alternative\_distance}$
+  \State $G[{\cal P}_i] = {\cal P}_n$
+  \EndIf
+  \EndFor
+  \If{$\text{found\_shorter\_route}$}
+  \ForAll {${\cal P}_i \in N({\cal P}_k)$}
+  \State $[D[\cdot],G[\cdot]] \sendto {\cal P}_i$
+  \EndFor
+  \EndIf
+  \EndWhile
+  \EndProcedure
+  
+\end{algorithmic}
+
+\end{document}
+

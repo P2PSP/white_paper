@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\send}{\Rightarrow}
+\newcommand{\sendto}{\rightarrow}
+\newcommand{\recv}{\Leftarrow}
+\algrenewcommand\algorithmicprocedure{\textbf{task}}
+
+\begin{algorithmic}
+
+  \Procedure{${\cal R}$.ServeJoiningPeers()}{}
+  \While{True}
+  \State  ${\cal P}_i=$ \textbf{wait for a connection}
+  \State $[{\cal S}] \send {\cal P}_i$
+  \EndWhile
+  \EndProcedure
+  \newline
+  \Procedure{${\cal R}$.UpdateTeamsFullness()}{}
+  \While{True}
+  \State $[|{\cal T}_j|] \gets$ ${\cal S}_j$
+  \EndWhile
+  \EndProcedure
+
+\end{algorithmic}
+
+\end{document}
+
