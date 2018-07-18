@@ -22,9 +22,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 
 <h2 class="titleHead">P2PSP (Peer-to-Peer Straightforward Protocol)</h2>
  <div class="author" ><span 
-class="ecrm-1200">Vicente Gonz</span><span 
-class="ecrm-1200">á</span><span 
-class="ecrm-1200">lez Ruiz</span></div><br />
+class="ecrm-1200">P2PSP team</span></div><br />
 <div class="date" ><span 
 class="ecrm-1200">July 18, 2018</span></div>
    </div>
@@ -32,48 +30,58 @@ class="ecrm-1200">July 18, 2018</span></div>
  id="x1-1000"></a>Contents</h3>
    <div class="tableofcontents">
    <span class="sectionToc" >1 <a 
-href="#x1-20001" id="QQ2-1-2">Proposal</a></span>
+href="#x1-20001" id="QQ2-1-2">DBS: Data Broadcasting Set of rules</a></span>
+<br />     <span class="subsubsectionToc" >1.0.1 <a 
+href="#x1-30001.0.1" id="QQ2-1-3">Joining a team</a></span>
+<br />     <span class="subsubsectionToc" >1.0.2 <a 
+href="#x1-40001.0.2" id="QQ2-1-5">Leaving a team</a></span>
+<br />     <span class="subsubsectionToc" >1.0.3 <a 
+href="#x1-50001.0.3" id="QQ2-1-7">Chunk generation</a></span>
+<br />     <span class="subsubsectionToc" >1.0.4 <a 
+href="#x1-60001.0.4" id="QQ2-1-9">Chunk ﬂooding</a></span>
+<br />     <span class="subsubsectionToc" >1.0.5 <a 
+href="#x1-70001.0.5" id="QQ2-1-10">Chunk buﬀering</a></span>
+<br />     <span class="subsubsectionToc" >1.0.6 <a 
+href="#x1-80001.0.6" id="QQ2-1-11">Free-riding control at splitters</a></span>
+<br />     <span class="subsubsectionToc" >1.0.7 <a 
+href="#x1-90001.0.7" id="QQ2-1-12">Free-riding control at peers</a></span>
+<br />     <span class="subsubsectionToc" >1.0.8 <a 
+href="#x1-100001.0.8" id="QQ2-1-13">Congestion control</a></span>
 <br />   <span class="sectionToc" >2 <a 
-href="#x1-30002" id="QQ2-1-3">DBS: Data Broadcasting Set of rules</a></span>
-<br />     <span class="subsubsectionToc" >2.0.1 <a 
-href="#x1-40002.0.1" id="QQ2-1-4">Joining a team</a></span>
-<br />     <span class="subsubsectionToc" >2.0.2 <a 
-href="#x1-50002.0.2" id="QQ2-1-6">Leaving a team</a></span>
-<br />     <span class="subsubsectionToc" >2.0.3 <a 
-href="#x1-60002.0.3" id="QQ2-1-8">Chunk generation</a></span>
-<br />     <span class="subsubsectionToc" >2.0.4 <a 
-href="#x1-70002.0.4" id="QQ2-1-10">Chunk ﬂooding</a></span>
-<br />     <span class="subsubsectionToc" >2.0.5 <a 
-href="#x1-80002.0.5" id="QQ2-1-11">Chunk buﬀering</a></span>
-<br />     <span class="subsubsectionToc" >2.0.6 <a 
-href="#x1-90002.0.6" id="QQ2-1-12">Free-riding control at splitters</a></span>
-<br />     <span class="subsubsectionToc" >2.0.7 <a 
-href="#x1-100002.0.7" id="QQ2-1-13">Free-riding control at peers</a></span>
-<br />     <span class="subsubsectionToc" >2.0.8 <a 
-href="#x1-110002.0.8" id="QQ2-1-14">Congestion control</a></span>
+href="#x1-110002" id="QQ2-1-14">IMS: Ip Multicast Set of procedures</a></span>
 <br />   <span class="sectionToc" >3 <a 
-href="#x1-120003" id="QQ2-1-15">IMS: Ip Multicast Set of procedures</a></span>
+href="#x1-120003" id="QQ2-1-15">LRS: Lost-chunk Recovery Set</a></span>
 <br />   <span class="sectionToc" >4 <a 
-href="#x1-130004" id="QQ2-1-16">LRS: Lost-chunk Recovery Set</a></span>
+href="#x1-130004" id="QQ2-1-16">ACS: Adaptive Chunk-rate Set</a></span>
 <br />   <span class="sectionToc" >5 <a 
-href="#x1-140005" id="QQ2-1-17">ACS: Adaptive Chunk-rate Set</a></span>
-<br />   <span class="sectionToc" >6 <a 
-href="#x1-150006" id="QQ2-1-18">MCS: Multi-Channel Set</a></span>
+href="#x1-140005" id="QQ2-1-17">MCS: Multi-Channel Set</a></span>
    </div>
+   <div 
+class="abstract" 
+>
+<div class="center" 
+>
 <!--l. 5--><p class="noindent" >
-</p>
-   <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
- id="x1-20001"></a>Proposal</h3>
-<!--l. 8--><p class="noindent" >P2PSP provides broadcasting of media on the Internet. Conceptually, P2PSP is
-organized in sets of rules Only the most basic set (DBS) is the only compulsory one.
-The rest of sets extend or modify the behevior of DBS, when applicable.
+</p><!--l. 5--><p class="noindent" ><span 
+class="ecbx-0900">Abstract</span></p></div>
+<!--l. 5--><p class="noindent" >
                                                                   
 
                                                                   
-</p><!--l. 13--><p class="noindent" >
+     </p><!--l. 6--><p class="indent" >   <span 
+class="ecrm-0900">P2PSP provides broadcasting of media on the Internet. Conceptually,</span>
+     <span 
+class="ecrm-0900">P2PSP is organized in sets of rules Only the most basic set (DBS) is the</span>
+     <span 
+class="ecrm-0900">only compulsory one. The rest of sets extend or modify the behevior of</span>
+     <span 
+class="ecrm-0900">DBS, when applicable.</span>
 </p>
-   <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
- id="x1-30002"></a>DBS: Data Broadcasting Set of rules</h3>
+</div>
+<!--l. 12--><p class="noindent" >
+</p>
+   <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
+ id="x1-20001"></a>DBS: Data Broadcasting Set of rules</h3>
 <!--l. 1--><p class="noindent" >DBS provides ALM for unicast (UDP) environments. In this layer, peers must sent as many
 data to their contributors (neighbors) as they sent to them. The media is sent by a server
 <!--l. 4--><math 
@@ -160,21 +168,21 @@ class="MathClass-close">}</mo></mrow></math>,
 per team.
 </p><!--l. 12--><p class="noindent" >
 </p>
-   <h5 class="subsubsectionHead"><span class="titlemark">2.0.1   </span> <a 
- id="x1-40002.0.1"></a>Joining a team</h5>
+   <h5 class="subsubsectionHead"><span class="titlemark">1.0.1   </span> <a 
+ id="x1-30001.0.1"></a>Joining a team</h5>
                                                                   
 
                                                                   
 <!--l. 16--><p class="indent" >   <a 
- id="x1-40011"></a></p><hr class="float" /><div class="float" 
+ id="x1-30011"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img height=800 src="data/joining" /> </div> 
+ <div style="text-align:center;"> <img height=300 src="graphics/joining.png" /> </div> 
 <br /> <div class="caption" 
 ><span class="id">Figure 1: </span><span  
-class="content">Peer joining.</span></div><!--tex4ht:label?: x1-40011 -->
+class="content">Peer joining.</span></div><!--tex4ht:label?: x1-30011 -->
                                                                   
 
                                                                   
@@ -188,7 +196,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 >i</mi></mrow></msub 
 ></math>
 (see the tasks described in Fig. <a 
-href="#x1-40011">1<!--tex4ht:ref: fig:joining --></a>) must contact a <span 
+href="#x1-30011">1<!--tex4ht:ref: fig:joining --></a>) must contact a <span 
 class="ecti-1000">tacker</span>
 <!--l. 20--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -203,7 +211,7 @@ class="MathClass-close">]</mo></mrow></math> in a
 <span 
 class="ecti-1000">reliable</span><span class="footnote-mark"><a 
 href="index2.html#fn1x0"><sup class="textsuperscript">1</sup></a></span><a 
- id="x1-4002f1"></a>  message. Then
+ id="x1-3002f1"></a>  message. Then
 <!--l. 25--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
@@ -332,21 +340,21 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 >i</mi></mrow></msub 
 ></math>.
 </p>
-   <h5 class="subsubsectionHead"><span class="titlemark">2.0.2   </span> <a 
- id="x1-50002.0.2"></a>Leaving a team</h5>
+   <h5 class="subsubsectionHead"><span class="titlemark">1.0.2   </span> <a 
+ id="x1-40001.0.2"></a>Leaving a team</h5>
                                                                   
 
                                                                   
 <!--l. 97--><p class="indent" >   <a 
- id="x1-50012"></a></p><hr class="float" /><div class="float" 
+ id="x1-40012"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img height=800 src="data/leaving" /> </div> 
+ <div style="text-align:center;"> <img height=300 src="graphics/leaving.png" /> </div> 
 <br /> <div class="caption" 
 ><span class="id">Figure 2: </span><span  
-class="content">Peer leaving.</span></div><!--tex4ht:label?: x1-50012 -->
+class="content">Peer leaving.</span></div><!--tex4ht:label?: x1-40012 -->
                                                                   
 
                                                                   
@@ -360,7 +368,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 >o</mi></mrow></msub 
 ></math> (see
 Fig. <a 
-href="#x1-50012">2<!--tex4ht:ref: fig:leaving --></a>) from team <!--l. 101--><math 
+href="#x1-40012">2<!--tex4ht:ref: fig:leaving --></a>) from team <!--l. 101--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -482,21 +490,21 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ></math> from
 the team.
 </p>
-   <h5 class="subsubsectionHead"><span class="titlemark">2.0.3   </span> <a 
- id="x1-60002.0.3"></a>Chunk generation</h5>
+   <h5 class="subsubsectionHead"><span class="titlemark">1.0.3   </span> <a 
+ id="x1-50001.0.3"></a>Chunk generation</h5>
                                                                   
 
                                                                   
 <!--l. 132--><p class="indent" >   <a 
- id="x1-60013"></a></p><hr class="float" /><div class="float" 
+ id="x1-50013"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img height=800 src="data/chunk_generation_and_flooding" /> </div> 
+ <div style="text-align:center;"> <img height=300 src="graphics/chunk_generation_and_flooding.png" /> </div> 
 <br /> <div class="caption" 
 ><span class="id">Figure 3: </span><span  
-class="content">Chunk generation and ﬂooding.</span></div><!--tex4ht:label?: x1-60013 -->
+class="content">Chunk generation and ﬂooding.</span></div><!--tex4ht:label?: x1-50013 -->
                                                                   
 
                                                                   
@@ -512,7 +520,7 @@ mathvariant="bold-script">𝒮</mi></mrow><mrow
 class="MathClass-rel">∈</mo><mi 
 mathvariant="bold-script">𝒮</mi></math>
 (see Fig. <a 
-href="#x1-60013">3<!--tex4ht:ref: fig:chunk_generation_and_flooding --></a>) divides the stream into chunks of data
+href="#x1-50013">3<!--tex4ht:ref: fig:chunk_generation_and_flooding --></a>) divides the stream into chunks of data
 (<!--l. 138--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">chunk</mi></math>) of constant
@@ -593,11 +601,11 @@ bit-rate of the media, <!--l. 146--><math
 display="inline" ><mi 
 >R</mi></math>.
 </p>
-   <h5 class="subsubsectionHead"><span class="titlemark">2.0.4   </span> <a 
- id="x1-70002.0.4"></a>Chunk ﬂooding</h5>
+   <h5 class="subsubsectionHead"><span class="titlemark">1.0.4   </span> <a 
+ id="x1-60001.0.4"></a>Chunk ﬂooding</h5>
 <!--l. 165--><p class="noindent" >When peers receive chunks, ﬂood them to the rest of peers of the team (except to the
 sender), using again a round-robin schema (see Fig. <a 
-href="#x1-60013">3<!--tex4ht:ref: fig:chunk_generation_and_flooding --></a>). For each duplicate chunk received
+href="#x1-50013">3<!--tex4ht:ref: fig:chunk_generation_and_flooding --></a>). For each duplicate chunk received
 by a <!--l. 168--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
@@ -707,8 +715,8 @@ class="MathClass-close">]</mo></mrow></math> to
 one or more (possibly the rest of) peers of the team.
 </p><!--l. 191--><p class="noindent" >
 </p>
-   <h5 class="subsubsectionHead"><span class="titlemark">2.0.5   </span> <a 
- id="x1-80002.0.5"></a>Chunk buﬀering</h5>
+   <h5 class="subsubsectionHead"><span class="titlemark">1.0.5   </span> <a 
+ id="x1-70001.0.5"></a>Chunk buﬀering</h5>
 <!--l. 192--><p class="noindent" >In order to hide the jitter generated by the physical network and
 P2PSP, peers store the received chunks before playing them. A chunk
 <!--l. 194--><math 
@@ -740,8 +748,8 @@ the modulo operator. A chunk is given by lost when it is time to send it to the 
 and the chunk has not been received.
 </p><!--l. 257--><p class="noindent" >
 </p>
-   <h5 class="subsubsectionHead"><span class="titlemark">2.0.6   </span> <a 
- id="x1-90002.0.6"></a>Free-riding control at splitters</h5>
+   <h5 class="subsubsectionHead"><span class="titlemark">1.0.6   </span> <a 
+ id="x1-80001.0.6"></a>Free-riding control at splitters</h5>
 <!--l. 259--><p class="noindent" >In each team there are a set of peer <span 
 class="ecti-1000">monitors </span>(trusted peers whose behavior is
 predictable), which complain to their splitter when a chunk is lost. Lets suppose that
@@ -821,8 +829,8 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 and removes it from the team.
 </p><!--l. 268--><p class="noindent" >
 </p>
-   <h5 class="subsubsectionHead"><span class="titlemark">2.0.7   </span> <a 
- id="x1-100002.0.7"></a>Free-riding control at peers</h5>
+   <h5 class="subsubsectionHead"><span class="titlemark">1.0.7   </span> <a 
+ id="x1-90001.0.7"></a>Free-riding control at peers</h5>
 <!--l. 270--><p class="noindent" >In each round, peers check if a chunk have been received from the rest of peers of the team
 (<!--l. 271--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -860,11 +868,11 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ></math> is the
 origin peer of the missing chunk. At this point, the process continues as described in
 Section <a 
-href="#x1-70002.0.4">2.0.4<!--tex4ht:ref: dbs:chunk_flooding --></a>.
+href="#x1-60001.0.4">1.0.4<!--tex4ht:ref: dbs:chunk_flooding --></a>.
 </p><!--l. 295--><p class="noindent" >
 </p>
-   <h5 class="subsubsectionHead"><span class="titlemark">2.0.8   </span> <a 
- id="x1-110002.0.8"></a>Congestion control</h5>
+   <h5 class="subsubsectionHead"><span class="titlemark">1.0.8   </span> <a 
+ id="x1-100001.0.8"></a>Congestion control</h5>
 <!--l. 297--><p class="noindent" >P2PSP is a content-unaware push-based protocol. To avoid network
 congestion while ﬂooding, sending peers must perform some kind
 of data ﬂow-control. Moreover, to achieve aN ideal I/O ratio of
@@ -880,10 +888,10 @@ class="ecbx-1000">??</span>) each
                                                                   
 received chunk to the next peer of their list of peers (following a round-robin
 pattern).
-</p><!--l. 17--><p class="noindent" >
+</p><!--l. 16--><p class="noindent" >
 </p>
-   <h3 class="sectionHead"><span class="titlemark">3   </span> <a 
- id="x1-120003"></a>IMS: Ip Multicast Set of procedures</h3>
+   <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
+ id="x1-110002"></a>IMS: Ip Multicast Set of procedures</h3>
 <!--l. 1--><p class="noindent" >IPM is available by default in LANs (Local Are Network)s and VLANs (Virtual
 LAN)s <span class="cite">[<a 
 href="#Xshabtay2011ip">3</a>]</span>. IMS runs on the top of DBS and provides eﬃcient native multicasting.
@@ -927,15 +935,15 @@ this subnet), port <!--l. 10--><math
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">1234</mi></math>
 to forward chunks to all of them (see Procedure <a 
-href="#x1-110002.0.8">2.0.8<!--tex4ht:ref: dbs:congestion_control --></a>). When implementing IMS, all
+href="#x1-100001.0.8">1.0.8<!--tex4ht:ref: dbs:congestion_control --></a>). When implementing IMS, all
 peers, request to listen to this IPM group and port.
-</p><!--l. 21--><p class="noindent" >
+</p><!--l. 20--><p class="noindent" >
 </p>
-   <h3 class="sectionHead"><span class="titlemark">4   </span> <a 
- id="x1-130004"></a>LRS: Lost-chunk Recovery Set</h3>
+   <h3 class="sectionHead"><span class="titlemark">3   </span> <a 
+ id="x1-120003"></a>LRS: Lost-chunk Recovery Set</h3>
 <!--l. 1--><p class="noindent" >LRS extends DBS. LRS should be implemented if error-prone communications are
 expected. LRS is based on the use of monitor peers (see Procedure <a 
-href="#x1-90002.0.6">2.0.6<!--tex4ht:ref: dbs:frcS --></a>). The idea
+href="#x1-80001.0.6">1.0.6<!--tex4ht:ref: dbs:frcS --></a>). The idea
 is: <!--l. 3--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
@@ -949,10 +957,10 @@ buﬀers in relation to common peers. LRS only modiﬁes the behavior of
 display="inline" ><mi 
 mathvariant="bold-script">𝒮</mi></math> and
 the monitors. Normal peers implement DBS.
-</p><!--l. 25--><p class="noindent" >
+</p><!--l. 24--><p class="noindent" >
 </p>
-   <h3 class="sectionHead"><span class="titlemark">5   </span> <a 
- id="x1-140005"></a>ACS: Adaptive Chunk-rate Set</h3>
+   <h3 class="sectionHead"><span class="titlemark">4   </span> <a 
+ id="x1-130004"></a>ACS: Adaptive Chunk-rate Set</h3>
 <!--l. 1--><p class="noindent" >ACS relaxes the peer’s upload requirements imposed by DBS. It should be used in if
 it is known that some peers can provide the capacity than others cannot, or
 when we want to mix the CS and P2P models, sending more chunks from
@@ -970,7 +978,7 @@ one or more monitors controlled by the contents provider.
 display="inline" ><mi 
 mathvariant="bold-script">𝒮</mi></math>
 knows about the number of chunks that each peer has lost (see Procedure <a 
-href="#x1-90002.0.6">2.0.6<!--tex4ht:ref: dbs:frcS --></a>), to
+href="#x1-80001.0.6">1.0.6<!--tex4ht:ref: dbs:frcS --></a>), to
 send to those more reliable peers a higher number of chunks than to the others. In
 other words, ACS adapts the round-time of each peer to its capacity.
 </p><!--l. 13--><p class="indent" >   Notice that ACS only aﬀects the behavior of
@@ -978,10 +986,10 @@ other words, ACS adapts the round-time of each peer to its capacity.
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 mathvariant="bold-script">𝒮</mi></math>.
-</p><!--l. 29--><p class="noindent" >
+</p><!--l. 28--><p class="noindent" >
 </p>
-   <h3 class="sectionHead"><span class="titlemark">6   </span> <a 
- id="x1-150006"></a>MCS: Multi-Channel Set</h3>
+   <h3 class="sectionHead"><span class="titlemark">5   </span> <a 
+ id="x1-140005"></a>MCS: Multi-Channel Set</h3>
 <!--l. 1--><p class="noindent" >When using MDC <span class="cite">[<a 
 href="#Xbaccichet2007content">1</a>]</span>, SVC <span class="cite">[<a 
 href="#Xchu2009auction">2</a>]</span>, or for emulating the CS model, it can be interesting
@@ -997,7 +1005,7 @@ there are.
 </p><!--l. 1--><p class="noindent" >
 </p>
    <h3 class="likesectionHead"><a 
- id="x1-160006"></a>References</h3>
+ id="x1-150005"></a>References</h3>
 <!--l. 1--><p class="noindent" >
    </p><div class="thebibliography">
    <p class="bibitem" ><span class="biblabel">

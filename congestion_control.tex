@@ -1,0 +1,38 @@
+P2PSP is a content-unaware push-based protocol. To avoid network
+congestion while flooding, sending peers must perform some kind of
+data flow-control. Moreover, to achieve aN ideal I/O ratio of $1$,
+peers should send one chunk for every received one.
+
+Congestion control in P2PSP is very simple: if a new chunk is
+received, peers forward (using the flooding with prunning algorithm
+described in Sec~\ref{dbs:chunk_generation_and_flooding}) each
+received chunk to the next peer of their list of peers (following a
+round-robin pattern).
+
+%Peers do not understand the content, but it is
+%known that in order to achieve a I/O ratio of 1, peers should send one
+%chunk for every received one, on average. To acomplish this, a ${\cal
+%  P}_i$ creates a FIFO queue of chunks for each $N({\cal P}_i)$, and,
+%for each received chunk, ${\cal P}_i$ forwards a queued chunk from
+%each of these queues.
+
+\begin{comment}
+A ${\cal P}_i$ forwards one or more chunks if and only if it has
+received a chunk. For each received chunk $c_j$, ${\cal P}_i$: 1)
+creates a list $l_{c_j}$ with the contents of $N'({\cal P}_i)$, and 2)
+sends $c_j$ to $l_{c_j}[0]$ (the first element), and removes
+$l_{c_j}[0]$. For each chunk reception, Step 2) is repeated for all
+the previously created lists while they are not exhausted.
+
+A solution is a forwarding algorithm based on the following
+idea. Peers manage a list of chunks, where every item is a 2-tuple
+($c_k$, $P_l$). The field $c_k$ represents the chunk that must be
+flooded (if the node that has delivered the chunk is the splitter,
+$c_k$ must be relayed towards all the neighbors, otherwise, $c_k$ must
+be sent to all the neighbors except the peer that delivered $c_k$),
+and the field $P_l$ the last neighbor to which $c_k$ was sent. For
+every chunk received, a new tuple is appended to the list of chunks
+and the rest of tuples are updated. The field $c_k$ remains constant
+but $P_l$ is replaced by the next peer in the list of neighbors for
+every received chunk.
+\end{comment}

@@ -1,0 +1,25 @@
+When peers receive chunks, flood them to the rest of peers of the team
+(except to the sender), using again a round-robin schema (see
+Fig.~\ref{fig:chunk_generation_and_flooding}). For each duplicate
+chunk received by a ${\cal P}_k \in {\cal T}_j$ from ${\cal P}_l \in
+{\cal T}_j$, ${\cal P}_k$ sends to ${\cal P}_l$ a
+$[\mathtt{prune}~{\cal P}_i]$, where ${\cal P}_i$ is the origin peer
+of the duplicate chunk. Thus, only the first ${\cal P}_l$ to send to
+${\cal P}_k$ a chunk ``originated'' at ${\cal P}_i$ will do that in
+the future, at least that ${\cal P}_k$ revokes this routing
+information by sending a $[\mathtt{not~prune}~{\cal P}_i]$ to one or
+more (possibly the rest of) peers of the team.
+
+%When peers receive chunks from their splitter, they must flood them to
+%their neighbors until the chunks are broadcasted to the whole team
+%(Fig.~\ref{fig:chunk_generation_and_flooding}). Lets suppose that
+%${\cal P}_k$ receives a chunk. In the case the sender is its splitter,
+%${\cal P}_k$ floods the chunk to $N({\cal P}_k)$. However, if the
+%sender is a peer ${\cal P}_m\in N({\cal P}_k)$, ${\cal P}_k$ adds
+%${\cal P}_m$ to $N({\cal P}_k)$ if ${\cal P}_m$ is a new neighbor, and
+%forwards the chunk to the rest of its neighborhood ${\cal P}_n\in
+%N({\cal P}_k)\setminus{\cal P}_m$ if ${\cal P}_k$ is in the shortest
+%between ${\cal P}_n$ and the origin peer ${\cal P}_i$ of the relayed
+%chunk. This will be true if ${\cal P}_k$ is the gateway of ${\cal
+%  P}_n$ to go from ${\cal P}_n$ to ${\cal P}_i$. Therefore, a flooding
+%with prunning based on shortest path routing is used.
