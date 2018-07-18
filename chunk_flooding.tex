@@ -1,3 +1,7 @@
+%
+% Chunk flooding
+%
+
 When peers receive chunks, flood them to the rest of peers of the team
 (except to the sender), using again a round-robin schema (see
 Fig.~\ref{fig:chunk_generation_and_flooding}). For each duplicate
@@ -7,7 +11,7 @@ $[\mathtt{prune}~{\cal P}_i]$, where ${\cal P}_i$ is the origin peer
 of the duplicate chunk. Thus, only the first ${\cal P}_l$ to send to
 ${\cal P}_k$ a chunk ``originated'' at ${\cal P}_i$ will do that in
 the future, at least that ${\cal P}_k$ revokes this routing
-information by sending a $[\mathtt{not~prune}~{\cal P}_i]$ to one or
+information by sending a $[\mathtt{propagate}~{\cal P}_i]$ to one or
 more (possibly the rest of) peers of the team.
 
 %When peers receive chunks from their splitter, they must flood them to

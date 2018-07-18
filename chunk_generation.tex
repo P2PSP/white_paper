@@ -10,7 +10,7 @@ chunks of data ($\mathtt{chunk}$) of constant length $C$ (and
 identical content among teams), and sends exclusively each chunk to a
 different \emph{origin peer} ${\cal P}_i\in{\cal T}_j$, using a
 round-robin schema. Each chunk is enumerated with a index $x$, forming
-the message $[c_x]=[x,\mathtt{chunk\_data}]$, where
+the message $[c_x]=[x,\mathtt{chunk}]$, where
 $x=i~\mathrm{mod}~|{\cal T}_j|$. We define a \emph{round} (in a team)
 as the time necessary to send two consecutive chunks from the splitter
 (of such team) to the same peer. This time is variable and depends on

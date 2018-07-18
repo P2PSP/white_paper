@@ -31,22 +31,22 @@ class="ecrm-1200">July 18, 2018</span></div>
    <div class="tableofcontents">
    <span class="sectionToc" >1 <a 
 href="#x1-20001" id="QQ2-1-2">DBS: Data Broadcasting Set of rules</a></span>
-<br />     <span class="subsubsectionToc" >1.0.1 <a 
-href="#x1-30001.0.1" id="QQ2-1-3">Joining a team</a></span>
-<br />     <span class="subsubsectionToc" >1.0.2 <a 
-href="#x1-40001.0.2" id="QQ2-1-5">Leaving a team</a></span>
-<br />     <span class="subsubsectionToc" >1.0.3 <a 
-href="#x1-50001.0.3" id="QQ2-1-7">Chunk generation</a></span>
-<br />     <span class="subsubsectionToc" >1.0.4 <a 
-href="#x1-60001.0.4" id="QQ2-1-9">Chunk ﬂooding</a></span>
-<br />     <span class="subsubsectionToc" >1.0.5 <a 
-href="#x1-70001.0.5" id="QQ2-1-10">Chunk buﬀering</a></span>
-<br />     <span class="subsubsectionToc" >1.0.6 <a 
-href="#x1-80001.0.6" id="QQ2-1-11">Free-riding control at splitters</a></span>
-<br />     <span class="subsubsectionToc" >1.0.7 <a 
-href="#x1-90001.0.7" id="QQ2-1-12">Free-riding control at peers</a></span>
-<br />     <span class="subsubsectionToc" >1.0.8 <a 
-href="#x1-100001.0.8" id="QQ2-1-13">Congestion control</a></span>
+<br />    <span class="subsectionToc" >1.1 <a 
+href="#x1-30001.1" id="QQ2-1-3">Joining a team</a></span>
+<br />    <span class="subsectionToc" >1.2 <a 
+href="#x1-40001.2" id="QQ2-1-5">Leaving a team</a></span>
+<br />    <span class="subsectionToc" >1.3 <a 
+href="#x1-50001.3" id="QQ2-1-7">Chunk generation</a></span>
+<br />    <span class="subsectionToc" >1.4 <a 
+href="#x1-60001.4" id="QQ2-1-9">Chunk ﬂooding</a></span>
+<br />    <span class="subsectionToc" >1.5 <a 
+href="#x1-70001.5" id="QQ2-1-10">Chunk buﬀering</a></span>
+<br />    <span class="subsectionToc" >1.6 <a 
+href="#x1-80001.6" id="QQ2-1-11">Free-riding control at splitters</a></span>
+<br />    <span class="subsectionToc" >1.7 <a 
+href="#x1-90001.7" id="QQ2-1-12">Free-riding control at peers</a></span>
+<br />    <span class="subsectionToc" >1.8 <a 
+href="#x1-100001.8" id="QQ2-1-13">Congestion control</a></span>
 <br />   <span class="sectionToc" >2 <a 
 href="#x1-110002" id="QQ2-1-14">IMS: Ip Multicast Set of procedures</a></span>
 <br />   <span class="sectionToc" >3 <a 
@@ -82,16 +82,16 @@ class="ecrm-0900">DBS, when applicable.</span>
 </p>
    <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
  id="x1-20001"></a>DBS: Data Broadcasting Set of rules</h3>
-<!--l. 1--><p class="noindent" >DBS provides ALM for unicast (UDP) environments. In this layer, peers must sent as many
+<!--l. 5--><p class="noindent" >DBS provides ALM for unicast (UDP) environments. In this layer, peers must sent as many
 data to their contributors (neighbors) as they sent to them. The media is sent by a server
-<!--l. 4--><math 
+<!--l. 8--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 mathvariant="bold-script">𝒪</mi></math>, called <span 
 class="ecti-1000">source</span>,
 at a (usually variable) bit-rate which matches the bit-rate of the media, to a collection of
 <span 
-class="ecti-1000">splitters </span><!--l. 6--><math 
+class="ecti-1000">splitters </span><!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 mathvariant="bold-script">𝒮</mi> <mo 
@@ -111,7 +111,7 @@ mathvariant="bold-script">𝒮</mi></mrow><mrow
 class="MathClass-bin">−</mo><mn>1</mn></mrow></msub 
 ></mrow><mo 
 class="MathClass-close">}</mo></mrow></math>.
-Each <!--l. 7--><math 
+Each <!--l. 11--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -121,7 +121,7 @@ mathvariant="bold-script">𝒮</mi></mrow><mrow
 ></math>
 splits the stream into a sequence of <span 
 class="ecti-1000">chunks</span>, and relay them to
-<!--l. 8--><math 
+<!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 mathvariant="bold-script">𝒯</mi> <mo 
@@ -142,12 +142,12 @@ class="MathClass-bin">−</mo><mn>1</mn></mrow></msub
 ></mrow><mo 
 class="MathClass-close">}</mo></mrow></math> <span 
 class="ecti-1000">teams </span>(one per
-splitter) of up to <!--l. 9--><math 
+splitter) of up to <!--l. 13--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >N</mi></math>
 <span 
-class="ecti-1000">peers </span><!--l. 10--><math 
+class="ecti-1000">peers </span><!--l. 14--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">{</mo><mrow><msub><mrow 
@@ -166,14 +166,14 @@ class="MathClass-bin">−</mo><mn>1</mn></mrow></msub
 ></mrow><mo 
 class="MathClass-close">}</mo></mrow></math>,
 per team.
-</p><!--l. 12--><p class="noindent" >
+</p><!--l. 16--><p class="noindent" >
 </p>
-   <h5 class="subsubsectionHead"><span class="titlemark">1.0.1   </span> <a 
- id="x1-30001.0.1"></a>Joining a team</h5>
+   <h4 class="subsectionHead"><span class="titlemark">1.1   </span> <a 
+ id="x1-30001.1"></a>Joining a team</h4>
                                                                   
 
                                                                   
-<!--l. 16--><p class="indent" >   <a 
+<!--l. 3--><p class="indent" >   <a 
  id="x1-30011"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
@@ -187,7 +187,7 @@ class="content">Peer joining.</span></div><!--tex4ht:label?: x1-30011 -->
 
                                                                   
    </div><hr class="endfloat" />
-<!--l. 19--><p class="noindent" >An incoming peer <!--l. 19--><math 
+<!--l. 6--><p class="noindent" >An incoming peer <!--l. 6--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -198,11 +198,11 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 (see the tasks described in Fig. <a 
 href="#x1-30011">1<!--tex4ht:ref: fig:joining --></a>) must contact a <span 
 class="ecti-1000">tacker</span>
-<!--l. 20--><math 
+<!--l. 7--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 mathvariant="bold-script">ℛ</mi></math> to get
-<!--l. 21--><math 
+<!--l. 8--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi 
@@ -212,7 +212,7 @@ class="MathClass-close">]</mo></mrow></math> in a
 class="ecti-1000">reliable</span><span class="footnote-mark"><a 
 href="index2.html#fn1x0"><sup class="textsuperscript">1</sup></a></span><a 
  id="x1-3002f1"></a>  message. Then
-<!--l. 25--><math 
+<!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -220,12 +220,12 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math> polls sequentially
-each splitter in <!--l. 26--><math 
+each splitter in <!--l. 13--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >S</mi></math>,
 requesting to be included in its team until one of them
-(<!--l. 27--><math 
+(<!--l. 14--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -233,7 +233,7 @@ mathvariant="bold-script">𝒮</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msub 
 ></math>, for example)
-accepts to <!--l. 27--><math 
+accepts to <!--l. 14--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -241,7 +241,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math>.
-Then, <!--l. 28--><math 
+Then, <!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -249,7 +249,7 @@ mathvariant="bold-script">𝒮</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msub 
 ></math> performs
-<!--l. 28--><math 
+<!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -269,7 +269,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math>. In parallel with
-the reception of <!--l. 29--><math 
+the reception of <!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><msub><mrow 
@@ -279,7 +279,7 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 >j</mi></mrow></msub 
 ></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>,
-<!--l. 29--><math 
+<!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -287,12 +287,12 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math> sends a
-(unreliable) <!--l. 30--><math 
+(unreliable) <!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
-to each <!--l. 30--><math 
+to each <!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -306,7 +306,7 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msub 
 ></math>, and
-each <!--l. 31--><math 
+each <!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -314,12 +314,12 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >k</mi></mrow></msub 
 ></math> after the
-reception of the <!--l. 31--><math 
+reception of the <!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
-performs <!--l. 32--><math 
+performs <!--l. 19--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -340,12 +340,12 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 >i</mi></mrow></msub 
 ></math>.
 </p>
-   <h5 class="subsubsectionHead"><span class="titlemark">1.0.2   </span> <a 
- id="x1-40001.0.2"></a>Leaving a team</h5>
+   <h4 class="subsectionHead"><span class="titlemark">1.2   </span> <a 
+ id="x1-40001.2"></a>Leaving a team</h4>
                                                                   
 
                                                                   
-<!--l. 97--><p class="indent" >   <a 
+<!--l. 3--><p class="indent" >   <a 
  id="x1-40012"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
@@ -359,7 +359,7 @@ class="content">Peer leaving.</span></div><!--tex4ht:label?: x1-40012 -->
 
                                                                   
    </div><hr class="endfloat" />
-<!--l. 100--><p class="noindent" >An outgoing peer <!--l. 100--><math 
+<!--l. 6--><p class="noindent" >An outgoing peer <!--l. 6--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -368,7 +368,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 >o</mi></mrow></msub 
 ></math> (see
 Fig. <a 
-href="#x1-40012">2<!--tex4ht:ref: fig:leaving --></a>) from team <!--l. 101--><math 
+href="#x1-40012">2<!--tex4ht:ref: fig:leaving --></a>) from team <!--l. 7--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -376,12 +376,12 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msub 
 ></math>
-must to: (1) say <!--l. 101--><math 
+must to: (1) say <!--l. 7--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">goodbye</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
-to <!--l. 101--><math 
+to <!--l. 7--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -389,7 +389,7 @@ mathvariant="bold-script">𝒮</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msub 
 ></math> and
-to <!--l. 102--><math 
+to <!--l. 8--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -398,12 +398,12 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 >j</mi></mrow></msub 
 ></math> (in
 this order), (2) relay any pending (received but yet not sent) chunks, and (3) wait for a
-<!--l. 105--><math 
+<!--l. 11--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">goodbye</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> from
-<!--l. 106--><math 
+<!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -411,7 +411,7 @@ mathvariant="bold-script">𝒮</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msub 
 ></math>, which performs
-<!--l. 106--><math 
+<!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -431,7 +431,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >o</mi></mrow></msub 
 ></math>. In case of
-timeout, <!--l. 107--><math 
+timeout, <!--l. 13--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -439,13 +439,13 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >o</mi></mrow></msub 
 ></math>
-resends the <!--l. 108--><math 
+resends the <!--l. 14--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">goodbye</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
 and reset the leaving process, for a number of times. When a
-<!--l. 109--><math 
+<!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -459,12 +459,12 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msub 
 ></math> receives
-a <!--l. 112--><math 
+a <!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">goodbye</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
-from <!--l. 112--><math 
+from <!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -472,7 +472,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >o</mi></mrow></msub 
 ></math>,
-<!--l. 112--><math 
+<!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -480,7 +480,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >k</mi></mrow></msub 
 ></math> removes
-<!--l. 114--><math 
+<!--l. 20--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -490,12 +490,12 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ></math> from
 the team.
 </p>
-   <h5 class="subsubsectionHead"><span class="titlemark">1.0.3   </span> <a 
- id="x1-50001.0.3"></a>Chunk generation</h5>
+   <h4 class="subsectionHead"><span class="titlemark">1.3   </span> <a 
+ id="x1-50001.3"></a>Chunk generation</h4>
                                                                   
 
                                                                   
-<!--l. 132--><p class="indent" >   <a 
+<!--l. 3--><p class="indent" >   <a 
  id="x1-50013"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
@@ -509,7 +509,7 @@ class="content">Chunk generation and ﬂooding.</span></div><!--tex4ht:label?: x
 
                                                                   
    </div><hr class="endfloat" />
-<!--l. 136--><p class="noindent" >Each <!--l. 136--><math 
+<!--l. 7--><p class="noindent" >Each <!--l. 7--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -521,17 +521,17 @@ class="MathClass-rel">∈</mo><mi
 mathvariant="bold-script">𝒮</mi></math>
 (see Fig. <a 
 href="#x1-50013">3<!--tex4ht:ref: fig:chunk_generation_and_flooding --></a>) divides the stream into chunks of data
-(<!--l. 138--><math 
+(<!--l. 9--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">chunk</mi></math>) of constant
-length <!--l. 138--><math 
+length <!--l. 9--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >C</mi></math> (and
 identical content among teams), and sends exclusively each chunk to a diﬀerent <span 
 class="ecti-1000">origin</span>
 <span 
-class="ecti-1000">peer </span><!--l. 140--><math 
+class="ecti-1000">peer </span><!--l. 11--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -546,11 +546,11 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 >j</mi></mrow></msub 
 ></math>,
 using a round-robin schema. Each chunk is enumerated with a index
-<!--l. 141--><math 
+<!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >x</mi></math>, forming the
-message <!--l. 142--><math 
+message <!--l. 13--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><msub><mrow 
@@ -563,10 +563,9 @@ class="MathClass-close">]</mo></mrow> <mo
 class="MathClass-rel">=</mo> <mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi 
 >x</mi><mo 
-class="MathClass-punc">,</mo><mi mathvariant="monospace">chunk<mstyle 
-class="text"><mtext  >_</mtext></mstyle>data</mi></mrow><mo 
+class="MathClass-punc">,</mo><mi mathvariant="monospace">chunk</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>,
-where <!--l. 143--><math 
+where <!--l. 14--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >x</mi> <mo 
@@ -582,7 +581,7 @@ class="MathClass-rel">|</mo></math>.
 We deﬁne a <span 
 class="ecti-1000">round </span>(in a team) as the time necessary to send two consecutive chunks
 from the splitter (of such team) to the same peer. This time is variable and depends
-on <!--l. 146--><math 
+on <!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mo 
 class="MathClass-rel">|</mo><msub><mrow 
@@ -592,21 +591,21 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 >j</mi></mrow></msub 
 ><mo 
 class="MathClass-rel">|</mo></math>,
-<!--l. 146--><math 
+<!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >C</mi></math>, and the average
-bit-rate of the media, <!--l. 146--><math 
+bit-rate of the media, <!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >R</mi></math>.
 </p>
-   <h5 class="subsubsectionHead"><span class="titlemark">1.0.4   </span> <a 
- id="x1-60001.0.4"></a>Chunk ﬂooding</h5>
-<!--l. 165--><p class="noindent" >When peers receive chunks, ﬂood them to the rest of peers of the team (except to the
+   <h4 class="subsectionHead"><span class="titlemark">1.4   </span> <a 
+ id="x1-60001.4"></a>Chunk ﬂooding</h4>
+<!--l. 5--><p class="noindent" >When peers receive chunks, ﬂood them to the rest of peers of the team (except to the
 sender), using again a round-robin schema (see Fig. <a 
 href="#x1-50013">3<!--tex4ht:ref: fig:chunk_generation_and_flooding --></a>). For each duplicate chunk received
-by a <!--l. 168--><math 
+by a <!--l. 8--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -620,7 +619,7 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msub 
 ></math>
-from <!--l. 168--><math 
+from <!--l. 8--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -634,7 +633,7 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msub 
 ></math>,
-<!--l. 169--><math 
+<!--l. 9--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -642,7 +641,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >k</mi></mrow></msub 
 ></math> sends
-to <!--l. 169--><math 
+to <!--l. 9--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -650,7 +649,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >l</mi></mrow></msub 
 ></math> a
-<!--l. 170--><math 
+<!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">prune</mi><mspace width="1em" class="nbsp" /><msub><mrow 
@@ -660,7 +659,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 >i</mi></mrow></msub 
 ></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>,
-where <!--l. 170--><math 
+where <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -669,7 +668,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 >i</mi></mrow></msub 
 ></math>
 is the origin peer of the duplicate chunk. Thus, only the ﬁrst
-<!--l. 171--><math 
+<!--l. 11--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -677,7 +676,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >l</mi></mrow></msub 
 ></math> to send to
-<!--l. 172--><math 
+<!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -685,7 +684,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >k</mi></mrow></msub 
 ></math> a chunk “originated”
-at <!--l. 172--><math 
+at <!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -693,7 +692,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math> will do that in the
-future, at least that <!--l. 173--><math 
+future, at least that <!--l. 13--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -702,10 +701,10 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 >k</mi></mrow></msub 
 ></math>
 revokes this routing information by sending a
-<!--l. 174--><math 
+<!--l. 14--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
-class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">not<mspace width="1em" class="nbsp" />prune</mi><mspace width="1em" class="nbsp" /><msub><mrow 
+class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">propagate</mi><mspace width="1em" class="nbsp" /><msub><mrow 
 ><mi 
 mathvariant="bold-script">𝒫</mi></mrow><mrow 
 ><mi 
@@ -713,13 +712,13 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> to
 one or more (possibly the rest of) peers of the team.
-</p><!--l. 191--><p class="noindent" >
+</p><!--l. 32--><p class="noindent" >
 </p>
-   <h5 class="subsubsectionHead"><span class="titlemark">1.0.5   </span> <a 
- id="x1-70001.0.5"></a>Chunk buﬀering</h5>
-<!--l. 192--><p class="noindent" >In order to hide the jitter generated by the physical network and
+   <h4 class="subsectionHead"><span class="titlemark">1.5   </span> <a 
+ id="x1-70001.5"></a>Chunk buﬀering</h4>
+<!--l. 1--><p class="noindent" >In order to hide the jitter generated by the physical network and
 P2PSP, peers store the received chunks before playing them. A chunk
-<!--l. 194--><math 
+<!--l. 3--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -727,7 +726,7 @@ display="inline" ><msub><mrow
 ><mi 
 >x</mi></mrow></msub 
 ></math> is inserted in the
-position <!--l. 194--><math 
+position <!--l. 3--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">(</mo><mrow><mi 
@@ -737,23 +736,23 @@ class="MathClass-close">)</mo></mrow></math> of the buﬀer,
                                                                   
 
                                                                   
-being <!--l. 195--><math 
+being <!--l. 4--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >B</mi></math> the buﬀer
-size in chunks and “<!--l. 195--><math 
+size in chunks and “<!--l. 4--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="italic">mod</mi></math>”
 the modulo operator. A chunk is given by lost when it is time to send it to the player
 and the chunk has not been received.
-</p><!--l. 257--><p class="noindent" >
+</p><!--l. 36--><p class="noindent" >
 </p>
-   <h5 class="subsubsectionHead"><span class="titlemark">1.0.6   </span> <a 
- id="x1-80001.0.6"></a>Free-riding control at splitters</h5>
-<!--l. 259--><p class="noindent" >In each team there are a set of peer <span 
+   <h4 class="subsectionHead"><span class="titlemark">1.6   </span> <a 
+ id="x1-80001.6"></a>Free-riding control at splitters</h4>
+<!--l. 1--><p class="noindent" >In each team there are a set of peer <span 
 class="ecti-1000">monitors </span>(trusted peers whose behavior is
 predictable), which complain to their splitter when a chunk is lost. Lets suppose that
-chunk <!--l. 261--><math 
+chunk <!--l. 3--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -761,7 +760,7 @@ display="inline" ><msub><mrow
 ><mi 
 >x</mi></mrow></msub 
 ></math> was
-sent to <!--l. 261--><math 
+sent to <!--l. 3--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -775,7 +774,7 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msub 
 ></math>. If
-<!--l. 262--><math 
+<!--l. 4--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -783,14 +782,13 @@ mathvariant="bold-script">𝒮</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msub 
 ></math> receives a
-<!--l. 263--><math 
+<!--l. 5--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
-class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">lost<mstyle 
-class="text"><mtext  >_</mtext></mstyle>chunk</mi><mspace width="1em" class="nbsp" /><mi 
+class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">lost−chunk</mi><mspace width="1em" class="nbsp" /><mi 
 >x</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> from each monitor
-of <!--l. 263--><math 
+of <!--l. 5--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -798,11 +796,11 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msub 
 ></math>, and if this
-happens during <!--l. 264--><math 
+happens during <!--l. 6--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >L</mi></math>
-consecutive rounds, <!--l. 264--><math 
+consecutive rounds, <!--l. 6--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -810,7 +808,7 @@ mathvariant="bold-script">𝒮</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msub 
 ></math>
-considers that <!--l. 265--><math 
+considers that <!--l. 7--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -818,7 +816,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math>
-has leaved <!--l. 265--><math 
+has leaved <!--l. 7--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -827,12 +825,12 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 >j</mi></mrow></msub 
 ></math>,
 and removes it from the team.
-</p><!--l. 268--><p class="noindent" >
+</p><!--l. 40--><p class="noindent" >
 </p>
-   <h5 class="subsubsectionHead"><span class="titlemark">1.0.7   </span> <a 
- id="x1-90001.0.7"></a>Free-riding control at peers</h5>
-<!--l. 270--><p class="noindent" >In each round, peers check if a chunk have been received from the rest of peers of the team
-(<!--l. 271--><math 
+   <h4 class="subsectionHead"><span class="titlemark">1.7   </span> <a 
+ id="x1-90001.7"></a>Free-riding control at peers</h4>
+<!--l. 1--><p class="noindent" >In each round, peers check if a chunk have been received from the rest of peers of the team
+(<!--l. 2--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -847,10 +845,10 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 >j</mi></mrow></msub 
 ></mrow><mo 
 class="MathClass-close">)</mo></mrow></math>). If not,
-peers send a <!--l. 272--><math 
+peers send a <!--l. 3--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
-class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">not<mspace width="1em" class="nbsp" />prune</mi><mspace width="1em" class="nbsp" /><msub><mrow 
+class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">propagate</mi><mspace width="1em" class="nbsp" /><msub><mrow 
 ><mi 
 mathvariant="bold-script">𝒫</mi></mrow><mrow 
 ><mi 
@@ -858,7 +856,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
 to one or more (possibly to the rest of) peers of the team, where
-<!--l. 273--><math 
+<!--l. 4--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -868,19 +866,19 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ></math> is the
 origin peer of the missing chunk. At this point, the process continues as described in
 Section <a 
-href="#x1-60001.0.4">1.0.4<!--tex4ht:ref: dbs:chunk_flooding --></a>.
-</p><!--l. 295--><p class="noindent" >
+href="#x1-60001.4">1.4<!--tex4ht:ref: dbs:chunk_flooding --></a>.
+</p><!--l. 44--><p class="noindent" >
 </p>
-   <h5 class="subsubsectionHead"><span class="titlemark">1.0.8   </span> <a 
- id="x1-100001.0.8"></a>Congestion control</h5>
-<!--l. 297--><p class="noindent" >P2PSP is a content-unaware push-based protocol. To avoid network
+   <h4 class="subsectionHead"><span class="titlemark">1.8   </span> <a 
+ id="x1-100001.8"></a>Congestion control</h4>
+<!--l. 1--><p class="noindent" >P2PSP is a content-unaware push-based protocol. To avoid network
 congestion while ﬂooding, sending peers must perform some kind
 of data ﬂow-control. Moreover, to achieve aN ideal I/O ratio of
-<!--l. 299--><math 
+<!--l. 3--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mn>1</mn></math>, peers
 should send one chunk for every received one.
-</p><!--l. 302--><p class="indent" >   Congestion control in P2PSP is very simple: if a new chunk is received, peers
+</p><!--l. 6--><p class="indent" >   Congestion control in P2PSP is very simple: if a new chunk is received, peers
 forward (using the ﬂooding with prunning algorithm described in Sec <span 
 class="ecbx-1000">??</span>) each
                                                                   
@@ -935,7 +933,7 @@ this subnet), port <!--l. 10--><math
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">1234</mi></math>
 to forward chunks to all of them (see Procedure <a 
-href="#x1-100001.0.8">1.0.8<!--tex4ht:ref: dbs:congestion_control --></a>). When implementing IMS, all
+href="#x1-100001.8">1.8<!--tex4ht:ref: dbs:congestion_control --></a>). When implementing IMS, all
 peers, request to listen to this IPM group and port.
 </p><!--l. 20--><p class="noindent" >
 </p>
@@ -943,12 +941,12 @@ peers, request to listen to this IPM group and port.
  id="x1-120003"></a>LRS: Lost-chunk Recovery Set</h3>
 <!--l. 1--><p class="noindent" >LRS extends DBS. LRS should be implemented if error-prone communications are
 expected. LRS is based on the use of monitor peers (see Procedure <a 
-href="#x1-80001.0.6">1.0.6<!--tex4ht:ref: dbs:frcS --></a>). The idea
-is: <!--l. 3--><math 
+href="#x1-80001.6">1.6<!--tex4ht:ref: dbs:frcS --></a>). The idea is:
+<!--l. 3--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
-mathvariant="bold-script">𝒮</mi></math>
-will resend lost chunks to one or more the monitors when one or more monitors
+mathvariant="bold-script">𝒮</mi></math> will
+resend lost chunks to one or more the monitors when one or more monitors
 report their loss. To increase the probability of receiving the resent chunk
 on time (by normal peers), monitors halves the number of chunks in their
 buﬀers in relation to common peers. LRS only modiﬁes the behavior of
@@ -978,7 +976,7 @@ one or more monitors controlled by the contents provider.
 display="inline" ><mi 
 mathvariant="bold-script">𝒮</mi></math>
 knows about the number of chunks that each peer has lost (see Procedure <a 
-href="#x1-80001.0.6">1.0.6<!--tex4ht:ref: dbs:frcS --></a>), to
+href="#x1-80001.6">1.6<!--tex4ht:ref: dbs:frcS --></a>), to
 send to those more reliable peers a higher number of chunks than to the others. In
 other words, ACS adapts the round-time of each peer to its capacity.
 </p><!--l. 13--><p class="indent" >   Notice that ACS only aﬀects the behavior of
