@@ -1,0 +1,102 @@
+IPM is available by default in LANs (Local Are Network)s and VLANs
+(Virtual LAN)s~\cite{shabtay2011ip}. IMS runs on the top of DBS and
+provides efficient native multicasting.
+
+The idea of IMS is simple: all peers in the same LAN or VLAN have the
+same network address. When a joining peer ${\cal P}_i$ receives
+$[S_j]$ from ${\cal R}$, checks if there are neighbors in the same
+subnet (all share the same private network address). For all those
+peers, ${\cal P}_i$ uses the IP address $\mathtt{224.0.0.1}$ (all
+systems on this subnet), port $\mathtt{1234}$ to forward chunks to all
+of them (see Procedure~\ref{dbs:congestion_control}). When
+implementing IMS, all peers, request to listen to this IPM group and
+port.
+
+\begin{comment}
+\subsubsection{Listening IPM}
+\label{imp:listening}
+By default, all peers listen to $\mathtt{224.0.0.1}$ (All Systems on
+this Subnet), port $\mathtt{1234}.
+
+\subsubsection{Joining the team}
+\label{ims:joining}
+Two peers in the same LAN share the network address. When an incomming
+peer ${\cal P}_i$ receives the list of peers, checks if there are
+peers in the same LAN. For those peers, ${\cal P}_i$ use the end-point
+$\mathtt{224.0.0.1:1234}$.
+
+In IMS, peers
+star joining the team as in DBS. However, when a ${\cal P}_i$ receives
+a $[\mathtt{hello}~{\cal P}_i]$ from an incomming ${\cal P}_N$, ${\cal
+  P}_i$ checks if the source IP address corresponds to the same
+LAN. If this is true, ${\cal P}_i$ replies with a
+$[\mathtt{hello}~{\cal P}_x]$, where ${\cal P}_x$ is the end-point of
+a multicast group selected by ${\cal P}_i$ (if this is not the first
+time ${\cal P}_i$ receives a hello from the same LAN, the previous
+${\cal P}_x$ is selected). Then ${\cal P}_N$ sends a
+$[\mathtt{neighborhood\_request}~{\cal P}_x]$ to ${\cal P}_x$ that, if
+received by ${\cal P}_i$, replies with a
+$[\mathtt{neighborhood\_accept}~{\cal P}_x]$ to ${\cal P}_x$. Notice
+that ${\cal N}({\cal P}_i)$ remain constant (except in the first IMS
+iteration where ${\cal P}_x$ is added) and that ${\cal N}({\cal
+  P}_N)\cup={\cal P}_x$. None message is sent from 
+
+\subsubsection{Leaving the team}
+\label{ims:leaving}
+
+A incomming peer ${\cal P}_N$ 
+
+% What is P2PSP and what makes it special
+In this context, we propose P2PSP (Peer-to-Peer Straightfoward
+Protocol), an application-layer multicast solution based on the P2P
+communication paradigm. Like IP multicasting, in P2PSP it holds that:
+(1) there is only a source of data (the so called \emph{splitter}) and
+a dynamic group of destinations (the \emph{peers}), (2) only one copy
+of the data is sent by the splitter, (3) a ``best-effort''
+transmission service is provided, and (4) the nodes (splitter and
+peers) do not have knowledge about the transmitted content. Unlike IP
+multicasting, in P2PSP: (1) the splitter is the only source, (2) the
+nodes know each other, and (3) the network infrastructure only needs
+to provide a unicast transmission service (multicasting is achieved by
+the nodes at the application-layer level building a overlay
+network). However, notice that as a consecuence of that the
+communication model used in both systems is virtually the same, P2PSP
+can use IP multicasting when this facility is available. As it will
+be shown in the evaluation of P2PSP, both protocols (P2PSP and IP
+multicast) have a similar performance in terms of bandwidth and
+latency.
+
+IMS defines the behaviour of those nodes that can communicate between
+them using IP multicast.
+
+\subsubsection{Using IP multicast}
+By definition, peers that share the same network address (for example,
+peer that are behind the same NAT device) can use IP multicast to
+communicate. One of the peers of the multicast group (the oldest one)
+works as a bridge between the ``unicast'' and the ``multicast''
+subteams. When this peer receives a [\textsf{hello}] from a new peer
+that is in the same subnetwork, it selects a multicast channel (IP
+address and port) and sends this information to the incomming
+peer. Only the bridge peer (the first peer of the ``multicast
+subteam'' in joining) is taken into account for the rest of the team
+and the splitter. Only the bridge receives chunks from the splitter
+and its ``unicast'' neighbors, and this peer is in charge of
+retransmitting them to the multicast group.
+
+When leaving, ``multicast'' peers only need to send a
+[\textsf{goodbye}] to the splitter and the bridge, which is the only
+peer in their lists. The bridge store in its list of peers the
+multicast channel, but the \textsf{chunk\_debt} counter is never
+incremented.
+
+\subsubsection{Chunk buffering}
+Each peer stores the received chunks in a buffer before play them.
+The buffer size $B$ in chunks is equal to the expectable (physical)
+network's jitter. If $V$ is the average bit-rate of the media
+(measured in bits/second), the buffering time is
+\begin{equation}
+  T = C/V*B.
+  \label{eq:buffering_time}
+\end{equation}
+
+\end{comment}
