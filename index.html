@@ -24,7 +24,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
  <div class="author" ><span 
 class="ecrm-1200">P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">July 18, 2018</span></div>
+class="ecrm-1200">July 20, 2018</span></div>
    </div>
    <h3 class="likesectionHead"><a 
  id="x1-1000"></a>Contents</h3>
@@ -82,16 +82,16 @@ class="ecrm-0900">DBS, when applicable.</span>
 </p>
    <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
  id="x1-20001"></a>DBS: Data Broadcasting Set of rules</h3>
-<!--l. 5--><p class="noindent" >DBS provides ALM for unicast (UDP) environments. In this layer, peers must sent as many
+<!--l. 1--><p class="noindent" >DBS provides ALM for unicast (UDP) environments. In this layer, peers must sent as many
 data to their contributors (neighbors) as they sent to them. The media is sent by a server
-<!--l. 8--><math 
+<!--l. 4--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 mathvariant="bold-script">𝒪</mi></math>, called <span 
 class="ecti-1000">source</span>,
 at a (usually variable) bit-rate which matches the bit-rate of the media, to a collection of
 <span 
-class="ecti-1000">splitters </span><!--l. 10--><math 
+class="ecti-1000">splitters </span><!--l. 6--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 mathvariant="bold-script">𝒮</mi> <mo 
@@ -111,7 +111,7 @@ mathvariant="bold-script">𝒮</mi></mrow><mrow
 class="MathClass-bin">−</mo><mn>1</mn></mrow></msub 
 ></mrow><mo 
 class="MathClass-close">}</mo></mrow></math>.
-Each <!--l. 11--><math 
+Each <!--l. 7--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -121,7 +121,7 @@ mathvariant="bold-script">𝒮</mi></mrow><mrow
 ></math>
 splits the stream into a sequence of <span 
 class="ecti-1000">chunks</span>, and relay them to
-<!--l. 12--><math 
+<!--l. 8--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 mathvariant="bold-script">𝒯</mi> <mo 
@@ -142,12 +142,12 @@ class="MathClass-bin">−</mo><mn>1</mn></mrow></msub
 ></mrow><mo 
 class="MathClass-close">}</mo></mrow></math> <span 
 class="ecti-1000">teams </span>(one per
-splitter) of up to <!--l. 13--><math 
+splitter) of up to <!--l. 9--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >N</mi></math>
 <span 
-class="ecti-1000">peers </span><!--l. 14--><math 
+class="ecti-1000">peers </span><!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">{</mo><mrow><msub><mrow 
@@ -166,7 +166,7 @@ class="MathClass-bin">−</mo><mn>1</mn></mrow></msub
 ></mrow><mo 
 class="MathClass-close">}</mo></mrow></math>,
 per team.
-</p><!--l. 16--><p class="noindent" >
+</p><!--l. 3--><p class="noindent" >
 </p>
    <h4 class="subsectionHead"><span class="titlemark">1.1   </span> <a 
  id="x1-30001.1"></a>Joining a team</h4>
@@ -712,7 +712,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> to
 one or more (possibly the rest of) peers of the team.
-</p><!--l. 32--><p class="noindent" >
+</p><!--l. 19--><p class="noindent" >
 </p>
    <h4 class="subsectionHead"><span class="titlemark">1.5   </span> <a 
  id="x1-70001.5"></a>Chunk buﬀering</h4>
@@ -745,7 +745,7 @@ size in chunks and “<!--l. 4--><math
 display="inline" ><mi mathvariant="italic">mod</mi></math>”
 the modulo operator. A chunk is given by lost when it is time to send it to the player
 and the chunk has not been received.
-</p><!--l. 36--><p class="noindent" >
+</p><!--l. 23--><p class="noindent" >
 </p>
    <h4 class="subsectionHead"><span class="titlemark">1.6   </span> <a 
  id="x1-80001.6"></a>Free-riding control at splitters</h4>
@@ -825,7 +825,7 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 >j</mi></mrow></msub 
 ></math>,
 and removes it from the team.
-</p><!--l. 40--><p class="noindent" >
+</p><!--l. 27--><p class="noindent" >
 </p>
    <h4 class="subsectionHead"><span class="titlemark">1.7   </span> <a 
  id="x1-90001.7"></a>Free-riding control at peers</h4>
@@ -867,7 +867,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 origin peer of the missing chunk. At this point, the process continues as described in
 Section <a 
 href="#x1-60001.4">1.4<!--tex4ht:ref: dbs:chunk_flooding --></a>.
-</p><!--l. 44--><p class="noindent" >
+</p><!--l. 31--><p class="noindent" >
 </p>
    <h4 class="subsectionHead"><span class="titlemark">1.8   </span> <a 
  id="x1-100001.8"></a>Congestion control</h4>
