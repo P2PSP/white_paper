@@ -10,3 +10,8 @@ chunk_generation_and_flooding.eps:	chunk_generation_and_flooding.tex splitter_ch
 
 $(HOME)/Makefile_templates:
 	git clone https://github.com/vicente-gonzalez-ruiz/Makefile_templates.git $(HOME)/Makefile_templates
+
+git_clean:
+	rm *.eps
+	make clean
+
