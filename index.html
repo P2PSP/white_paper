@@ -24,13 +24,13 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
  <div class="author" ><span 
 class="ecrm-1200">P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">July 21, 2018</span></div>
+class="ecrm-1200">July 22, 2018</span></div>
    </div>
    <h3 class="likesectionHead"><a 
  id="x1-1000"></a>Contents</h3>
    <div class="tableofcontents">
    <span class="sectionToc" >1 <a 
-href="#x1-20001" id="QQ2-1-2">DBS: Data Broadcasting Set of rules</a></span>
+href="#x1-20001" id="QQ2-1-2">DBS (Data Broadcasting Set)</a></span>
 <br />    <span class="subsectionToc" >1.1 <a 
 href="#x1-30001.1" id="QQ2-1-3">Joining a team</a></span>
 <br />    <span class="subsectionToc" >1.2 <a 
@@ -48,13 +48,13 @@ href="#x1-90001.7" id="QQ2-1-12">Free-riding control at peers</a></span>
 <br />    <span class="subsectionToc" >1.8 <a 
 href="#x1-100001.8" id="QQ2-1-13">Congestion control</a></span>
 <br />   <span class="sectionToc" >2 <a 
-href="#x1-110002" id="QQ2-1-14">IMS: Ip Multicast Set of procedures</a></span>
+href="#x1-110002" id="QQ2-1-14">IMS (Ip Multicast Set)</a></span>
 <br />   <span class="sectionToc" >3 <a 
-href="#x1-120003" id="QQ2-1-15">LRS: Lost-chunk Recovery Set</a></span>
+href="#x1-120003" id="QQ2-1-15">LRS (Lost-chunk Recovery Set)</a></span>
 <br />   <span class="sectionToc" >4 <a 
-href="#x1-130004" id="QQ2-1-16">ACS: Adaptive Chunk-rate Set</a></span>
+href="#x1-130004" id="QQ2-1-16">ACS (Adaptive Chunk-rate Set)</a></span>
 <br />   <span class="sectionToc" >5 <a 
-href="#x1-140005" id="QQ2-1-17">MCS: Multi-Channel Set</a></span>
+href="#x1-140005" id="QQ2-1-17">MCS (Multi-Channel Set)</a></span>
    </div>
    <div 
 class="abstract" 
@@ -71,7 +71,7 @@ class="ecbx-0900">Abstract</span></p></div>
      </p><!--l. 1--><p class="indent" >   <span 
 class="ecrm-0900">P2PSP provides broadcasting of media on the Internet. Conceptually,</span>
      <span 
-class="ecrm-0900">P2PSP is organized in sets of rules Only the most basic set (DBS) is the</span>
+class="ecrm-0900">P2PSP is organized in sets of rules. Only the most basic set (DBS) is the</span>
      <span 
 class="ecrm-0900">only compulsory one. The rest of sets extend or modify the behevior of</span>
      <span 
@@ -81,7 +81,7 @@ class="ecrm-0900">DBS, when applicable.</span>
 <!--l. 9--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
- id="x1-20001"></a>DBS: Data Broadcasting Set of rules</h3>
+ id="x1-20001"></a>DBS (Data Broadcasting Set)</h3>
 <!--l. 1--><p class="noindent" >DBS provides ALM for unicast (UDP) environments. In this layer, peers must sent as many
 data to their contributors (neighbors) as they sent to them. The media is sent by a server
 <!--l. 4--><math 
@@ -118,10 +118,18 @@ display="inline" ><msub><mrow
 mathvariant="bold-script">𝒮</mi></mrow><mrow 
 ><mi 
 >i</mi></mrow></msub 
-></math>
+> <mo 
+class="MathClass-rel">∈</mo><mi 
+mathvariant="bold-script">𝒮</mi></math>
 splits the stream into a sequence of <span 
-class="ecti-1000">chunks</span>, and relay them to
-<!--l. 8--><math 
+class="ecti-1000">chunks</span>, and relay them to diﬀerent <span 
+class="ecti-1000">team </span>of up to
+<!--l. 9--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>N</mi></math> <span 
+class="ecti-1000">peers</span>. We deﬁne the
+set of teams as <!--l. 9--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 mathvariant="bold-script">𝒯</mi> <mo 
@@ -140,32 +148,35 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 >G</mi><mo 
 class="MathClass-bin">−</mo><mn>1</mn></mrow></msub 
 ></mrow><mo 
-class="MathClass-close">}</mo></mrow></math> <span 
-class="ecti-1000">teams </span>(one per
-splitter) of up to <!--l. 9--><math 
+class="MathClass-close">}</mo></mrow></math> and the
+set of peers per team <!--l. 11--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->N</mi></math>
-<span 
-class="ecti-1000">peers </span><!--l. 10--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mrow ><mo 
-class="MathClass-open">{</mo><mrow><msub><mrow 
+display="inline" ><msub><mrow 
+><mi 
+>T</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-rel">=</mo> <mrow ><mo 
+class="MathClass-open">{</mo><mrow><msubsup><mrow 
 ><mi 
 mathvariant="bold-script">𝒫</mi></mrow><mrow 
-><mn>0</mn></mrow></msub 
+><mn>0</mn></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
 ><mo 
 class="MathClass-punc">,</mo><mo 
 class="MathClass-rel">⋯</mo><mspace width="0.3em" class="thinspace"/><mo 
-class="MathClass-punc">,</mo><msub><mrow 
+class="MathClass-punc">,</mo><msubsup><mrow 
 ><mi 
 mathvariant="bold-script">𝒫</mi></mrow><mrow 
 ><mi 
 >N</mi><mo 
-class="MathClass-bin">−</mo><mn>1</mn></mrow></msub 
+class="MathClass-bin">−</mo><mn>1</mn></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
 ></mrow><mo 
-class="MathClass-close">}</mo></mrow></math>,
-per team.
+class="MathClass-close">}</mo></mrow></math>.
 </p><!--l. 3--><p class="noindent" >
 </p>
    <h4 class="subsectionHead"><span class="titlemark">1.1   </span> <a 
@@ -889,7 +900,7 @@ pattern).
 </p><!--l. 13--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
- id="x1-110002"></a>IMS: Ip Multicast Set of procedures</h3>
+ id="x1-110002"></a>IMS (Ip Multicast Set)</h3>
 <!--l. 1--><p class="noindent" >IPM is available by default in LANs (Local Are Network)s and VLANs (Virtual
 LAN)s <span class="cite">[<a 
 href="#Xshabtay2011ip">3</a>]</span>. IMS runs on the top of DBS and provides eﬃcient native multicasting.
@@ -938,7 +949,7 @@ peers, request to listen to this IPM group and port.
 </p><!--l. 17--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">3   </span> <a 
- id="x1-120003"></a>LRS: Lost-chunk Recovery Set</h3>
+ id="x1-120003"></a>LRS (Lost-chunk Recovery Set)</h3>
 <!--l. 1--><p class="noindent" >LRS extends DBS. LRS should be implemented if error-prone communications are
 expected. LRS is based on the use of monitor peers (see Procedure <a 
 href="#x1-80001.6">1.6<!--tex4ht:ref: dbs:frcS --></a>). The idea is:
@@ -958,7 +969,7 @@ the monitors. Normal peers implement DBS.
 </p><!--l. 21--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">4   </span> <a 
- id="x1-130004"></a>ACS: Adaptive Chunk-rate Set</h3>
+ id="x1-130004"></a>ACS (Adaptive Chunk-rate Set)</h3>
 <!--l. 1--><p class="noindent" >ACS relaxes the peer’s upload requirements imposed by DBS. It should be used in if
 it is known that some peers can provide the capacity than others cannot, or
 when we want to mix the CS and P2P models, sending more chunks from
@@ -987,7 +998,7 @@ mathvariant="bold-script">𝒮</mi></math>.
 </p><!--l. 25--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">5   </span> <a 
- id="x1-140005"></a>MCS: Multi-Channel Set</h3>
+ id="x1-140005"></a>MCS (Multi-Channel Set)</h3>
 <!--l. 1--><p class="noindent" >When using MDC <span class="cite">[<a 
 href="#Xbaccichet2007content">1</a>]</span>, SVC <span class="cite">[<a 
 href="#Xchu2009auction">2</a>]</span>, or for emulating the CS model, it can be interesting
