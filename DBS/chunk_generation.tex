@@ -4,15 +4,15 @@
   \caption{Chunk generation and
     flooding.\label{fig:chunk_generation_and_flooding}}
 \end{figure*}
-Each ${\cal S}_j$ (see Fig.~\ref{fig:chunk_generation_and_flooding})
+Each ${\cal S}^j$ (see Fig.~\ref{fig:chunk_generation_and_flooding})
 divides the stream into chunks of data ($\mathtt{chunk}$) of constant
 length $C$, and sends exclusively each chunk to a different
 \emph{origin peer} ${\cal P}^j_i$, using a round-robin schema. Each
-chunk is enumerated with a index $x$, forming the message
-$[c_x]=[x,\mathtt{chunk}]$, where $x=i~\mathrm{mod}~|{\cal T}_j|$. We
+chunk is enumerated with a index $x$, conforming the message
+$[c_x]=[x,\mathtt{chunk}]$, where $x=i~\mathrm{mod}~|{\cal T}^j|$. We
 define a \emph{round} (in a team) as the time necessary to send two
 consecutive chunks from the splitter (of such team) to the same
-peer. This time is variable and depends on $|{\cal T}_j|$, $C$, and
+peer. This time is variable and depends on $|{\cal T}^j|$, $C$, and
 the average bit-rate of the media, $R$.
 
 \begin{comment}

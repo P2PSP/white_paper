@@ -4,19 +4,19 @@
   \caption{Peer leaving.\label{fig:leaving}}
 \end{figure*}
 An outgoing peer ${\cal P}^j_o$ (see Fig.~\ref{fig:leaving}) from team
-${\cal T}_j$ must to: (1) say $[\mathtt{goodbye}]$ to ${\cal S}_j$ and
-to ${\cal T}_j$
+${\cal T}^j$ must to: (1) say $[\mathtt{goodbye}]$ to ${\cal S}^j$ and
+to ${\cal T}^j$
 %$N({\cal P}_o)$
 (in this order), (2) relay any pending (received but yet not sent)
-chunks, and (3) wait for a $[\mathtt{goodbye}]$ from ${\cal S}_j$,
-which performs ${\cal T}_j = {\cal T}_j \setminus {\cal P}^j_o$. In
+chunks, and (3) wait for a $[\mathtt{goodbye}]$ from ${\cal S}^j$,
+which performs ${\cal T}^j = {\cal T}^j \setminus {\cal P}^j_o$. In
 case of timeout, ${\cal P}^j_o$ resets the leaving procedure, for a
-number of times. When a ${\cal P}^j_k\in {\cal T}^k_j$
+number of times. When a ${\cal P}^j_k$
 %${\cal P}_k\in N({\cal P}_i)$
 receives a
 $[\mathtt{goodbye}]$ from ${\cal P}^j_o$, ${\cal P}^j_k$ removes
 %${\cal T}_j = {\cal T}_j \setminus {\cal P}_o$,
-${\cal P}^j_o$ from its team, be running ${\cal T}^k_j = {\cal T}^k_j \setminus {\cal P}^j_o$.
+${\cal P}^j_o$ from its team, be running ${\cal T}^j_k = {\cal T}^k_j \setminus {\cal P}^j_o$.
 %as a neighbor.
 %, and finds the
 %closest neighbor in ${\cal T}_j \setminus N({\cal X})$ by sending a

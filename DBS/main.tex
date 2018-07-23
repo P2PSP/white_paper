@@ -1,12 +1,13 @@
-DBS provides ALM for unicast (UDP) environments. The media is sent by
-a server ${\cal O}$, called \emph{source}, at a (usually variable)
-bit-rate which matches the bit-rate of the media, to a collection of
-\emph{splitters} ${\cal S}=\{{\cal S}_0, \cdots, {\cal
-  S}_{G-1}\}$. Each ${\cal S}_i \in {\cal S}$ splits the stream into a
-sequence of \emph{chunks}, and relay them to different \emph{team} of
-up to $N$ \emph{peers}. We define the set of teams as ${\cal
-  T}=\{{\cal T}_0,\cdots,{\cal T}_{G-1}\}$ and the set of peers per
-team $T_j=\{{\cal P}^j_0,\cdots,{\cal P}^j_{N-1}\}$.
+DBS provides ALM for unicast (TCP/UDP) environments. The media is
+received by a collection of
+\emph{splitters} ${\cal S}=\{{\cal S}^0, \cdots, {\cal
+  S}^{G-1}\}$ from a streaming server ${\cal O}$,
+called \emph{source}, at a (usually variable) bit-rate which matches
+the bit-rate of the media. Each ${\cal S}^i$ splits the
+stream into a sequence of \emph{chunks}, and relay them to
+different \emph{team} of up to $N$ \emph{peers}. We define the set of
+teams as ${\cal T}=\{{\cal T}^0,\cdots,{\cal T}^{G-1}\}$ and the set
+of peers per team $T^j=\{{\cal P}^j_0,\cdots,{\cal P}^j_{N-1}\}$.
 
 
 %${\cal T}=\{{\cal T}_0,\cdots,{\cal T}_{G-1}\}$ \emph{teams} (one per

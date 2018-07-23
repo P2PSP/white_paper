@@ -4,33 +4,31 @@
   \caption{Peer joining.\label{fig:joining}}
 \end{figure*}
 An incoming peer ${\cal P}^?_i$ (see the tasks described in
-Fig.~\ref{fig:joining}) must contact a \emph{tacker} ${\cal R}$ to
-get, supposing that in the team ${\cal T}_j$ there is room for ${\cal
-  P}^?_i$, $[{\cal S}_j]$ in a \emph{reliable}\footnote{Reliable
+Fig.~\ref{fig:joining}) must contact a \emph{tracker} ${\cal R}$ to
+receive from it, supposing previously that in the team ${\cal T}^j$
+there is room for ${\cal P}^?_i$, a \emph{reliable}\footnote{Reliable
   messages are transmitted over TCP and their transmission is denoted
   in the pseudocode by $\Rightarrow$. Unreliable messages, which can
   be lost in transit, are transmitted over UDP and its transmission is
-  denoted by $\rightarrow$.} message. Then ${\cal P}^?_i$ request
-to ${\cal S}_j$ to be included in ${\cal T}_j$. If ${\cal S}_j$
-accepts, ${\cal S}_j$ sends to ${\cal P}^j_i$ $[{\cal T}_j$] (more
-preciselly, list of peers in ${\cal T}_j$ in a reliable message), and
-  runs ${\cal T}_j = {\cal T}_j \cup {\cal P}^j_i$, in this order.
+  denoted by $\rightarrow$.} message $[{\cal S}_j]$. Then, ${\cal
+  P}^?_i$ request to ${\cal S}^j$ to be included in ${\cal T}^j$. If
+${\cal S}^j$ accepts, then ${\cal S}^j$ tranmits to ${\cal P}^j_i$
+$[{\cal T}^j$] (more preciselly, list of peers in ${\cal T}^j$, in a
+reliable message), and runs ${\cal T}^j = {\cal T}^j \cup {\cal
+  P}^j_i$, in this order.
   %Then ${\cal P}_i$ polls
   %sequentially each splitter in $S$, requesting to be included in its
   %team until one of them (${\cal S}_j$, for example) accepts to ${\cal
   %  P}_i$. %Then, ${\cal S}_j$ performs ${\cal T}_j = {\cal T}_j \cup
   %{\cal P}_i$.  In parallel with the reception of $[{\cal T}_j]$,
-  ${\cal P}^j_i$ does not store ${\cal T}_j$. Instead, ${\cal P}^j_i$,
-  for each ${\cal P}^j_k\in [{\cal T}_j]$, sends an (unreliable)
-  $[\mathtt{hello}]$ message to ${\cal P}^j_k$, and when ${\cal
-    P}^j_k$ receives a $[\mathtt{hello}]$, it performs ${\cal T}^k_j =
-  {\cal T}^k_j \cup {\cal P}^j_i$. Therefore, the list of peers ${\cal
-    T}^k_j$ that a peer ${\cal P}^j_k$ has depends, in first instance,
-  of the number of $[\mathtt{hello}]$ messages that it has
-  received. In other words, it holds that
-  \begin{equation}
-    |{\cal T}^k_j| \leq |{\cal T}_j|.
-  \end{equation}
+While arriving, ${\cal P}^j_i$ does not store ${\cal T}^j$ as it is
+received. Instead, ${\cal P}^j_i$, for each ${\cal P}^j_k\in [{\cal
+    T}^j]$, sends an (unreliable) $[\mathtt{hello}]$ message to ${\cal
+  P}^j_k$, and when ${\cal P}^j_k$ receives a $[\mathtt{hello}]$, it
+performs ${\cal T}^j_k = {\cal T}^j_k \cup {\cal P}^j_i$. Therefore,
+the list of peers ${\cal T}^j_k$ that a peer ${\cal P}^j_k$ has,
+depends in first instance, on the number of $[\mathtt{hello}]$
+messages that it has received. In other words, it holds that $|{\cal T}^j_k| \leq |{\cal T}^j|$.
   
 % When a ${\cal P}_k$ receives a $[\mathtt{hello}]$ from ${\cal P}_i$,
 % replies to ${\cal P}_i$ with the same message. -> Ya no hace falta
