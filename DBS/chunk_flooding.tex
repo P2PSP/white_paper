@@ -4,7 +4,7 @@
 
 When a peer ${\cal P}^j_k$ receives a chunk from ${\cal P}^j_i$,
 ${\cal P}^j_k$ floods the chunk to ${\cal T}^j \setminus {\cal
-P}^j_i$, using again a round-robin schema (see
+P}^j_i$, using again a prioritized round-robin schema (see
 Fig.~\ref{fig:chunk_generation_and_flooding}). Besides, if it is a
 duplicate chunk, ${\cal P}^j_k$ sends to ${\cal P}^j_i$ a
 $[\mathtt{NRFCF}~{\cal P}^j_l]$ ($\mathtt{N}$ot $\mathtt{R}$elay
@@ -16,6 +16,45 @@ least that ${\cal P}_k$ revokes this routing information by sending
 $[\mathtt{RFCF}~{\cal P}^j_l]$ ($\mathtt{R}$elay $\mathtt{F}$uture
 $\mathtt{C}$hunks $\mathtt{F}$rom) to one or more (possibly the rest
 of) peers of ${\cal T}^j_k$.
+
+As said, peers priorize the flooding of the chunks they relay by
+sending first the chunks to those neighbors that are more
+supportive. To achieve that, every time ${\cal P}^j_k$ sends a chunk
+to ${\cal P}^j_l$, ${\cal P}^j_k$ runs $\mathtt{debt}[{\cal P}^j_l]
+= \mathtt{debt}[{\cal P}^j_l]+1$, and ${\cal P}^j_l$ runs
+$\mathtt{debt}[{\cal P}^j_k] =
+\mathtt{debt}[{\cal P}^j_k]-1$ (see Fig.\ref{fig}). Basically, these
+tables maintain a ``debt'' of chunks between evey pair of neighbor
+peers. Debs are clipped to $\pm\mathtt{debt}_{\text{max}}$. Obviously,
+a high supportivity means a low debt, and viceversa.
+
+\begin{comment}
+In each round, peers check if a chunk have been received from the rest
+of peers of the team (${\cal P}_k\in {\cal T}_j)$). If not, peers send
+a $[\mathtt{propagate}~{\cal P}_i]$ to one or more (possibly
+to the rest of) peers of the team, where ${\cal P}_i$ is the origin peer
+of the missing chunk. At this point, the process continues as
+described in Section~\ref{dbs:chunk_flooding}.
+\end{comment}
+
+\begin{comment}
+For each ${\cal P}_k\in N({\cal P}_i)$, ${\cal P}_i$ checks if a chunk
+has been received from ${\cal P}_k$. If ${\cal P}_i$ detects that
+${\cal P}_k$ has not sent a chunk to it during $L$ consecutive rounds,
+performs $N({\cal P}_i) = N({\cal P}_i)\setminus{\cal P}_k$, and stops
+sending to ${\cal P}_k$ more chunks.
+\end{comment}
+\begin{comment}
+computes a
+``chunk-debt'', denoted by $d({\cal P}_k)$, that is incremented each
+time a chunk is received from ${\cal P}_k$ and decremented each time a
+chunk is sent to ${\cal P}_k$. If ${\cal P}_i$ verifies that $d({\cal
+  P}_k)>D$ (the maximum debt), then ${\cal P}_i$ considers that ${\cal
+  P}_k$ is unable to communicate with it, performs $N({\cal P}_i) =
+N({\cal P}_i)\setminus{\cal P}_k$, and stops sending to ${\cal P}_k$
+more chunks.
+\end{comment}
+
 
 %When peers receive chunks from their splitter, they must flood them to
 %their neighbors until the chunks are broadcasted to the whole team

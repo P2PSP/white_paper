@@ -43,18 +43,16 @@ href="#x1-60001.4" id="QQ2-1-9">Chunk ﬂooding</a></span>
 href="#x1-70001.5" id="QQ2-1-10">Chunk buﬀering</a></span>
 <br />    <span class="subsectionToc" >1.6 <a 
 href="#x1-80001.6" id="QQ2-1-11">Free-riding control at splitters</a></span>
-<br />    <span class="subsectionToc" >1.7 <a 
-href="#x1-90001.7" id="QQ2-1-12">Free-riding control at peers</a></span>
-<br />    <span class="subsectionToc" >1.8 <a 
-href="#x1-100001.8" id="QQ2-1-13">Congestion control</a></span>
 <br />   <span class="sectionToc" >2 <a 
-href="#x1-110002" id="QQ2-1-14">IMS (Ip Multicast Set)</a></span>
+href="#x1-90002" id="QQ2-1-12">FCS (Free-riding Control Set)</a></span>
 <br />   <span class="sectionToc" >3 <a 
-href="#x1-120003" id="QQ2-1-15">LRS (Lost-chunk Recovery Set)</a></span>
+href="#x1-100003" id="QQ2-1-13">IMS (Ip Multicast Set)</a></span>
 <br />   <span class="sectionToc" >4 <a 
-href="#x1-130004" id="QQ2-1-16">ACS (Adaptive Chunk-rate Set)</a></span>
+href="#x1-110004" id="QQ2-1-14">LRS (Lost-chunk Recovery Set)</a></span>
 <br />   <span class="sectionToc" >5 <a 
-href="#x1-140005" id="QQ2-1-17">MCS (Multi-Channel Set)</a></span>
+href="#x1-120005" id="QQ2-1-15">ACS (Adaptive Chunk-rate Set)</a></span>
+<br />   <span class="sectionToc" >6 <a 
+href="#x1-130006" id="QQ2-1-16">MCS (Multi-Channel Set)</a></span>
    </div>
    <div 
 class="abstract" 
@@ -816,9 +814,9 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msubsup 
 ></math>,
-using again a round-robin schema (see Fig. <a 
-href="#x1-50013">3<!--tex4ht:ref: fig:chunk_generation_and_flooding --></a>). Besides, if it is a duplicate chunk,
-<!--l. 9--><math 
+using again a prioritized round-robin schema (see Fig. <a 
+href="#x1-50013">3<!--tex4ht:ref: fig:chunk_generation_and_flooding --></a>). Besides, if it is a duplicate
+chunk, <!--l. 9--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
@@ -827,8 +825,8 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 >k</mi></mrow><mrow 
 ><mi 
 >j</mi></mrow></msubsup 
-></math> sends
-to <!--l. 9--><math 
+></math>
+sends to <!--l. 9--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
@@ -837,8 +835,8 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 >i</mi></mrow><mrow 
 ><mi 
 >j</mi></mrow></msubsup 
-></math> a
-<!--l. 10--><math 
+></math>
+a <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">NRFCF</mi><mspace width="1em" class="nbsp" /><msubsup><mrow 
@@ -951,6 +949,105 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
                                                                   
 
                                                                   
+</p><!--l. 20--><p class="indent" >   As said, peers priorize the ﬂooding of the chunks they relay by sending ﬁrst the
+chunks to those neighbors that are more supportive. To achieve that, every time
+<!--l. 22--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>k</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
+></math> sends a
+chunk to <!--l. 23--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>l</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
+></math>,
+<!--l. 23--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>k</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
+></math> runs
+<!--l. 23--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">debt</mi><mrow ><mo 
+class="MathClass-open">[</mo><mrow><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>l</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
+></mrow><mo 
+class="MathClass-close">]</mo></mrow> <mo 
+class="MathClass-rel">=</mo> <mi mathvariant="monospace">debt</mi><mrow ><mo 
+class="MathClass-open">[</mo><mrow><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>l</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
+></mrow><mo 
+class="MathClass-close">]</mo></mrow> <mo 
+class="MathClass-bin">+</mo> <mn>1</mn></math>, and
+<!--l. 24--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>l</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
+></math> runs
+<!--l. 25--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">debt</mi><mrow ><mo 
+class="MathClass-open">[</mo><mrow><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>k</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
+></mrow><mo 
+class="MathClass-close">]</mo></mrow> <mo 
+class="MathClass-rel">=</mo> <mi mathvariant="monospace">debt</mi><mrow ><mo 
+class="MathClass-open">[</mo><mrow><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>k</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
+></mrow><mo 
+class="MathClass-close">]</mo></mrow> <mo 
+class="MathClass-bin">−</mo> <mn>1</mn></math> (see Fig.<span 
+class="ecbx-1000">??</span>).
+Basically, these tables maintain a “debt” of chunks between evey pair of neighbor peers. Debs
+are clipped to <!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mo 
+class="MathClass-bin">±</mo><msub><mrow 
+><mi mathvariant="monospace">debt</mi></mrow><mrow 
+><mstyle 
+class="text"><mtext  >max</mtext></mstyle></mrow></msub 
+></math>.
+Obviously, a high supportivity means a low debt.
 </p><!--l. 19--><p class="noindent" >
 </p>
    <h4 class="subsectionHead"><span class="titlemark">1.5   </span> <a 
@@ -987,8 +1084,12 @@ and the chunk has not been received.
  id="x1-80001.6"></a>Free-riding control at splitters</h4>
 <!--l. 1--><p class="noindent" >In each team there are a set of <!--l. 1--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->M</mi> <mo 
+display="inline" ><msup><mrow 
+><mi 
+>M</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msup 
+> <mo 
 class="MathClass-rel">≤</mo> <mi 
 >N</mi></math>
 <span 
@@ -1021,8 +1122,26 @@ mathvariant="bold-script">𝒮</mi></mrow><mrow
 For every sent chunk <!--l. 4--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->x</mi></math>,
-the splitter performs <!--l. 5--><math 
+>x</mi></math>
+to <!--l. 4--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>k</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
+></math>,
+<!--l. 5--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+mathvariant="bold-script">𝒮</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msup 
+></math> performs
+<!--l. 5--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >D</mi><mrow ><mo 
@@ -1037,7 +1156,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msubsup 
 ></math>
-that associate every sent chunk with its destination (origin) peer
+to associate every sent chunk with its destination (origin) peer
 <!--l. 6--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
@@ -1048,7 +1167,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msubsup 
 ></math>. If happens
-that <!--l. 6--><math 
+that <!--l. 7--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >L</mi></math>
@@ -1065,6 +1184,9 @@ display="inline" ><mi mathvariant="monospace">L</mi></math>ost
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">C</mi></math>hunk)
 messages have beeen received from any of the monitors (the splitter only considers
+                                                                  
+
+                                                                  
 these kind of messages if they come from a monitor) in a number of rounds (see
 Fig. <span 
 class="ecbx-1000">??</span> for the exact computation of the number of lost chunks per peer per round),
@@ -1088,142 +1210,176 @@ class="ectt-1000">forget </span><span
 class="ecbx-1000">thread is controlled by a timmer, not by</span>
 <span 
 class="ecbx-1000">a counter of rounds.</span>
-</p><!--l. 27--><p class="noindent" >
-</p>
-   <h4 class="subsectionHead"><span class="titlemark">1.7   </span> <a 
- id="x1-90001.7"></a>Free-riding control at peers</h4>
-                                                                  
-
-                                                                  
-<!--l. 1--><p class="noindent" >In each round, peers check if a chunk have been received from the rest of peers of the team
-(<!--l. 2--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
-><mi 
->k</mi></mrow></msub 
-> <mo 
-class="MathClass-rel">∈</mo><msub><mrow 
-><mi 
-mathvariant="bold-script">𝒯</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msub 
-></mrow><mo 
-class="MathClass-close">)</mo></mrow></math>). If not,
-peers send a <!--l. 3--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mrow ><mo 
-class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">propagate</mi><mspace width="1em" class="nbsp" /><msub><mrow 
-><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
-><mi 
->i</mi></mrow></msub 
-></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>
-to one or more (possibly to the rest of) peers of the team, where
-<!--l. 4--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
-><mi 
->i</mi></mrow></msub 
-></math> is the
-origin peer of the missing chunk. At this point, the process continues as described in
-Section <a 
-href="#x1-60001.4">1.4<!--tex4ht:ref: dbs:chunk_flooding --></a>.
-</p><!--l. 31--><p class="noindent" >
-</p>
-   <h4 class="subsectionHead"><span class="titlemark">1.8   </span> <a 
- id="x1-100001.8"></a>Congestion control</h4>
-<!--l. 1--><p class="noindent" >DBS is a content-unaware push-based protocol. To avoid network congestion while ﬂooding,
-sending peers must perform some kind of data ﬂow-control. Moreover, to achieve aN ideal
-I/O ratio of <!--l. 3--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mn>1</mn></math>,
-peers should send one chunk for every received one.
-</p><!--l. 6--><p class="indent" >   Congestion control in P2PSP is very simple: if a new chunk is received, peers
-forward (using the ﬂooding with prunning algorithm described in Sec <span 
-class="ecbx-1000">??</span>) each
-received chunk to the next peer of their list of peers (following a round-robin
-pattern).
 </p><!--l. 15--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
- id="x1-110002"></a>IMS (Ip Multicast Set)</h3>
-<!--l. 1--><p class="noindent" >IPM is available by default in LANs (Local Are Network)s and VLANs (Virtual
-LAN)s <span class="cite">[<a 
-href="#Xshabtay2011ip">3</a>]</span>. IMS runs on the top of DBS and provides eﬃcient native multicasting.
-</p><!--l. 5--><p class="indent" >   The idea of IMS is simple: all peers in the same LAN or
-VLAN have the same network address. When a joining peer
-<!--l. 6--><math 
+ id="x1-90002"></a>FCS (Free-riding Control Set)</h3>
+<!--l. 1--><p class="noindent" >DBS does not imposes any control over the grade of solidarity of the peers. This
+means that some selﬁsh peers (on simply peers with reduced connectivity as a
+consecuence, for example, of NAT issues) can stay in the team thanks to the
+generosity of the rest of peers. If this is unnaceptable, this set of rules forces to
+all the peers of the team to share the same number of chunks that they
+receive.
+</p><!--l. 8--><p class="indent" >   To achieve this behavior, FCS deﬁnes that, if
+<!--l. 8--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
+display="inline" ><msubsup><mrow 
 ><mi 
 mathvariant="bold-script">𝒫</mi></mrow><mrow 
 ><mi 
->i</mi></mrow></msub 
-></math> receives
-<!--l. 7--><math 
+>k</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
+></math> realises
+that <!--l. 9--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mrow ><mo 
-class="MathClass-open">[</mo><mrow><msub><mrow 
+display="inline" ><mi mathvariant="monospace">debt</mi><mrow ><mo 
+class="MathClass-open">[</mo><mrow><msubsup><mrow 
 ><mi 
->S</mi></mrow><mrow 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msub 
+>l</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
 ></mrow><mo 
-class="MathClass-close">]</mo></mrow></math> from
-<!--l. 7--><math 
+class="MathClass-close">]</mo></mrow> <mo 
+class="MathClass-rel">&#x003E;</mo><msub><mrow 
+> <mi mathvariant="monospace">debt</mi></mrow><mrow 
+><mstyle 
+class="text"><mtext  >max</mtext></mstyle></mrow></msub 
+></math>,
+then <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
-mathvariant="bold-script">ℛ</mi></math>, checks if there
-are neighbors in the same subnet (all share the same private network address). For all those peers,
-<!--l. 9--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
+display="inline" ><msubsup><mrow 
 ><mi 
 mathvariant="bold-script">𝒫</mi></mrow><mrow 
 ><mi 
->i</mi></mrow></msub 
-></math> uses the IP address
-<!--l. 9--><math 
+>k</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
+></math>
+removes <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">224.0.0.1</mi></math> (all systems on
-this subnet), port <!--l. 10--><math 
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>l</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
+></math>
+from <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">1234</mi></math>
-to forward chunks to all of them (see Procedure <a 
-href="#x1-100001.8">1.8<!--tex4ht:ref: dbs:congestion_control --></a>). When implementing IMS, all
-peers, request to listen to this IPM group and port.
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒯</mi></mrow><mrow 
+><mi 
+>k</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
+></math>.
 </p><!--l. 19--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">3   </span> <a 
- id="x1-120003"></a>LRS (Lost-chunk Recovery Set)</h3>
+ id="x1-100003"></a>IMS (Ip Multicast Set)</h3>
+<!--l. 1--><p class="noindent" >IPM is available by default in LANs (Local Are Network)s and VLANs (Virtual
+LAN)s <span class="cite">[<a 
+href="#Xshabtay2011ip">3</a>]</span>, but not in the Internet <span class="cite">[]</span>. IMS runs on the top of DBS and provides
+eﬃcient native IPM, where available.
+</p><!--l. 6--><p class="indent" >   The idea of IMS is simple: all peers in the same LAN or
+VLAN have the same network address. When a joining peer
+<!--l. 7--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>i</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
+></math> receives
+<!--l. 8--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow ><mo 
+class="MathClass-open">[</mo><mrow><msup><mrow 
+><mi 
+mathvariant="bold-script">𝒯</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msup 
+></mrow><mo 
+class="MathClass-close">]</mo></mrow></math> from
+<!--l. 8--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+mathvariant="bold-script">𝒮</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msup 
+></math>,
+ﬁrst checks if there are neighbors in the same subnet (all of them
+share the same private network address). For all those peers,
+<!--l. 10--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>i</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
+></math> uses the IP address
+<!--l. 11--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">224.0.0.1</mi></math> (all systems on this
+subnet), (default) port <!--l. 12--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">1234</mi></math>,
+to boradcast (only) the chunks received from the splitter. When implementing IMS,
                                                                   
 
                                                                   
-<!--l. 1--><p class="noindent" >LRS extends DBS. LRS should be implemented if error-prone communications are
-expected. LRS is based on the use of monitor peers (see Procedure <a 
-href="#x1-80001.6">1.6<!--tex4ht:ref: dbs:frcS --></a>). The idea is:
-<!--l. 3--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
-mathvariant="bold-script">𝒮</mi></math> will
-resend lost chunks to one or more the monitors when one or more monitors
-report their loss. To increase the probability of receiving the resent chunk
-on time (by normal peers), monitors halves the number of chunks in their
-buﬀers in relation to common peers. LRS only modiﬁes the behavior of
-<!--l. 8--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
-mathvariant="bold-script">𝒮</mi></math> and
-the monitors. Normal peers implement DBS.
+all peers, request to listen, besides, to this IPM group and port.
 </p><!--l. 23--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">4   </span> <a 
- id="x1-130004"></a>ACS (Adaptive Chunk-rate Set)</h3>
+ id="x1-110004"></a>LRS (Lost-chunk Recovery Set)</h3>
+<!--l. 1--><p class="noindent" >LRS extends DBS (or an extension of it) to retransmit massively-lost chunks. LRS should
+be implemented if error-prone communications are expected, specially if these channels
+are used by the splitter. LRS is based on the use of monitors (see Procedure <a 
+href="#x1-80001.6">1.6<!--tex4ht:ref: dbs:frcS --></a>). The
+idea is: <!--l. 5--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+mathvariant="bold-script">𝒮</mi></mrow><mrow 
+><mo 
+class="MathClass-rel">|</mo></mrow></msup 
+></math>
+will resend lost chunks to one or more the monitors when all monitors in
+<!--l. 6--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+mathvariant="bold-script">𝒯</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msup 
+></math>
+report their loss. To increase the probability of receiving on time the resent
+chunk (by normal peers), monitors halves the number of chunks in their
+buﬀers in relation to common peers. LRS only modiﬁes the behavior of
+<!--l. 9--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+mathvariant="bold-script">𝒮</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msup 
+></math> and
+the monitors. Normal peers implement DBS (or its extension).
+</p><!--l. 27--><p class="noindent" >
+</p>
+   <h3 class="sectionHead"><span class="titlemark">5   </span> <a 
+ id="x1-120005"></a>ACS (Adaptive Chunk-rate Set)</h3>
 <!--l. 1--><p class="noindent" >ACS relaxes the peer’s upload requirements imposed by DBS. It should be used in if
 it is known that some peers can provide the capacity than others cannot, or
 when we want to mix the CS and P2P models, sending more chunks from
@@ -1246,29 +1402,29 @@ other words, ACS adapts the round-time of each peer to its capacity.
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 mathvariant="bold-script">𝒮</mi></math>.
-</p><!--l. 27--><p class="noindent" >
+</p><!--l. 31--><p class="noindent" >
 </p>
-   <h3 class="sectionHead"><span class="titlemark">5   </span> <a 
- id="x1-140005"></a>MCS (Multi-Channel Set)</h3>
+   <h3 class="sectionHead"><span class="titlemark">6   </span> <a 
+ id="x1-130006"></a>MCS (Multi-Channel Set)</h3>
 <!--l. 1--><p class="noindent" >When using MDC <span class="cite">[<a 
 href="#Xbaccichet2007content">1</a>]</span>, SVC <span class="cite">[<a 
 href="#Xchu2009auction">2</a>]</span>, or for emulating the CS model, it can be interesting
 for peers to belong to more than one team. To implement MCS, peers must
 replicate the LP2PLS protocol layers for each team (channel), except the
 buﬀer.
+                                                                  
+
+                                                                  
 </p><!--l. 6--><p class="indent" >   The use of MDC is trivial: the higher the number received descriptions (channels),
 even partially, the higher the quality of the playback. However, when transmitting
 SVC media, peers should prioritize the reception of the most important layers.
 Finally, a pure CS service could be provided if the corresponding splitter announces
 one empty team and sends each chunk so many times as teams (with one peer/team)
 there are.
-                                                                  
-
-                                                                  
 </p><!--l. 1--><p class="noindent" >
 </p>
    <h3 class="likesectionHead"><a 
- id="x1-150005"></a>References</h3>
+ id="x1-140006"></a>References</h3>
 <!--l. 1--><p class="noindent" >
    </p><div class="thebibliography">
    <p class="bibitem" ><span class="biblabel">

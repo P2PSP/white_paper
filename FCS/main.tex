@@ -1,11 +1,15 @@
-Every time ${\cal P}^j_k$ sends a chunk to ${\cal P}^j_l$, ${\cal
-P}^j_k$ runs $\mathtt{debt}[{\cal P}^j_l] = \mathtt{debt}[{\cal
-P}^j_l]+1$, and ${\cal P}^j_l$ runs $\mathtt{debt}[{\cal P}^j_k]
-= \mathtt{debt}[{\cal P}^j_k]-1$ (see Fig.\ref{fig}). Basically, these tables
-maintain a ``debt'' of chunks between evey pair of neighbor
-peers. If ${\cal P}^j_k$ realises that $\mathtt{debt}[{\cal
-P}^j_l]>\mathtt{debt}_\text{max}$, then ${\cal P}^j_k$ removes ${\cal
-P}^j_l$ from ${\cal T}^j_k$. Debts are clipped to $0$.
+DBS does not imposes any control over the grade of solidarity of the
+peers. This means that some selfish peers (on simply peers with
+reduced connectivity as a consecuence, for example, of NAT issues) can
+stay in the team thanks to the generosity of the rest of peers. If
+this is unnaceptable, this set of rules forces to all the peers of the
+team to share the same number of chunks that they receive.
+
+To achieve this behavior, FCS defines that, if ${\cal P}^j_k$ realises
+that $\mathtt{debt}[{\cal P}^j_l]>\mathtt{debt}_{\text{max}}$, then
+${\cal P}^j_k$ removes ${\cal P}^j_l$ from ${\cal T}^j_k$. Obviously,
+${\cal P}^j_l$ should churn, unless it not interested in playing the
+media.
 
 \begin{comment}
 In each round, peers check if a chunk have been received from the rest
