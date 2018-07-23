@@ -2,7 +2,7 @@ LRS extends DBS (or an extension of it) to retransmit massively-lost
 chunks. LRS should be implemented if error-prone communications are
 expected, specially if these channels are used by the splitter. LRS is
 based on the use of monitors (see Procedure~\ref{dbs:frcS}). The idea
-is: ${\cal S^j}$ will resend lost chunks to one or more the monitors
+is: ${\cal S}^j$ will resend lost chunks to one or more the monitors
 when all monitors in ${\cal T}^j$ report their loss. To increase the
 probability of receiving on time the resent chunk (by normal peers),
 monitors halves the number of chunks in their buffers in relation to
