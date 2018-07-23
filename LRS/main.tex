@@ -1,11 +1,13 @@
-LRS extends DBS. LRS should be implemented if error-prone
-communications are expected. LRS is based on the use of monitor peers
-(see Procedure~\ref{dbs:frcS}). The idea is: ${\cal S}$ will resend
-lost chunks to one or more the monitors when one or more monitors
-report their loss. To increase the probability of receiving the resent
-chunk on time (by normal peers), monitors halves the number of chunks
-in their buffers in relation to common peers. LRS only modifies the
-behavior of ${\cal S}$ and the monitors. Normal peers implement DBS.
+LRS extends DBS (or an extension of it) to retransmit massively-lost
+chunks. LRS should be implemented if error-prone communications are
+expected, specially if these channels are used by the splitter. LRS is
+based on the use of monitors (see Procedure~\ref{dbs:frcS}). The idea
+is: ${\cal S^j}$ will resend lost chunks to one or more the monitors
+when all monitors in ${\cal T}^j$ report their loss. To increase the
+probability of receiving on time the resent chunk (by normal peers),
+monitors halves the number of chunks in their buffers in relation to
+common peers. LRS only modifies the behavior of ${\cal S}^j$ and the
+monitors. Normal peers implement DBS (or its extension).
 
 \begin{comment}
 LRS should be used when it is expected to have loss-prone

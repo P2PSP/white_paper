@@ -1,9 +1,15 @@
-In each team there are a set of $M\leq N$ \emph{monitors} ${\cal
+In each team there are a set of $M^j\leq N$ \emph{monitors} ${\cal
 M}^j_i\in {\cal T}^j$ (trusted peers whose behavior is predictable and
 that are only known by the splitter), which complain to their splitter
-${\cal S}^j$ when a chunk is lost. Lets suppose that chunk $c_x$ was
-sent to ${\cal P}^j_k$. If ${\cal S}^j$ receives a
-$[\mathtt{lost-c}~x]$ from each monitor of ${\cal T}_j$, and if
-this happens during $L$ consecutive rounds, ${\cal S}_j$ considers
-that ${\cal P}_i$ has leaved ${\cal T}_j$, and removes it from the
-team.
+${\cal S}^j$ when a chunk is lost. For every sent chunk $x$ to ${\cal
+P}^j_k$, ${\cal S}^j$ performs $D[x]={\cal P}^j_k$ to associate every
+sent chunk with its destination (origin) peer ${\cal P}^j_k$. If
+happens that $L$ $[\mathtt{LC}~x]$ ($\mathtt{L}$ost $\mathtt{C}$hunk)
+messages have beeen received from any of the monitors (the splitter
+only considers these kind of messages if they come from a monitor) in
+a number of rounds (see Fig.~\ref{fig:free_riding_control_splitter}
+for the exact computation of the number of lost chunks per peer per
+round), then ${\cal P}^j_k$ is considered as a selfish peer and it is
+removed from the list of peers of the splitter.
+
+\note{This last functionality has not been implemented, at least, as it has been explained here. The \texttt{forget} thread is controlled by a timmer, not by a counter of rounds.}

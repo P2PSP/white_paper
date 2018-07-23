@@ -1,16 +1,17 @@
 IPM is available by default in LANs (Local Are Network)s and VLANs
-(Virtual LAN)s~\cite{shabtay2011ip}. IMS runs on the top of DBS and
-provides efficient native multicasting.
+(Virtual LAN)s~\cite{shabtay2011ip}, but not in the
+Internet~\cite{}. IMS runs on the top of DBS and provides efficient
+native IPM, where available.
 
 The idea of IMS is simple: all peers in the same LAN or VLAN have the
-same network address. When a joining peer ${\cal P}_i$ receives
-$[S_j]$ from ${\cal R}$, checks if there are neighbors in the same
-subnet (all share the same private network address). For all those
-peers, ${\cal P}_i$ uses the IP address $\mathtt{224.0.0.1}$ (all
-systems on this subnet), port $\mathtt{1234}$ to forward chunks to all
-of them (see Procedure~\ref{dbs:congestion_control}). When
-implementing IMS, all peers, request to listen to this IPM group and
-port.
+same network address. When a joining peer ${\cal P}^j_i$ receives
+$[{\cal T}^j]$ from ${\cal S}^j$, first checks if there are neighbors
+in the same subnet (all of them share the same private network
+address). For all those peers, ${\cal P}^j_i$ uses the IP address
+$\mathtt{224.0.0.1}$ (all systems on this subnet), (default) port
+$\mathtt{1234}$, to boradcast (only) the chunks received from the
+splitter. When implementing IMS, all peers, request to listen,
+besides, to this IPM group and port.
 
 \begin{comment}
 \subsubsection{Listening IPM}

@@ -1,9 +1,20 @@
+Every time ${\cal P}^j_k$ sends a chunk to ${\cal P}^j_l$, ${\cal
+P}^j_k$ runs $\mathtt{debt}[{\cal P}^j_l] = \mathtt{debt}[{\cal
+P}^j_l]+1$, and ${\cal P}^j_l$ runs $\mathtt{debt}[{\cal P}^j_k]
+= \mathtt{debt}[{\cal P}^j_k]-1$ (see Fig.\ref{fig}). Basically, these tables
+maintain a ``debt'' of chunks between evey pair of neighbor
+peers. If ${\cal P}^j_k$ realises that $\mathtt{debt}[{\cal
+P}^j_l]>\mathtt{debt}_\text{max}$, then ${\cal P}^j_k$ removes ${\cal
+P}^j_l$ from ${\cal T}^j_k$. Debts are clipped to $0$.
+
+\begin{comment}
 In each round, peers check if a chunk have been received from the rest
 of peers of the team (${\cal P}_k\in {\cal T}_j)$). If not, peers send
 a $[\mathtt{propagate}~{\cal P}_i]$ to one or more (possibly
 to the rest of) peers of the team, where ${\cal P}_i$ is the origin peer
 of the missing chunk. At this point, the process continues as
 described in Section~\ref{dbs:chunk_flooding}.
+\end{comment}
 
 \begin{comment}
 For each ${\cal P}_k\in N({\cal P}_i)$, ${\cal P}_i$ checks if a chunk
