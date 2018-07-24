@@ -24,7 +24,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">July 23, 2018</span></div>
+class="ecrm-1200">July 24, 2018</span></div>
    </div>
    <h3 class="likesectionHead"><a 
  id="x1-1000"></a>Contents</h3>
@@ -48,11 +48,13 @@ href="#x1-90002" id="QQ2-1-12">FCS (Free-riding Control Set)</a></span>
 <br />   <span class="sectionToc" >3 <a 
 href="#x1-100003" id="QQ2-1-13">IMS (Ip Multicast Set)</a></span>
 <br />   <span class="sectionToc" >4 <a 
-href="#x1-110004" id="QQ2-1-14">LRS (Lost-chunk Recovery Set)</a></span>
+href="#x1-110004" id="QQ2-1-14">MRS (Massively-lost chunk Recovery Set)</a></span>
 <br />   <span class="sectionToc" >5 <a 
-href="#x1-120005" id="QQ2-1-15">ACS (Adaptive Chunk-rate Set)</a></span>
+href="#x1-120005" id="QQ2-1-15">TAS (Topology Adaptation Set)</a></span>
 <br />   <span class="sectionToc" >6 <a 
-href="#x1-130006" id="QQ2-1-16">MCS (Multi-Channel Set)</a></span>
+href="#x1-130006" id="QQ2-1-16">ACS (Adaptive Capacity Set)</a></span>
+<br />   <span class="sectionToc" >7 <a 
+href="#x1-140007" id="QQ2-1-17">MCS (Multi-Channel Set)</a></span>
    </div>
    <div 
 class="abstract" 
@@ -1036,10 +1038,14 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 >j</mi></mrow></msubsup 
 ></mrow><mo 
 class="MathClass-close">]</mo></mrow> <mo 
-class="MathClass-bin">−</mo> <mn>1</mn></math> (see Fig.<span 
-class="ecbx-1000">??</span>).
-Basically, these tables maintain a “debt” of chunks between evey pair of neighbor peers. Debs
-are clipped to <!--l. 28--><math 
+class="MathClass-bin">−</mo> <mn>1</mn></math>
+(see Fig.<span 
+class="ecbx-1000">??</span>). Basically, these tables maintain a “debt” of chunks between
+evey pair of neighbor peers. In ideal circunstances, debs should be
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn></math>. Debs are
+clipped to <!--l. 29--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" > <mo 
 class="MathClass-bin">±</mo><msub><mrow 
@@ -1047,7 +1053,7 @@ class="MathClass-bin">±</mo><msub><mrow
 ><mstyle 
 class="text"><mtext  >max</mtext></mstyle></mrow></msub 
 ></math>.
-Obviously, a high supportivity means a low debt.
+Obviously, a high supportivity means a low debt, and viceversa.
 </p><!--l. 19--><p class="noindent" >
 </p>
    <h4 class="subsectionHead"><span class="titlemark">1.5   </span> <a 
@@ -1180,13 +1186,13 @@ class="MathClass-close">]</mo></mrow></math>
 (<!--l. 7--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">L</mi></math>ost
+                                                                  
+
+                                                                  
 <!--l. 7--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">C</mi></math>hunk)
 messages have beeen received from any of the monitors (the splitter only considers
-                                                                  
-
-                                                                  
 these kind of messages if they come from a monitor) in a number of rounds (see
 Fig. <span 
 class="ecbx-1000">??</span> for the exact computation of the number of lost chunks per peer per round),
@@ -1200,7 +1206,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msubsup 
 ></math>
-is considered as a selﬁsh peer and it is removed from the list of peers of the
+is considered as a gone peer and it is removed from the list of peers of the
 splitter.
 </p><!--l. 15--><p class="indent" >   <span 
 class="ecbx-1000">This last functionality has not been implemented, at least, as it has</span>
@@ -1278,6 +1284,17 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msubsup 
 ></math>.
+Obviously, <!--l. 11--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>l</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
+></math>
+should churn, unless it not interested in playing the media.
 </p><!--l. 19--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">3   </span> <a 
@@ -1318,6 +1335,9 @@ mathvariant="bold-script">𝒮</mi></mrow><mrow
 ></math>,
 ﬁrst checks if there are neighbors in the same subnet (all of them
 share the same private network address). For all those peers,
+                                                                  
+
+                                                                  
 <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
@@ -1335,14 +1355,11 @@ subnet), (default) port <!--l. 12--><math
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">1234</mi></math>,
 to boradcast (only) the chunks received from the splitter. When implementing IMS,
-                                                                  
-
-                                                                  
 all peers, request to listen, besides, to this IPM group and port.
 </p><!--l. 23--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">4   </span> <a 
- id="x1-110004"></a>LRS (Lost-chunk Recovery Set)</h3>
+ id="x1-110004"></a>MRS (Massively-lost chunk Recovery Set)</h3>
 <!--l. 1--><p class="noindent" >LRS extends DBS (or an extension of it) to retransmit massively-lost chunks. LRS should
 be implemented if error-prone communications are expected, specially if these channels
 are used by the splitter. LRS is based on the use of monitors (see Procedure <a 
@@ -1352,8 +1369,8 @@ idea is: <!--l. 5--><math
 display="inline" ><msup><mrow 
 ><mi 
 mathvariant="bold-script">𝒮</mi></mrow><mrow 
-><mo 
-class="MathClass-rel">|</mo></mrow></msup 
+><mi 
+>j</mi></mrow></msup 
 ></math>
 will resend lost chunks to one or more the monitors when all monitors in
 <!--l. 6--><math 
@@ -1375,13 +1392,30 @@ mathvariant="bold-script">𝒮</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msup 
 ></math> and
-the monitors. Normal peers implement DBS (or its extension).
+the monitors (normal peers does no need to implement LRS or its extensions).
 </p><!--l. 27--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">5   </span> <a 
- id="x1-120005"></a>ACS (Adaptive Chunk-rate Set)</h3>
+ id="x1-120005"></a>TAS (Topology Adaptation Set)</h3>
+<!--l. 1--><p class="noindent" >In TAS, all peers trace the chunks, appending in the packet the end-point of each hup
+in the overlay network. When at least one of the monitors (selected by the splitter)
+receives each chunk, it sends to the splitter the trace for each received chunk. The
+splitter gathers this information and counts the number of times each peer is
+referenced in the traces, in a round. The counter for a peer speaks of its connectivity
+degree. Notice that the connectivity graph of the overlay can be computed, simply by
+following the traces.
+</p><!--l. 10--><p class="indent" >   After knowing the connectivity degree of each peer, the slitter can adapt the
+round-robing scheduling of the origin peers by sending a number of chunks
+proportional to the inverse of the degree.
+</p><!--l. 31--><p class="noindent" >
+</p>
+   <h3 class="sectionHead"><span class="titlemark">6   </span> <a 
+ id="x1-130006"></a>ACS (Adaptive Capacity Set)</h3>
 <!--l. 1--><p class="noindent" >ACS relaxes the peer’s upload requirements imposed by DBS. It should be used in if
 it is known that some peers can provide the capacity than others cannot, or
+                                                                  
+
+                                                                  
 when we want to mix the CS and P2P models, sending more chunks from
 <!--l. 4--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -1402,19 +1436,16 @@ other words, ACS adapts the round-time of each peer to its capacity.
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 mathvariant="bold-script">𝒮</mi></math>.
-</p><!--l. 31--><p class="noindent" >
+</p><!--l. 35--><p class="noindent" >
 </p>
-   <h3 class="sectionHead"><span class="titlemark">6   </span> <a 
- id="x1-130006"></a>MCS (Multi-Channel Set)</h3>
+   <h3 class="sectionHead"><span class="titlemark">7   </span> <a 
+ id="x1-140007"></a>MCS (Multi-Channel Set)</h3>
 <!--l. 1--><p class="noindent" >When using MDC <span class="cite">[<a 
 href="#Xbaccichet2007content">1</a>]</span>, SVC <span class="cite">[<a 
 href="#Xchu2009auction">2</a>]</span>, or for emulating the CS model, it can be interesting
 for peers to belong to more than one team. To implement MCS, peers must
 replicate the LP2PLS protocol layers for each team (channel), except the
 buﬀer.
-                                                                  
-
-                                                                  
 </p><!--l. 6--><p class="indent" >   The use of MDC is trivial: the higher the number received descriptions (channels),
 even partially, the higher the quality of the playback. However, when transmitting
 SVC media, peers should prioritize the reception of the most important layers.
@@ -1424,7 +1455,7 @@ there are.
 </p><!--l. 1--><p class="noindent" >
 </p>
    <h3 class="likesectionHead"><a 
- id="x1-140006"></a>References</h3>
+ id="x1-150007"></a>References</h3>
 <!--l. 1--><p class="noindent" >
    </p><div class="thebibliography">
    <p class="bibitem" ><span class="biblabel">
@@ -1442,6 +1473,9 @@ class="ecti-1000">Expo, 2007 IEEE International Conference on</span>, pages 400�
    coding.      <span 
 class="ecti-1000">IEEE  Transactions  on  Parallel  and  Distributed  Systems</span>,
    20(12):1816–1829, 2009.
+                                                                  
+
+                                                                  
    </p>
    <p class="bibitem" ><span class="biblabel">
  [3]<span class="bibsp">   </span></span><a 
