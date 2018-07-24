@@ -1,0 +1,12 @@
+In TAS, all peers trace the chunks, appending in the packet the
+end-point of each hup in the overlay network. When at least one of the
+monitors (selected by the splitter) receives each chunk, it sends to
+the splitter the trace for each received chunk. The splitter gathers
+this information and counts the number of times each peer is
+referenced in the traces, in a round. The counter for a peer speaks of
+its connectivity degree. Notice that the connectivity graph of the
+overlay can be computed, simply by following the traces.
+
+After knowing the connectivity degree of each peer, the slitter can
+adapt the round-robing scheduling of the origin peers by sending a
+number of chunks proportional to the inverse of the degree.

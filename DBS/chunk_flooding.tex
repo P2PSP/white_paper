@@ -25,8 +25,9 @@ to ${\cal P}^j_l$, ${\cal P}^j_k$ runs $\mathtt{debt}[{\cal P}^j_l]
 $\mathtt{debt}[{\cal P}^j_k] =
 \mathtt{debt}[{\cal P}^j_k]-1$ (see Fig.\ref{fig}). Basically, these
 tables maintain a ``debt'' of chunks between evey pair of neighbor
-peers. Debs are clipped to $\pm\mathtt{debt}_{\text{max}}$. Obviously,
-a high supportivity means a low debt, and viceversa.
+peers. In ideal circunstances, debs should be $0$. Debs are clipped to
+$\pm\mathtt{debt}_{\text{max}}$. Obviously, a high supportivity means
+a low debt, and viceversa.
 
 \begin{comment}
 In each round, peers check if a chunk have been received from the rest
