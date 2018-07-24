@@ -9,9 +9,12 @@ $[{\cal T}^j]$ from ${\cal S}^j$, first checks if there are neighbors
 in the same subnet (all of them share the same private network
 address). For all those peers, ${\cal P}^j_i$ uses the IP address
 $\mathtt{224.0.0.1}$ (all systems on this subnet), (default) port
-$\mathtt{1234}$, to boradcast (only) the chunks received from the
-splitter. When implementing IMS, all peers, request to listen,
-besides, to this IPM group and port.
+$\mathtt{1234}$, to broadcast (only) the chunks received from the
+splitter. When implementing IMS, all peers in the same local network
+communicate using this IPM group and port. The splitter do a similar
+check: for all those peers that are in the same local network that
+then splitter, the splitter sends the chunk to the multicast channel
+$\mathtt{224.0.0.1}$:$\mathtt{1234}$.
 
 \begin{comment}
 \subsubsection{Listening IPM}
