@@ -1,0 +1,40 @@
+% NTS
+
+Most peers run behind NATs. All processes behind the same NAT box will
+use the same public IP address of the NAT. Basically, there exist two
+different types of NATs: (1) cone, and (2) symmetric.
+
+A cone NAT uses the same public end-point for all the private
+processes that run behind the NAT. This means that, if two or more
+peers run in the same private cone-NATed network, all of them will
+share the same public IP address and will use a different public
+port. The important thing here is that, if a peer ${\cal P}^j_i$ is
+using the end-point $X$, any incomming traffic directed to $X$ will be
+forwarded to ${\cal P}^j_i$. The situation is identical to the case in
+which all peers run in the same host. In this context, DBS should be
+able to establish a (UDP) communication among the peers because when
+peers send the $[\mathtt{hello}]$ messages while they are receiving
+the list of peers from the splitter, the necessary translation entries
+are created in the NAT.
+
+On the other hand, a symmetric NAT uses a different public port for
+every connection. Thus, if a (symmetric-NATed) peer ${\cal P}^j_i$ is
+assigned the public end-point $X_0$ to communcate with the splitter, a
+different public end-point $\{X_1, \cdots, X_M\}$ will be assigned by
+the NAT for the rest of nodes of the overlay, when the sequence of
+$[\mathtt{hello}]$'s are relayed by the NAT. This behavior can be or
+not can be a problem for DBS, depending on if the other peers are not
+or are behind a symmetric NAT. In the first case, when only one of the
+interlocutors of the $[\mathtt{hello}]$ message is behind a symmetric
+NAT, the DBS handshake should work, establishing a UDP channel between
+both peers. However, in the second case in which both peers are behind
+different symmetric-NATs, the communication will success only if the
+$[\mathtt{hello}]$ messages are sent to the public end-point that the
+other NAT would use to communicate with the incomming peer, and, at
+the same time, the older peer creates the corresponding translation
+entry in its NAT. Obviously, this will be possible only if both peers
+are able to force or at least predict the public port that their NATs
+will use for the $[\mathtt{hello}]$'s. Usually, peers can not
+configure their NAT entries. Therefore, only the second option is
+available and some kind of port prediction procedures becomes
+necessary.
