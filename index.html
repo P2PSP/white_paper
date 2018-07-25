@@ -24,7 +24,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">July 24, 2018</span></div>
+class="ecrm-1200">July 25, 2018</span></div>
    </div>
    <h3 class="likesectionHead"><a 
  id="x1-1000"></a>Contents</h3>
@@ -71,13 +71,16 @@ class="ecbx-0900">Abstract</span></p></div>
      </p><!--l. 1--><p class="indent" >   <span 
 class="ecrm-0900">P2PSP  is  an  application-layer  protocol  that  provides  real-time</span>
      <span 
-class="ecrm-0900">broadcasting of media on the Internet. Such functionaly is provided by</span>
+class="ecrm-0900">broadcasting of media on the Internet. Such functionaly is provided, it</span>
      <span 
-class="ecrm-0900">DBS (Data Broadcasting Set of rules). The rest of sets incorporate new</span>
+class="ecrm-0900">its most basic form, by DBS (Data Broadcasting Set of rules). The rest</span>
      <span 
-class="ecrm-0900">characteristics,  when  needed,  buliding  a  highly  conﬁgurable  streaming</span>
+class="ecrm-0900">of sets (see </span><a 
+href="https://p2psp.github.io" class="url" ><span 
+class="ectt-0900">https://p2psp.github.io</span></a><span 
+class="ecrm-0900">) incorporate new characteristics,</span>
      <span 
-class="ecrm-0900">system.</span>
+class="ecrm-0900">when needed, buliding a highly conﬁgurable streaming system.</span>
 </p>
 </div>
 <!--l. 11--><p class="noindent" >
@@ -192,7 +195,7 @@ class="MathClass-close">}</mo></mrow></math>.
  <div style="text-align:center;"> <img height=300 src="graphics/joining.png" /> </div> 
 <br /> <div class="caption" 
 ><span class="id">Figure 1: </span><span  
-class="content">Peer joining.</span></div><!--tex4ht:label?: x1-30011 -->
+class="content">Tasks involved in peer joining.</span></div><!--tex4ht:label?: x1-30011 -->
                                                                   
 
                                                                   
@@ -1354,8 +1357,15 @@ display="inline" ><mi mathvariant="monospace">224.0.0.1</mi></math> (all systems
 subnet), (default) port <!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">1234</mi></math>,
-to boradcast (only) the chunks received from the splitter. When implementing IMS,
-all peers, request to listen, besides, to this IPM group and port.
+to broadcast (only) the chunks received from the splitter. When implementing IMS,
+all peers in the same local network communicate using this IPM group and port. The
+splitter do a similar check: for all those peers that are in the same local network
+that then splitter, the splitter sends the chunk to the multicast channel
+<!--l. 17--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">224.0.0.1</mi></math>:<!--l. 17--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">1234</mi></math>.
 </p><!--l. 23--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">4   </span> <a 
@@ -1409,13 +1419,13 @@ round-robing scheduling of the origin peers by sending a number of chunks
 proportional to the inverse of the degree.
 </p><!--l. 31--><p class="noindent" >
 </p>
+                                                                  
+
+                                                                  
    <h3 class="sectionHead"><span class="titlemark">6   </span> <a 
  id="x1-130006"></a>ACS (Adaptive Capacity Set)</h3>
 <!--l. 1--><p class="noindent" >ACS relaxes the peer’s upload requirements imposed by DBS. It should be used in if
 it is known that some peers can provide the capacity than others cannot, or
-                                                                  
-
-                                                                  
 when we want to mix the CS and P2P models, sending more chunks from
 <!--l. 4--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -1469,13 +1479,13 @@ class="ecti-1000">Expo, 2007 IEEE International Conference on</span>, pages 400�
    <p class="bibitem" ><span class="biblabel">
  [2]<span class="bibsp">   </span></span><a 
  id="Xchu2009auction"></a>Xiaowen  Chu,  Kaiyong  Zhao,  Zongpeng  Li,  and  Anirban  Mahanti.
+                                                                  
+
+                                                                  
    Auction-based  on-demand  p2p  min-cost  media  streaming  with  network
    coding.      <span 
 class="ecti-1000">IEEE  Transactions  on  Parallel  and  Distributed  Systems</span>,
    20(12):1816–1829, 2009.
-                                                                  
-
-                                                                  
    </p>
    <p class="bibitem" ><span class="biblabel">
  [3]<span class="bibsp">   </span></span><a 

@@ -12,14 +12,15 @@
 \algrenewcommand\algorithmicprocedure{\textbf{task}}
 
 \begin{algorithmic}
-
-  \Procedure{${\cal P}_i$.Join}{${\cal R}$}
-  \State $[{\cal S}] \gets {\cal R}$
-  \ForAll{${\cal S}_j\in {\cal S}$}
-  \State $[\mathtt{hello}] \sendto {\cal S}_j$
-  \If{$[{\cal T}_j] \gets {\cal S}_j$}
-  \State \textbf{Break}
-  \EndIf
+  \Procedure{${\cal P}^j_i$.Join}{}
+  \State $[{\cal S}^j] \gets {\cal R}$
+  %\ForAll{${\cal S}^j\in {\cal S}$}
+  \State $[\mathtt{hello}] \send {\cal S}^j$
+  \ForAll{${\cal P}^j_k\in[{\cal T}^j]\gets{\cal S}^j$}
+  \State $[\mathtt{hello}]\sendto {\cal P}^j_k$
+  %\If{$[{\cal T}_j] \gets {\cal S}_j$}
+  %\State \textbf{Break}
+  %\EndIf
   %\State $\text{RTT}_k=$ \textbf{timeit} \textbf{wait for} $[\mathtt{hello}] \gets {\cal P}_k$ \textbf{with} timeout
   \EndFor
   %\State $T^*({\cal P}_i)=\{{\cal P}_k~|~\text{RTT}_k<\text{timeout}\}$
