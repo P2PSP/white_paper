@@ -2,49 +2,133 @@
 
 Most peers run inside of ``private'' networks, behind NAT boxes. In
 this case, all peers behind the same NAT will use the same external
-(also called ``public'') IP address of the NAT. Basically, there exist
-two different types of NATs: (1) cone, and (2) symmetric. At the same
-time, NATs can implement different strategies for filtering the
-incoming public packets: (a) no filtering, (b) source IP filtering,
-and (c) source end-point filtering. Finally, NATs can use several port
-allocation algorithms, among which, the most frequent are: (i) port
-preservation, (ii) random port allocation. Notice that in this
+(also called ``public'', because in most cases we have not anidated
+confgurations) IP address of the NAT. Basically, there exist two
+different types of NATs: (1) \emph{cone}, and (2) \emph{symmetric}. At
+the same time, NATs can implement different filtering strategies for
+the packets that comes from the external side: (a) \emph{no
+  filtering}, (b) \emph{source IP filtering}, and (c) \emph{source
+  end-point filtering}. Finally, NATs can use several port allocation
+algorithms, among which, the most frequent are: (i) \emph{port
+  preservation}, (ii) \emph{random port}. Notice that in this
 discussion, only UDP transmission will be considered.
 
 \subsection{Traffic filtering}
-Lets suppose a team that, for the sake of simplicity, has only one
-external (public) peer ${\cal P}^t_e$, and that a new internal
-(private) peer ${\cal P}^t_i$ has received the list of peers, and has
-sent the sequence of [$\mathtt{hello}$]'s. Lets denote ${\cal
-  P}^t_i$'s NAT as $\mathtt{A}_i$. When no filtering is used at all,
-$\mathtt{A}_i$ forwards to ${\cal P}^t_i$ any external packet that
-arrives to it (obviously, received through the port assigned to the
-entry in $\mahttt{A}_i$'s translation table, that was created during
-the transmission of the sequence of [$\mathtt{hello}$]'s), not only
-coming from ${\cal P}^t_e$. In the case of source IP filtering,
-$\mathtt{A}_i$ will forward the packets only if they come from ${\cal
-  P}^t_e$'s host.  When source end-point filtering is used,
-$\mathtt{A}_i$ also checks the source port, i.e., that the packets
+Lets suppose a team in which, for the sake of simplicity, there is
+only one external (public) peer ${\cal P}^t_e$, and that a new
+internal (private) peer ${\cal P}^t_i$ has sent the sequence of
+[$\mathtt{hello}$]'s (see Sec~\ref{sec:peer_joining}. Lets denote
+${\cal P}^t_i$'s NAT as $\mathsf{A}$. When no filtering is used at
+all, $\mathsf{A}$ forwards to ${\cal P}^t_i$ any external packet
+that arrives to it (obviously, if it was sent to the only entry in
+$\mathsf{A}$'s translation table that was created during the
+transmission of the sequence of [$\mathtt{hello}$]'s), independently
+on the source end-points of the packets. In the case of source IP
+filtering, $\mathsf{A}$ will forward the packets only if they come
+from ${\cal P}^t_e$'s host.  When source end-point filtering is used,
+$\mathsf{A}$ also checks the source port, i.e., that the packets
 were originated at ${\cal P}^t_e$'s end-point.
 
 \subsection{Cone VS symmetric}
-Cone NATs use the same external end-point for every outgoing UDP
-packet that comes from the same internal end-point, independently on
-the destination of the packets (see Fig.~\ref{fig:cone}). For an
-external peer ${\cal P}^t_e$, the situation is identical to the case
-in which the NATed peer ${\cal P}^t_i$ would be running in an external
-host. In this situation, DBS should be able to establish a (UDP)
-communication among cone-NATed peers, independently on the packet
-filtering algorithm implemented. An example of this behavior is shown
-in Fig.~\ref{fig:UDP-Hole-Punching-RCN}. Notice that source end-point
-filtering has been used in this example.
+Cone NATs use the same external end-point for every packet that comes
+from the same internal end-point, independently on the destination of
+the packets (see Fig.~\ref{fig:cone}). For the external peer ${\cal
+  P}^t_e$, the situation is identical to the case in which the NATed
+peer ${\cal P}^t_i$ would be running in a public host.
 
-Lets suppose now, that a new public peer ${\cal P}^t_j$ joins the team
-through a symmetric NAT $\mathtt{A}_j$ (see
-Fig.~\ref{fig:NATing_context}). In this case, $\mathtt{A}_j$ assigns
-to ${\cal P}^t_j$ two different public ports (and therefore, different
-public end-points) $\mathsf{A}_e$ (for ${\cal P}^t_e$) and
-$\mathsf{A}_i$ (for ${\cal P}^t_i$). Only if one of the peers is
+Symmetric NATs use different external end-points for different packets
+that comes from the same internal end-point, when these packets have
+different destination end-points (see Fig.~\ref{fig:symmetric}). Thus,
+two different external peers will see two different public end-points
+of ${\cal P}^t_e$.
+
+\subsection{Port allocation}
+In the case of port preservation, if $X$:$Y$ is the private end-point
+(IP address:port) of a UDP packet, the NAT will use the public port
+$Y$, if available (notice that $Y$ cound have been assigned to a
+previous communcation). If $Y$ were unavailable, the NAT usually will
+assign the closer free port (this is called ``sequentially port
+allocation''), usually incrementing the port value, although this has
+not been standarized at all.
+
+When random port allocation is implemented, the public port will be
+assigned at random.
+
+\subsection{NAT type analysis}
+A incoming peer ${\cal P}^t_i$ can determine its NAT behavior using
+the following procedure:
+\begin{enumerate}
+\item Let $\{\mathsf{A}_0, \mathsf{A}_1, \cdots, \mathsf{A}_M\}$ the
+  public ports used by peer ${\cal P}^t_i$, whose NAT is $\mathsf{A}$,
+  to send the [$\mathtt{hello}$] UDP packets towards ${\cal S}^t$ and
+  the $M$ monitor peers of the team, in this order. This data is known
+  by ${\cal P}^t_i$ after receiving the acknowledgment of each
+  [$\mathtt{hello}$]. Compute
+  \begin{equation}
+    \Delta_k = \mathsf{A}_k - \mathsf{A}_{k-1}
+    \label{eq:port_distancies}
+  \end{equation}
+  for $k=1,2,\cdots,M$, the \emph{port distances} gathered by ${\cal
+    P}^t_i$.
+\item Determine a \emph{port step}
+  \begin{equation}
+    \Delta = \left\{\begin{array}{lr}
+    0, & \text{if } \forall i, \Delta_i = 0 \\
+    \mathrm{GCD}(\Delta_1, \cdots, \Delta_m), & \text{otherwise}
+    \end{array}\right.
+    \label{eq:port_step}
+  \end{equation}
+  where GCD is the Greatest Common Divisor operator.
+\item If $\Delta=0$ ($\mathsf{A}$ is using the same external port for
+  communicating ${\cal P}^t_i$ with the rest of peers of the team)
+  then ${\cal P}^t_i$ is behind a cone NAT. Notice that public (not
+  NATed) peers will be considered as being using this type of NAT,
+  also.
+\item If $\Delta>0$ ($\mathsf{A}$ is using a different external port
+  for each external peer) then ${\cal P}^t_i$ is behind a symmetric
+  NAT. In this case:
+  \begin{enumerate}
+  \item If
+    \begin{equation}
+      \Delta_1 = \Delta_2 = \cdots = \Delta_m
+    \end{equation}
+    then $\mathsf{A}$ is using sequentially port allocation.
+  \item If
+    \begin{equation}
+      \Delta = \lim_{m\to\infty} \mathrm{GCD}(\Delta_1, \cdots, \Delta_m) = 1.
+    \end{equation}
+    then $\mathsf{A}$ is using random port allocation.
+  \end{enumerate}
+\end{enumerate}
+
+At this moment, we will divide our discussion about the performance of
+DBS (or an extension of it) in three different scenarios that a
+incoming peer ${\cal P}^t_i$ can found when joining a P2PSP team
+${\cal T}^t$: (1) that ${\cal P}^t_i$ is behind a cone NAT, (2) that
+${\cal P}^t_i$ is behind a symmetric NAT which uses port preservation
+and sequentially port allocation, and (3) that ${\cal P}^t_i$ is
+behind a random port symmetric NAT.
+
+\subsection{DBS over cone NATs}
+DBS should be able to establish an (UDP) communication among
+cone-NATed peers, independently on the packet filtering and port
+allocation algorithms that are implemented. An example of this
+behavior is shown in Fig.~\ref{fig:UDP-Hole-Punching-RCN}. Notice that
+source end-point filtering has been used in this example.
+
+\subsection{DBS over symmetric NATs}
+
+
+Lets suppose now, that a new private peer ${\cal P}^t_j$ joins the
+team through a symmetric NAT $\mathtt{B}$ (see
+Fig.~\ref{fig:NATing_context}). In this case, $\mathtt{B}$ assigns
+to ${\cal P}^t_j$ two different ports (and therefore, different
+public end-points) $\mathsf{B}_e$ (for ${\cal P}^t_e$) and
+$\mathsf{B}_i$ (for ${\cal P}^t_i$).
+
+Notice that only one peer (${\cal P}^t_j$) is behind a symmetric NAT
+
+if one of the peers is
 behind a symmetric NAT (${\cal P}^j_i$ in our example), the DBS
 handshake should also work.
 
@@ -77,51 +161,6 @@ unavailable, the NAT usually will assign the closer free port, usually
 in an incremental mode, although this has not been standarized. In the
 second case, the public port will be assigned at random.
 
-% NAT type anslysis
-\subsection{NAT type analysis}
-A incoming peer ${\cal P}^j_i$ can determine its NAT behavior using
-the following procedure:
-\begin{enumerate}
-\item Let $\{\mathsf{A}_0, \mathsf{A}_1, \cdots, \mathsf{A}_M\}$ the
-  public ports used by ${\cal P}^j_i$'s NAT to send the
-  [$\mathtt{hello}$] UDP packets towards ${\cal S}^j$ and the $M$
-  monitor peers of the team, in this order. This data is received by
-  ${\cal P}^j_i$ as a acknowledgement of the
-  [$\mathtt{hello}$]. Compute
-  \begin{equation}
-    \Delta_i = \mathsf{A}_i - \mathsf{A}_{i-1}
-    \label{eq:port_distancies}
-  \end{equation}
-  for $i=1,2,\cdots,M$, the port distances gathered by ${\cal P}^j_i$.
-\item Determine a \emph{port step}
-  \begin{equation}
-    \Delta = \left\{\begin{array}{lr}
-    0, & \text{if } \forall i, \Delta_i = 0 \\
-    \mathrm{GCD}(\Delta_1, \cdots, \Delta_m), & \text{otherwise}
-    \end{array}\right.
-    \label{eq:port_step}
-  \end{equation}
-  where GCD is the Greatest Common Divisor operator.
-\item If $\Delta=0$ (the NAT is using the same external port for
-  communicating $P_i$ with the rest of peers of the team) then $P_i$
-  is behind a cone NAT. Notice that public (not NATed) peers will be
-  considered as being using this type of NAT, also.
-\item If $\Delta>0$ (the NAT is using a different external port for
-  each external peer) then $P_i$ is behind a symmetric NAT. In this
-  case:
-  \begin{enumerate}
-  \item If
-    \begin{equation}
-      \Delta_1 = \Delta_2 = \cdots = \Delta_m
-    \end{equation}
-    then $P_i$'s NAT is using SPA.
-  \item If
-    \begin{equation}
-      \Delta = \lim_{m\to\infty} \mathrm{GCD}(\Delta_1, \cdots, \Delta_m) = 1.
-    \end{equation}
-    then $P_i$'s NAT is using RPA.
-  \end{enumerate}
-\end{enumerate}
 
 \subsection{Port prediction}
 The list of predicted ports that a the peer $P_x$ performs is
