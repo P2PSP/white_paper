@@ -48,11 +48,15 @@ In the case of port preservation, if $X$:$Y$ is the private end-point
 $Y$, if available (notice that $Y$ cound have been assigned to a
 previous communcation). If $Y$ were unavailable, the NAT usually will
 assign the closer free port (this is called ``sequentially port
-allocation''), usually incrementing the port value, although this has
+allocation''), usually by increasing the port value, although this has
 not been standarized at all.
 
 When random port allocation is implemented, the public port will be
-assigned at random.
+assigned at random. Notice that, even in SN-PPA configurations, in
+most of the real situations (where peers must compete with the rest of
+processes that use the network for the same NAT resources,) some kind
+of randomization should be always expected during a the port
+assignment.
 
 \subsection{NAT type analysis}
 A incoming peer ${\cal P}^t_i$ can determine its NAT behavior using
@@ -101,20 +105,61 @@ the following procedure:
   \end{enumerate}
 \end{enumerate}
 
-At this moment, we will divide our discussion about the performance of
-DBS (or an extension of it) in three different scenarios that a
-incoming peer ${\cal P}^t_i$ can found when joining a P2PSP team
-${\cal T}^t$: (1) that ${\cal P}^t_i$ is behind a cone NAT, (2) that
-${\cal P}^t_i$ is behind a symmetric NAT which uses port preservation
-and sequentially port allocation, and (3) that ${\cal P}^t_i$ is
-behind a random port symmetric NAT.
+\subsection{NAT traversal performance of DBS}
 
-\subsection{DBS over cone NATs}
-DBS should be able to establish an (UDP) communication among
-cone-NATed peers, independently on the packet filtering and port
-allocation algorithms that are implemented. An example of this
-behavior is shown in Fig.~\ref{fig:UDP-Hole-Punching-RCN}. Notice that
-source end-point filtering has been used in this example.
+\begin{table}
+  \centering
+  \begin{tabular}{l|r|r|r|r}
+    Peer1/2 & FCN   & PRCN  & SN-PPA & SN-RPA \\
+    \hline
+    FCN     & DBS   & DBS   & DBS    & DBS    \\
+    PRCN    & DBS   & DBS   & NTS    & -      \\
+    SN-PPA  & DBS   & NTS   & NTS    & -      \\
+    SN-RPA  & DBS   & -     & -      & -
+  \end{tabular}
+  \caption{NAT traversal success for different NAT type combinations (FCN = Full Cone NAT, PRC.
+    \label{tab:theoretical}}
+\end{table}
+
+Table~\ref{tab:theoretical} shows the theoretical traversal success of
+DBS (or an extension of it) for different NAT type combinations. Peer1
+represents to a peer already joined to the team, and Peer2 to an
+incoming peer. The entries labeled with ``DBS'' are those that will be
+handled by DBS out-of-the-box. An explanation of why the DBS handshake
+works is shown in Fig.~\ref{fig:UDP-Hole-Punching-RCN}.  Notice that
+source end-point filtering has been used in this example. On the other
+hand, the combinations labeled with ``-'' or ``NTS'' will not work
+with DBS (see Fig.\ref{fig:UDP-Hole-Punching_SN_failure}). In fact,
+only the ``NTS'' entries should work, in general, with NTS, depending
+on the port prediction algorithm and the number of
+tries. Fig.~\ref{fig:SNTuCPP-UHP} shows an example of an NTS (NAT
+traversal) success.
+
+\subsection{Port prediction}
+When both peers, Peer1 and Peer2, are behind symmetric NATs, both must
+predict the port that the NAT of the interlocutor peer will use to
+send the packets towards it. And obviously, this must be performed by
+each already incorporated peer that is behind a symmetric NAT.
+
+The list of predicted ports $Z$ that a a peer ${\cal P}^j_x$ performs
+is determined by:
+\begin{equation}
+  \begin{array}{rcl}
+    Z & = & \textsf{A}_0 + x + \{s\in\{0,1,\cdots,N/2-1\}\}; \\
+    Z & += & \textsf{A}_0 + (x + \{s\in\{0,1,\cdots, N-1\}\}) \cdot \Delta.
+  \end{array}
+\end{equation}
+where ``$+=$'' denotes the concatenation of lists and $N$ is the
+number of guessed ports, $\textsf{A}_0$ is the first external port (the
+port used to communicate with $S$) assigned to the incoming peer and
+$\Delta$ is the (maximum) port step measured for the incoming peer's
+NAT.
+
+% ---------
+
+
+
+
 
 \subsection{DBS over symmetric NATs}
 
@@ -163,16 +208,3 @@ second case, the public port will be assigned at random.
 
 
 \subsection{Port prediction}
-The list of predicted ports that a the peer $P_x$ performs is
-determined by:
-\begin{equation}
-  \begin{array}{rcl}
-    Z_x & = & \textsf{A}_0 + x + \{s\in\{0,1,\cdots,N/2-1\}\}; \\
-    Z_x & += & \textsf{A}_0 + (x + \{s\in\{0,1,\cdots, N-1\}\}) \cdot \Delta.
-  \end{array}
-\end{equation}
-where ``$+=$'' denotes the concatenation of lists and $N$ is the
-number of guessed ports, $\textsf{A}_0$ is the first external port (the
-port used to communicate with $S$) assigned to the incoming peer and
-$\Delta$ is the (maximum) port step measured for the incoming peer's
-NAT.
