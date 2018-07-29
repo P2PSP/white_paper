@@ -1,17 +1,17 @@
 % NTS
 
-Most peers run inside of ``private'' networks, behind NAT boxes. In
-this case, all peers behind the same NAT will use the same external
-(also called ``public'', because in most cases we have not anidated
-confgurations) IP address of the NAT. Basically, there exist two
-different types of NATs: (1) \emph{cone}, and (2) \emph{symmetric}. At
-the same time, NATs can implement different filtering strategies for
-the packets that comes from the external side: (a) \emph{no
-  filtering}, (b) \emph{source IP filtering}, and (c) \emph{source
-  end-point filtering}. Finally, NATs can use several port allocation
-algorithms, among which, the most frequent are: (i) \emph{port
-  preservation}, (ii) \emph{random port}. Notice that in this
-discussion, only UDP transmission will be considered.
+Most peers run inside of ``private'' networks, i.e., behind NAT
+devices. In this case, all peers behind the same NAT will use the same
+external (also called ``public'', because in most cases we have not
+nested NAT configurations) IP address of the NAT. Basically, there
+exist two different types of NATs: (1) \emph{cone}, and (2)
+\emph{symmetric}. At the same time, NATs can implement different
+filtering strategies for the packets that comes from the external
+side: (a) \emph{no filtering}, (b) \emph{source IP filtering}, and (c)
+\emph{source end-point filtering}. Finally, NATs can use several port
+allocation algorithms, among which, the most frequent are: (i)
+\emph{port preservation} and (ii) \emph{random port}. Notice that in
+this discussion, only UDP transmission will be considered.
 
 \subsection{Traffic filtering}
 Lets suppose a team in which, for the sake of simplicity, there is
@@ -19,15 +19,15 @@ only one external (public) peer ${\cal P}^t_e$, and that a new
 internal (private) peer ${\cal P}^t_i$ has sent the sequence of
 [$\mathtt{hello}$]'s (see Sec~\ref{sec:peer_joining}. Lets denote
 ${\cal P}^t_i$'s NAT as $\mathsf{A}$. When no filtering is used at
-all, $\mathsf{A}$ forwards to ${\cal P}^t_i$ any external packet
-that arrives to it (obviously, if it was sent to the only entry in
+all, $\mathsf{A}$ forwards to ${\cal P}^t_i$ any external packet that
+arrives to it (obviously, if it was sent to the entry in
 $\mathsf{A}$'s translation table that was created during the
 transmission of the sequence of [$\mathtt{hello}$]'s), independently
 on the source end-points of the packets. In the case of source IP
 filtering, $\mathsf{A}$ will forward the packets only if they come
 from ${\cal P}^t_e$'s host.  When source end-point filtering is used,
-$\mathsf{A}$ also checks the source port, i.e., that the packets
-were originated at ${\cal P}^t_e$'s end-point.
+$\mathsf{A}$ also checks the source port, i.e., that the packets were
+originated at ${\cal P}^t_e$'s end-point.
 
 \subsection{Cone VS symmetric}
 Cone NATs use the same external end-point for every packet that comes
