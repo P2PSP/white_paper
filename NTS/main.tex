@@ -48,8 +48,8 @@ In the case of port preservation, if $X$:$Y$ is the private end-point
 $Y$, if available (notice that $Y$ cound have been assigned to a
 previous communcation). If $Y$ were unavailable, the NAT usually will
 assign the closer free port (this is called ``sequentially port
-allocation''), usually by increasing the port value, although this has
-not been standarized at all.
+allocation''), usually by increasing the port value, although this
+behavior has not been standarized at all.
 
 When random port allocation is implemented, the public port will be
 assigned at random. Notice that, even in SN-PPA configurations, in
@@ -110,14 +110,20 @@ the following procedure:
 \begin{table}
   \centering
   \begin{tabular}{l|r|r|r|r}
-    Peer1/2 & FCN   & PRCN  & SN-PPA & SN-RPA \\
+    Peer1/2 & CN-NF & PRCN  & SN-PPA & SN-RPA \\
     \hline
     FCN     & DBS   & DBS   & DBS    & DBS    \\
     PRCN    & DBS   & DBS   & NTS    & -      \\
     SN-PPA  & DBS   & NTS   & NTS    & -      \\
     SN-RPA  & DBS   & -     & -      & -
   \end{tabular}
-  \caption{NAT traversal success for different NAT type combinations (FCN = Full Cone NAT, PRC.
+  \caption{NAT traversal success for different NAT typical
+    combinations.  CN-NF (also known by ``full cone NAT'') stands for
+    Cone NAT Not Filtering. CN-EP (also known by ``port restricted
+    cone NAT'') stands for Cone NAT End-point Filtering. SN-PPA stands
+    for Symmetric NAT Port Preservation Allocation and no packet
+    filtering has been considered. SN-RPA stands for Symmetric NAT
+    Random Port Allocation, and no packet filtering has been used.
     \label{tab:theoretical}}
 \end{table}
 
@@ -135,7 +141,7 @@ on the port prediction algorithm and the number of
 tries. Fig.~\ref{fig:SNTuCPP-UHP} shows an example of an NTS (NAT
 traversal) success.
 
-\subsection{Port prediction}
+\subsection{A port prediction algorithm}
 When both peers, Peer1 and Peer2, are behind symmetric NATs, both must
 predict the port that the NAT of the interlocutor peer will use to
 send the packets towards it. And obviously, this must be performed by
