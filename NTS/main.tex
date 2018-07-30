@@ -3,14 +3,16 @@
 Most most of the peers run inside of ``private'' networks, i.e. behind
 NAT devices. NTS\footnote{This work was supported by GSoC15, developed
   by Max Mertens, and mentored by Vicente González-Ruiz and Juan Pablo
-  Gracía-Ortiz.} is an DBS extension which provides peer connectivity
-for some NAT configurations DBS can not provide direct peer
-communication.\footnote{Normally, this problem does not prevent
-  prevent the peers from receiving the stream. However, a low degree
-  of connectivity among peers reduces the tolerance of the team to
-  transmission errors and attacks, and makes that the peers with a
-  higher degree to send more chunks that the others, which can be
-  considered undesirable in specific environments.}
+  Gracía-Ortiz. The original information is available at
+  \url{https://github.com/P2PSP/core/tree/master/doc/NTS}.} is an DBS
+extension which provides peer connectivity for some NAT configurations
+DBS can not provide direct peer communication.\footnote{Normally, this
+  problem does not prevent prevent the peers from receiving the
+  stream. However, a low degree of connectivity among peers reduces
+  the tolerance of the team to transmission errors and attacks, and
+  makes that the peers with a higher degree to send more chunks that
+  the others, which can be considered undesirable in specific
+  environments.}
 
 Peers behind the same NAT will use the same external (also called
 ``public'', because in most cases we have not nested NAT

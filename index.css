@@ -36,8 +36,10 @@
 .ectt-1000{ font-family: monospace;}
 .ectt-1000{ font-family: monospace;}
 .ectt-1000{ font-family: monospace;}
+.ectt-1000{ font-family: monospace;}
 .ecrm-0900{font-size:90%;}
 .ecbx-0900{font-size:90%; font-weight: bold;}
+.ecbx-0900{ font-weight: bold;}
 .ecbx-0900{ font-weight: bold;}
 .ecbx-0900{ font-weight: bold;}
 .ecbx-0900{ font-weight: bold;}
@@ -59,6 +61,8 @@
 .ectt-0900{ font-family: monospace;}
 .ectt-0900{ font-family: monospace;}
 .ectt-0900{ font-family: monospace;}
+.ectt-0900{ font-family: monospace;}
+.ecti-1000{ font-style: italic;}
 .ecti-1000{ font-style: italic;}
 .ecti-1000{ font-style: italic;}
 .ecti-1000{ font-style: italic;}
@@ -83,8 +87,22 @@
 .ecbx-1000{ font-weight: bold;}
 .ecbx-1000{ font-weight: bold;}
 .ecbx-1000{ font-weight: bold;}
+.ecbx-1000{ font-weight: bold;}
 .cmti-10{ font-style: italic;}
+.ectt-0800{font-size:80%; font-family: monospace;}
+.ectt-0800{ font-family: monospace;}
+.ectt-0800{ font-family: monospace;}
+.ectt-0800{ font-family: monospace;}
+.ectt-0800{ font-family: monospace;}
+.ectt-0800{ font-family: monospace;}
+.ectt-0800{ font-family: monospace;}
+.ectt-0800{ font-family: monospace;}
+.ectt-0800{ font-family: monospace;}
+.ectt-0800{ font-family: monospace;}
+.ectt-0800{ font-family: monospace;}
+.ectt-0800{ font-family: monospace;}
 .cmss-10{  font-family: sans-serif;}
+.ecss-1000{ font-family: sans-serif;}
 .ecss-1000{ font-family: sans-serif;}
 .ecss-1000{ font-family: sans-serif;}
 .ecss-1000{ font-family: sans-serif;}
