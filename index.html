@@ -24,7 +24,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">July 25, 2018</span></div>
+class="ecrm-1200">July 30, 2018</span></div>
    </div>
    <h3 class="likesectionHead"><a 
  id="x1-1000"></a>Contents</h3>
@@ -55,19 +55,33 @@ href="#x1-120005" id="QQ2-1-15">TAS (Topology Adaptation Set)</a></span>
 href="#x1-130006" id="QQ2-1-16">ACS (Adaptive Capacity Set)</a></span>
 <br />   <span class="sectionToc" >7 <a 
 href="#x1-140007" id="QQ2-1-17">MCS (Multi-Channel Set)</a></span>
+<br />   <span class="sectionToc" >8 <a 
+href="#x1-150008" id="QQ2-1-18">NTS (NAT Traversal Set)</a></span>
+<br />    <span class="subsectionToc" >8.1 <a 
+href="#x1-160008.1" id="QQ2-1-19">Traﬃc ﬁltering</a></span>
+<br />    <span class="subsectionToc" >8.2 <a 
+href="#x1-170008.2" id="QQ2-1-22">Cone VS symmetric</a></span>
+<br />    <span class="subsectionToc" >8.3 <a 
+href="#x1-180008.3" id="QQ2-1-23">Port allocation</a></span>
+<br />    <span class="subsectionToc" >8.4 <a 
+href="#x1-190008.4" id="QQ2-1-24">NAT type analysis</a></span>
+<br />    <span class="subsectionToc" >8.5 <a 
+href="#x1-200008.5" id="QQ2-1-25">(Theoretical) NAT traversal performance of DBS</a></span>
+<br />    <span class="subsectionToc" >8.6 <a 
+href="#x1-210008.6" id="QQ2-1-30">A port prediction algorithm</a></span>
    </div>
    <div 
 class="abstract" 
 >
+                                                                  
+
+                                                                  
 <div class="center" 
 >
 <!--l. 7--><p class="noindent" >
 </p><!--l. 7--><p class="noindent" ><span 
 class="ecbx-0900">Abstract</span></p></div>
 <!--l. 7--><p class="noindent" >
-                                                                  
-
-                                                                  
      </p><!--l. 1--><p class="indent" >   <span 
 class="ecrm-0900">P2PSP  is  an  application-layer  protocol  that  provides  real-time</span>
      <span 
@@ -186,7 +200,7 @@ class="MathClass-close">}</mo></mrow></math>.
                                                                   
 
                                                                   
-<!--l. 3--><p class="indent" >   <a 
+<!--l. 6--><p class="indent" >   <a 
  id="x1-30011"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
@@ -200,7 +214,7 @@ class="content">Tasks involved in peer joining.</span></div><!--tex4ht:label?: x
 
                                                                   
    </div><hr class="endfloat" />
-<!--l. 6--><p class="noindent" >An incoming peer <!--l. 6--><math 
+<!--l. 9--><p class="noindent" >An incoming peer <!--l. 9--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
@@ -213,12 +227,12 @@ class="MathClass-punc">?</mo></mrow></msubsup
 (see the tasks described in Fig. <a 
 href="#x1-30011">1<!--tex4ht:ref: fig:joining --></a>) must contact a <span 
 class="ecti-1000">tracker</span>
-<!--l. 7--><math 
+<!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 mathvariant="bold-script">ℛ</mi></math>
 to receive from it, supposing previously that in the team
-<!--l. 8--><math 
+<!--l. 11--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
@@ -226,7 +240,7 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msup 
 ></math> there is
-room for <!--l. 9--><math 
+room for <!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
@@ -240,7 +254,7 @@ a <span
 class="ecti-1000">reliable</span><span class="footnote-mark"><a 
 href="index2.html#fn1x0"><sup class="textsuperscript">1</sup></a></span><a 
  id="x1-3002f1"></a> 
-message <!--l. 13--><math 
+message <!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><msub><mrow 
@@ -250,7 +264,7 @@ mathvariant="bold-script">𝒮</mi></mrow><mrow
 >j</mi></mrow></msub 
 ></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>.
-Then, <!--l. 13--><math 
+Then, <!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
@@ -260,7 +274,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mo 
 class="MathClass-punc">?</mo></mrow></msubsup 
 ></math> request
-to <!--l. 14--><math 
+to <!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
@@ -268,7 +282,7 @@ mathvariant="bold-script">𝒮</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msup 
 ></math> to be
-included in <!--l. 14--><math 
+included in <!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
@@ -276,7 +290,7 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msup 
 ></math>.
-If <!--l. 15--><math 
+If <!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
@@ -284,7 +298,7 @@ mathvariant="bold-script">𝒮</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msup 
 ></math> accepts,
-then <!--l. 15--><math 
+then <!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
@@ -292,7 +306,7 @@ mathvariant="bold-script">𝒮</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msup 
 ></math>
-tranmits to <!--l. 15--><math 
+tranmits to <!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
@@ -302,7 +316,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msubsup 
 ></math>
-<!--l. 16--><math 
+<!--l. 19--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><msup><mrow 
@@ -311,7 +325,7 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msup 
 ></math>] (more preciselly, list of
-peers in <!--l. 16--><math 
+peers in <!--l. 19--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
@@ -319,7 +333,7 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msup 
 ></math>, in a reliable
-message), and runs <!--l. 17--><math 
+message), and runs <!--l. 20--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
@@ -341,7 +355,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msubsup 
 ></math>, in
-this order. While arriving, <!--l. 24--><math 
+this order. While arriving, <!--l. 27--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
@@ -351,7 +365,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msubsup 
 ></math>
-does not store <!--l. 24--><math 
+does not store <!--l. 27--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
@@ -359,7 +373,7 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msup 
 ></math> as it
-is received. Instead, <!--l. 25--><math 
+is received. Instead, <!--l. 28--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
@@ -369,7 +383,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msubsup 
 ></math>,
-for each <!--l. 25--><math 
+for each <!--l. 28--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
@@ -387,12 +401,12 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 >j</mi></mrow></msup 
 ></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>, sends
-an (unreliable) <!--l. 26--><math 
+an (unreliable) <!--l. 29--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
-message to <!--l. 26--><math 
+message to <!--l. 29--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
@@ -402,7 +416,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msubsup 
 ></math>, and
-when <!--l. 27--><math 
+when <!--l. 30--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
@@ -412,12 +426,12 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msubsup 
 ></math> receives
-a <!--l. 27--><math 
+a <!--l. 30--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>, it performs
-<!--l. 28--><math 
+<!--l. 31--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
@@ -443,7 +457,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msubsup 
 ></math>. Therefore, the list
-of peers <!--l. 29--><math 
+of peers <!--l. 32--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
@@ -453,7 +467,7 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msubsup 
 ></math> that a peer
-<!--l. 29--><math 
+<!--l. 32--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
@@ -463,13 +477,13 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msubsup 
 ></math> has, depends in ﬁrst
-instance, on the number of <!--l. 30--><math 
+instance, on the number of <!--l. 33--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
 messages that it has received. In other words, it holds that
-<!--l. 31--><math 
+<!--l. 34--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mo 
 class="MathClass-rel">|</mo><msubsup><mrow 
@@ -1407,14 +1421,14 @@ the monitors (normal peers does no need to implement LRS or its extensions).
 </p>
    <h3 class="sectionHead"><span class="titlemark">5   </span> <a 
  id="x1-120005"></a>TAS (Topology Adaptation Set)</h3>
-<!--l. 1--><p class="noindent" >In TAS, all peers trace the chunks, appending in the packet the end-point of each hup
-in the overlay network. When at least one of the monitors (selected by the splitter)
-receives each chunk, it sends to the splitter the trace for each received chunk. The
-splitter gathers this information and counts the number of times each peer is
-referenced in the traces, in a round. The counter for a peer speaks of its connectivity
-degree. Notice that the connectivity graph of the overlay can be computed, simply by
-following the traces.
-</p><!--l. 10--><p class="indent" >   After knowing the connectivity degree of each peer, the slitter can adapt the
+<!--l. 1--><p class="noindent" >In TAS, the splitter request to each peer of the team the list of neighbors
+(peers that send chunks directly, in one hop). This communication is reliable
+(TCP) and transmits the lists as a collection of end-points. The number of
+requests per round is limited by the available bandwidth in the overlay, and by
+the request-ratio deﬁned at the splitter. Obviously, the higher the ratio, a
+more accurate description of the real connectivity in the overlay will be
+obtained.
+</p><!--l. 12--><p class="indent" >   After knowing the connectivity degree of each peer, the slitter can adapt the
 round-robing scheduling of the origin peers by sending a number of chunks
 proportional to the inverse of the degree.
 </p><!--l. 31--><p class="noindent" >
@@ -1462,10 +1476,868 @@ SVC media, peers should prioritize the reception of the most important layers.
 Finally, a pure CS service could be provided if the corresponding splitter announces
 one empty team and sends each chunk so many times as teams (with one peer/team)
 there are.
+</p><!--l. 39--><p class="noindent" >
+</p>
+   <h3 class="sectionHead"><span class="titlemark">8   </span> <a 
+ id="x1-150008"></a>NTS (NAT Traversal Set)</h3>
+<!--l. 3--><p class="noindent" >Most most of the peers run inside of “private” networks, i.e. behind NAT devices.
+NTS<span class="footnote-mark"><a 
+href="index3.html#fn2x0"><sup class="textsuperscript">2</sup></a></span><a 
+ id="x1-15001f2"></a> 
+is an DBS extension which provides peer connectivity for
+some NAT conﬁgurations DBS can not provide direct peer
+                                                                  
+
+                                                                  
+communication.<span class="footnote-mark"><a 
+href="index4.html#fn3x0"><sup class="textsuperscript">3</sup></a></span><a 
+ id="x1-15002f3"></a> 
+</p><!--l. 15--><p class="indent" >   Peers behind the same NAT will use the same external (also called “public”,
+because in most cases we have not nested NAT conﬁgurations) IP address of the
+NAT. Basically, there exist two diﬀerent types of NATs: (1) <span 
+class="ecti-1000">cone</span>, and (2) <span 
+class="ecti-1000">symmetric</span>.
+At the same time, NATs can implement diﬀerent ﬁltering strategies for the packets
+that comes from the external side: (a) <span 
+class="ecti-1000">no ﬁltering</span>, (b) <span 
+class="ecti-1000">source IP ﬁltering</span>, and
+(c) <span 
+class="ecti-1000">source end-point ﬁltering</span>. Finally, NATs can use several port allocation
+algorithms, among which, the most frequent are: (i) <span 
+class="ecti-1000">port preservation </span>and (ii)
+<span 
+class="ecti-1000">random port</span>. Notice that in this discussion, only UDP transmission will be
+considered.
+</p>
+   <h4 class="subsectionHead"><span class="titlemark">8.1   </span> <a 
+ id="x1-160008.1"></a>Traﬃc ﬁltering</h4>
+<!--l. 28--><p class="noindent" >Lets suppose a team in which, for the sake of simplicity, there is only one external (public) peer
+<!--l. 29--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msubsup 
+></math>, and that a new internal
+(private) peer <!--l. 30--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>i</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msubsup 
+></math> has sent
+the sequence of [<!--l. 31--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">hello</mi></math>]’s (see
+Sec <a 
+href="#x1-30001.1">1.1<!--tex4ht:ref: sec:peer_joining --></a>. Lets denote <!--l. 32--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>i</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msubsup 
+></math>’s
+NAT as <!--l. 32--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="sans-serif">A</mi></math>. When no
+ﬁltering is used at all, <!--l. 33--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="sans-serif">A</mi></math>
+forwards to <!--l. 33--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>i</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msubsup 
+></math>
+any external packet that arrives to it (obviously, if it was sent to the entry in
+<!--l. 35--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="sans-serif">A</mi></math>’s
+translation table that was created during the transmission of the sequence of
+[<!--l. 36--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">hello</mi></math>]’s),
+independently on the source end-points of the packets. In the case of source (IP) address
+ﬁltering, <!--l. 38--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="sans-serif">A</mi></math>
+will forward the packets only if they come from
+<!--l. 39--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msubsup 
+></math>’s host. When source
+end-point ﬁltering is used, <!--l. 40--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="sans-serif">A</mi></math>
+also checks the source port, i.e., that the packets were originated at
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msubsup 
+></math>’s
+end-point.
+</p>
+   <hr class="figure" /><div class="figure" 
+>
+                                                                  
+
+                                                                  
+<a 
+ id="x1-160014"></a>
+                                                                  
+
+                                                                  
+<!--l. 44--><p class="noindent" > <div style="text-align:center;"> <img height=200 src="graphics/cone_NAT.png" /> </div> 
+<br /> </p><div class="caption" 
+><span class="id">Figure 4: </span><span  
+class="content">Cone NAT port allocation.</span></div><!--tex4ht:label?: x1-160014 -->
+                                                                  
+
+                                                                  
+   </div><hr class="endfigure" />
+   <hr class="figure" /><div class="figure" 
+>
+                                                                  
+
+                                                                  
+<a 
+ id="x1-160025"></a>
+                                                                  
+
+                                                                  
+<!--l. 49--><p class="noindent" > <div style="text-align:center;"> <img height=200 src="graphics/symmetric_NAT.png" /> </div> 
+<br /> </p><div class="caption" 
+><span class="id">Figure 5: </span><span  
+class="content">Symmetric NAT port allocation.</span></div><!--tex4ht:label?: x1-160025 -->
+                                                                  
+
+                                                                  
+   </div><hr class="endfigure" />
+   <h4 class="subsectionHead"><span class="titlemark">8.2   </span> <a 
+ id="x1-170008.2"></a>Cone VS symmetric</h4>
+<!--l. 54--><p class="noindent" >Cone NATs use the same external end-point for every packet that comes from the same
+internal end-point, independently on the destination of the packets (see Fig. <a 
+href="#x1-160025">5<!--tex4ht:ref: fig:cone_NAT --></a>). For the
+external peer <!--l. 56--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msubsup 
+></math>,
+the situation is identical to the case in which the NATed peer
+<!--l. 58--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>i</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msubsup 
+></math> would
+be running in a public host.
+</p><!--l. 60--><p class="indent" >   Symmetric NATs use diﬀerent external end-points for diﬀerent packets that comes from
+the same internal end-point, when these packets have diﬀerent destination end-points
+(see Fig. <span 
+class="ecbx-1000">??</span>). Thus, two diﬀerent external peers will see two diﬀerent public end-points
+of <!--l. 64--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msubsup 
+></math>.
+</p><!--l. 66--><p class="noindent" >
+</p>
+   <h4 class="subsectionHead"><span class="titlemark">8.3   </span> <a 
+ id="x1-180008.3"></a>Port allocation</h4>
+<!--l. 67--><p class="noindent" >In  the  case  of  port  preservation,  if
+<!--l. 67--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>X</mi></math>:<!--l. 67--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>Y</mi> </math>
+is the private end-point (IP address:port) of a UDP packet, the NAT will use the public port
+<!--l. 69--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>Y</mi> </math>, if available
+(notice that <!--l. 69--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>Y</mi> </math>
+cound have been assigned to a previous communcation). If
+<!--l. 70--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>Y</mi> </math> were
+unavailable, the NAT usually will assign the closer free port (this is called
+“sequentially port allocation”), usually by increasing the port value, although this
+behavior has not been standarized at all.
+</p><!--l. 75--><p class="indent" >   When random port allocation is implemented, the public port will be assigned at
+random. Notice that, even in SN-PPA conﬁgurations, in most of the real situations
+(where peers must compete with the rest of processes that use the network for the
+same NAT resources,) some kind of randomization should be always expected during
+a the port assignment.
+</p><!--l. 82--><p class="noindent" >
+</p>
+   <h4 class="subsectionHead"><span class="titlemark">8.4   </span> <a 
+ id="x1-190008.4"></a>NAT type analysis</h4>
+<!--l. 83--><p class="noindent" >An incoming peer <!--l. 83--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>i</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msubsup 
+></math>
+can determine its NAT behavior using the following steps:
+     </p><ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-19002x1">Let <!--l. 86--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow ><mo 
+class="MathClass-open">{</mo><mrow><msub><mrow 
+><mi mathvariant="sans-serif">A</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+><mo 
+class="MathClass-punc">,</mo><msub><mrow 
+><mi mathvariant="sans-serif">A</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-punc">,</mo><mo 
+class="MathClass-rel">⋯</mo><mspace width="0.3em" class="thinspace"/><mo 
+class="MathClass-punc">,</mo><msub><mrow 
+><mi mathvariant="sans-serif">A</mi></mrow><mrow 
+><mi 
+>M</mi></mrow></msub 
+></mrow><mo 
+class="MathClass-close">}</mo></mrow></math> the public
+     ports used by peer <!--l. 87--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>i</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msubsup 
+></math>,
+                                                                  
+
+                                                                  
+     whose NAT is <!--l. 87--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="sans-serif">A</mi></math>, to
+     send the [<!--l. 88--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">hello</mi></math>] UDP
+     packets towards <!--l. 88--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+mathvariant="bold-script">𝒮</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msup 
+></math>
+     and the <!--l. 89--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>M</mi></math>
+     monitor peers of the team, in this order. This data is known by
+     <!--l. 90--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>i</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msubsup 
+></math>
+     after receiving the acknowledgment of each
+     [<!--l. 91--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">hello</mi></math>].
+     Compute <table class="equation"><tr><td> <a 
+ id="x1-19003r1"></a>
+     <!--l. 92--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                                         <msub><mrow 
+><mi 
+>Δ</mi></mrow><mrow 
+><mi 
+>k</mi></mrow></msub 
+> <mo 
+class="MathClass-rel">=</mo><msub><mrow 
+> <mi mathvariant="sans-serif">A</mi></mrow><mrow 
+><mi 
+>k</mi></mrow></msub 
+> <mo 
+class="MathClass-bin">−</mo><msub><mrow 
+><mi mathvariant="sans-serif">A</mi></mrow><mrow 
+><mi 
+>k</mi><mo 
+class="MathClass-bin">−</mo><mn>1</mn></mrow></msub 
+>
+</math></td><td class="eq-no">(1)</td></tr></table>
+     <!--l. 96--><p class="noindent" >for <!--l. 96--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>k</mi> <mo 
+class="MathClass-rel">=</mo> <mn>1</mn><mo 
+class="MathClass-punc">,</mo><mn>2</mn><mo 
+class="MathClass-punc">,</mo><mo 
+class="MathClass-rel">⋯</mo><mspace width="0.3em" class="thinspace"/><mo 
+class="MathClass-punc">,</mo><mi 
+>M</mi></math>, the <span 
+class="ecti-1000">port distances</span>
+     gathered by <!--l. 96--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>i</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msubsup 
+></math>.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-19005x2">Determine a <span 
+class="ecti-1000">port step </span><table class="equation"><tr><td> <a 
+ id="x1-19006r2"></a>
+     <!--l. 99--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mi 
+>Δ</mi> <mo 
+class="MathClass-rel">=</mo> <mfenced separators="" 
+open="{"  close="" ><mrow> <mtable  align="axis" style=""  
+equalrows="false" columnlines="none" equalcolumns="false" class="array"> <mtr><mtd 
+class="array"  columnalign="left">  <mn>0</mn><mo 
+class="MathClass-punc">,</mo>                   </mtd><mtd 
+class="array"  columnalign="right"> <mstyle 
+class="text"><mtext  >if </mtext></mstyle><mo 
+class="MathClass-op">∀</mo><mi 
+>i</mi><mo 
+class="MathClass-punc">,</mo><msub><mrow 
+><mi 
+>Δ</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+> <mo 
+class="MathClass-rel">=</mo> <mn>0</mn> </mtd>
+</mtr>  <mtr><mtd 
+class="array"  columnalign="left">  <mi mathvariant="normal">GCD</mi><mrow ><mo 
+class="MathClass-open">(</mo><mrow><msub><mrow 
+><mi 
+>Δ</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-punc">,</mo><mo 
+class="MathClass-rel">⋯</mo><mspace width="0.3em" class="thinspace"/><mo 
+class="MathClass-punc">,</mo><msub><mrow 
+><mi 
+>Δ</mi></mrow><mrow 
+><mi 
+>m</mi></mrow></msub 
+></mrow><mo 
+class="MathClass-close">)</mo></mrow><mo 
+class="MathClass-punc">,</mo> </mtd><mtd 
+class="array"  columnalign="right">    <mstyle 
+class="text"><mtext  >otherwise</mtext></mstyle>  </mtd></mtr><!--lr--></mtable>                                                         </mrow></mfenced>
+</math></td><td class="eq-no">(2)</td></tr></table>
+     <!--l. 106--><p class="noindent" >where GCD is the Greatest Common Divisor operator.
+     </p></li>
+     <li 
+  class="enumerate" id="x1-19008x3">If <!--l. 107--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>Δ</mi> <mo 
+class="MathClass-rel">=</mo> <mn>0</mn></math>
+     (<!--l. 107--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="sans-serif">A</mi></math>
+     is using the same external port for communicating
+     <!--l. 108--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>i</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msubsup 
+></math> with the rest of peers
+     of the team) then <!--l. 109--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>i</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msubsup 
+></math>
+                                                                  
+
+                                                                  
+     is behind a cone NAT. Notice that public (not NATed) peers will be considered
+     as being using this type of NAT, also.
+     </li>
+     <li 
+  class="enumerate" id="x1-19010x4">If <!--l. 112--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>Δ</mi> <mo 
+class="MathClass-rel">&#x003E;</mo> <mn>0</mn></math>
+     (<!--l. 112--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="sans-serif">A</mi></math>
+     is using a diﬀerent external port for each external peer) then
+     <!--l. 113--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>i</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msubsup 
+></math>
+     is behind a symmetric NAT. In this case:
+         <ol  class="enumerate2" >
+         <li 
+  class="enumerate" id="x1-19012x1">If <table class="equation"><tr><td> <a 
+ id="x1-19013r3"></a>
+         <!--l. 117--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                                       <msub><mrow 
+><mi 
+>Δ</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel">=</mo> <msub><mrow 
+><mi 
+>Δ</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-rel">=</mo> <mo 
+class="MathClass-rel">⋯</mo> <mo 
+class="MathClass-rel">=</mo> <msub><mrow 
+><mi 
+>Δ</mi></mrow><mrow 
+><mi 
+>m</mi></mrow></msub 
+>
+</math></td><td class="eq-no">(3)</td></tr></table>
+         <!--l. 120--><p class="noindent" >then <!--l. 120--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="sans-serif">A</mi></math>
+         is using sequentially port allocation.
+         </p></li>
+         <li 
+  class="enumerate" id="x1-19015x2">If <table class="equation"><tr><td> <a 
+ id="x1-19016r4"></a>
+         <!--l. 122--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                            <mi 
+>Δ</mi> <mo 
+class="MathClass-rel">=</mo><munder class="msub"><mrow 
+><mo class="qopname"> lim</mo></mrow><mrow 
+><mi 
+>m</mi><mo 
+class="MathClass-rel">→</mo><mi 
+>∞</mi></mrow></munder 
+><mi mathvariant="normal">GCD</mi><mrow ><mo 
+class="MathClass-open">(</mo><mrow><msub><mrow 
+><mi 
+>Δ</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-punc">,</mo><mo 
+class="MathClass-rel">⋯</mo><mspace width="0.3em" class="thinspace"/><mo 
+class="MathClass-punc">,</mo><msub><mrow 
+><mi 
+>Δ</mi></mrow><mrow 
+><mi 
+>m</mi></mrow></msub 
+></mrow><mo 
+class="MathClass-close">)</mo></mrow> <mo 
+class="MathClass-rel">=</mo> <mn>1</mn><mo 
+class="MathClass-punc">.</mo>
+</math></td><td class="eq-no">(4)</td></tr></table>
+         <!--l. 125--><p class="noindent" >then <!--l. 125--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="sans-serif">A</mi></math>
+         is using random port allocation.</p></li></ol>
+     </li></ol>
+                                                                  
+
+                                                                  
+<!--l. 129--><p class="noindent" >
+</p>
+   <h4 class="subsectionHead"><span class="titlemark">8.5   </span> <a 
+ id="x1-200008.5"></a>(Theoretical) NAT traversal performance of DBS</h4>
+   <div class="table">
+                                                                  
+
+                                                                  
+<!--l. 132--><p class="indent" >   <a 
+ id="x1-200011"></a></p><hr class="float" /><div class="float" 
+>
+                                                                  
+
+                                                                  
+<div class="tabular"> <table id="TBL-3" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-3-1g"><col 
+id="TBL-3-1" /></colgroup><colgroup id="TBL-3-2g"><col 
+id="TBL-3-2" /></colgroup><colgroup id="TBL-3-3g"><col 
+id="TBL-3-3" /></colgroup><colgroup id="TBL-3-4g"><col 
+id="TBL-3-4" /></colgroup><colgroup id="TBL-3-5g"><col 
+id="TBL-3-5" /></colgroup><colgroup id="TBL-3-6g"><col 
+id="TBL-3-6" /></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-3-1-"><td  style="text-align:left; white-space:nowrap;" id="TBL-3-1-1"  
+class="td11"> Peer1/2  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-1-2"  
+class="td11">  CN  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-1-3"  
+class="td11"> CN-AF  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-1-4"  
+class="td11"> CN-EF  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-1-5"  
+class="td11"> SN-PPA  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-1-6"  
+class="td11"> SN-RPA  </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-2-"><td  style="text-align:left; white-space:nowrap;" id="TBL-3-2-1"  
+class="td11"> CN         </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-2-2"  
+class="td11"> DBS  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-2-3"  
+class="td11">   DBS  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-2-4"  
+class="td11">   DBS  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-2-5"  
+class="td11">    DBS  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-2-6"  
+class="td11">    DBS  </td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-3-"><td  style="text-align:left; white-space:nowrap;" id="TBL-3-3-1"  
+class="td11"> CN-AF </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-3-2"  
+class="td11"> DBS </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-3-3"  
+class="td11"> DBS </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-3-4"  
+class="td11"> DBS </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-3-5"  
+class="td11"> NTS </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-3-6"  
+class="td11"> -</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-4-"><td  style="text-align:left; white-space:nowrap;" id="TBL-3-4-1"  
+class="td11"> CN-EF    </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-4-2"  
+class="td11"> DBS  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-4-3"  
+class="td11">   DBS  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-4-4"  
+class="td11">   DBS  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-4-5"  
+class="td11">    NTS  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-4-6"  
+class="td11">        -  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-5-"><td  style="text-align:left; white-space:nowrap;" id="TBL-3-5-1"  
+class="td11"> SN-PPA  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-5-2"  
+class="td11"> DBS  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-5-3"  
+class="td11">   NTS  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-5-4"  
+class="td11">   NTS  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-5-5"  
+class="td11">    NTS  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-5-6"  
+class="td11">        -  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-6-"><td  style="text-align:left; white-space:nowrap;" id="TBL-3-6-1"  
+class="td11"> SN-RPA  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-6-2"  
+class="td11"> DBS  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-6-3"  
+class="td11">       -  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-6-4"  
+class="td11">      -  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-6-5"  
+class="td11">       -  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-3-6-6"  
+class="td11">        -  </td></tr></table></div>
+<br /> <div class="caption" 
+><span class="id">Table 1: </span><span  
+class="content">NAT traversal success for diﬀerent NAT typical combinations. CN-NF
+(also known by “full cone NAT”) stands for Cone NAT (without packet ﬁltering).
+CN-AF (also known as “restricted cone NAT”) stands for Cone NAT with source
+Address Filtering. CN-EF (also known by “port restricted cone NAT”) stands for
+Cone NAT source End-point Filtering. SN-PPA stands for Symmetric NAT Port
+Preservation Allocation, and no packet ﬁltering has been considered. SN-RPA
+stands for Symmetric NAT Random Port Allocation, and no packet ﬁltering has
+been used. </span></div><!--tex4ht:label?: x1-200011 -->
+                                                                  
+
+                                                                  
+   </div><hr class="endfloat" />
+   </div>
+   <hr class="figure" /><div class="figure" 
+>
+                                                                  
+
+                                                                  
+<a 
+ id="x1-200026"></a>
+                                                                  
+
+                                                                  
+<!--l. 155--><p class="noindent" > <div style="text-align:center;"> <img height=400 src="graphics/UDP_Hole_Punching_RCN.png" /> </div> 
+<br /> </p><div class="caption" 
+><span class="id">Figure 6: </span><span  
+class="content">An example that shows why it is possible to establish a connection
+with                  DBS                  when                  two                  peers
+<!--l. 158--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></math>
+and
+<!--l. 158--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>
+that are behind cone NATs.</span></div><!--tex4ht:label?: x1-200026 -->
+                                                                  
+
+                                                                  
+   </div><hr class="endfigure" />
+   <hr class="figure" /><div class="figure" 
+>
+                                                                  
+
+                                                                  
+<a 
+ id="x1-200037"></a>
+                                                                  
+
+                                                                  
+<!--l. 162--><p class="noindent" > <div style="text-align:center;"> <img height=400 src="graphics/UDP_Hole_Punching_SN_failure.png" /> </div> 
+<br />           </p><div class="caption" 
+><span class="id">Figure 7:                  </span><span  
+class="content">An                  example                  that
+shows why its is impossible to establish a connection with DBS when two peers
+<!--l. 165--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></math>
+and
+<!--l. 165--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>
+that are behind symmetric NATs.</span></div><!--tex4ht:label?: x1-200037 -->
+                                                                  
+
+                                                                  
+   </div><hr class="endfigure" />
+                                                                  
+
+                                                                  
+<!--l. 169--><p class="indent" >   <a 
+ id="x1-200048"></a></p><hr class="float" /><div class="float" 
+>
+                                                                  
+
+                                                                  
+ <div style="text-align:center;"> <img height=600 src="graphics/SNTuCPP.png" /> </div> 
+<br /> <div class="caption" 
+><span class="id">Figure 8:  </span><span  
+class="content">Timeline  of  an  (ideal)  NTS  interaction  between  two  peers
+<!--l. 172--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></math>
+and
+<!--l. 172--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>
+which are behind symmetric NATs. </span></div><!--tex4ht:label?: x1-200048 -->
+                                                                  
+
+                                                                  
+   </div><hr class="endfloat" />
+<!--l. 175--><p class="indent" >   Table <a 
+href="#x1-200011">1<!--tex4ht:ref: tab:theoretical --></a> shows the theoretical traversal success of DBS (or an extension of it) for
+diﬀerent NAT type combinations. Peer1 represents to a peer already joined to the
+team, and Peer2 to an incoming peer. The entries labeled with “DBS” are those that
+will be handled by DBS, out-of-the-box. An explanation of why the DBS handshake
+works for such conﬁgurations is shown in Fig. <span 
+class="ecbx-1000">??</span>. Notice that source end-point
+ﬁltering has been used in this example, although a similar results should be obtained
+for simple source address ﬁltering. On the other hand, the combinations labeled with
+“-” or “NTS” will not work with DBS (see Fig.<a 
+href="#x1-200037">7<!--tex4ht:ref: fig:UDP_Hole_Punching_SN_failure --></a>). In fact, only the “NTS” entries
+should work, in general, with NTS, depending on the port prediction algorithm and
+the number of tries. Fig. <a 
+href="#x1-200048">8<!--tex4ht:ref: fig:SNTuCPP --></a> shows an example of an NTS (NAT traversal)
+success.
+</p><!--l. 191--><p class="indent" >   Summarizing, NTS can provide connectivity for those peers that are behind
+port-preservation symmetric NATs with sequential port allocation.
+</p>
+   <h4 class="subsectionHead"><span class="titlemark">8.6   </span> <a 
+ id="x1-210008.6"></a>A port prediction algorithm</h4>
+<!--l. 196--><p class="noindent" >When both peers, Peer1 and Peer2, are behind symmetric NATs, both must predict
+the port that the NAT of the interlocutor peer will use to send the packets towards
+it. And obviously, this must be performed by each already incorporated peer that is
+behind a symmetric NAT.
+</p><!--l. 201--><p class="indent" >   The list of predicted ports <!--l. 201--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>Z</mi></math>
+that a a peer <!--l. 201--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+mathvariant="bold-script">𝒫</mi></mrow><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msubsup 
+></math>
+performs is determined by: </p><table class="equation"><tr><td> <a 
+ id="x1-21001r5"></a>
+<!--l. 203--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+ <mtable  align="axis" style=""  
+equalrows="false" columnlines="none none" equalcolumns="false" class="array"> <mtr><mtd 
+class="array"  columnalign="right">  <mi 
+>Z</mi> </mtd><mtd 
+class="array"  columnalign="center">   <mo 
+class="MathClass-rel">=</mo>   </mtd><mtd 
+class="array"  columnalign="left"> <msub><mrow 
+></mtext><mtext class="textsf" mathvariant="sans-serif" ><mstyle 
+class="text"><mtext class="textsf" mathvariant="sans-serif" >A</mtext></mstyle></mrow><mrow 
+><mn>0</mn></mrow></msub 
+> <mo 
+class="MathClass-bin">+</mo> <mi 
+>x</mi> <mo 
+class="MathClass-bin">+</mo> <mrow ><mo 
+class="MathClass-open">{</mo><mrow><mi 
+>s</mi> <mo 
+class="MathClass-rel">∈</mo><mrow ><mo 
+class="MathClass-open">{</mo><mrow><mn>0</mn><mo 
+class="MathClass-punc">,</mo><mn>1</mn><mo 
+class="MathClass-punc">,</mo><mo 
+class="MathClass-rel">⋯</mo><mspace width="0.3em" class="thinspace"/><mo 
+class="MathClass-punc">,</mo><mi 
+>N</mi><mo 
+class="MathClass-bin">∕</mo><mn>2</mn> <mo 
+class="MathClass-bin">−</mo> <mn>1</mn></mrow><mo 
+class="MathClass-close">}</mo></mrow></mrow><mo 
+class="MathClass-close">}</mo></mrow><mo 
+class="MathClass-punc">;</mo>      </mtd>
+</mtr>  <mtr><mtd 
+class="array"  columnalign="right">  <mi 
+>Z</mi> </mtd><mtd 
+class="array"  columnalign="center"> <mo 
+class="MathClass-bin">+</mo> <mo 
+class="MathClass-rel">=</mo> </mtd><mtd 
+class="array"  columnalign="left"> <msub><mrow 
+></mtext><mtext class="textsf" mathvariant="sans-serif" ><mstyle 
+class="text"><mtext class="textsf" mathvariant="sans-serif" >A</mtext></mstyle></mrow><mrow 
+><mn>0</mn></mrow></msub 
+> <mo 
+class="MathClass-bin">+</mo> <mrow ><mo 
+class="MathClass-open">(</mo><mrow><mi 
+>x</mi> <mo 
+class="MathClass-bin">+</mo> <mrow ><mo 
+class="MathClass-open">{</mo><mrow><mi 
+>s</mi> <mo 
+class="MathClass-rel">∈</mo><mrow ><mo 
+class="MathClass-open">{</mo><mrow><mn>0</mn><mo 
+class="MathClass-punc">,</mo><mn>1</mn><mo 
+class="MathClass-punc">,</mo><mo 
+class="MathClass-rel">⋯</mo><mspace width="0.3em" class="thinspace"/><mo 
+class="MathClass-punc">,</mo><mi 
+>N</mi> <mo 
+class="MathClass-bin">−</mo> <mn>1</mn></mrow><mo 
+class="MathClass-close">}</mo></mrow></mrow><mo 
+class="MathClass-close">}</mo></mrow></mrow><mo 
+class="MathClass-close">)</mo></mrow> <mo 
+class="MathClass-bin">⋅</mo> <mi 
+>Δ</mi><mo 
+class="MathClass-punc">.</mo> </mtd></mtr><!--rcl--></mtable>
+</math></td><td class="eq-no">(5)</td></tr></table>
+<!--l. 209--><p class="indent" >   where “<!--l. 209--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-bin">+</mo> <mo 
+class="MathClass-rel">=</mo></math>” denotes the
+concatenation of lists and <!--l. 209--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>N</mi></math> is
+the number of guessed ports, <!--l. 210--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+></mtext><mtext class="textsf" mathvariant="sans-serif" ><mstyle 
+class="text"><mtext class="textsf" mathvariant="sans-serif" >A</mtext></mstyle></mrow><mrow 
+><mn>0</mn></mrow></msub 
+></math>
+is the ﬁrst external port (the port used to communicate with
+<!--l. 211--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>S</mi></math>) assigned to the
+incoming peer and <!--l. 212--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>Δ</mi></math>
+is the (maximum) port step measured for the incoming peer’s NAT.
+                                                                  
+
+                                                                  
 </p><!--l. 1--><p class="noindent" >
 </p>
    <h3 class="likesectionHead"><a 
- id="x1-150007"></a>References</h3>
+ id="x1-220008.6"></a>References</h3>
 <!--l. 1--><p class="noindent" >
    </p><div class="thebibliography">
    <p class="bibitem" ><span class="biblabel">
@@ -1479,9 +2351,6 @@ class="ecti-1000">Expo, 2007 IEEE International Conference on</span>, pages 400�
    <p class="bibitem" ><span class="biblabel">
  [2]<span class="bibsp">   </span></span><a 
  id="Xchu2009auction"></a>Xiaowen  Chu,  Kaiyong  Zhao,  Zongpeng  Li,  and  Anirban  Mahanti.
-                                                                  
-
-                                                                  
    Auction-based  on-demand  p2p  min-cost  media  streaming  with  network
    coding.      <span 
 class="ecti-1000">IEEE  Transactions  on  Parallel  and  Distributed  Systems</span>,

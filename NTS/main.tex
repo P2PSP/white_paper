@@ -40,16 +40,26 @@ come from ${\cal P}^t_e$'s host.  When source end-point filtering is
 used, $\mathsf{A}$ also checks the source port, i.e., that the packets
 were originated at ${\cal P}^t_e$'s end-point.
 
+\begin{figure}
+  \fig{200}{6cm}{cone_NAT}
+  \caption{Cone NAT port allocation.\label{fig:cone_NAT}}
+\end{figure}
+
+\begin{figure}
+  \fig{200}{6cm}{symmetric_NAT}
+  \caption{Symmetric NAT port allocation.\label{fig:cone_NAT}}
+\end{figure}
+
 \subsection{Cone VS symmetric}
 Cone NATs use the same external end-point for every packet that comes
 from the same internal end-point, independently on the destination of
-the packets (see Fig.~\ref{fig:cone}). For the external peer ${\cal
+the packets (see Fig.~\ref{fig:cone_NAT}). For the external peer ${\cal
   P}^t_e$, the situation is identical to the case in which the NATed
 peer ${\cal P}^t_i$ would be running in a public host.
 
 Symmetric NATs use different external end-points for different packets
 that comes from the same internal end-point, when these packets have
-different destination end-points (see Fig.~\ref{fig:symmetric}). Thus,
+different destination end-points (see Fig.~\ref{fig:symmetric_NAT}). Thus,
 two different external peers will see two different public end-points
 of ${\cal P}^t_e$.
 
@@ -120,7 +130,7 @@ the following steps:
 
 \begin{table}
   \centering
-  \begin{tabular}{l|r|r|r|r}
+  \begin{tabular}{l|r|r|r|r|r}
     Peer1/2 & CN    & CN-AF & CN-EF & SN-PPA & SN-RPA \\
     \hline
     CN      & DBS   & DBS   & DBS   & DBS    & DBS    \\
@@ -141,20 +151,41 @@ the following steps:
     \label{tab:theoretical}}
 \end{table}
 
+\begin{figure}
+  \fig{400}{6cm}{UDP_Hole_Punching_RCN}
+  \caption{An example that shows why it is possible to establish a
+    connection with DBS when two peers $P_1$ and $P_2$ that are behind
+    cone NATs.\label{fig:UHP_Hole_Punching_RCN}}
+\end{figure}
+
+\begin{figure}
+  \fig{400}{6cm}{UDP_Hole_Punching_SN_failure}
+  \caption{An example that shows why its is impossible to establish a
+    connection with DBS when two peers $P_1$ and $P_2$ that are behind
+    symmetric NATs.\label{fig:UDP_Hole_Punching_SN_failure}}
+\end{figure}
+
+\begin{figure*}
+  \fig{600}{8cm}{SNTuCPP}
+  \caption{Timeline of an (ideal) NTS interaction between two peers
+    $P_1$ and $P_2$ which are behind symmetric NATs.
+    \label{fig:SNTuCPP}}
+\end{figure*}
+
 Table~\ref{tab:theoretical} shows the theoretical traversal success of
 DBS (or an extension of it) for different NAT type combinations. Peer1
 represents to a peer already joined to the team, and Peer2 to an
 incoming peer. The entries labeled with ``DBS'' are those that will be
 handled by DBS, out-of-the-box. An explanation of why the DBS
 handshake works for such configurations is shown in
-Fig.~\ref{fig:UDP-Hole-Punching-RCN}.  Notice that source end-point
+Fig.~\ref{fig:UDP_Hole_Punching_RCN}.  Notice that source end-point
 filtering has been used in this example, although a similar results
 should be obtained for simple source address filtering. On the other
 hand, the combinations labeled with ``-'' or ``NTS'' will not work
-with DBS (see Fig.\ref{fig:UDP-Hole-Punching_SN_failure}). In fact,
+with DBS (see Fig.\ref{fig:UDP_Hole_Punching_SN_failure}). In fact,
 only the ``NTS'' entries should work, in general, with NTS, depending
 on the port prediction algorithm and the number of
-tries. Fig.~\ref{fig:SNTuCPP-UHP} shows an example of an NTS (NAT
+tries. Fig.~\ref{fig:SNTuCPP} shows an example of an NTS (NAT
 traversal) success.
 
 Summarizing, NTS can provide connectivity for those peers that are
@@ -180,57 +211,3 @@ number of guessed ports, $\textsf{A}_0$ is the first external port (the
 port used to communicate with $S$) assigned to the incoming peer and
 $\Delta$ is the (maximum) port step measured for the incoming peer's
 NAT.
-
-% ---------
-
-
-
-
-
-\subsection{DBS over symmetric NATs}
-
-
-Lets suppose now, that a new private peer ${\cal P}^t_j$ joins the
-team through a symmetric NAT $\mathtt{B}$ (see
-Fig.~\ref{fig:NATing_context}). In this case, $\mathtt{B}$ assigns
-to ${\cal P}^t_j$ two different ports (and therefore, different
-public end-points) $\mathsf{B}_e$ (for ${\cal P}^t_e$) and
-$\mathsf{B}_i$ (for ${\cal P}^t_i$).
-
-Notice that only one peer (${\cal P}^t_j$) is behind a symmetric NAT
-
-if one of the peers is
-behind a symmetric NAT (${\cal P}^j_i$ in our example), the DBS
-handshake should also work.
-
-Lets suppose finally, that $\mathtt{A}_j$ is also a symmetric NAT.
-
- However, when both peers (${\cal P}^j_l$ and
-${\cal P}^j_k$, for example) run behind (different) symmetric NATs
-(see Fig.\ref{fig:UDP-Hole-Punching_SN_failure}), the port-allocation
-algorith dificults (and in some cases, even inhibits) the
-communication between the peers. In this situation, the communication
-will be success, if and only if, the $[\mathtt{hello}]$ messages are
-sent by ${\cal P}^j_i$ (the NATed incoming peer) to the external
-end-point that the other NAT would use to communicate with the
-incomming peer, and, at the same time, the older peer creates the
-corresponding translation entry in its NAT. Obviously, this will be
-possible only if both peers are able to force, or at least predict,
-the public ports that their NATs will use for the
-$[\mathtt{hello}]$'s. Usually, peers can not configure their NAT
-entries. Therefore, only the second option is available and some kind
-of port prediction procedures becomes necessary.
-
-\subsection{Port allocation}
-Port prediction techniques depends on the port allocation algorithm
-used by the symmetric NAT. At least 2 different strategies has been
-implemented: (1) port-preservation allocation, (2) random port
-allocation. In the first case, if $X:Y$ is the private end-point of a
-UDP packet, the NAT will use the public port $Y$, if available ($Y$
-cound have been assigned to a previous communcation). If $Y$ were
-unavailable, the NAT usually will assign the closer free port, usually
-in an incremental mode, although this has not been standarized. In the
-second case, the public port will be assigned at random.
-
-
-\subsection{Port prediction}
