@@ -1,17 +1,28 @@
 % NTS
 
-Most peers run inside of ``private'' networks, i.e., behind NAT
-devices. In this case, all peers behind the same NAT will use the same
-external (also called ``public'', because in most cases we have not
-nested NAT configurations) IP address of the NAT. Basically, there
-exist two different types of NATs: (1) \emph{cone}, and (2)
-\emph{symmetric}. At the same time, NATs can implement different
-filtering strategies for the packets that comes from the external
-side: (a) \emph{no filtering}, (b) \emph{source IP filtering}, and (c)
-\emph{source end-point filtering}. Finally, NATs can use several port
-allocation algorithms, among which, the most frequent are: (i)
-\emph{port preservation} and (ii) \emph{random port}. Notice that in
-this discussion, only UDP transmission will be considered.
+Most most of the peers run inside of ``private'' networks, i.e. behind
+NAT devices. NTS\footnote{This work was supported by GSoC15, developed
+  by Max Mertens, and mentored by Vicente González-Ruiz and Juan Pablo
+  Gracía-Ortiz.} is an DBS extension which provides peer connectivity
+for some NAT configurations DBS can not provide direct peer
+communication.\footnote{Normally, this problem does not prevent
+  prevent the peers from receiving the stream. However, a low degree
+  of connectivity among peers reduces the tolerance of the team to
+  transmission errors and attacks, and makes that the peers with a
+  higher degree to send more chunks that the others, which can be
+  considered undesirable in specific environments.}
+
+Peers behind the same NAT will use the same external (also called
+``public'', because in most cases we have not nested NAT
+configurations) IP address of the NAT. Basically, there exist two
+different types of NATs: (1) \emph{cone}, and (2) \emph{symmetric}. At
+the same time, NATs can implement different filtering strategies for
+the packets that comes from the external side: (a) \emph{no
+  filtering}, (b) \emph{source IP filtering}, and (c) \emph{source
+  end-point filtering}. Finally, NATs can use several port allocation
+algorithms, among which, the most frequent are: (i) \emph{port
+  preservation} and (ii) \emph{random port}. Notice that in this
+discussion, only UDP transmission will be considered.
 
 \subsection{Traffic filtering}
 Lets suppose a team in which, for the sake of simplicity, there is
@@ -23,11 +34,11 @@ all, $\mathsf{A}$ forwards to ${\cal P}^t_i$ any external packet that
 arrives to it (obviously, if it was sent to the entry in
 $\mathsf{A}$'s translation table that was created during the
 transmission of the sequence of [$\mathtt{hello}$]'s), independently
-on the source end-points of the packets. In the case of source IP
-filtering, $\mathsf{A}$ will forward the packets only if they come
-from ${\cal P}^t_e$'s host.  When source end-point filtering is used,
-$\mathsf{A}$ also checks the source port, i.e., that the packets were
-originated at ${\cal P}^t_e$'s end-point.
+on the source end-points of the packets. In the case of source (IP)
+address filtering, $\mathsf{A}$ will forward the packets only if they
+come from ${\cal P}^t_e$'s host.  When source end-point filtering is
+used, $\mathsf{A}$ also checks the source port, i.e., that the packets
+were originated at ${\cal P}^t_e$'s end-point.
 
 \subsection{Cone VS symmetric}
 Cone NATs use the same external end-point for every packet that comes
@@ -59,8 +70,8 @@ of randomization should be always expected during a the port
 assignment.
 
 \subsection{NAT type analysis}
-A incoming peer ${\cal P}^t_i$ can determine its NAT behavior using
-the following procedure:
+An incoming peer ${\cal P}^t_i$ can determine its NAT behavior using
+the following steps:
 \begin{enumerate}
 \item Let $\{\mathsf{A}_0, \mathsf{A}_1, \cdots, \mathsf{A}_M\}$ the
   public ports used by peer ${\cal P}^t_i$, whose NAT is $\mathsf{A}$,
@@ -105,23 +116,26 @@ the following procedure:
   \end{enumerate}
 \end{enumerate}
 
-\subsection{NAT traversal performance of DBS}
+\subsection{(Theoretical) NAT traversal performance of DBS}
 
 \begin{table}
   \centering
   \begin{tabular}{l|r|r|r|r}
-    Peer1/2 & CN-NF & PRCN  & SN-PPA & SN-RPA \\
+    Peer1/2 & CN    & CN-AF & CN-EF & SN-PPA & SN-RPA \\
     \hline
-    FCN     & DBS   & DBS   & DBS    & DBS    \\
-    PRCN    & DBS   & DBS   & NTS    & -      \\
-    SN-PPA  & DBS   & NTS   & NTS    & -      \\
-    SN-RPA  & DBS   & -     & -      & -
+    CN      & DBS   & DBS   & DBS   & DBS    & DBS    \\
+    CN-AF   & DBS   & DBS   & DBS   & NTS    & -      \\
+    CN-EF   & DBS   & DBS   & DBS   & NTS    & -      \\
+    SN-PPA  & DBS   & NTS   & NTS   & NTS    & -      \\
+    SN-RPA  & DBS   & -     & -     & -      & -
   \end{tabular}
   \caption{NAT traversal success for different NAT typical
-    combinations.  CN-NF (also known by ``full cone NAT'') stands for
-    Cone NAT Not Filtering. CN-EP (also known by ``port restricted
-    cone NAT'') stands for Cone NAT End-point Filtering. SN-PPA stands
-    for Symmetric NAT Port Preservation Allocation and no packet
+    combinations. CN-NF (also known by ``full cone NAT'') stands for
+    Cone NAT (without packet filtering). CN-AF (also known as
+    ``restricted cone NAT'') stands for Cone NAT with source Address
+    Filtering. CN-EF (also known by ``port restricted cone NAT'')
+    stands for Cone NAT source End-point Filtering. SN-PPA stands for
+    Symmetric NAT Port Preservation Allocation, and no packet
     filtering has been considered. SN-RPA stands for Symmetric NAT
     Random Port Allocation, and no packet filtering has been used.
     \label{tab:theoretical}}
@@ -131,15 +145,21 @@ Table~\ref{tab:theoretical} shows the theoretical traversal success of
 DBS (or an extension of it) for different NAT type combinations. Peer1
 represents to a peer already joined to the team, and Peer2 to an
 incoming peer. The entries labeled with ``DBS'' are those that will be
-handled by DBS out-of-the-box. An explanation of why the DBS handshake
-works is shown in Fig.~\ref{fig:UDP-Hole-Punching-RCN}.  Notice that
-source end-point filtering has been used in this example. On the other
+handled by DBS, out-of-the-box. An explanation of why the DBS
+handshake works for such configurations is shown in
+Fig.~\ref{fig:UDP-Hole-Punching-RCN}.  Notice that source end-point
+filtering has been used in this example, although a similar results
+should be obtained for simple source address filtering. On the other
 hand, the combinations labeled with ``-'' or ``NTS'' will not work
 with DBS (see Fig.\ref{fig:UDP-Hole-Punching_SN_failure}). In fact,
 only the ``NTS'' entries should work, in general, with NTS, depending
 on the port prediction algorithm and the number of
 tries. Fig.~\ref{fig:SNTuCPP-UHP} shows an example of an NTS (NAT
 traversal) success.
+
+Summarizing, NTS can provide connectivity for those peers that are
+behind port-preservation symmetric NATs with sequential port
+allocation.
 
 \subsection{A port prediction algorithm}
 When both peers, Peer1 and Peer2, are behind symmetric NATs, both must
