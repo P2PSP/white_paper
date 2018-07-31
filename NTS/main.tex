@@ -28,7 +28,7 @@ discussion, only UDP transmission will be considered.
 
 \subsection{Traffic filtering}
 Lets suppose a team in which, for the sake of simplicity, there is
-only one external (public) peer ${\cal P}^t_e$, and that a new
+only one external (public) peer $P^t_e$, and that a new
 internal (private) peer ${\cal P}^t_i$ has sent the sequence of
 [$\mathtt{hello}$]'s (see Sec~\ref{sec:peer_joining}. Lets denote
 ${\cal P}^t_i$'s NAT as $\mathsf{A}$. When no filtering is used at
@@ -194,7 +194,7 @@ Summarizing, NTS can provide connectivity for those peers that are
 behind port-preservation symmetric NATs with sequential port
 allocation.
 
-\subsection{A port prediction algorithm}
+\subsection{A port prediction algorithm (Max's proposal)}
 When both peers, Peer1 and Peer2, are behind symmetric NATs, both must
 predict the port that the NAT of the interlocutor peer will use to
 send the packets towards it. And obviously, this must be performed by

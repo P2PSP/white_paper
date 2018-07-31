@@ -17,11 +17,11 @@
 
   \begin{algorithmic}
 
-    \Procedure{${\cal R}$.ServePeers()}{}
+    \Procedure{$R$.ServePeers()}{}
     \While{True}
-    \State \textbf{Wait for a connection from} ${\cal P}_i$
-    \For{${\cal S}_j\in{\cal S}$}
-    \If{$|{\cal T}_j|<N$} $[{\cal S}_j] \send {\cal P}_i$
+    \State \textbf{Wait for a connection from} $P^?_i$
+    \For{$S^t \in S$}
+    \If{$|T^t|<N$} $[S^t] \send P^?_i$
     \EndIf
     \EndFor
     \EndWhile
