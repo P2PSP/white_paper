@@ -12,12 +12,12 @@
 \algrenewcommand\algorithmicprocedure{\textbf{task}}
 
 \begin{algorithmic}
-  \Procedure{${\cal P}^j_i$.Join}{}
-  \State $[{\cal S}^j] \gets {\cal R}$
+  \Procedure{$P^t_i$.Join}{}
+  \State $[S^t] \gets R$
   %\ForAll{${\cal S}^j\in {\cal S}$}
-  \State $[\mathtt{hello}] \send {\cal S}^j$
-  \ForAll{${\cal P}^j_k\in[{\cal T}^j]\gets{\cal S}^j$}
-  \State $[\mathtt{hello}]\sendto {\cal P}^j_k$
+  \State $[\mathtt{hello}] \send S^t$
+  \ForAll{$P^t_k\in[T^t]\gets S^t$}
+  \State $[\mathtt{hello}]\sendto P^t_k$
   %\If{$[{\cal T}_j] \gets {\cal S}_j$}
   %\State \textbf{Break}
   %\EndIf
@@ -25,8 +25,8 @@
   \EndFor
   %\State $T^*({\cal P}_i)=\{{\cal P}_k~|~\text{RTT}_k<\text{timeout}\}$
   %\State $N({\cal P}_i)=\{\textbf{first}~K~{\cal P}_k \in T^*({\cal P}_i)~|~\text{RTT}_k < \text{RTT}_{k+1}\}$
-  \ForAll{${\cal P}_k\in {\cal T}_j$}
-  \State $[\mathtt{hello}] \sendto {\cal P}_k$
+  \ForAll{$P^t_k\in T^t$}
+  \State $[\mathtt{hello}] \sendto P^t_k$
   \EndFor
   \EndProcedure
   \newline
