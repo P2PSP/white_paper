@@ -24,51 +24,51 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">July 31, 2018</span></div>
+class="ecrm-1200">August 1, 2018</span></div>
    </div>
    <h3 class="likesectionHead"><a 
  id="x1-1000"></a>Contents</h3>
    <div class="tableofcontents">
    <span class="sectionToc" >1 <a 
-href="#x1-30001" id="QQ2-1-3">DBS (Data Broadcasting Set)</a></span>
+href="#x1-30001" id="QQ2-1-4">DBS (Data Broadcasting Set)</a></span>
 <br />    <span class="subsectionToc" >1.1 <a 
-href="#x1-40001.1" id="QQ2-1-4">Joining a team</a></span>
+href="#x1-40001.1" id="QQ2-1-5">Joining a team</a></span>
 <br />    <span class="subsectionToc" >1.2 <a 
-href="#x1-50001.2" id="QQ2-1-6">Leaving a team</a></span>
+href="#x1-50001.2" id="QQ2-1-7">Leaving a team</a></span>
 <br />    <span class="subsectionToc" >1.3 <a 
-href="#x1-60001.3" id="QQ2-1-8">Chunk generation</a></span>
+href="#x1-60001.3" id="QQ2-1-9">Chunk generation</a></span>
 <br />    <span class="subsectionToc" >1.4 <a 
-href="#x1-70001.4" id="QQ2-1-10">Chunk ﬂooding</a></span>
+href="#x1-70001.4" id="QQ2-1-11">Chunk ﬂooding</a></span>
 <br />    <span class="subsectionToc" >1.5 <a 
-href="#x1-80001.5" id="QQ2-1-11">Chunk buﬀering</a></span>
+href="#x1-80001.5" id="QQ2-1-12">Chunk buﬀering</a></span>
 <br />    <span class="subsectionToc" >1.6 <a 
-href="#x1-90001.6" id="QQ2-1-12">Free-riding control at splitters</a></span>
+href="#x1-90001.6" id="QQ2-1-13">Free-riding control at splitters</a></span>
 <br />   <span class="sectionToc" >2 <a 
-href="#x1-100002" id="QQ2-1-13">FCS (Free-riding Control Set)</a></span>
+href="#x1-100002" id="QQ2-1-14">FCS (Free-riding Control Set)</a></span>
 <br />   <span class="sectionToc" >3 <a 
-href="#x1-110003" id="QQ2-1-14">IMS (Ip Multicast Set)</a></span>
+href="#x1-110003" id="QQ2-1-15">IMS (Ip Multicast Set)</a></span>
 <br />   <span class="sectionToc" >4 <a 
-href="#x1-120004" id="QQ2-1-15">MRS (Massively-lost chunk Recovery Set)</a></span>
+href="#x1-120004" id="QQ2-1-16">MRS (Massively-lost chunk Recovery Set)</a></span>
 <br />   <span class="sectionToc" >5 <a 
-href="#x1-130005" id="QQ2-1-16">TAS (Topology Adaptation Set)</a></span>
+href="#x1-130005" id="QQ2-1-17">TAS (Topology Adaptation Set)</a></span>
 <br />   <span class="sectionToc" >6 <a 
-href="#x1-140006" id="QQ2-1-17">ACS (Adaptive Capacity Set)</a></span>
+href="#x1-140006" id="QQ2-1-18">ACS (Adaptive Capacity Set)</a></span>
 <br />   <span class="sectionToc" >7 <a 
-href="#x1-150007" id="QQ2-1-18">MCS (Multi-Channel Set)</a></span>
+href="#x1-150007" id="QQ2-1-19">MCS (Multi-Channel Set)</a></span>
 <br />   <span class="sectionToc" >8 <a 
-href="#x1-160008" id="QQ2-1-19">NTS (NAT Traversal Set)</a></span>
+href="#x1-160008" id="QQ2-1-20">NTS (NAT Traversal Set)</a></span>
 <br />    <span class="subsectionToc" >8.1 <a 
-href="#x1-170008.1" id="QQ2-1-20">Traﬃc ﬁltering</a></span>
+href="#x1-170008.1" id="QQ2-1-21">Traﬃc ﬁltering</a></span>
 <br />    <span class="subsectionToc" >8.2 <a 
-href="#x1-180008.2" id="QQ2-1-23">Cone VS symmetric</a></span>
+href="#x1-180008.2" id="QQ2-1-24">Cone VS symmetric</a></span>
 <br />    <span class="subsectionToc" >8.3 <a 
-href="#x1-190008.3" id="QQ2-1-24">Port allocation</a></span>
+href="#x1-190008.3" id="QQ2-1-25">Port allocation</a></span>
 <br />    <span class="subsectionToc" >8.4 <a 
-href="#x1-200008.4" id="QQ2-1-25">NAT type analysis</a></span>
+href="#x1-200008.4" id="QQ2-1-26">NAT type analysis</a></span>
 <br />    <span class="subsectionToc" >8.5 <a 
-href="#x1-210008.5" id="QQ2-1-26">(Theoretical) NAT traversal performance of DBS</a></span>
+href="#x1-210008.5" id="QQ2-1-27">(Theoretical) NAT traversal performance of DBS</a></span>
 <br />    <span class="subsectionToc" >8.6 <a 
-href="#x1-220008.6" id="QQ2-1-31">A port prediction algorithm (Max’s proposal)</a></span>
+href="#x1-220008.6" id="QQ2-1-32">A port prediction algorithm (Max’s proposal)</a></span>
    </div>
    <div 
 class="abstract" 
@@ -83,16 +83,16 @@ class="abstract"
 class="ecbx-0900">Abstract</span></p></div>
 <!--l. 7--><p class="noindent" >
      </p><!--l. 1--><p class="indent" >   <span 
-class="ecrm-0900">P2PSP  is  an  application-layer  protocol  that  provides  real-time</span>
-     <span 
-class="ecrm-0900">broadcasting of media on the Internet. Such functionaly is provided, it</span>
-     <span 
-class="ecrm-0900">its most basic form, by DBS (Data Broadcasting Set of rules). The rest</span>
-     <span 
-class="ecrm-0900">of sets (see </span><a 
+class="ecrm-0900">P2PSP   (see   </span><a 
 href="https://p2psp.github.io" class="url" ><span 
 class="ectt-0900">https://p2psp.github.io</span></a><span 
-class="ecrm-0900">) incorporate new characteristics,</span>
+class="ecrm-0900">)   is   an   application-layer</span>
+     <span 
+class="ecrm-0900">protocol that provides real-time broadcasting of media on the Internet.</span>
+     <span 
+class="ecrm-0900">Such  functionaly  is  provided,  it  its  most  basic  form,  by  DBS  (Data</span>
+     <span 
+class="ecrm-0900">Broadcasting Set of rules). The rest of sets incorporate new characteristics,</span>
      <span 
 class="ecrm-0900">when needed, buliding a highly conﬁgurable streaming system.</span>
 </p>
@@ -101,135 +101,134 @@ class="ecrm-0900">when needed, buliding a highly conﬁgurable streaming system.
 </p>
    <h3 class="likesectionHead"><a 
  id="x1-2000"></a>Nomenclature</h3>
-   <div class="tabular"> <table id="TBL-2" class="tabular" 
+   <div class="table">
+                                                                  
+
+                                                                  
+<!--l. 2--><p class="indent" >   <a 
+ id="x1-20011"></a></p><hr class="float" /><div class="float" 
+>
+                                                                  
+
+                                                                  
+<div class="tabular"> <table id="TBL-2" class="tabular" 
 cellspacing="0" cellpadding="0"  
 ><colgroup id="TBL-2-1g"><col 
 id="TBL-2-1" /><col 
 id="TBL-2-2" /></colgroup><tr  
  style="vertical-align:baseline;" id="TBL-2-1-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-1-1"  
-class="td11"> <!--l. 2--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->O</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-1-2"  
-class="td11"> media source                                                                                                                                                                                                                      </td></tr><tr  
+class="td11">                                                             Limits  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-1-2"  
+class="td11"> Meaning                                                                                                                                                                                                                            </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-2-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-2-1"  
-class="td11"> <!--l. 3--><math 
+class="td11"> <!--l. 5--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->R</mi></math> </td> <td  style="text-align:left; white-space:nowrap;" id="TBL-2-2-2"  
-class="td11"> teams tracker</td>
-</tr><tr  
+>G</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-2-2"  
+class="td11"> Maximum number of teams in a channel                                                                                                                                                                                  </td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-3-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-3-1"  
-class="td11">  <!--l. 4--><math 
+class="td11"> <!--l. 6--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->T</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-3-2"  
-class="td11"> all the teams related to the same media channel                                                                                                                                                                        </td>
+>N</mi></math> </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-3-2"  
+class="td11"> Maximum number of peers in a team</td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-4-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-4-1"  
-class="td11">  <!--l. 5--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->R</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-4-2"  
-class="td11"> teams tracker (relates channels with teams)                                                                                                                                                                              </td>
-</tr><tr  
+class="td11">                                                                     </td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-5-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-5-1"  
-class="td11">  <!--l. 6--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mo 
-class="MathClass-rel">|</mo><mi 
->T</mi><mo 
-class="MathClass-rel">|</mo></math> </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-5-2"  
-class="td11"> number of teams broadcasting the same channel                                                                                                                                                                        </td>
-</tr><tr  
+class="td11"> Entity</td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-5-2"  
+class="td11"> Role                                                                                                                                                                                                                                 </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-6-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-6-1"  
-class="td11">  <!--l. 7--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msup><mrow 
-><mi 
->T</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msup 
-></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-6-2"  
-class="td11"> <!--l. 7--><math 
+class="td11"> <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->t</mi></math>-th team                                                                                                                    </td>
-</tr><tr  
+>O</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-6-2"  
+class="td11"> the media source                                                                                                                                                                                                                 </td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-7-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-7-1"  
-class="td11">  <!--l. 8--><math 
+class="td11"> <!--l. 11--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mo 
-class="MathClass-rel">|</mo><msup><mrow 
-><mi 
->T</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msup 
-><mo 
-class="MathClass-rel">|</mo></math> </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-7-2"  
-class="td11"> number of peers in <!--l. 8--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msup><mrow 
-><mi 
->T</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msup 
-></math>                                                                                                        </td>
+display="inline" ><mi 
+>T</mi></math> </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-7-2"  
+class="td11"> all the teams related to the same media channel</td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-8-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-8-1"  
-class="td11">  <!--l. 9--><math 
+class="td11"> <!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->N</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-8-2"  
-class="td11"> Maximum number of peers in a team                                                                                                                                                                                      </td>
+>R</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-8-2"  
+class="td11"> teams tracker (relates channels with teams)                                                                                                                                                                              </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-9-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-9-1"  
-class="td11">  <!--l. 10--><math 
+class="td11"> <!--l. 13--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->G</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-9-2"  
-class="td11"> Maximum number of teams                                                                                                                                                                                                   </td>
+>S</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-9-2"  
+class="td11"> the set of splitters broadcasting the same channel                                                                                                                                                                      </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-10-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-10-1"  
-class="td11">  <!--l. 11--><math 
+class="td11"> <!--l. 14--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>T</mi></mrow><mrow 
+><mi 
+>t</mi><mo 
+class="MathClass-rel">∈</mo><mrow ><mo 
+class="MathClass-open">{</mo><mrow><mn>1</mn><mo 
+class="MathClass-punc">,</mo><mo 
+class="MathClass-rel">⋯</mo><mspace width="0.3em" class="thinspace"/><mo 
+class="MathClass-punc">,</mo><mo 
+class="MathClass-rel">|</mo><mi 
+>T</mi><mo 
+class="MathClass-rel">|</mo></mrow><mo 
+class="MathClass-close">}</mo></mrow></mrow></msup 
+></math> </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-10-2"  
+class="td11"> the <!--l. 14--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>t</mi></math>-th team                                                                                                               </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-11-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-11-1"  
+class="td11"> <!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
 >S</mi></mrow><mrow 
 ><mi 
->t</mi></mrow></msup 
-></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-10-2"  
-class="td11"> splitter of team <!--l. 11--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msup><mrow 
-><mi 
->T</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msup 
-></math>                                                                                                             </td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-2-11-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-11-1"  
-class="td11">  <!--l. 12--><math 
+>t</mi><mo 
+class="MathClass-rel">∈</mo><mrow ><mo 
+class="MathClass-open">{</mo><mrow><mn>1</mn><mo 
+class="MathClass-punc">,</mo><mo 
+class="MathClass-rel">⋯</mo><mspace width="0.3em" class="thinspace"/><mo 
+class="MathClass-punc">,</mo><mo 
+class="MathClass-rel">|</mo><mi 
+>T</mi><mo 
+class="MathClass-rel">|</mo></mrow><mo 
+class="MathClass-close">}</mo></mrow></mrow></msup 
+></math> </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-11-2"  
+class="td11"> the splitter of the <!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->S</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-11-2"  
-class="td11"> the set of splitter broadcasting the same channel                                                                                                                                                                       </td>
+>t</mi></math>-th team                                                                                            </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-12-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-12-1"  
-class="td11">  <!--l. 13--><math 
+class="td11"> <!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mi 
->e</mi></mrow><mrow 
+>i</mi></mrow><mrow 
 ><mi 
 >t</mi></mrow></msubsup 
 ></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-12-2"  
-class="td11"> <!--l. 13--><math 
+class="td11"> <!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->e</mi></math>-th peer of team <!--l. 13--><math 
+>i</mi></math>-th peer of team <!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
@@ -239,23 +238,104 @@ display="inline" ><msup><mrow
 ></math>  </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-13-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-13-1"  
-class="td11">  <!--l. 14--><math 
+class="td11">                                                                     </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-14-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-14-1"  
+class="td11">                                                            Variable  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-14-2"  
+class="td11"> Meaning                                                                                                                                                                                                                            </td>
+</tr><tr 
+class="hline"><td><hr /></td><td><hr /></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-15-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-15-1"  
+class="td11"> <!--l. 20--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn> <mo 
+class="MathClass-rel">≤</mo><mo 
+class="MathClass-rel">|</mo><mi 
+>T</mi><mo 
+class="MathClass-rel">|</mo><mo 
+class="MathClass-rel">≤</mo> <mi 
+>G</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-15-2"  
+class="td11"> current number of teams broadcasting the same channel                                                                                                                                                             </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-16-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-16-1"  
+class="td11"> <!--l. 21--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn> <mo 
+class="MathClass-rel">≤</mo><mo 
+class="MathClass-rel">|</mo><mi 
+>S</mi><mo 
+class="MathClass-rel">|</mo><mo 
+class="MathClass-rel">≤</mo> <mi 
+>G</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-16-2"  
+class="td11"> current number of splitters related with <!--l. 21--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->B</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-13-2"  
-class="td11"> Buﬀer size in chunks                                                                                                                                                                                                            </td></tr><tr  
- style="vertical-align:baseline;" id="TBL-2-14-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-14-1"  
-class="td11"> </td> </tr></table>
+>T</mi></math>                                                               </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-17-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-17-1"  
+class="td11"> <!--l. 22--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn> <mo 
+class="MathClass-rel">≤</mo><mo 
+class="MathClass-rel">|</mo><msup><mrow 
+><mi 
+>T</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msup 
+><mo 
+class="MathClass-rel">|</mo><mo 
+class="MathClass-rel">≤</mo> <mi 
+>N</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-17-2"  
+class="td11"> current number of peers in <!--l. 22--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>T</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msup 
+></math>                                                                                              </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-18-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-18-1"  
+class="td11"> <!--l. 23--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>B</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-18-2"  
+class="td11"> buﬀer size in chunks                                                                                                                                                                                                            </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-19-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-19-1"  
+class="td11">                                                                    </td></tr></table>
 </div>
-<!--l. 14--><p class="noindent" >
+<br /> <div class="caption" 
+><span class="id">Table 1: </span><span  
+class="content">Nomenclature used in this documentation.</span></div><!--tex4ht:label?: x1-20011 -->
+                                                                  
+
+                                                                  
+   </div><hr class="endfloat" />
+   </div>
+<!--l. 29--><p class="indent" >   The nomenclature used for describing P2PSP is shown in Table <a 
+href="#x1-20011">1<!--tex4ht:ref: tab:nomenclature --></a>. In this
+documentation, only one media channel has been considered, which basically means
+that all these objects should be instantiated for each diﬀerent channel. In P2PSP, a
+channel is the equivalent to a same concept, for example, in the DVB (Digital Video
+Broadcasting) system.
 </p>
    <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
  id="x1-30001"></a>DBS (Data Broadcasting Set)</h3>
-<!--l. 1--><p class="noindent" >DBS provides ALM for unicast (TCP/UDP) environments. The media is received by a collection of
-<span 
-class="ecti-1000">splitters </span><!--l. 3--><math 
+<!--l. 1--><p class="noindent" >DBS provides ALM <span class="cite">[<a 
+href="#Xbanerjee2002scalable">2</a>]</span> for unicast environments <span class="cite">[<a 
+href="#Xcomer2003computer">4</a>]</span>. The media is sent by a streaming server
+<!--l. 3--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mrow ><mo 
+display="inline" ><mi 
+>O</mi></math>, called <span 
+class="ecti-1000">source</span>, and received
+by a set of <span 
+class="ecti-1000">splitters </span><!--l. 4--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>S</mi> <mo 
+class="MathClass-rel">=</mo> <mrow ><mo 
 class="MathClass-open">{</mo><mrow><msup><mrow 
 ><mi 
 >S</mi></mrow><mrow 
@@ -266,17 +346,22 @@ class="MathClass-rel">⋯</mo><mspace width="0.3em" class="thinspace"/><mo
 class="MathClass-punc">,</mo><msup><mrow 
 ><mi 
 >S</mi></mrow><mrow 
-><mi 
->G</mi></mrow></msup 
+><mo 
+class="MathClass-rel">|</mo><mi 
+>T</mi><mo 
+class="MathClass-rel">|</mo></mrow></msup 
 ></mrow><mo 
-class="MathClass-close">}</mo></mrow></math> from a
-streaming server <!--l. 3--><math 
+class="MathClass-close">}</mo></mrow></math>,
+where <!--l. 4--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->O</mi></math>,
-called <span 
-class="ecti-1000">source</span>, at a (usually variable) bit-rate which matches the bit-rate of the media.
-Each <!--l. 5--><math 
+display="inline" ><mn>1</mn> <mo 
+class="MathClass-rel">≤</mo><mo 
+class="MathClass-rel">|</mo><mi 
+>T</mi><mo 
+class="MathClass-rel">|</mo><mo 
+class="MathClass-rel">≤</mo> <mi 
+>G</mi></math>. Each
+splitter <!--l. 5--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
@@ -284,15 +369,23 @@ display="inline" ><msup><mrow
 ><mi 
 >t</mi></mrow></msup 
 ></math>
-splits the stream into a sequence of <span 
-class="ecti-1000">chunks</span>, and relay them to diﬀerent <span 
-class="ecti-1000">team </span>of up to
+divides the stream into a sequence of <span 
+class="ecti-1000">chunks</span>, and relay them to its <span 
+class="ecti-1000">team</span>
+<!--l. 6--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>T</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msup 
+></math>, where it can be up to
 <!--l. 7--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >N</mi></math> <span 
-class="ecti-1000">peers</span>. We deﬁne the set
-of teams as <!--l. 8--><math 
+class="ecti-1000">peers</span>. We deﬁne the set of
+teams as <!--l. 8--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >T</mi> <mo 
@@ -300,18 +393,28 @@ class="MathClass-rel">=</mo> <mrow ><mo
 class="MathClass-open">{</mo><mrow><msup><mrow 
 ><mi 
 >T</mi></mrow><mrow 
-><mn>0</mn></mrow></msup 
+><mn>1</mn></mrow></msup 
 ><mo 
 class="MathClass-punc">,</mo><mo 
 class="MathClass-rel">⋯</mo><mspace width="0.3em" class="thinspace"/><mo 
 class="MathClass-punc">,</mo><msup><mrow 
 ><mi 
 >T</mi></mrow><mrow 
-><mi 
->G</mi></mrow></msup 
+><mo 
+class="MathClass-rel">|</mo><mi 
+>T</mi><mo 
+class="MathClass-rel">|</mo></mrow></msup 
 ></mrow><mo 
-class="MathClass-close">}</mo></mrow></math>, and the set
-of peers per (full) team <!--l. 9--><math 
+class="MathClass-close">}</mo></mrow></math>, and enumerate
+the peers in the team <!--l. 8--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>T</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msup 
+></math>
+as <!--l. 9--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
@@ -332,15 +435,18 @@ class="MathClass-rel">⋯</mo><mspace width="0.3em" class="thinspace"/><mo
 class="MathClass-punc">,</mo><msubsup><mrow 
 ><mi 
 >P</mi></mrow><mrow 
+><mo 
+class="MathClass-rel">|</mo><msup><mrow 
 ><mi 
->N</mi></mrow><mrow 
+>T</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msup 
+><mo 
+class="MathClass-rel">|</mo></mrow><mrow 
 ><mi 
 >t</mi></mrow></msubsup 
 ></mrow><mo 
 class="MathClass-close">}</mo></mrow></math>.
-                                                                  
-
-                                                                  
 </p><!--l. 3--><p class="noindent" >
 </p>
    <h4 class="subsectionHead"><span class="titlemark">1.1   </span> <a 
@@ -354,7 +460,7 @@ class="MathClass-close">}</mo></mrow></math>.
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img height=250 src="graphics/joining.png" /> </div> 
+ <div style="text-align:center;"> <img height=230 src="graphics/joining.png" /> </div> 
 <br /> <div class="caption" 
 ><span class="id">Figure 1: </span><span  
 class="content">Tasks involved in a peer joining.</span></div><!--tex4ht:label?: x1-40011 -->
@@ -366,7 +472,7 @@ class="content">Tasks involved in a peer joining.</span></div><!--tex4ht:label?:
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
 >i</mi></mrow><mrow 
 ><mo 
@@ -378,21 +484,21 @@ class="ecti-1000">tracker</span>
 <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
-mathvariant="bold-script">ℛ</mi></math>
+>R</mi></math>
 to receive from it, supposing previously that in the team
 <!--l. 11--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
-mathvariant="bold-script">𝒯</mi></mrow><mrow 
+>T</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msup 
+>t</mi></mrow></msup 
 ></math> there is
 room for <!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
 >i</mi></mrow><mrow 
 ><mo 
@@ -405,250 +511,251 @@ href="index2.html#fn1x0"><sup class="textsuperscript">1</sup></a></span><a
 message <!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
-class="MathClass-open">[</mo><mrow><msub><mrow 
+class="MathClass-open">[</mo><mrow><msup><mrow 
 ><mi 
-mathvariant="bold-script">𝒮</mi></mrow><mrow 
+>S</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msub 
+>t</mi></mrow></msup 
 ></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>.
 Then, <!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
 >i</mi></mrow><mrow 
 ><mo 
 class="MathClass-punc">?</mo></mrow></msubsup 
 ></math> request
-to <!--l. 17--><math 
+to <!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
-mathvariant="bold-script">𝒮</mi></mrow><mrow 
+>S</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msup 
+>t</mi></mrow></msup 
 ></math> to be
 included in <!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
-mathvariant="bold-script">𝒯</mi></mrow><mrow 
+>T</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msup 
+>t</mi></mrow></msup 
 ></math>.
-If <!--l. 18--><math 
+If <!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
-mathvariant="bold-script">𝒮</mi></mrow><mrow 
+>S</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msup 
+>t</mi></mrow></msup 
 ></math> accepts,
-then <!--l. 18--><math 
+then <!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
-mathvariant="bold-script">𝒮</mi></mrow><mrow 
+>S</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msup 
+>t</mi></mrow></msup 
 ></math>
-tranmits to <!--l. 18--><math 
+tranmits to <!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
 >i</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msubsup 
+>t</mi></mrow></msubsup 
 ></math>
-<!--l. 19--><math 
+<!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><msup><mrow 
 ><mi 
-mathvariant="bold-script">𝒯</mi></mrow><mrow 
+>T</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msup 
-></math>] (more preciselly, list of
-peers in <!--l. 19--><math 
+>t</mi></mrow></msup 
+></mrow><mo 
+class="MathClass-close">]</mo></mrow></math> (more preciselly, list of
+peers in <!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
-mathvariant="bold-script">𝒯</mi></mrow><mrow 
+>T</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msup 
+>t</mi></mrow></msup 
 ></math>, in a reliable
-message), and runs <!--l. 20--><math 
+message), and runs <!--l. 19--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
-mathvariant="bold-script">𝒯</mi></mrow><mrow 
+>T</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msup 
+>t</mi></mrow></msup 
 > <mo 
 class="MathClass-rel">=</mo> <msup><mrow 
 ><mi 
-mathvariant="bold-script">𝒯</mi></mrow><mrow 
+>T</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msup 
+>t</mi></mrow></msup 
 > <mo 
-class="MathClass-bin">∪</mo><msubsup><mrow 
+class="MathClass-bin">∪</mo> <msubsup><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
 >i</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msubsup 
+>t</mi></mrow></msubsup 
 ></math>, in
-this order. While arriving, <!--l. 27--><math 
+this order. While arriving, <!--l. 25--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
 >i</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msubsup 
+>t</mi></mrow></msubsup 
 ></math>
-does not store <!--l. 27--><math 
+does not store <!--l. 25--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
-mathvariant="bold-script">𝒯</mi></mrow><mrow 
+>T</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msup 
+>t</mi></mrow></msup 
 ></math> as it
-is received. Instead, <!--l. 28--><math 
+is received. Instead, <!--l. 26--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
 >i</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msubsup 
+>t</mi></mrow></msubsup 
 ></math>,
-for each <!--l. 28--><math 
+for each <!--l. 26--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
 >k</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msubsup 
+>t</mi></mrow></msubsup 
 > <mo 
 class="MathClass-rel">∈</mo> <mrow ><mo 
 class="MathClass-open">[</mo><mrow><msup><mrow 
 ><mi 
-mathvariant="bold-script">𝒯</mi></mrow><mrow 
+>T</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msup 
+>t</mi></mrow></msup 
 ></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>, sends
-an (unreliable) <!--l. 29--><math 
+an (unreliable) <!--l. 27--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
-message to <!--l. 29--><math 
+message to <!--l. 27--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
 >k</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msubsup 
+>t</mi></mrow></msubsup 
 ></math>, and
-when <!--l. 30--><math 
+when <!--l. 27--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
 >k</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msubsup 
+>t</mi></mrow></msubsup 
 ></math> receives
-a <!--l. 30--><math 
+a <!--l. 28--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>, it performs
-<!--l. 31--><math 
+<!--l. 28--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
-mathvariant="bold-script">𝒯</mi></mrow><mrow 
+>T</mi></mrow><mrow 
 ><mi 
 >k</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msubsup 
+>t</mi></mrow></msubsup 
 > <mo 
 class="MathClass-rel">=</mo> <msubsup><mrow 
 ><mi 
-mathvariant="bold-script">𝒯</mi></mrow><mrow 
+>T</mi></mrow><mrow 
 ><mi 
 >k</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msubsup 
+>t</mi></mrow></msubsup 
 > <mo 
-class="MathClass-bin">∪</mo><msubsup><mrow 
+class="MathClass-bin">∪</mo> <msubsup><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
 >i</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msubsup 
+>t</mi></mrow></msubsup 
 ></math>. Therefore, the list
-of peers <!--l. 32--><math 
+of peers <!--l. 29--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
-mathvariant="bold-script">𝒯</mi></mrow><mrow 
+>T</mi></mrow><mrow 
 ><mi 
 >k</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msubsup 
+>t</mi></mrow></msubsup 
 ></math> that a peer
-<!--l. 32--><math 
+<!--l. 29--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
 >k</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msubsup 
+>t</mi></mrow></msubsup 
 ></math> has, depends in ﬁrst
-instance, on the number of <!--l. 33--><math 
+instance, on the number of <!--l. 30--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
 messages that it has received. In other words, it holds that
-<!--l. 34--><math 
+<!--l. 31--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mo 
 class="MathClass-rel">|</mo><msubsup><mrow 
 ><mi 
-mathvariant="bold-script">𝒯</mi></mrow><mrow 
+>T</mi></mrow><mrow 
 ><mi 
 >k</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msubsup 
+>t</mi></mrow></msubsup 
 ><mo 
 class="MathClass-rel">|</mo><mo 
 class="MathClass-rel">≤</mo><mo 
 class="MathClass-rel">|</mo><msup><mrow 
 ><mi 
-mathvariant="bold-script">𝒯</mi></mrow><mrow 
+>T</mi></mrow><mrow 
 ><mi 
->j</mi></mrow></msup 
+>t</mi></mrow></msup 
 ><mo 
 class="MathClass-rel">|</mo></math>.
 </p>
@@ -1466,7 +1573,7 @@ should churn, unless it not interested in playing the media.
  id="x1-110003"></a>IMS (Ip Multicast Set)</h3>
 <!--l. 1--><p class="noindent" >IPM is available by default in LANs (Local Are Network)s and VLANs (Virtual
 LAN)s <span class="cite">[<a 
-href="#Xshabtay2011ip">3</a>]</span>, but not in the Internet <span class="cite">[]</span>. IMS runs on the top of DBS and provides
+href="#Xshabtay2011ip">5</a>]</span>, but not in the Internet <span class="cite">[]</span>. IMS runs on the top of DBS and provides
 eﬃcient native IPM, where available.
 </p><!--l. 6--><p class="indent" >   The idea of IMS is simple: all peers in the same LAN or
 VLAN have the same network address. When a joining peer
@@ -1614,7 +1721,7 @@ mathvariant="bold-script">𝒮</mi></math>.
  id="x1-150007"></a>MCS (Multi-Channel Set)</h3>
 <!--l. 1--><p class="noindent" >When using MDC <span class="cite">[<a 
 href="#Xbaccichet2007content">1</a>]</span>, SVC <span class="cite">[<a 
-href="#Xchu2009auction">2</a>]</span>, or for emulating the CS model, it can be interesting
+href="#Xchu2009auction">3</a>]</span>, or for emulating the CS model, it can be interesting
 for peers to belong to more than one team. To implement MCS, peers must
 replicate the LP2PLS protocol layers for each team (channel), except the
 buﬀer.
@@ -2171,7 +2278,7 @@ display="inline" ><mi mathvariant="sans-serif">A</mi></math>
 
                                                                   
 <!--l. 134--><p class="indent" >   <a 
- id="x1-210011"></a></p><hr class="float" /><div class="float" 
+ id="x1-210012"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
@@ -2233,7 +2340,7 @@ class="td11">      -  </td><td  style="text-align:right; white-space:nowrap;" id
 class="td11">       -  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-4-6-6"  
 class="td11">        -  </td></tr></table></div>
 <br /> <div class="caption" 
-><span class="id">Table 1: </span><span  
+><span class="id">Table 2: </span><span  
 class="content">NAT traversal success for diﬀerent NAT typical combinations. CN-NF
 (also known by “full cone NAT”) stands for Cone NAT (without packet ﬁltering).
 CN-AF (also known as “restricted cone NAT”) stands for Cone NAT with source
@@ -2241,7 +2348,7 @@ Address Filtering. CN-EF (also known by “port restricted cone NAT”) stands f
 Cone NAT source End-point Filtering. SN-PPA stands for Symmetric NAT Port
 Preservation Allocation, and no packet ﬁltering has been considered. SN-RPA
 stands for Symmetric NAT Random Port Allocation, and no packet ﬁltering has
-been used. </span></div><!--tex4ht:label?: x1-210011 -->
+been used. </span></div><!--tex4ht:label?: x1-210012 -->
                                                                   
 
                                                                   
@@ -2351,7 +2458,7 @@ which are behind symmetric NATs. </span></div><!--tex4ht:label?: x1-210048 -->
                                                                   
    </div><hr class="endfloat" />
 <!--l. 177--><p class="indent" >   Table <a 
-href="#x1-210011">1<!--tex4ht:ref: tab:theoretical --></a> shows the theoretical traversal success of DBS (or an extension of it) for
+href="#x1-210012">2<!--tex4ht:ref: tab:theoretical --></a> shows the theoretical traversal success of DBS (or an extension of it) for
 diﬀerent NAT type combinations. Peer1 represents to a peer already joined to the
 team, and Peer2 to an incoming peer. The entries labeled with “DBS” are those that
 will be handled by DBS, out-of-the-box. An explanation of why the DBS handshake
@@ -2498,6 +2605,12 @@ class="ecti-1000">Expo, 2007 IEEE International Conference on</span>, pages 400�
    </p>
    <p class="bibitem" ><span class="biblabel">
  [2]<span class="bibsp">   </span></span><a 
+ id="Xbanerjee2002scalable"></a>Suman Banerjee, Bobby Bhattacharjee, and Christopher Kommareddy.
+   <span 
+class="ecti-1000">Scalable application layer multicast</span>, volume 32. ACM, 2002.
+   </p>
+   <p class="bibitem" ><span class="biblabel">
+ [3]<span class="bibsp">   </span></span><a 
  id="Xchu2009auction"></a>Xiaowen  Chu,  Kaiyong  Zhao,  Zongpeng  Li,  and  Anirban  Mahanti.
    Auction-based  on-demand  p2p  min-cost  media  streaming  with  network
    coding.      <span 
@@ -2505,7 +2618,14 @@ class="ecti-1000">IEEE  Transactions  on  Parallel  and  Distributed  Systems</s
    20(12):1816–1829, 2009.
    </p>
    <p class="bibitem" ><span class="biblabel">
- [3]<span class="bibsp">   </span></span><a 
+ [4]<span class="bibsp">   </span></span><a 
+ id="Xcomer2003computer"></a>Douglas E  Comer  and  Ralph E  Droms.    <span 
+class="ecti-1000">Computer  networks  and</span>
+   <span 
+class="ecti-1000">internets</span>. Prentice-Hall, Inc., 2003.
+   </p>
+   <p class="bibitem" ><span class="biblabel">
+ [5]<span class="bibsp">   </span></span><a 
  id="Xshabtay2011ip"></a>Lior  Shabtay  and  Benny  Rodrig.   Ip  multicast  in  vlan  environment,
    April 12 2011. US Patent 7,924,837.
 </p>

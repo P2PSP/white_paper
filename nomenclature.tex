@@ -1,15 +1,34 @@
-\begin{tabular}{rl}
-  $O$     & media source \\
-  $R$     & teams tracker \\
-  $T$     & all the teams related to the same media channel \\
-  $R$     & teams tracker (relates channels with teams)\\
-  $|T|$   & number of teams broadcasting the same channel \\
-  $T^t$   & $t$-th team \\
-  $|T^t|$ & number of peers in $T^t$ \\
-  $N$     & Maximum number of peers in a team \\
-  $G$     & Maximum number of teams \\
-  $S^t$   & splitter of team $T^t$ \\
-  $S$     & the set of splitter broadcasting the same channel \\
-  $P^t_e$ & $e$-th peer of team $T^t$ \\
-  $B$     & Buffer size in chunks \\
-\end{tabular}
+\begin{table}
+  \begin{tabular}{rl}
+    Limits   & Meaning \\
+    \hline
+    $G$     & Maximum number of teams in a channel \\
+    $N$     & Maximum number of peers in a team \\
+    ~\\
+    Entity  & Role \\
+    \hline
+    $O$     & the media source \\
+    $T$     & all the teams related to the same media channel \\
+    $R$     & teams tracker (relates channels with teams)\\
+    $S$     & the set of splitters broadcasting the same channel \\
+    $T^{t\in\{1,\cdots,|T|\}}$ & the $t$-th team \\
+    $S^{t\in\{1,\cdots,|T|\}}$ & the splitter of the $t$-th team \\
+    $P^t_i$ & $i$-th peer of team $T^t$ \\
+    ~\\
+    Variable & Meaning \\
+    \hline
+    $1\leq |T|\leq G$   & current number of teams broadcasting the same channel \\
+    $1\leq |S|\leq G$ & current number of splitters related with $T$ \\
+    $1\leq |T^t|\leq N$ & current number of peers in $T^t$ \\
+    $B$     & buffer size in chunks \\
+  \end{tabular}
+  \caption{Nomenclature used in this
+    documentation.\label{tab:nomenclature}}
+\end{table}
+
+The nomenclature used for describing P2PSP is shown in
+Table~\ref{tab:nomenclature}. In this documentation, only one media
+channel has been considered, which basically means that all these
+objects should be instantiated for each different channel. In P2PSP, a
+channel is the equivalent to a same concept, for example, in the DVB
+(Digital Video Broadcasting) system.

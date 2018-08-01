@@ -25,17 +25,17 @@
   \EndFor
   %\State $T^*({\cal P}_i)=\{{\cal P}_k~|~\text{RTT}_k<\text{timeout}\}$
   %\State $N({\cal P}_i)=\{\textbf{first}~K~{\cal P}_k \in T^*({\cal P}_i)~|~\text{RTT}_k < \text{RTT}_{k+1}\}$
-  \ForAll{$P^t_k\in T^t$}
-  \State $[\mathtt{hello}] \sendto P^t_k$
-  \EndFor
+  %\ForAll{$P^t_k\in T^t$}
+  %\State $[\mathtt{hello}] \sendto P^t_k$
+  %\EndFor
   \EndProcedure
   \newline
-  \Procedure{${\cal P}_k$.EchoHello()}{}
+  \Procedure{$P^t_k$.EchoHello}{}
   \While{True}
-  \State $[\mathtt{hello}] \gets {\cal P}_i$
+  \State $[\mathtt{hello}] \gets P^t_i$
   %\State $[\mathtt{hello}] \sendto {\cal P}_i$
   %\State $N({\cal P}_k) = N({\cal P}_k) \cup {\cal P}_i$
-  \State ${\cal T}_j = {\cal T}_j \cup {\cal P}_i$
+  \State $T^t = T^t \cup P^ti$
   \EndWhile
   \EndProcedure
   

@@ -1,13 +1,12 @@
-DBS provides ALM for unicast (TCP/UDP) environments. The media is
-received by a collection of
-\emph{splitters} $\{S^1, \cdots, S^G\}$ from a streaming server $O$,
-called \emph{source}, at a (usually variable) bit-rate which matches
-the bit-rate of the media. Each $S^t$ splits the stream into a
-sequence of \emph{chunks}, and relay them to different \emph{team} of
-up to $N$ \emph{peers}. We define the set of teams as
-$T=\{T^0, \cdots, T^G\}$, and the set of peers per (full) team
-$T^t=\{P^t_1, \cdots, P^t_N\}$.
-
+DBS provides ALM~\cite{banerjee2002scalable} for unicast
+environments~\cite{comer2003computer}. The media is sent by a
+streaming server $O$, called \emph{source}, and received by a set
+of \emph{splitters} $S=\{S^1,\cdots,S^{|T|}\}$, where $1\leq |T|\leq
+G$. Each splitter $S^t$ divides the stream into a sequence
+of \emph{chunks}, and relay them to its \emph{team} $T^t$, where it
+can be up to $N$ \emph{peers}. We define the set of teams as
+$T=\{T^1,\cdots,T^{|T|}\}$, and enumerate the peers in the team $T^t$
+as $T^t=\{P^t_1,\cdots,P^t_{|T^t|}\}$.
 
 %${\cal T}=\{{\cal T}_0,\cdots,{\cal T}_{G-1}\}$ \emph{teams} (one per
 %  splitter) of up to $N$
