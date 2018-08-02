@@ -4,31 +4,43 @@
 \begin{figure*}
   %\includegraphics[width=\textwidth]{joining}
   \fig{230}{5cm}{joining}
-  \caption{Tasks involved in a peer joining.\label{fig:joining}}
+  \caption{Tasks involved in a peer joining. $P^t_i$ is an incoming
+    peer, and $P^t_k$ is a peer that is already in the team. $R$
+    represents the tracker, and $S^t$ the splitter of the team $T^t$
+    to which $P^t_i$ will be added.\label{fig:joining}}
 \end{figure*}
 An incoming peer $P^?_i$ (see the tasks described in
-Fig.~\ref{fig:joining}) must contact a \emph{tracker} $R$ to receive
-from it, supposing previously that in the team $T^t$ there is room for
-$P^?_i$, a \emph{reliable}\footnote{Reliable messages are transmitted
-  over TCP and their transmission is denoted in the pseudocode by
-  $\Rightarrow$. Unreliable messages, which can be lost in transit,
-  are transmitted over UDP and its transmission is denoted by
-  $\rightarrow$.} message $[S^t]$. Then, $P^?_i$ request to $S^t$ to
-be included in $T^t$. If $S^t$ accepts, then $S^t$ tranmits to $P^t_i$
-$[T^t]$ (more preciselly, list of peers in $T^t$, in a reliable
-message), and runs $T^t = T^t \cup P^t_i$, in this order.
+Fig.~\ref{fig:joining}), interested in a given channel, must first
+join a team in order to access to the contents of such channel. For
+that, $P^?_i$ requests a splitter to the \emph{tracker} $R$, with room
+in its team ($R$ knows this information because each splitter sends to
+$R$ the size of its teams when it changes). $R$ sends to $P^?_i$ a
+\emph{reliable}\footnote{Reliable messages are transmitted over TCP
+  and their transmission is denoted in the pseudocode by
+  $\Rightarrow$. On the other hand, unreliable messages, which can be
+  lost in transit, are transmitted over UDP and its transmission is
+  denoted by $\rightarrow$. In any case, the reception of a packet is
+  a permanent blocking action, at least a timeout is indicated.}
+message $[S^t]$ (more exactly, the message transports the IP address
+and port, i.e. an end-point, of the splitter $S^t$). Then, $P^?_i$
+request to $S^t$ to be included in $T^t$. If $S^t$ accepts, then $S^t$
+tranmits to $P^t_i$ the message $[T^t]$ (more preciselly, list of
+peers in $T^t$, in a reliable message), and runs $T^t = T^t \cup
+P^t_i$, in this order.
   %Then ${\cal P}_i$ polls
   %sequentially each splitter in $S$, requesting to be included in its
   %team until one of them (${\cal S}_j$, for example) accepts to ${\cal
   %  P}_i$. %Then, ${\cal S}_j$ performs ${\cal T}_j = {\cal T}_j \cup
   %{\cal P}_i$.  In parallel with the reception of $[{\cal T}_j]$,
+
 While arriving, $P^t_i$ does not store $T^t$ as it is
-received. Instead, $P^t_i$, for each $P^t_k\in [T^t]$, sends an
-(unreliable) $[\mathtt{hello}]$ message to $P^t_k$, and when $P^t_k$
-receives a $[\mathtt{hello}]$, it performs $T^t_k = T^t_k \cup
+received. Instead, for each $P^t_k\in [T^t]$, $P^t_i$ sends an
+(unreliable) $[\mathtt{hello}]$ message to each $P^t_k$, and when
+$P^t_k$ receives a $[\mathtt{hello}]$, it performs $T^t_k = T^t_k \cup
 P^t_i$. Therefore, the list of peers $T^t_k$ that a peer $P^t_k$ has,
 depends in first instance, on the number of $[\mathtt{hello}]$
-messages that it has received. In other words, it holds that $|T^t_k| \leq |T^t|$.
+messages that it has received. In other words, usually it holds that
+$|T^t_k| \le |T^t|$.
 
 % When a ${\cal P}_k$ receives a $[\mathtt{hello}]$ from ${\cal P}_i$,
 % replies to ${\cal P}_i$ with the same message. -> Ya no hace falta

@@ -16,8 +16,9 @@
 
   \Procedure{$R$.ServePeers}{}
   \While{True}
-  \State \textbf{wait for a connection from} $P^?_i$
-  \For{$S^t \in S$}
+  \State $[\mathtt{hello}] \gets P^?_i$
+  %\State \textbf{wait for a connection from} $P^?_i$
+  \ForAll{$S^t \in S$}
   \If{$|T^t|<N$}
   \State $[S^t] \send P^?_i$
   \EndIf
@@ -25,7 +26,7 @@
   \EndWhile
   \EndProcedure
   \newline
-  \Procedure{${\cal R}$.UpdateFullness}{}
+  \Procedure{$R$.UpdateFullness}{}
   \While{True}
   \State $[|T^t|] \gets S^t$
   \EndWhile
