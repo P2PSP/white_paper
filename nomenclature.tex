@@ -11,9 +11,10 @@
     $T$     & all the teams related to the same media channel \\
     $R$     & teams tracker (relates channels with teams)\\
     $S$     & the set of splitters broadcasting the same channel \\
-    $T^{t\in\{1,\cdots,|T|\}}$ & the $t$-th team \\
-    $S^{t\in\{1,\cdots,|T|\}}$ & the splitter of the $t$-th team \\
+    $T^t$   & $1\leq t\leq |T|$, the $t$-th team \\
+    $S^t$   & the splitter of the $t$-th team \\
     $P^t_i$ & $i$-th peer of team $T^t$ \\
+    $T^t_i$ & the neighbors of $P^t_i$ \\
     ~\\
     Variable & Meaning \\
     \hline
@@ -28,8 +29,8 @@
 
 The nomenclature used for describing P2PSP is shown in
 Table~\ref{tab:nomenclature}. In this documentation, only one media
-channel has been considered, which basically means that all these
-objects should be instantiated for each different channel (for
-example, there should be a different tracker for each media
+channel has been considered, therefore, if more channels are needed,
+all these objects should be instantiated for each different channel
+(for example, there should be a different tracker for each
 channel). In P2PSP, a channel is the equivalent to a same concept, for
 example, in the DVB (Digital Video Broadcasting) system.

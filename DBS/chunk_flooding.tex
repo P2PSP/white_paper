@@ -1,29 +1,26 @@
-%
-% Chunk flooding
-%
-
+\label{sec:chunk_flooding}
 When a peer ${\cal P}^j_k$ receives a chunk from ${\cal P}^j_i$,
 ${\cal P}^j_k$ floods the chunk to ${\cal T}^j \setminus {\cal
-P}^j_i$, using again a prioritized round-robin schema (see
+P}^j_i$, using a prioritized round-robin schema (see
 Fig.~\ref{fig:chunk_generation_and_flooding}). Besides, if it is a
 duplicate chunk, ${\cal P}^j_k$ sends to ${\cal P}^j_i$ a
 $[\mathtt{NRFCF}~{\cal P}^j_l]$ ($\mathtt{N}$ot $\mathtt{R}$elay
 $\mathtt{F}$uture $\mathtt{C}$hunks $\mathtt{F}$rom) message, where
 ${\cal P}^j_l$ is the origin peer of the duplicate chunk. Thus, only
-the first ``neighbor'' ${\cal P}^j_i$ to send to ${\cal P}^j_k$ a
-chunk ``originated'' at ${\cal P}^j_l$ will do that in the future, at
-least that ${\cal P}_k$ revokes this routing information by sending
+the first neighbor ${\cal P}^j_i$ to send to ${\cal P}^j_k$ a chunk
+``originated'' at ${\cal P}^j_l$ will do that in the future, at least
+that ${\cal P}_k$ revokes this routing information by sending
 $[\mathtt{RFCF}~{\cal P}^j_l]$ ($\mathtt{R}$elay $\mathtt{F}$uture
 $\mathtt{C}$hunks $\mathtt{F}$rom) to one or more (possibly the rest
 of) peers of ${\cal T}^j_k$.
 
-As said, peers priorize the flooding of the chunks they relay by
+As said, peers prioritize the flooding of the chunks they relay by
 sending first the chunks to those neighbors that are more
 supportive. To achieve that, every time ${\cal P}^j_k$ sends a chunk
 to ${\cal P}^j_l$, ${\cal P}^j_k$ runs $\mathtt{debt}[{\cal P}^j_l]
 = \mathtt{debt}[{\cal P}^j_l]+1$, and ${\cal P}^j_l$ runs
 $\mathtt{debt}[{\cal P}^j_k] =
-\mathtt{debt}[{\cal P}^j_k]-1$ (see Fig.\ref{fig}). Basically, these
+\mathtt{debt}[{\cal P}^j_k]-1$ (see Fig.\ref{fig:}). Basically, these
 tables maintain a ``debt'' of chunks between evey pair of neighbor
 peers. In ideal circunstances, debs should be $0$. Debs are clipped to
 $\pm\mathtt{debt}_{\text{max}}$. Obviously, a high supportivity means
