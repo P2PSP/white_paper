@@ -18,11 +18,11 @@
   \State $[\mathtt{goodbye}] \sendto S^t$
   \State $[\mathtt{goodbye}] \gets S^t$ \textbf{with} timeout
   \Until{\textbf{not} timeout}
-  \State relay\_pending\_chunks()
   \State $[\mathtt{goodbye}] \sendto S^t$
   \ForAll{$P^t_k\in T^t_o$}
   \State $[\mathtt{goodbye}] \sendto P^j_k$
   \EndFor
+  \State relay\_pending\_chunks()
   \EndProcedure
   \newline
   \Procedure{$P^t_k$.RemoveNeighbors}{}

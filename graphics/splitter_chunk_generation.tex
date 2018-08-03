@@ -14,17 +14,17 @@
 
 \begin{algorithmic}
 
-  \Procedure{${\cal S}_j$.FeedTeam()}{}
-  \State $x=0; i=0; r=0$
+  \Procedure{$S^t$.FeedTeam}{}
+  \State $x=i=0$
   \While{True}
-  \State \textbf{wait for} $C$ \textbf{bytes} $[\mathtt{chunk}] \gets {\cal O}$
-  \State $[x,\mathtt{chunk}] \sendto {\cal P}_i$
-  \State $D[x]={\cal P}_i$
-  \State $i=(i+1)~\text{mod}~|{\cal T}_j|$
+  \State $[\mathtt{chunk}] \gets {\cal O}$~\texttt{/* wait for $C$ bytes */}
+  \State $[x,\mathtt{chunk}] \sendto P^t_i$
+  \State $D[x]=P^t_i$
+  \State $i=(i+1)~\text{mod}~|T^t|$
   \State $x=(x+1)~\text{mod}~\mathtt{MAX\_CHUNK\_NUMBER}$
-  \If{$x=0$}
-  $r=(r+1)~\text{mod}~\mathtt{MAX\_ROUND\_NUMBER}$
-  \EndIf
+  %\If{$x=0$}
+  %$r=(r+1)~\text{mod}~\mathtt{MAX\_ROUND\_NUMBER}$
+  %\EndIf
   \EndWhile
   \EndProcedure
   

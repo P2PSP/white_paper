@@ -1,9 +1,11 @@
 \begin{table}
   \begin{tabular}{rl}
-    Limits   & Meaning \\
+    Parameter & Meaning \\
     \hline
-    $G$     & Maximum number of teams in a channel \\
-    $N$     & Maximum number of peers in a team \\
+    $G$       & Maximum number of teams in a channel \\
+    $N$       & Maximum number of peers in a team \\
+    $C$       & Maximum size of a chunk of media \\
+    $B$       & buffer size in chunks \\
     ~\\
     Entity  & Role \\
     \hline
@@ -16,12 +18,11 @@
     $P^t_i$ & $i$-th peer of team $T^t$ \\
     $T^t_i$ & the neighbors of $P^t_i$ \\
     ~\\
-    Variable & Meaning \\
+    Variable            & Meaning \\
     \hline
     $1\leq |T|\leq G$   & current number of teams broadcasting the same channel \\
-    $1\leq |S|\leq G$ & current number of splitters related with $T$ \\
+    $1\leq |S|\leq G$   & current number of splitters related with $T$ \\
     $1\leq |T^t|\leq N$ & current number of peers in $T^t$ \\
-    $B$     & buffer size in chunks \\
   \end{tabular}
   \caption{Nomenclature used in this
     documentation.\label{tab:nomenclature}}

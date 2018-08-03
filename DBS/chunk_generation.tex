@@ -2,19 +2,20 @@
 \begin{figure*}
   %\includegraphics[width=0.75\textwidth]{chunk_generation_and_flooding}
   \fig{300}{3cm}{chunk_generation_and_flooding}
-  \caption{Chunk generation and
-    flooding.\label{fig:chunk_generation_and_flooding}}
+  \caption{Chunk generation at the splitter $S^t$, and chunk flooding
+    at peers $P^t_k$.\label{fig:chunk_generation_and_flooding}}
 \end{figure*}
-Each ${\cal S}^j$ (see Fig.~\ref{fig:chunk_generation_and_flooding})
+Each $S^t$ (see Fig.~\ref{fig:chunk_generation_and_flooding})
 divides the stream into chunks of data ($\mathtt{chunk}$) of constant
 length $C$, and sends exclusively each chunk to a different
-\emph{origin peer} ${\cal P}^j_i$, using a round-robin schema. Each
-chunk is enumerated with a index $x$, conforming the message
-$[c_x]=[x,\mathtt{chunk}]$, where $x=i~\mathrm{mod}~|{\cal T}^j|$. We
-define a \emph{round} (in a team) as the time necessary to send two
-consecutive chunks from the splitter (of such team) to the same
-peer. This time is variable and depends on $|{\cal T}^j|$, $C$, and
-the average bit-rate of the media, $R$.
+\emph{origin peer} $P^t_i$, using a round-robin schema. Each
+chunk is enumerated with an index $x$, conforming a message
+$[c_x]=[x,\mathtt{chunk}]$, where $x=i~\mathrm{mod}~|T^t|$.
+
+We define a \emph{round} (in a team) as the time necessary to send two
+consecutive chunks from the splitter (of such team) to the same peer,
+using the round-robing. This time is variable and depends on $|T^t|$,
+$C$, and the average bit-rate of the media, $A$.
 
 \begin{comment}
 The round-time is defined by:

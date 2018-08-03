@@ -1,12 +1,11 @@
 \label{sec:chunk_flooding}
-When a peer ${\cal P}^j_k$ receives a chunk from ${\cal P}^j_i$,
-${\cal P}^j_k$ floods the chunk to ${\cal T}^j \setminus {\cal
-P}^j_i$, using a prioritized round-robin schema (see
-Fig.~\ref{fig:chunk_generation_and_flooding}). Besides, if it is a
-duplicate chunk, ${\cal P}^j_k$ sends to ${\cal P}^j_i$ a
-$[\mathtt{NRFCF}~{\cal P}^j_l]$ ($\mathtt{N}$ot $\mathtt{R}$elay
+When a peer $P^t_k$ receives a chunk from $P^t_i$, $P^t_k$ floods the
+chunk to $T^t_k \setminus P^t_i$, using a prioritized round-robin
+schema (see Fig.~\ref{fig:chunk_generation_and_flooding}). Besides, if
+it is a duplicate chunk, $P^t_k$ sends to $P^t_i$ a
+$[\mathtt{NRFCF}~P^t_l]$ ($\mathtt{N}$ot $\mathtt{R}$elay
 $\mathtt{F}$uture $\mathtt{C}$hunks $\mathtt{F}$rom) message, where
-${\cal P}^j_l$ is the origin peer of the duplicate chunk. Thus, only
+$P^t_l$ is the origin peer of the duplicate chunk. Thus, only
 the first neighbor ${\cal P}^j_i$ to send to ${\cal P}^j_k$ a chunk
 ``originated'' at ${\cal P}^j_l$ will do that in the future, at least
 that ${\cal P}_k$ revokes this routing information by sending
