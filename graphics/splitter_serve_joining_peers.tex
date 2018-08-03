@@ -14,18 +14,18 @@
 
 \begin{algorithmic}
 
-  \Procedure{${\cal S}_j$.ServeJoiningPeers()}{}
+  \Procedure{$S^t$.AddPeers}{}
   \While{True}
-  \State \textbf{Wait for connection from} ${\cal P}_i$
-  \If{${\cal P}_i \notin {\cal T}_j$}
-  \ForAll{${\cal P}_k \in {\cal T}_j$}ç
-  \State $[{\cal P}_k] \send {\cal P}_i$
+  \State $[\mathtt{hello}] \leftarrow P^t_i$
+  %\If{$P^t_i \notin T^t$}
+  \ForAll{$P^t_k \in T^t$}
+  \State $[P^t_k] \send P^t_i$
   \EndFor
-  \State ${\cal T}_j={\cal T}_j \cup {\cal P}_i$
-  \Else
-  \State $[\mathtt{goodbye}] \sendto {\cal P}_i$
-  \State ${\cal T}_j={\cal T}_j \setminus {\cal P}_i$
-  \EndIf
+  \State $T^t = T^t \cup P^t_i$
+  %\Else~\texttt{/* received $[\mathtt{goodbye}]$ */}
+  %\State $[\mathtt{goodbye}] \sendto P^_i$
+  %\State ${\cal T}_j={\cal T}_j \setminus {\cal P}_i$
+  %\EndIf
   \State $[|{\cal T}_j|] \send {\cal R}$
   \EndWhile
   \EndProcedure

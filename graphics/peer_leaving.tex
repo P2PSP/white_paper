@@ -13,23 +13,22 @@
 
 \begin{algorithmic}
 
-  \Procedure{${\cal P}_o$.Leave}{${\cal S}_j$}
-  \State $[\mathtt{goodbye}] \sendto {\cal S}_j$
-  \For{${\cal P}_k\in N({\cal P}_o)$}
-  $[\mathtt{goodbye}] \sendto {\cal P}_k$
-  \EndFor
+  \Procedure{$P^t_o$.Leave}{$T^t$}
+  \Repeat
+  \State $[\mathtt{goodbye}] \sendto S^t$
+  \State $[\mathtt{goodbye}] \gets S^t$ \textbf{with} timeout
+  \Until{\textbf{not} timeout}
   \State relay\_pending\_chunks()
-  \State $[\mathtt{goodbye}] \gets {\cal S}_j$ \textbf{with} timeout
-  \While{timeout}
-  \State $[\mathtt{goodbye}] \sendto {\cal S}_j$
-  \State $[\mathtt{goodbye}] \gets {\cal S}_j$ \textbf{with} timeout
-  \EndWhile
+  \State $[\mathtt{goodbye}] \sendto S^t$
+  \ForAll{$P^t_k\in T^t_o$}
+  \State $[\mathtt{goodbye}] \sendto P^j_k$
+  \EndFor
   \EndProcedure
   \newline
-  \Procedure{${\cal P}_k$.ProcessGoodbye()}{}
+  \Procedure{$P^t_k$.RemoveNeighbors}{}
   \While{True}
-  \State $[\mathtt{goodbye}] \gets {\cal P}_o$
-  \State $N({\cal P}_k)=N({\cal P}_k) \setminus {\cal P}_o$
+  \State $[\mathtt{goodbye}] \gets P^t_o$
+  \State $T^t_k = T^t_k \setminus P^ t_o$
   \EndWhile
   \EndProcedure
   

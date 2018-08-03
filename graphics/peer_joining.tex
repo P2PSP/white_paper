@@ -12,7 +12,7 @@
 \algrenewcommand\algorithmicprocedure{\textbf{task}}
 
 \begin{algorithmic}
-  \Procedure{$P^t_i$.Join}{$R$}
+  \Procedure{$P^t_i$.JoinTeam}{$R$}
   \State $[\mathtt{hello}] \send R$
   \State $[S^t] \gets R$
   %\ForAll{${\cal S}^j\in {\cal S}$}
@@ -31,7 +31,7 @@
   %\EndFor
   \EndProcedure
   \newline
-  \Procedure{$P^t_k$.EchoHello}{}
+  \Procedure{$P^t_k$.AddNeighbors}{}
   \While{True}
   \State $[\mathtt{hello}] \gets P^t_i$
   %\State $[\mathtt{hello}] \sendto {\cal P}_i$

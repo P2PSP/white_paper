@@ -14,14 +14,12 @@
 
 \begin{algorithmic}
 
-  \Procedure{${\cal S}_j$.ServeOutgoingPeers()}{}
+  \Procedure{$S^t$.RemovePeers}{}
   \While{True}
-  \State $m \gets {\cal P}_o$
-  \If{$m == [\mathtt{goodbye}]$}
-  \State $[\mathtt{goodbye}] \sendto {\cal P}_o$
-  \State ${\cal T}_j={\cal T}_j \setminus {\cal P}_o$
-  \EndIf
-  \State $[|{\cal T}_j|] \send {\cal R}$
+  \State $[\mathtt{goodbye}] \gets P^t_o$
+  \State $[\mathtt{goodbye}] \sendto P^t_o$
+  \State $T^t = T^t \setminus P^t_o$
+  \State $[|T^t|] \send R$
   \EndWhile
   \EndProcedure
   
