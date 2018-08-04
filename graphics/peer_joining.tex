@@ -37,6 +37,8 @@
   %\State $[\mathtt{hello}] \sendto {\cal P}_i$
   %\State $N({\cal P}_k) = N({\cal P}_k) \cup {\cal P}_i$
   \State $T^i = T^i \cup P_i$
+  \State $\mathtt{debt}[P_i]=0$
+  \State \textbf{sort} $T^i$ \textbf{ascending by} $\mathtt{debt[]}$
   \EndWhile
   \EndProcedure
   

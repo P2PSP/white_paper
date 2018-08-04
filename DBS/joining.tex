@@ -37,15 +37,15 @@ accept, $P_i$ requests a new team to $R$, and resets the procedure.
 %  P}_i$. %Then, ${\cal S}_j$ performs ${\cal T}_j = {\cal T}_j \cup
 %{\cal P}_i$.  In parallel with the reception of $[{\cal T}_j]$,
 
-While arriving, $P_i$ does not store $T$ as it is
-received. Instead, $P_i$ sends an
-(unreliable) $[\mathtt{hello}]$ message to each $P_k\in [T]$, and when
-$P_k$ receives a $[\mathtt{hello}]$, it performs $T^k = T^k \cup
-P_i$. Therefore, the list of peers $T^k$ that a peer $P_k$
+While arriving, $P_i$ does not store $T$ as it is received. Instead,
+$P_i$ sends an (unreliable) $[\mathtt{hello}]$ message to each $P_k\in
+[T]$, and when $P_k$ receives a $[\mathtt{hello}]$, it performs $T^k =
+T^k \cup P_i$. Therefore, the list of peers $T^k$ that a peer $P_k$
 handles (the neighbor peers of $P_k$), initially depends (see
 Sec.~\ref{sec:chunk_flooding}) on the number of $[\mathtt{hello}]$
-messages that it has received. Consequently, it holds that
-$|T^k| \le |T|$.
+messages that it has received. Consequently, it holds that $|T^k| \le
+|T|$. $T^k$ is kept sorted by ascending ``debt'', a table of debts of
+chunks between neighbor peers (see Sec~\ref{sec:chunk_flooding}).
 
 % When a ${\cal P}_k$ receives a $[\mathtt{hello}]$ from ${\cal P}_i$,
 % replies to ${\cal P}_i$ with the same message. -> Ya no hace falta

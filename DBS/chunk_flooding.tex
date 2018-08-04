@@ -1,33 +1,29 @@
 \label{sec:chunk_flooding}
 \begin{figure*}
   %\includegraphics[width=0.75\textwidth]{chunk_generation_and_flooding}
-  \fig{250}{3cm}{peer_chunk_flooding}
+  \fig{300}{3cm}{peer_chunk_flooding}
   \caption{Chunk flooding at peers.\label{fig:peer_chunk_flooding}}
 \end{figure*}
-When a peer $P_k$ receives a chunk from $P_i$, $P_k$ floods the
-chunk to $T^k \setminus P_i$, using a prioritized round-robin
-schema (see Fig.~\ref{fig:chunk_flooding}). Besides, if
-it is a duplicate chunk, $P_k$ sends to $P_i$ a
-$[\mathtt{NRFCF}~P_l]$ ($\mathtt{N}$ot $\mathtt{R}$elay
-$\mathtt{F}$uture $\mathtt{C}$hunks $\mathtt{F}$rom) message, where
-$P_l$ is the origin peer of the duplicate chunk. Thus, only
-the first neighbor $P_i$ to send to $P_k$ a chunk
-``originated'' at $P_l$ will do that in the future, at least
+When a peer $P_k$ receives a chunk, $P_k$ floods the chunk to each of
+its neighbors (except the source), using a prioritized round-robin
+schema where those peers with a lower debt are selected first (see
+Fig.~\ref{fig:peer_chunk_flooding}). Every time $P_k$ sends a chunk to
+$P_l\in T^k$, $P_k$ runs $\mathtt{debt}[P_l] = \mathtt{debt}[P_l]+1$,
+and $P_l$ runs $\mathtt{debt}[P_k] = \mathtt{debt}[P_k]-1$. In ideal
+circunstances, debs should be $0$. Debs are clipped to
+$\pm\mathtt{debt}_{\text{max}}$. Obviously, a high supportivity means
+a low debt, and viceversa.
+
+It can happen that the received chunk from $P_i$ is a duplicate
+chunk. In this case, $P_k$ sends to $P_i$ a $[\mathtt{NRFCF}~P_l]$
+($\mathtt{N}$ot $\mathtt{R}$elay $\mathtt{F}$uture $\mathtt{C}$hunks
+$\mathtt{F}$rom) message, where $P_l$ is the origin peer of the
+duplicate chunk. Thus, only the first neighbor $P_j$ to send to $P_k$
+a chunk ``originated'' at $P_l$ will do that in the future, at least
 that $P_k$ revokes this routing information by sending a
 $[\mathtt{RFCF}~P_l]$ ($\mathtt{R}$elay $\mathtt{F}$uture
 $\mathtt{C}$hunks $\mathtt{F}$rom) to one or more (possibly the rest
 of) peers of $T^k$.
-
-As it has been said before, peers prioritize the flooding of the
-chunks they relay by sending first the chunks to those neighbors that
-are more supportive. To achieve that, every time $Pj_k$ sends a chunk
-to $P_l$, $P_k$ runs $\mathtt{debt}[P_l] = \mathtt{debt}[P_l]+1$, and
-$P_l$ runs $\mathtt{debt}[P_k] = \mathtt{debt}[P_k]-1$ (see
-Fig.\ref{fig:}). Basically, these tables maintain a ``debt'' of chunks
-between evey pair of neighbor peers. In ideal circunstances, debs
-should be $0$. Debs are clipped to
-$\pm\mathtt{debt}_{\text{max}}$. Obviously, a high supportivity means
-a low debt, and viceversa.
 
 \begin{comment}
 In each round, peers check if a chunk have been received from the rest

@@ -17,20 +17,24 @@
   \While{True}
   \State $[x,\mathtt{chunk}] \gets S$ \textbf{or} $[x,P_i,\mathtt{chunk}] \gets P_m$
   \If{\textbf{received}~$[x,\mathtt{chunk}]$}
-  \ForAll {$P_n \in T^k)$}
+  \ForAll {$P_n \in T^k$}
   \State $[x,P_k,\mathtt{chunk}] \sendto P_n$
+  \State $\mathtt{debt}[P_n] = \mathtt{debt}[P_n]+1$
   \EndFor
   \EndIf
   \If{\textbf{received}~$[x,P_i,\mathtt{chunk}]$}
   \If{$P_m \notin T^k$}
-  \State $T^k = T^k \cup P_i$
+  \State $T^k = T^k \cup P_m$
+  \State $\mathtt{debt}[P_m]=0$
+  \Else
+  \State $\mathtt{debt}[P_m] = \mathtt{debt}[P_m]-1$
   \EndIf
-  \ForAll{$P_n \in T^k) \setminus P_m$}
-  \If{$P_k \in G_{{\cal P}_n}[{\cal P}_i]$}
+  \ForAll{$P_n \in T^k \setminus P_m$}
   \State $[x,P_i,\mathtt{chunk}] \sendto P_n$
-  \EndIf
+  \State $\mathtt{debt}[P_m] = \mathtt{debt}[P_m]+1$
   \EndFor
   \EndIf
+  \State \textbf{sort} $T^k$ \textbf{ascending by} $\mathtt{debt[]}$
   \EndWhile
   \EndProcedure
   
