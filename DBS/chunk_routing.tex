@@ -1,0 +1,25 @@
+\label{sec:chunk_routing}
+It can happen\footnote{Especially if $P_k$ has just joined to the
+  team.} that the received chunk by peer a $P_k$ from a neighbor peer
+$P_i$ is a duplicate chunk. In this case, $P_k$ sends to $P_i$ a
+$[\mathtt{prune} x]$ message, where $x$ is number of the duplicate
+chunk. Thus, only the first neighbor $P_j$ to send to $P_k$ a chunk
+$x$ ``originated'' for example at a peer $P_l$, will do that in the
+future (remember that the origin peers are stored in the chunks
+messages), at least that $P_k$ revokes this routing information by
+sending a $[\mathtt{request} x]$ to one or more (possibly the rest of)
+peers of $T^k$. Notice that, this process will be succesful only if
+$P_i$ have received the chunk $x$. If this has not happen, this will
+not have effect. However, notice that in this case this procedure will
+be repeated with the reception of the following chunk originated at
+$P_l$, and that $P_i$ should use the same procedure if chunk $x$ is
+missing.
+
+It can also happen that some chunks are not received on time (remember
+that chunks are transmitted using UDP which is unreliable). A chunk is
+considered as lost by peer $P_k$ when it is time to send it to the
+player and the chunk has not been received. In this moment, as in the
+previous situation, $P_k$ sends a $[\mathtt{request} x]$ to one or
+more (possibly the rest of) peers of $T^k$, where $P_m$ is, where
+$x=y+\Delta$, being $y<x$ the number of closest received chunk to $x$,
+and $\Delta$ is the distance in chunks between $x$ and $y$.
