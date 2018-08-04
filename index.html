@@ -239,11 +239,11 @@ display="inline" ><mi
  style="vertical-align:baseline;" id="TBL-2-15-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-15-1"  
 class="td11"> <!--l. 21--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
+display="inline" ><msup><mrow 
 ><mi 
 >T</mi></mrow><mrow 
 ><mi 
->i</mi></mrow></msub 
+>i</mi></mrow></msup 
 ></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-15-2"  
 class="td11"> the neighbors of <!--l. 21--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -296,22 +296,22 @@ class="td11"> <!--l. 28--><math
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mn>1</mn> <mo 
 class="MathClass-rel">≤</mo><mo 
-class="MathClass-rel">|</mo><msub><mrow 
+class="MathClass-rel">|</mo><msup><mrow 
 ><mi 
 >T</mi></mrow><mrow 
 ><mi 
->i</mi></mrow></msub 
+>i</mi></mrow></msup 
 ><mo 
 class="MathClass-rel">|</mo><mo 
 class="MathClass-rel">≤</mo> <mi 
 >N</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-20-2"  
 class="td11"> current number of neighbor peers in <!--l. 28--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
+display="inline" ><msup><mrow 
 ><mi 
 >T</mi></mrow><mrow 
 ><mi 
->i</mi></mrow></msub 
+>i</mi></mrow></msup 
 ></math>                                                                                      </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-21-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-21-1"  
@@ -407,24 +407,20 @@ class="MathClass-close">}</mo></mrow></math>.
 class="content">Tasks        involved        in        a        peer        joining.
 <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
+display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mi 
->i</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
+>i</mi></mrow></msub 
 ></math>
 is                   the                   incoming                   peer,                   and
 <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
+display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mi 
->k</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
+>k</mi></mrow></msub 
 ></math>
 is        a        peer        that        is        already        in        the        team.
 <!--l. 10--><math 
@@ -434,42 +430,30 @@ display="inline" ><mi
 represents                        the                        tracker,                        and
 <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msup><mrow 
-><mi 
->S</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msup 
-></math>
+display="inline" ><mi 
+>S</mi></math>
 the                   splitter                   of                   the                   team
 <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msup><mrow 
-><mi 
->T</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msup 
-></math>
+display="inline" ><mi 
+>T</mi></math>
 to                                                                                             which
 <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
+display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mi 
->k</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
+>k</mi></mrow></msub 
 ></math>
 belongs,                                                                                        and
 <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
+display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mi 
->i</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
+>i</mi></mrow></msub 
 ></math>
 will be added.</span></div><!--tex4ht:label?: x1-30011 -->
                                                                   
@@ -503,20 +487,25 @@ display="inline" ><mi
 <!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->R</mi></math>, that continuously is receiving
-in <span 
+>R</mi></math>, that continuously
+is receiving, from <!--l. 16--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow ><mo 
+class="MathClass-open">{</mo><mrow><mi 
+>S</mi></mrow><mo 
+class="MathClass-close">}</mo></mrow></math>,
+<span 
 class="ecti-1000">reliable</span><span class="footnote-mark"><a 
 href="index2.html#fn1x0"><sup class="textsuperscript">1</sup></a></span><a 
- id="x1-3002f1"></a>  messages the
-fullness level of each team <!--l. 23--><math 
+ id="x1-3002f1"></a> 
+messages containing the number of peers of each team of
+<!--l. 23--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->T</mi></math> from
-the corresponding splitter <!--l. 23--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->S</mi></math>,
-selects a team with room for <!--l. 24--><math 
+display="inline" ><mrow ><mo 
+class="MathClass-open">{</mo><mrow><mi 
+>T</mi></mrow><mo 
+class="MathClass-close">}</mo></mrow></math>, selects a team
+with room for <!--l. 24--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -549,7 +538,7 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math> requests
-to <!--l. 26--><math 
+to <!--l. 27--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >S</mi></math> to be
@@ -560,30 +549,47 @@ display="inline" ><mi
 <!--l. 27--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->S</mi></math> accepts (it should),
-then <!--l. 27--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->S</mi></math> transmits
-to <!--l. 28--><math 
+>S</mi></math> accepts (during the
+joining process of <!--l. 28--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mi 
 >i</mi></mrow></msub 
-></math> the message
-<!--l. 28--><math 
+></math> it
+could happen that <!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-rel">|</mo><mi 
+>T</mi><mo 
+class="MathClass-rel">|</mo> <mo 
+class="MathClass-rel">=</mo> <mi 
+>N</mi></math>
+because other peer are trying to join at the same time), then
+<!--l. 29--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>S</mi></math> transmits to
+<!--l. 29--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math> a message
+<!--l. 30--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi 
 >T</mi></mrow><mo 
-class="MathClass-close">]</mo></mrow></math> (more precisely, list of
-peers in <!--l. 29--><math 
+class="MathClass-close">]</mo></mrow></math> (more precisely, the list
+of peers in <!--l. 30--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >T</mi></math>, in a reliable
-message), and runs <!--l. 29--><math 
+message), and runs <!--l. 31--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >T</mi> <mo 
@@ -595,11 +601,24 @@ class="MathClass-bin">∪</mo> <msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math>,
-in this order. If <!--l. 30--><math 
+in this order. If <!--l. 31--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->S</mi></math>
-does not accept, <!--l. 30--><math 
+>S</mi></math> does
+not accept, <!--l. 32--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math> requests
+a new team to <!--l. 32--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>R</mi></math>,
+and resets the procedure.
+</p><!--l. 40--><p class="indent" >   While arriving, <!--l. 40--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -607,24 +626,11 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math>
-repeats the procedure, requesting a new team to
-<!--l. 31--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->R</mi></math>.
-</p><!--l. 39--><p class="indent" >   While arriving, <!--l. 39--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->i</mi></mrow></msub 
-></math>
-does not store <!--l. 39--><math 
+does not store <!--l. 40--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >T</mi></math> as it
-is received. Instead, <!--l. 40--><math 
+is received. Instead, <!--l. 41--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -632,12 +638,15 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math>
-sends an (unreliable) <!--l. 41--><math 
+sends an (unreliable) <!--l. 42--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
-message to each <!--l. 41--><math 
+                                                                  
+
+                                                                  
+message to each <!--l. 42--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -649,7 +658,7 @@ class="MathClass-rel">∈</mo> <mrow ><mo
 class="MathClass-open">[</mo><mrow><mi 
 >T</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>,
-and when <!--l. 42--><math 
+and when <!--l. 43--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -657,24 +666,24 @@ display="inline" ><msub><mrow
 ><mi 
 >k</mi></mrow></msub 
 ></math> receives
-a <!--l. 42--><math 
+a <!--l. 43--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>, it performs
-<!--l. 42--><math 
+<!--l. 43--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
+display="inline" ><msup><mrow 
 ><mi 
 >T</mi></mrow><mrow 
 ><mi 
->k</mi></mrow></msub 
+>k</mi></mrow></msup 
 > <mo 
-class="MathClass-rel">=</mo> <msub><mrow 
+class="MathClass-rel">=</mo> <msup><mrow 
 ><mi 
 >T</mi></mrow><mrow 
 ><mi 
->k</mi></mrow></msub 
+>k</mi></mrow></msup 
 > <mo 
 class="MathClass-bin">∪</mo> <msub><mrow 
 ><mi 
@@ -682,18 +691,15 @@ class="MathClass-bin">∪</mo> <msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math>. Therefore, the
-list of peers <!--l. 43--><math 
+list of peers <!--l. 44--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
+display="inline" ><msup><mrow 
 ><mi 
 >T</mi></mrow><mrow 
 ><mi 
->k</mi></mrow></msub 
+>k</mi></mrow></msup 
 ></math> that a
-                                                                  
-
-                                                                  
-peer <!--l. 43--><math 
+peer <!--l. 44--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -701,7 +707,7 @@ display="inline" ><msub><mrow
 ><mi 
 >k</mi></mrow></msub 
 ></math> handles (the
-neighbor peers of <!--l. 44--><math 
+neighbor peers of <!--l. 45--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -711,20 +717,20 @@ display="inline" ><msub><mrow
 ></math>),
 initially depends (see Sec. <a 
 href="#x1-60001.4">1.4<!--tex4ht:ref: sec:chunk_flooding --></a>) on the number of
-<!--l. 45--><math 
+<!--l. 46--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
 messages that it has received. Consequently, it holds that
-<!--l. 47--><math 
+<!--l. 48--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mo 
-class="MathClass-rel">|</mo><msub><mrow 
+class="MathClass-rel">|</mo><msup><mrow 
 ><mi 
 >T</mi></mrow><mrow 
 ><mi 
->k</mi></mrow></msub 
+>k</mi></mrow></msup 
 ><mo 
 class="MathClass-rel">|</mo><mo 
 class="MathClass-rel">≤</mo><mo 
@@ -746,215 +752,147 @@ class="MathClass-rel">|</mo></math>.
  <div style="text-align:center;"> <img height=300 src="graphics/leaving.png" /> </div> 
 <br /> <div class="caption" 
 ><span class="id">Figure 2: </span><span  
-class="content">Tasks run when an peer <!--l. 6--><math 
+class="content">Tasks run when an peer <!--l. 5--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
+display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mi 
->o</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
+>o</mi></mrow></msub 
 ></math>
-wants to leave its team <!--l. 6--><math 
+wants to leave its team. <!--l. 5--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msup><mrow 
-><mi 
->T</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msup 
-></math>.
-<!--l. 6--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
+display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mi 
->k</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
+>k</mi></mrow></msub 
 ></math>
-is a neighbor of <!--l. 6--><math 
+is a neighbor of <!--l. 5--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
+display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mi 
->o</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
-></math>
-and <!--l. 6--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msup><mrow 
-><mi 
->S</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msup 
-></math>
-is the splitter of <!--l. 6--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msup><mrow 
-><mi 
->T</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msup 
+>o</mi></mrow></msub 
 ></math>.</span></div><!--tex4ht:label?: x1-40012 -->
                                                                   
 
                                                                   
    </div><hr class="endfloat" />
-<!--l. 8--><p class="noindent" >An outgoing peer <!--l. 8--><math 
+<!--l. 7--><p class="noindent" >An outgoing peer <!--l. 7--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
+display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mi 
->o</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
+>o</mi></mrow></msub 
 ></math> (see
 Fig. <a 
-href="#x1-40012">2<!--tex4ht:ref: fig:leaving --></a>) must to: (1) say <!--l. 9--><math 
+href="#x1-40012">2<!--tex4ht:ref: fig:leaving --></a>) must to: (1) say <!--l. 8--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">goodbye</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
-to <!--l. 9--><math 
+to <!--l. 8--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>S</mi></math> and
+to <!--l. 8--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
->S</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msup 
-></math> and
-to <!--l. 9--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
-><mi 
 >T</mi></mrow><mrow 
 ><mi 
->o</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
+>o</mi></mrow></msup 
 ></math> (in
 this order), (2) relay any pending (received but yet not sent) chunks, and (3) wait for a
-<!--l. 11--><math 
+<!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">goodbye</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> from
-<!--l. 11--><math 
+<!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msup><mrow 
+display="inline" ><mi 
+>S</mi></math>, which performs
+<!--l. 10--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>T</mi> <mo 
+class="MathClass-rel">=</mo> <mi 
+>T</mi> <mo 
+class="MathClass-bin">∖</mo> <msub><mrow 
 ><mi 
->S</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
->t</mi></mrow></msup 
-></math>, which performs
-<!--l. 11--><math 
+>o</mi></mrow></msub 
+></math>. In case of
+a timeout, <!--l. 11--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>o</mi></mrow></msub 
+></math>
+resets the leaving procedure, for a maximum number of times.
+</p><!--l. 14--><p class="indent" >   When a <!--l. 14--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>k</mi></mrow></msub 
+></math>
+receives a <!--l. 14--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow ><mo 
+class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">goodbye</mi></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>
+from <!--l. 14--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>o</mi></mrow></msub 
+></math>,
+<!--l. 14--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>k</mi></mrow></msub 
+></math> removes
+<!--l. 15--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>o</mi></mrow></msub 
+></math> from its neighbors
+set, by running <!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
 >T</mi></mrow><mrow 
 ><mi 
->t</mi></mrow></msup 
+>k</mi></mrow></msup 
 > <mo 
 class="MathClass-rel">=</mo> <msup><mrow 
 ><mi 
 >T</mi></mrow><mrow 
 ><mi 
->t</mi></mrow></msup 
+>k</mi></mrow></msup 
 > <mo 
-class="MathClass-bin">∖</mo> <msubsup><mrow 
+class="MathClass-bin">∖</mo> <msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mi 
->o</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
-></math>. In case of
-a timeout, <!--l. 12--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->o</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
-></math>
-resets the leaving procedure, for a maximum number of times.
-</p><!--l. 15--><p class="indent" >   When a <!--l. 15--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->k</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
-></math>
-receives a <!--l. 15--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mrow ><mo 
-class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">goodbye</mi></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>
-from <!--l. 15--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->o</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
-></math>,
-<!--l. 15--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->k</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
-></math> removes
-<!--l. 16--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->o</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
-></math> from its neighbors
-set, by running <!--l. 16--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
-><mi 
->T</mi></mrow><mrow 
-><mi 
->k</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
-> <mo 
-class="MathClass-rel">=</mo> <msubsup><mrow 
-><mi 
->T</mi></mrow><mrow 
-><mi 
->k</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
-> <mo 
-class="MathClass-bin">∖</mo> <msubsup><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->o</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
+>o</mi></mrow></msub 
 ></math>.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">1.3   </span> <a 

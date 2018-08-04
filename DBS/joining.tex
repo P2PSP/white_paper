@@ -4,10 +4,10 @@
 \begin{figure*}
   %\includegraphics[width=\textwidth]{joining}
   \fig{230}{5cm}{joining} \caption{Tasks involved in a peer
-    joining. $P^t_i$ is the incoming peer, and $P^t_k$ is a peer that
-    is already in the team. $R$ represents the tracker, and $S^t$ the
-    splitter of the team $T^t$ to which $P^t_k$ belongs, and $P^t_i$
-    will be added.\label{fig:joining}}
+    joining. $P_i$ is the incoming peer, and $P_k$ is a peer that is
+    already in the team. $R$ represents the tracker, and $S$ the
+    splitter of the team $T$ to which $P_k$ belongs, and $P_i$ will be
+    added.\label{fig:joining}}
 \end{figure*}
 An incoming peer $P_i$ (see the tasks described in
 Fig.~\ref{fig:joining}), interested in a given channel, first must
@@ -40,12 +40,12 @@ accept, $P_i$ requests a new team to $R$, and resets the procedure.
 While arriving, $P_i$ does not store $T$ as it is
 received. Instead, $P_i$ sends an
 (unreliable) $[\mathtt{hello}]$ message to each $P_k\in [T]$, and when
-$P_k$ receives a $[\mathtt{hello}]$, it performs $T_k = T_k \cup
-P_i$. Therefore, the list of peers $T_k$ that a peer $P_k$
+$P_k$ receives a $[\mathtt{hello}]$, it performs $T^k = T^k \cup
+P_i$. Therefore, the list of peers $T^k$ that a peer $P_k$
 handles (the neighbor peers of $P_k$), initially depends (see
 Sec.~\ref{sec:chunk_flooding}) on the number of $[\mathtt{hello}]$
 messages that it has received. Consequently, it holds that
-$|T_k| \le |T|$.
+$|T^k| \le |T|$.
 
 % When a ${\cal P}_k$ receives a $[\mathtt{hello}]$ from ${\cal P}_i$,
 % replies to ${\cal P}_i$ with the same message. -> Ya no hace falta

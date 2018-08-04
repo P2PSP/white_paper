@@ -13,22 +13,22 @@
 
 \begin{algorithmic}
 
-  \Procedure{$P^t_o$.Leave}{$T^t$}
+  \Procedure{$P_o$.Leave}{$T$}
   \Repeat
-  \State $[\mathtt{goodbye}] \sendto S^t$
-  \State $[\mathtt{goodbye}] \gets S^t$ \textbf{with} timeout
+  \State $[\mathtt{goodbye}] \sendto S$
+  \State $[\mathtt{goodbye}] \gets S$ \textbf{with} timeout
   \Until{\textbf{not} timeout}
-  \State $[\mathtt{goodbye}] \sendto S^t$
-  \ForAll{$P^t_k\in T^t_o$}
-  \State $[\mathtt{goodbye}] \sendto P^j_k$
+  \State $[\mathtt{goodbye}] \sendto S$
+  \ForAll{$P_k\in T^o$}
+  \State $[\mathtt{goodbye}] \sendto P_k$
   \EndFor
   \State relay\_pending\_chunks()
   \EndProcedure
   \newline
-  \Procedure{$P^t_k$.RemoveNeighbors}{}
+  \Procedure{$P_k$.RemoveNeighbors}{}
   \While{True}
-  \State $[\mathtt{goodbye}] \gets P^t_o$
-  \State $T^t_k = T^t_k \setminus P^ t_o$
+  \State $[\mathtt{goodbye}] \gets P_o$
+  \State $T^k = T^k \setminus P_o$
   \EndWhile
   \EndProcedure
   

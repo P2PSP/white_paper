@@ -16,11 +16,11 @@
 
   \Procedure{$R$.ServeSplitters}{}
   \While{True}
-  \State $[\mathtt{hello}] \gets P^?_i$
+  \State $[\mathtt{hello}] \gets P_i$
   %\State \textbf{wait for a connection from} $P^?_i$
-  \ForAll{$S^t \in S$}
-  \If{$|T^t|<N$}
-  \State $[S^t] \send P^?_i$
+  \ForAll{$S \in \{S\}$}
+  \If{$|T|<N$}
+  \State $[S] \send P_i$
   \EndIf
   \EndFor
   \EndWhile
@@ -28,7 +28,7 @@
   \newline
   \Procedure{$R$.UpdateFullness}{}
   \While{True}
-  \State $[|T^t|] \gets S^t$
+  \State $[|T|] \gets S$
   \EndWhile
   \EndProcedure
 

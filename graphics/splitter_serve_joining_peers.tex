@@ -14,19 +14,19 @@
 
 \begin{algorithmic}
 
-  \Procedure{$S^t$.AddPeers}{}
+  \Procedure{$S$.AddPeers}{}
   \While{True}
-  \State $[\mathtt{hello}] \leftarrow P^t_i$
+  \State $[\mathtt{hello}] \leftarrow P_i$
   %\If{$P^t_i \notin T^t$}
-  \ForAll{$P^t_k \in T^t$}
-  \State $[P^t_k] \send P^t_i$
+  \ForAll{$P_k \in T$}
+  \State $[P_k] \send P_i$
   \EndFor
-  \State $T^t = T^t \cup P^t_i$
+  \State $T = T \cup P_i$
   %\Else~\texttt{/* received $[\mathtt{goodbye}]$ */}
   %\State $[\mathtt{goodbye}] \sendto P^_i$
   %\State ${\cal T}_j={\cal T}_j \setminus {\cal P}_i$
   %\EndIf
-  \State $[|{\cal T}_j|] \send {\cal R}$
+  \State $[|T|] \send R$
   \EndWhile
   \EndProcedure
   

@@ -14,12 +14,12 @@
 
 \begin{algorithmic}
 
-  \Procedure{$S^t$.RemovePeers}{}
+  \Procedure{$S$.RemovePeers}{}
   \While{True}
-  \State $[\mathtt{goodbye}] \gets P^t_o$
-  \State $[\mathtt{goodbye}] \sendto P^t_o$
-  \State $T^t = T^t \setminus P^t_o$
-  \State $[|T^t|] \send R$
+  \State $[\mathtt{goodbye}] \gets P_o$
+  \State $[\mathtt{goodbye}] \sendto P_o$
+  \State $T = T \setminus P_o$
+  \State $[|T|] \send R$
   \EndWhile
   \EndProcedure
   
