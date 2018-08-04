@@ -9,10 +9,10 @@
     splitter of the team $T^t$ to which $P^t_k$ belongs, and $P^t_i$
     will be added.\label{fig:joining}}
 \end{figure*}
-An incoming peer $P^?_i$ (see the tasks described in
+An incoming peer $P_i$ (see the tasks described in
 Fig.~\ref{fig:joining}), interested in a given channel, first must
 join a team in order to access to the contents of such channel. For
-that, $P^?_i$ requests a splitter to the \emph{tracker} $R$. $R$, that
+that, $P_i$ requests a splitter to the \emph{tracker} $R$. $R$, that
 continuously is receiving in \emph{reliable}\footnote{Reliable
   messages are transmitted over TCP and their transmission is denoted
   in the pseudocode by $\Rightarrow$. On the other hand, unreliable
@@ -20,14 +20,14 @@ continuously is receiving in \emph{reliable}\footnote{Reliable
   its transmission is denoted by $\rightarrow$. In any case, the
   reception of a packet is a permanent blocking action, at least a
   timeout is indicated.}  messages the fullness level of each team
-$T^t$ from the corresponding splitter $S^t$, selects a team with room
-for $P^?_i$, and transmits to $P^?_i$ a $[S^t]$ message\footnote{More
+$T$ from the corresponding splitter $S$, selects a team with room
+for $P_i$, and transmits to $P_i$ a $[S]$ message\footnote{More
   exactly, the message transports the IP address and port, i.e. an
-  end-point, of the splitter $S^t$}. Then, $P^?_i$ requests to $S^t$
-to be included in $T^t$. If $S^t$ accepts (it should), then $S^t$
-transmits to $P^t_i$ the message $[T^t]$ (more precisely, list of
-peers in $T^t$, in a reliable message), and runs $T^t = T^t \cup
-P^t_i$, in this order. If $S^t$ does not accept, $P^?_i$ repeats the
+  end-point, of the splitter $S$}. Then, $P_i$ requests to $S$
+to be included in $T$. If $S$ accepts (it should), then $S$
+transmits to $P_i$ the message $[T]$ (more precisely, list of
+peers in $T$, in a reliable message), and runs $T = T \cup
+P_i$, in this order. If $S$ does not accept, $P_i$ repeats the
 procedure, requesting a new team to $R$.
 
 %Then ${\cal P}_i$ polls
@@ -36,15 +36,15 @@ procedure, requesting a new team to $R$.
 %  P}_i$. %Then, ${\cal S}_j$ performs ${\cal T}_j = {\cal T}_j \cup
 %{\cal P}_i$.  In parallel with the reception of $[{\cal T}_j]$,
 
-While arriving, $P^t_i$ does not store $T^t$ as it is
-received. Instead, for each $P^t_k\in [T^t]$, $P^t_i$ sends an
-(unreliable) $[\mathtt{hello}]$ message to each $P^t_k$, and when
-$P^t_k$ receives a $[\mathtt{hello}]$, it performs $T^t_k = T^t_k \cup
-P^t_i$. Therefore, the list of peers $T^t_k$ that a peer $P^t_k$
-handles (the neighbor peers of $P^t_k$), initially depends (see
+While arriving, $P_i$ does not store $T$ as it is
+received. Instead, $P_i$ sends an
+(unreliable) $[\mathtt{hello}]$ message to each $P_k\in [T]$, and when
+$P_k$ receives a $[\mathtt{hello}]$, it performs $T_k = T_k \cup
+P_i$. Therefore, the list of peers $T_k$ that a peer $P_k$
+handles (the neighbor peers of $P_k$), initially depends (see
 Sec.~\ref{sec:chunk_flooding}) on the number of $[\mathtt{hello}]$
 messages that it has received. Consequently, it holds that
-$|T^t_k| \le |T^t|$.
+$|T_k| \le |T|$.
 
 % When a ${\cal P}_k$ receives a $[\mathtt{hello}]$ from ${\cal P}_i$,
 % replies to ${\cal P}_i$ with the same message. -> Ya no hace falta

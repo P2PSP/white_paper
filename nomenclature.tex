@@ -2,7 +2,7 @@
   \begin{tabular}{rl}
     Parameter & Meaning \\
     \hline
-    $G$       & Maximum number of teams in a channel \\
+    $G$       & Maximum number of teams \\
     $N$       & Maximum number of peers in a team \\
     $C$       & Maximum size of a chunk of media \\
     $B$       & buffer size in chunks \\
@@ -10,9 +10,9 @@
     Entity  & Role \\
     \hline
     $O$     & the media source \\
-    $\{T\}$ & all the teams related to the same media channel \\
-    $R$     & teams tracker (relates channels with teams)\\
-    $\{S\}$ & the set of splitters broadcasting the same channel \\
+    $\{T\}$ & all the teams that receive the same media stream \\
+    $R$     & teams tracker \\
+    $\{S\}$ & the set of splitters broadcasting the same stream \\
     $T$     & one of the $|T|$ teams in $\{T\}$ \\
     $S$     & the splitter of $T$ \\
     $P_i$   & $i$-th peer of $T$ \\
@@ -25,14 +25,8 @@
     $1\leq |T|\leq N$     & current number of peers in team $T$ \\
     $1\leq |T_i|\leq N$   & current number of neighbor peers in $T_i$ \\
   \end{tabular}
-  \caption{Nomenclature used in this
-    documentation.\label{tab:nomenclature}}
+  \caption{Nomenclature used in P2PSP.\label{tab:P2PSP_nomenclature}}
 \end{table}
 
 The nomenclature used for describing P2PSP is shown in
-Table~\ref{tab:nomenclature}. In this documentation, only one media
-channel has been considered, therefore, if more channels are needed,
-all these objects should be instantiated for each different channel
-(for example, there should be a different tracker for each
-channel). In P2PSP, a channel is the equivalent to a same concept, for
-example, in the DVB (Digital Video Broadcasting) system.
+Table~\ref{tab:P2PSP_nomenclature}.

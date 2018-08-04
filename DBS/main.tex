@@ -1,9 +1,55 @@
-DBS provides ALM~\cite{banerjee2002scalable} in unicast
-environments~\cite{comer2003computer}. The media is sent by a
-streaming server $O$, called \emph{source}, and received by a set
-of \emph{splitters} $S=\{S^1,\cdots,S^{|T|}\}$, where $1\leq |T|\leq
-G$. Each splitter $S^t$ divides the stream into a sequence
-of \emph{chunks}, and relay them to its corresponding \emph{team}
-$T^t$, where it can be up to $N$ \emph{peers}. We define the set of
-teams as $T=\{T^1,\cdots,T^{|T|}\}$, and enumerate the peers in the
-team $T^t$ as $T^t=\{P^t_1,\cdots,P^t_{|T^t|}\}$.
+\label{sec:DBS}
+
+\begin{table}
+  \begin{tabular}{rl}
+    Parameter & Meaning \\
+    \hline
+    $G$       & Maximum number of teams \\
+    $N$       & Maximum number of peers in a team \\
+    $C$       & Maximum size of a chunk of media \\
+    $B$       & buffer size in chunks \\
+    ~\\
+    Entity  & Role \\
+    \hline
+    $O$     & the media source \\
+    $\{T\}$ & all the teams that receive the same media stream \\
+    $R$     & teams tracker \\
+    $\{S\}$ & the set of splitters broadcasting the same stream \\
+    $T$     & one of the $|T|$ teams in $\{T\}$ \\
+    $S$     & the splitter of $T$ \\
+    $P_i$   & $i$-th peer of $T$ \\
+    $T_i$   & the neighbors of $P_i$ \\
+    ~\\
+    Variable            & Meaning \\
+    \hline
+    $1\leq |\{T\}|\leq G$ & current number of teams broadcasting the same channel \\
+    %$1\leq |S|\leq G$   & current number of splitters related with $T$ \\
+    $1\leq |T|\leq N$     & current number of peers in team $T$ \\
+    $1\leq |T_i|\leq N$   & current number of neighbor peers in $T_i$ \\
+  \end{tabular}
+  \caption{Nomenclature used in DBS.\label{tab:DBS_nomenclature}}
+\end{table}
+
+DBS provides ALM~\cite{banerjee2002scalable} of a media stream in
+unicast environments~\cite{comer2003computer}. The media is sent by a
+streaming server $O$, called \emph{source} (the nomenclature used for
+describing DBS is shown in Table~\ref{tab:DBS_nomenclature}), and
+received by a set of \emph{splitters} $\{S\}$.
+%=\{S^1,\cdots,S^{|T|}\}$ , where $1\leq |T|\leq G$.
+Each splitter $S$ divides the stream into a sequence of
+\emph{chunks}, and relay them to its corresponding \emph{team} $T$,
+where it can be up to $N$ \emph{peers}. We define the set of teams as
+$\{T\}$,
+%=\{T^1,\cdots,T^{|T|}\}$,
+and enumerate the peers in the team $T$ as $T=\{P_1,\cdots,P_{|T|}\}$.
+
+%As can be seen, we have ignored that
+%more of one teams can be broadcasting the same media stream (most
+%sources support concurrent receivers, and therefore, multiple
+%splitters).
+
+%Consequently, if more channels are needed,
+%all these objects should be instantiated for each different channel
+%(for example, there should be a different tracker for each
+%channel). In P2PSP, a channel is the equivalent to a same concept, for
+%example, in the DVB (Digital Video Broadcasting) system.

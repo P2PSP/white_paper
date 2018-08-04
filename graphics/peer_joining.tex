@@ -12,13 +12,13 @@
 \algrenewcommand\algorithmicprocedure{\textbf{task}}
 
 \begin{algorithmic}
-  \Procedure{$P^t_i$.JoinTeam}{$R$}
+  \Procedure{$P_i$.JoinTeam}{$R$}
   \State $[\mathtt{hello}] \send R$
-  \State $[S^t] \gets R$
+  \State $[S] \gets R$
   %\ForAll{${\cal S}^j\in {\cal S}$}
-  \State $[\mathtt{hello}] \send S^t$
-  \ForAll{$P^t_k\in[T^t]\gets S^t$}
-  \State $[\mathtt{hello}]\sendto P^t_k$
+  \State $[\mathtt{hello}] \send S$
+  \ForAll{$P_k\in[T]\gets S$}
+  \State $[\mathtt{hello}]\sendto P_k$
   %\If{$[{\cal T}_j] \gets {\cal S}_j$}
   %\State \textbf{Break}
   %\EndIf
@@ -31,12 +31,12 @@
   %\EndFor
   \EndProcedure
   \newline
-  \Procedure{$P^t_k$.AddNeighbors}{}
+  \Procedure{$P_k$.AddNeighbors}{}
   \While{True}
-  \State $[\mathtt{hello}] \gets P^t_i$
+  \State $[\mathtt{hello}] \gets P_i$
   %\State $[\mathtt{hello}] \sendto {\cal P}_i$
   %\State $N({\cal P}_k) = N({\cal P}_k) \cup {\cal P}_i$
-  \State $T^t = T^t \cup P^t_i$
+  \State $T = T \cup P_i$
   \EndWhile
   \EndProcedure
   
