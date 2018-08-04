@@ -13,22 +13,23 @@ An incoming peer $P_i$ (see the tasks described in
 Fig.~\ref{fig:joining}), interested in a given channel, first must
 join a team in order to access to the contents of such channel. For
 that, $P_i$ requests a splitter to the \emph{tracker} $R$. $R$, that
-continuously is receiving in \emph{reliable}\footnote{Reliable
-  messages are transmitted over TCP and their transmission is denoted
-  in the pseudocode by $\Rightarrow$. On the other hand, unreliable
-  messages, which can be lost in transit, are transmitted over UDP and
-  its transmission is denoted by $\rightarrow$. In any case, the
-  reception of a packet is a permanent blocking action, at least a
-  timeout is indicated.}  messages the fullness level of each team
-$T$ from the corresponding splitter $S$, selects a team with room
-for $P_i$, and transmits to $P_i$ a $[S]$ message\footnote{More
-  exactly, the message transports the IP address and port, i.e. an
-  end-point, of the splitter $S$}. Then, $P_i$ requests to $S$
-to be included in $T$. If $S$ accepts (it should), then $S$
-transmits to $P_i$ the message $[T]$ (more precisely, list of
-peers in $T$, in a reliable message), and runs $T = T \cup
-P_i$, in this order. If $S$ does not accept, $P_i$ repeats the
-procedure, requesting a new team to $R$.
+continuously is receiving, from $\{S\}$,
+\emph{reliable}\footnote{Reliable messages are transmitted over TCP
+  and their transmission is denoted in the pseudocode by
+  $\Rightarrow$. On the other hand, unreliable messages, which can be
+  lost in transit, are transmitted over UDP and its transmission is
+  denoted by $\rightarrow$. In any case, the reception of a packet is
+  a permanent blocking action, at least a timeout is indicated.}
+messages containing the number of peers of each team of $\{T\}$,
+selects a team with room for $P_i$, and transmits to $P_i$ a $[S]$
+message\footnote{More exactly, $[S]$ transports the IP address and
+  port, i.e. an end-point, of the splitter $S$}. Then, $P_i$ requests
+to $S$ to be included in $T$. If $S$ accepts (during the joining
+process of $P_i$ it could happen that $|T|=N$ because other peer are
+trying to join at the same time), then $S$ transmits to $P_i$ a
+message $[T]$ (more precisely, the list of peers in $T$, in a reliable
+message), and runs $T = T \cup P_i$, in this order. If $S$ does not
+accept, $P_i$ requests a new team to $R$, and resets the procedure.
 
 %Then ${\cal P}_i$ polls
 %sequentially each splitter in $S$, requesting to be included in its
