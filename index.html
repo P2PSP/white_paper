@@ -40,35 +40,35 @@ href="#x1-50001.3" id="QQ2-1-8">Chunk generation</a></span>
 <br />    <span class="subsectionToc" >1.4 <a 
 href="#x1-60001.4" id="QQ2-1-10">Chunk ﬂooding</a></span>
 <br />    <span class="subsectionToc" >1.5 <a 
-href="#x1-70001.5" id="QQ2-1-11">Chunk buﬀering</a></span>
+href="#x1-70001.5" id="QQ2-1-12">Chunk buﬀering</a></span>
 <br />    <span class="subsectionToc" >1.6 <a 
-href="#x1-80001.6" id="QQ2-1-12">Free-riding control at splitters</a></span>
+href="#x1-80001.6" id="QQ2-1-13">Free-riding control at splitters</a></span>
 <br />   <span class="sectionToc" >2 <a 
-href="#x1-90002" id="QQ2-1-13">FCS (Free-riding Control Set)</a></span>
+href="#x1-90002" id="QQ2-1-14">FCS (Free-riding Control Set)</a></span>
 <br />   <span class="sectionToc" >3 <a 
-href="#x1-100003" id="QQ2-1-14">IMS (Ip Multicast Set)</a></span>
+href="#x1-100003" id="QQ2-1-15">IMS (Ip Multicast Set)</a></span>
 <br />   <span class="sectionToc" >4 <a 
-href="#x1-110004" id="QQ2-1-15">MRS (Massively-lost chunk Recovery Set)</a></span>
+href="#x1-110004" id="QQ2-1-16">MRS (Massively-lost chunk Recovery Set)</a></span>
 <br />   <span class="sectionToc" >5 <a 
-href="#x1-120005" id="QQ2-1-16">TAS (Topology Adaptation Set)</a></span>
+href="#x1-120005" id="QQ2-1-17">TAS (Topology Adaptation Set)</a></span>
 <br />   <span class="sectionToc" >6 <a 
-href="#x1-130006" id="QQ2-1-17">ACS (Adaptive Capacity Set)</a></span>
+href="#x1-130006" id="QQ2-1-18">ACS (Adaptive Capacity Set)</a></span>
 <br />   <span class="sectionToc" >7 <a 
-href="#x1-140007" id="QQ2-1-18">MCS (Multi-Channel Set)</a></span>
+href="#x1-140007" id="QQ2-1-19">MCS (Multi-Channel Set)</a></span>
 <br />   <span class="sectionToc" >8 <a 
-href="#x1-150008" id="QQ2-1-19">NTS (NAT Traversal Set)</a></span>
+href="#x1-150008" id="QQ2-1-20">NTS (NAT Traversal Set)</a></span>
 <br />    <span class="subsectionToc" >8.1 <a 
-href="#x1-160008.1" id="QQ2-1-20">Traﬃc ﬁltering</a></span>
+href="#x1-160008.1" id="QQ2-1-21">Traﬃc ﬁltering</a></span>
 <br />    <span class="subsectionToc" >8.2 <a 
-href="#x1-170008.2" id="QQ2-1-23">Cone VS symmetric</a></span>
+href="#x1-170008.2" id="QQ2-1-24">Cone VS symmetric</a></span>
 <br />    <span class="subsectionToc" >8.3 <a 
-href="#x1-180008.3" id="QQ2-1-24">Port allocation</a></span>
+href="#x1-180008.3" id="QQ2-1-25">Port allocation</a></span>
 <br />    <span class="subsectionToc" >8.4 <a 
-href="#x1-190008.4" id="QQ2-1-25">NAT type analysis</a></span>
+href="#x1-190008.4" id="QQ2-1-26">NAT type analysis</a></span>
 <br />    <span class="subsectionToc" >8.5 <a 
-href="#x1-200008.5" id="QQ2-1-26">(Theoretical) NAT traversal performance of DBS</a></span>
+href="#x1-200008.5" id="QQ2-1-27">(Theoretical) NAT traversal performance of DBS</a></span>
 <br />    <span class="subsectionToc" >8.6 <a 
-href="#x1-210008.6" id="QQ2-1-31">A port prediction algorithm (Max’s proposal)</a></span>
+href="#x1-210008.6" id="QQ2-1-32">A port prediction algorithm (Max’s proposal)</a></span>
    </div>
    <div 
 class="abstract" 
@@ -906,42 +906,28 @@ class="MathClass-bin">∖</mo> <msub><mrow
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img height=300 src="graphics/chunk_generation_and_flooding.png" /> </div> 
-<br />      <div class="caption" 
-><span class="id">Figure 3:         </span><span  
-class="content">Chunk         generation         at         the         splitter
-<!--l. 6--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->S</mi></math>.
-Cchunk ﬂooding at peers <!--l. 6--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->k</mi></mrow></msub 
-></math>.</span></div><!--tex4ht:label?: x1-50013 -->
+ <div style="text-align:center;"> <img height=120 src="graphics/splitter_chunk_generation.png" /> </div> 
+<br /> <div class="caption" 
+><span class="id">Figure 3: </span><span  
+class="content">Chunk generation at the splitter.</span></div><!--tex4ht:label?: x1-50013 -->
                                                                   
 
                                                                   
    </div><hr class="endfloat" />
-<!--l. 8--><p class="noindent" >Splitter <!--l. 8--><math 
+<!--l. 7--><p class="noindent" >Splitter <!--l. 7--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->S</mi></math>
-(see Fig. <a 
-href="#x1-50013">3<!--tex4ht:ref: fig:chunk_generation_and_flooding --></a>) divides the stream into chunks of data
-(<!--l. 9--><math 
+>S</mi></math> divides the stream
+into chunks of data (<!--l. 7--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">chunk</mi></math>) of constant
-length <!--l. 10--><math 
+display="inline" ><mi mathvariant="monospace">chunk</mi></math>)
+of constant length <!--l. 8--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >C</mi></math>,
 and sends exclusively each chunk to a diﬀerent <span 
 class="ecti-1000">origin peer</span>
-<!--l. 11--><math 
+<!--l. 9--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -950,13 +936,14 @@ display="inline" ><msub><mrow
 >i</mi></mrow></msub 
 > <mo 
 class="MathClass-rel">∈</mo> <mi 
->T</mi></math>,
-using a round-robin schema. Each chunk is enumerated with an index
-<!--l. 12--><math 
+>T</mi></math>, using
+a round-robin schema (see Fig. <a 
+href="#x1-50013">3<!--tex4ht:ref: fig:chunk_generation --></a>). Each chunk is enumerated with an index
+<!--l. 11--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >x</mi></math>, conforming
-a message <!--l. 13--><math 
+a message <!--l. 11--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><msub><mrow 
@@ -971,7 +958,7 @@ class="MathClass-open">[</mo><mrow><mi
 >x</mi><mo 
 class="MathClass-punc">,</mo><mi mathvariant="monospace">chunk</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>,
-where <!--l. 13--><math 
+where <!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >x</mi> <mo 
@@ -980,305 +967,277 @@ class="MathClass-rel">=</mo> <mi
 class="MathClass-rel">|</mo><mi 
 >T</mi><mo 
 class="MathClass-rel">|</mo></math>.
-</p><!--l. 15--><p class="indent" >   We deﬁne a <span 
+</p><!--l. 14--><p class="indent" >   We deﬁne a <span 
 class="ecti-1000">round </span>(in a team) as the time necessary to send two
 consecutive chunks from the splitter (of such team) to the same
 peer, using the round-robing. This time is variable and depends on
-<!--l. 17--><math 
+<!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mo 
 class="MathClass-rel">|</mo><mi 
 >T</mi><mo 
 class="MathClass-rel">|</mo></math>,
-<!--l. 18--><math 
+<!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >C</mi></math>, and the average
-bit-rate of the media, <!--l. 18--><math 
+bit-rate of the media, <!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >A</mi></math>.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">1.4   </span> <a 
  id="x1-60001.4"></a>Chunk ﬂooding</h4>
-<!--l. 2--><p class="noindent" >When a peer <!--l. 2--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->k</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
-></math> receives
-a chunk from <!--l. 2--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->i</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
-></math>,
-<!--l. 2--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->k</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
-></math> ﬂoods the
-chunk to <!--l. 3--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
-><mi 
->T</mi></mrow><mrow 
-><mi 
->k</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
-> <mo 
-class="MathClass-bin">∖</mo> <msubsup><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->i</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
-></math>,
-using a prioritized round-robin schema (see Fig. <a 
-href="#x1-50013">3<!--tex4ht:ref: fig:chunk_generation_and_flooding --></a>). Besides, if it is a duplicate chunk,
-<!--l. 5--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->k</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
-></math> sends
-to <!--l. 5--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->i</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
-></math> a
-<!--l. 6--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mrow ><mo 
-class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">NRFCF</mi><mspace width="1em" class="nbsp" /><msubsup><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->l</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
-></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>
-(<!--l. 6--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">N</mi></math>ot
-<!--l. 6--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">R</mi></math>elay
-<!--l. 7--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">F</mi></math>uture
-<!--l. 7--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">C</mi></math>hunks
-<!--l. 7--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">F</mi></math>rom) message,
-where <!--l. 8--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->l</mi></mrow><mrow 
-><mi 
->t</mi></mrow></msubsup 
-></math>
-is the origin peer of the duplicate chunk. Thus, only the ﬁrst neighbor
-<!--l. 9--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
-><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
-><mi 
->i</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msubsup 
-></math> to send to
-<!--l. 9--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
-><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
-><mi 
->k</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msubsup 
-></math> a chunk “originated” at
-<!--l. 10--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
-><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
-><mi 
->l</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msubsup 
-></math> will do that in the future, at
-least that <!--l. 11--><math 
+                                                                  
+
+                                                                  
+<!--l. 4--><p class="indent" >   <a 
+ id="x1-60014"></a></p><hr class="float" /><div class="float" 
+>
+                                                                  
+
+                                                                  
+ <div style="text-align:center;"> <img height=100 src="graphics/peer_chunk_flooding.png" /> </div> 
+<br /> <div class="caption" 
+><span class="id">Figure 4: </span><span  
+class="content">Chunk ﬂooding at peers.</span></div><!--tex4ht:label?: x1-60014 -->
+                                                                  
+
+                                                                  
+   </div><hr class="endfloat" />
+<!--l. 7--><p class="noindent" >When a peer <!--l. 7--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
 >k</mi></mrow></msub 
-></math> revokes this routing
-information by sending <!--l. 12--><math 
+></math> receives
+a chunk from <!--l. 7--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math>,
+<!--l. 7--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>k</mi></mrow></msub 
+></math> ﬂoods the
+chunk to <!--l. 8--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>T</mi></mrow><mrow 
+><mi 
+>k</mi></mrow></msup 
+> <mo 
+class="MathClass-bin">∖</mo> <msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math>,
+using a prioritized round-robin schema (see Fig. <span 
+class="ecbx-1000">??</span>). Besides, if it is a duplicate chunk,
+<!--l. 10--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>k</mi></mrow></msub 
+></math> sends
+to <!--l. 10--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math> a
+<!--l. 11--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
-class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">RFCF</mi><mspace width="1em" class="nbsp" /><msubsup><mrow 
+class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">NRFCF</mi><mspace width="1em" class="nbsp" /><msub><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
->l</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msubsup 
+>l</mi></mrow></msub 
 ></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
-(<!--l. 12--><math 
+(<!--l. 11--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">N</mi></math>ot
+<!--l. 11--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">R</mi></math>elay
 <!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">F</mi></math>uture
-<!--l. 13--><math 
+<!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">C</mi></math>hunks
-<!--l. 13--><math 
+<!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">F</mi></math>rom) to one or more (possibly
-                                                                  
-
-                                                                  
-the rest of) peers of <!--l. 14--><math 
+display="inline" ><mi mathvariant="monospace">F</mi></math>rom) message,
+where <!--l. 13--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
+display="inline" ><msub><mrow 
 ><mi 
-mathvariant="bold-script">𝒯</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
->k</mi></mrow><mrow 
+>l</mi></mrow></msub 
+></math>
+is the origin peer of the duplicate chunk. Thus, only the ﬁrst neighbor
+<!--l. 14--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
 ><mi 
->j</mi></mrow></msubsup 
-></math>.
-</p><!--l. 16--><p class="indent" >   As said, peers prioritize the ﬂooding of the chunks they relay by sending ﬁrst the
-chunks to those neighbors that are more supportive. To achieve that, every time
+>P</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math> to send to
+<!--l. 14--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>k</mi></mrow></msub 
+></math> a chunk “originated”
+at <!--l. 15--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>l</mi></mrow></msub 
+></math> will do that in the
+future, at least that <!--l. 16--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>k</mi></mrow></msub 
+></math>
+revokes this routing information by sending a
+<!--l. 17--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow ><mo 
+class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">RFCF</mi><mspace width="1em" class="nbsp" /><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>l</mi></mrow></msub 
+></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>
+(<!--l. 17--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">R</mi></math>elay
+<!--l. 17--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">F</mi></math>uture
 <!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
+display="inline" ><mi mathvariant="monospace">C</mi></math>hunks
+<!--l. 18--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">F</mi></math>rom) to one or more (possibly
+the rest of) peers of <!--l. 19--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>T</mi></mrow><mrow 
 ><mi 
->k</mi></mrow><mrow 
+>k</mi></mrow></msup 
+></math>.
+</p><!--l. 21--><p class="indent" >   As it has been said before, peers prioritize the ﬂooding of the chunks they relay by
+sending ﬁrst the chunks to those neighbors that are more supportive. To achieve that, every
+time <!--l. 23--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>P</mi><msub><mrow 
 ><mi 
->j</mi></mrow></msubsup 
+>j</mi></mrow><mrow 
+><mi 
+>k</mi></mrow></msub 
 ></math> sends a
-chunk to <!--l. 19--><math 
+chunk to <!--l. 24--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
+display="inline" ><msub><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
->l</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msubsup 
+>l</mi></mrow></msub 
 ></math>,
-<!--l. 19--><math 
+<!--l. 24--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
+display="inline" ><msub><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
->k</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msubsup 
+>k</mi></mrow></msub 
 ></math> runs
-<!--l. 19--><math 
+<!--l. 24--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">debt</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow><msubsup><mrow 
+class="MathClass-open">[</mo><mrow><msub><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
->l</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msubsup 
+>l</mi></mrow></msub 
 ></mrow><mo 
 class="MathClass-close">]</mo></mrow> <mo 
 class="MathClass-rel">=</mo> <mi mathvariant="monospace">debt</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow><msubsup><mrow 
+class="MathClass-open">[</mo><mrow><msub><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
->l</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msubsup 
+>l</mi></mrow></msub 
 ></mrow><mo 
 class="MathClass-close">]</mo></mrow> <mo 
 class="MathClass-bin">+</mo> <mn>1</mn></math>, and
-<!--l. 20--><math 
+<!--l. 25--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msubsup><mrow 
+display="inline" ><msub><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
->l</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msubsup 
+>l</mi></mrow></msub 
 ></math> runs
-<!--l. 21--><math 
+<!--l. 25--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">debt</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow><msubsup><mrow 
+class="MathClass-open">[</mo><mrow><msub><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
->k</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msubsup 
+>k</mi></mrow></msub 
 ></mrow><mo 
 class="MathClass-close">]</mo></mrow> <mo 
 class="MathClass-rel">=</mo> <mi mathvariant="monospace">debt</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow><msubsup><mrow 
+class="MathClass-open">[</mo><mrow><msub><mrow 
 ><mi 
-mathvariant="bold-script">𝒫</mi></mrow><mrow 
+>P</mi></mrow><mrow 
 ><mi 
->k</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msubsup 
+>k</mi></mrow></msub 
 ></mrow><mo 
 class="MathClass-close">]</mo></mrow> <mo 
 class="MathClass-bin">−</mo> <mn>1</mn></math>
 (see Fig.<span 
 class="ecbx-1000">??</span>). Basically, these tables maintain a “debt” of chunks between
 evey pair of neighbor peers. In ideal circunstances, debs should be
-<!--l. 24--><math 
+<!--l. 28--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mn>0</mn></math>. Debs are
-clipped to <!--l. 25--><math 
+clipped to <!--l. 29--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" > <mo 
 class="MathClass-bin">±</mo><msub><mrow 
@@ -1287,11 +1246,13 @@ class="MathClass-bin">±</mo><msub><mrow
 class="text"><mtext  >max</mtext></mstyle></mrow></msub 
 ></math>.
 Obviously, a high supportivity means a low debt, and viceversa.
-</p><!--l. 19--><p class="noindent" >
 </p>
    <h4 class="subsectionHead"><span class="titlemark">1.5   </span> <a 
  id="x1-70001.5"></a>Chunk buﬀering</h4>
 <!--l. 1--><p class="noindent" >In order to hide the jitter generated by the physical network and the protocol itself,
+                                                                  
+
+                                                                  
 peers need to store the received chunks in a buﬀer before playing them. A chunk
 <!--l. 3--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -1416,9 +1377,6 @@ display="inline" ><mrow ><mo
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">LC</mi><mspace width="1em" class="nbsp" /><mi 
 >x</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
-                                                                  
-
-                                                                  
 (<!--l. 7--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">L</mi></math>ost
@@ -1457,6 +1415,9 @@ class="ecbx-1000">counter of rounds.</span>
 means that some selﬁsh peers (on simply peers with reduced connectivity as a
 consecuence, for example, of NAT issues) can stay in the team thanks to the
 generosity of the rest of peers. If this is unnaceptable, this set of rules forces to
+                                                                  
+
+                                                                  
 all the peers of the team to share the same number of chunks that they
 receive.
 </p><!--l. 8--><p class="indent" >   To achieve this behavior, FCS deﬁnes that, if
@@ -1567,9 +1528,6 @@ mathvariant="bold-script">𝒮</mi></mrow><mrow
 >j</mi></mrow></msup 
 ></math>,
 ﬁrst checks if there are neighbors in the same subnet (all of them
-                                                                  
-
-                                                                  
 share the same private network address). For all those peers,
 <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -1621,6 +1579,9 @@ mathvariant="bold-script">𝒯</mi></mrow><mrow
 ><mi 
 >j</mi></mrow></msup 
 ></math>
+                                                                  
+
+                                                                  
 report their loss. To increase the probability of receiving on time the resent
 chunk (by normal peers), monitors halves the number of chunks in their
 buﬀers in relation to common peers. LRS only modiﬁes the behavior of
@@ -1648,9 +1609,6 @@ obtained.
 round-robing scheduling of the origin peers by sending a number of chunks
 proportional to the inverse of the degree.
 </p><!--l. 34--><p class="noindent" >
-                                                                  
-
-                                                                  
 </p>
    <h3 class="sectionHead"><span class="titlemark">6   </span> <a 
  id="x1-130006"></a>ACS (Adaptive Capacity Set)</h3>
@@ -1680,6 +1638,9 @@ mathvariant="bold-script">𝒮</mi></math>.
 </p>
    <h3 class="sectionHead"><span class="titlemark">7   </span> <a 
  id="x1-140007"></a>MCS (Multi-Channel Set)</h3>
+                                                                  
+
+                                                                  
 <!--l. 1--><p class="noindent" >When using MDC <span class="cite">[<a 
 href="#Xbaccichet2007content">1</a>]</span>, SVC <span class="cite">[<a 
 href="#Xchu2009auction">3</a>]</span>, or for emulating the CS model, it can be interesting
@@ -1702,9 +1663,6 @@ href="index4.html#fn3x0"><sup class="textsuperscript">3</sup></a></span><a
  id="x1-15001f3"></a> 
 is an DBS extension which provides peer connectivity for
 some NAT conﬁgurations DBS can not provide direct peer
-                                                                  
-
-                                                                  
 communication.<span class="footnote-mark"><a 
 href="index5.html#fn4x0"><sup class="textsuperscript">4</sup></a></span><a 
  id="x1-15002f4"></a> 
@@ -1738,6 +1696,9 @@ display="inline" ><msubsup><mrow
 ><mi 
 >t</mi></mrow></msubsup 
 ></math>, and that a new internal
+                                                                  
+
+                                                                  
 (private) peer <!--l. 32--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
@@ -1823,14 +1784,14 @@ end-point.
 
                                                                   
 <a 
- id="x1-160014"></a>
+ id="x1-160015"></a>
                                                                   
 
                                                                   
 <!--l. 46--><p class="noindent" > <div style="text-align:center;"> <img height=200 src="graphics/cone_NAT.png" /> </div> 
 <br /> </p><div class="caption" 
-><span class="id">Figure 4: </span><span  
-class="content">Cone NAT port allocation.</span></div><!--tex4ht:label?: x1-160014 -->
+><span class="id">Figure 5: </span><span  
+class="content">Cone NAT port allocation.</span></div><!--tex4ht:label?: x1-160015 -->
                                                                   
 
                                                                   
@@ -1841,14 +1802,14 @@ class="content">Cone NAT port allocation.</span></div><!--tex4ht:label?: x1-1600
 
                                                                   
 <a 
- id="x1-160025"></a>
+ id="x1-160026"></a>
                                                                   
 
                                                                   
 <!--l. 51--><p class="noindent" > <div style="text-align:center;"> <img height=200 src="graphics/symmetric_NAT.png" /> </div> 
 <br /> </p><div class="caption" 
-><span class="id">Figure 5: </span><span  
-class="content">Symmetric NAT port allocation.</span></div><!--tex4ht:label?: x1-160025 -->
+><span class="id">Figure 6: </span><span  
+class="content">Symmetric NAT port allocation.</span></div><!--tex4ht:label?: x1-160026 -->
                                                                   
 
                                                                   
@@ -1857,7 +1818,7 @@ class="content">Symmetric NAT port allocation.</span></div><!--tex4ht:label?: x1
  id="x1-170008.2"></a>Cone VS symmetric</h4>
 <!--l. 56--><p class="noindent" >Cone NATs use the same external end-point for every packet that comes from the same
 internal end-point, independently on the destination of the packets (see Fig. <a 
-href="#x1-160025">5<!--tex4ht:ref: fig:cone_NAT --></a>). For the
+href="#x1-160026">6<!--tex4ht:ref: fig:cone_NAT --></a>). For the
 external peer <!--l. 58--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
@@ -2321,13 +2282,13 @@ been used. </span></div><!--tex4ht:label?: x1-200012 -->
 
                                                                   
 <a 
- id="x1-200026"></a>
+ id="x1-200027"></a>
                                                                   
 
                                                                   
 <!--l. 157--><p class="noindent" > <div style="text-align:center;"> <img height=400 src="graphics/UDP_Hole_Punching_RCN.png" /> </div> 
 <br /> </p><div class="caption" 
-><span class="id">Figure 6: </span><span  
+><span class="id">Figure 7: </span><span  
 class="content">An example that shows why it is possible to establish a connection
 with                  DBS                  when                  two                  peers
 <!--l. 160--><math 
@@ -2345,7 +2306,7 @@ display="inline" ><msub><mrow
 >P</mi></mrow><mrow 
 ><mn>2</mn></mrow></msub 
 ></math>
-that are behind cone NATs.</span></div><!--tex4ht:label?: x1-200026 -->
+that are behind cone NATs.</span></div><!--tex4ht:label?: x1-200027 -->
                                                                   
 
                                                                   
@@ -2356,13 +2317,13 @@ that are behind cone NATs.</span></div><!--tex4ht:label?: x1-200026 -->
 
                                                                   
 <a 
- id="x1-200037"></a>
+ id="x1-200038"></a>
                                                                   
 
                                                                   
 <!--l. 164--><p class="noindent" > <div style="text-align:center;"> <img height=400 src="graphics/UDP_Hole_Punching_SN_failure.png" /> </div> 
 <br />           </p><div class="caption" 
-><span class="id">Figure 7:                  </span><span  
+><span class="id">Figure 8:                  </span><span  
 class="content">An                  example                  that
 shows why its is impossible to establish a connection with DBS when two peers
 <!--l. 167--><math 
@@ -2380,7 +2341,7 @@ display="inline" ><msub><mrow
 >P</mi></mrow><mrow 
 ><mn>2</mn></mrow></msub 
 ></math>
-that are behind symmetric NATs.</span></div><!--tex4ht:label?: x1-200037 -->
+that are behind symmetric NATs.</span></div><!--tex4ht:label?: x1-200038 -->
                                                                   
 
                                                                   
@@ -2389,14 +2350,14 @@ that are behind symmetric NATs.</span></div><!--tex4ht:label?: x1-200037 -->
 
                                                                   
 <!--l. 171--><p class="indent" >   <a 
- id="x1-200048"></a></p><hr class="float" /><div class="float" 
+ id="x1-200049"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
                                                                   
  <div style="text-align:center;"> <img height=600 src="graphics/SNTuCPP.png" /> </div> 
 <br /> <div class="caption" 
-><span class="id">Figure 8:  </span><span  
+><span class="id">Figure 9:  </span><span  
 class="content">Timeline  of  an  (ideal)  NTS  interaction  between  two  peers
 <!--l. 174--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -2413,7 +2374,7 @@ display="inline" ><msub><mrow
 >P</mi></mrow><mrow 
 ><mn>2</mn></mrow></msub 
 ></math>
-which are behind symmetric NATs. </span></div><!--tex4ht:label?: x1-200048 -->
+which are behind symmetric NATs. </span></div><!--tex4ht:label?: x1-200049 -->
                                                                   
 
                                                                   
@@ -2428,10 +2389,10 @@ class="ecbx-1000">??</span>. Notice that source end-point
 ﬁltering has been used in this example, although a similar results should be obtained
 for simple source address ﬁltering. On the other hand, the combinations labeled with
 “-” or “NTS” will not work with DBS (see Fig.<a 
-href="#x1-200037">7<!--tex4ht:ref: fig:UDP_Hole_Punching_SN_failure --></a>). In fact, only the “NTS” entries
+href="#x1-200038">8<!--tex4ht:ref: fig:UDP_Hole_Punching_SN_failure --></a>). In fact, only the “NTS” entries
 should work, in general, with NTS, depending on the port prediction algorithm and
 the number of tries. Fig. <a 
-href="#x1-200048">8<!--tex4ht:ref: fig:SNTuCPP --></a> shows an example of an NTS (NAT traversal)
+href="#x1-200049">9<!--tex4ht:ref: fig:SNTuCPP --></a> shows an example of an NTS (NAT traversal)
 success.
 </p><!--l. 193--><p class="indent" >   Summarizing, NTS can provide connectivity for those peers that are behind
 port-preservation symmetric NATs with sequential port allocation.
