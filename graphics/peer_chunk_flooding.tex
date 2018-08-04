@@ -13,21 +13,21 @@
 
 \begin{algorithmic}
 
-  \Procedure{$P^t_k$.ChunkFlooding}{}
+  \Procedure{$P_k$.ChunkFlooding}{}
   \While{True}
-  \State $[x,\mathtt{chunk}] \gets S^t$ \textbf{or} $[x,{\cal P}_i,\mathtt{chunk}] \gets {\cal P}_m$
-  \If{$[x,\mathtt{chunk}] \gets S^t$}
-  \ForAll {$P^t_n \in T^t_k)$}
-  \State $[x,P^t_k,\mathtt{chunk}] \sendto P^t_n$
+  \State $[x,\mathtt{chunk}] \gets S$ \textbf{or} $[x,P_i,\mathtt{chunk}] \gets P_m$
+  \If{\textbf{received}~$[x,\mathtt{chunk}]$}
+  \ForAll {$P_n \in T^k)$}
+  \State $[x,P_k,\mathtt{chunk}] \sendto P_n$
   \EndFor
   \EndIf
-  \If{$[x,P^t_i,\mathtt{chunk}] \gets P^t_m$}
-  \If{$P^t_m \notin T^t_k$}
-  \State $T^t_k = T^t_k \cup P^t_i$
+  \If{\textbf{received}~$[x,P_i,\mathtt{chunk}]$}
+  \If{$P_m \notin T^k$}
+  \State $T^k = T^k \cup P_i$
   \EndIf
-  \ForAll{$P^t_n \in T^t_k) \setminus P^t_m$}
-  \If{$P^t_k \in G_{{\cal P}_n}[{\cal P}_i]$}
-  \State $[x,P^t_i,\mathtt{chunk}] \sendto P^t_n$
+  \ForAll{$P_n \in T^k) \setminus P_m$}
+  \If{$P_k \in G_{{\cal P}_n}[{\cal P}_i]$}
+  \State $[x,P_i,\mathtt{chunk}] \sendto P_n$
   \EndIf
   \EndFor
   \EndIf

@@ -14,13 +14,13 @@
 
 \begin{algorithmic}
 
-  \Procedure{$S^t$.FeedTeam}{}
+  \Procedure{$S$.FeedTeam}{}
   \State $x=i=0$
   \While{True}
-  \State $[\mathtt{chunk}] \gets {\cal O}$~\texttt{/* wait for $C$ bytes */}
-  \State $[x,\mathtt{chunk}] \sendto P^t_i$
-  \State $D[x]=P^t_i$
-  \State $i=(i+1)~\text{mod}~|T^t|$
+  \State $[\mathtt{chunk}] \gets O$
+  \State $[x,\mathtt{chunk}] \sendto P_i$
+  \State $D[x]=P_i$
+  \State $i=(i+1)~\text{mod}~|T|$
   \State $x=(x+1)~\text{mod}~\mathtt{MAX\_CHUNK\_NUMBER}$
   %\If{$x=0$}
   %$r=(r+1)~\text{mod}~\mathtt{MAX\_ROUND\_NUMBER}$
