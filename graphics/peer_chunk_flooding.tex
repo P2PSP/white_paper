@@ -23,6 +23,11 @@
   \EndFor
   \EndIf
   \If{\textbf{received}~$[x,P_i,\mathtt{chunk}]$}
+  \If{$\mathtt{buffer}[x \% B].\mathtt{chunk\_number} \neq x$}
+  \State $\mathtt{buffer}[x \% B] = [x,P_i,\mathtt{chunk}]$
+  \Else
+  \State $[\mathtt{prune} x] \sendto P_m$
+  \EndIf
   \If{$P_m \notin T^k$}
   \State $T^k = T^k \cup P_m$
   \State $\mathtt{debt}[P_m]=0$
