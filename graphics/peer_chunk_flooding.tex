@@ -14,11 +14,11 @@
 \begin{algorithmic}
 
   \Procedure{$P_k$.Run}{}
-  \State \textsc{BufferData}()
+  \State \textsc{BufferData}
   \While{Player.alive}
-  \State keep\_the\_buffer\_full()
+  \State \textsc{KeepBufferFull}
   \EndWhile
-  \State say\_goodbye()
+  \State \textsc{SayGoodbye}
   \EndProcedure
   
   %\Procedure{$P_k$.ChunkFlooding}{}
@@ -64,53 +64,92 @@
 \algrenewcommand\algorithmicprocedure{\textbf{function}}
 
 \begin{algorithmic}
-
-  \Procedure{$P_k$.BufferData()}{}
-  \State \textsc{ProcessNextMessage}()
+  \Procedure{$P_k$.BufferData}{}
+  \State \textsc{ProcessMsg}
   \State $\mathtt{chunk\_to\_play} = x$
   \While{$x<\mathtt{chunk\_to\_play}$ \textbf{or} $(x-\mathtt{chunk\_to\_play})<B/2$}
-  \State \textsc{ProcessNextMessage}()
+  \State \textsc{ProcessMsg}()
   \EndWhile
-  \EndProcedure
-  
-  %\Procedure{$P_k$.ChunkFlooding}{}
-  %\While{True}
-  %\State $\mathtt{message} \gets \mathtt{sender}$
-  %\If{$\mathtt{message}$ \textbf{contains a} $\mathtt{chunk}$}
-  %\If{$\mathtt{buffer}[x \% B].\mathtt{chunk\_number} \neq x$}
-  %\State $\mathtt{buffer}[x \% B] = [x,P_i,\mathtt{chunk}]$
-  %\Else
-  %\State $[\mathtt{prune}~x] \sendto P_m$
-  %\EndIf
-  %\Else
-  %\Endif
+  \EndProcedure  
+\end{algorithmic}
 
-  %\If{$\mathtt{sender}=S$}
-  %\Endif
+\begin{algorithmic}
+  \Procedure{$P_k$.ProcessMsg}{}
+  \If{$x\geq 0$}
+  \State \textsc{ProcessChunkMsg}
+  \Else
+  \State \textsc{ProcessControlMsg}
+  \EndIf
+  \EndProcedure  
+\end{algorithmic}
+
+\begin{algorithmic}
+  \Procedure{$P_k$.ProcessChunkMsg}{}
+  \If{$\mathtt{buffer}[x \% B].\mathtt{chunk\_number} = x$}
+  \State \textsc{ProcessDupplicateChunk}
+  \Else
+  \State \textsc{ProcessNewChunk}
+  \EndIf
+  \EndProcedure  
+\end{algorithmic}
+
+\begin{algorithmic}
+  \Procedure{$P_k$.ProcessDuplicateChunk}{}
+  \State $[\mathtt{prune}~x] \sendto \mathtt{sender}$
+  \EndProcedure  
+\end{algorithmic}
+
+\begin{algorithmic}
+  \Procedure{$P_k$.ProcessNewChunk}{}
+  \State $\mathtt{buffer}[x \% B] = [x,\mathtt{origin},\mathtt{chunk}]$
+  \If{$\mathtt{sender} \neq S$} 
+  \State $\mathtt{debt}[\mathtt{sender}] = \mathtt{debt}[\mathtt{sender}]-1$
+  \State $\mathtt{forward}[P_k] = \mathtt{forward}[P_k] \cup \mathtt{sender}$
+  \EndIf
+  \ForAll{$P_i\in\mathtt{forward}[\mathtt{origin}]$}
+  \State $\mathtt{pending}[P_i] = \mathtt{pending}[P_i] \cup x$
+  \EndFor
+  \ForAll{$\mathtt{chunk_number}\in\mathtt{pending[\mathtt{neighbor}]}$}
+  \State $\mathtt{buffer}[x\% B] \sendto \mathtt{neighbor}$
+  \State $\mathtt{pending}[\mathtt{neighbor}] = \mathtt{pending}[\mathtt{neighbor}] \setminus x$
+  \State $\mathtt{debt}[\mathtt{neighbor}]=\mathtt{debt}[\mathtt{neighbor}]+1$
+  \If{$\mathtt{debt}[\mathtt{neighbor}]>D$}
+  \ForAll {$\mathtt{peers\_list}\in\mathtt{forward}$}
+  \State $\mathtt{peers\_list} = \mathtt{peers\_list}\setminus \mathtt{neighbor}$
+  \EndFor
+  \EndIf
+  \EndFor
+  \State $\mathtt{neighbor} =$ 
+  \EndProcedure  
+\end{algorithmic}
+
+\begin{algorithmic}
+  \Procedure{$P_k$.ProcessControlMsg}{}
+
+  \If{$x = \mathtt{request}$} 
+  \State $\mathtt{origin}=\mathtt{buffer}[\mathtt{chunk}\% B].\mathtt{origin}$
+  \State $\mathtt{forward}[\mathtt{origin}] = \mathtt{forward}[\mathtt{origin}] \cup \mathtt{sender}$
+  \EndIf
+
+  \If{$x = \mathtt{prune}$}
+  \State $\mathtt{origin}=\mathtt{buffer}[\mathtt{chunk}\% B].\mathtt{origin}$
+  \State$\mathtt{forward}[\mathtt{origin}] = \mathtt{forward}[\mathtt{origin}] \setminus \mathtt{sender}$
+  \EndIf
   
-  %\State $[x,\mathtt{chunk}] \gets S$ \textbf{or} $[x,P_i,\mathtt{chunk}] \gets P_m$
-  %\If{\textbf{received}~$[x,\mathtt{chunk}]$}
-  %\ForAll {$P_n \in T^k$}
-  %\State $[x,P_k,\mathtt{chunk}] \sendto P_n$
-  %\State $\mathtt{debt}[P_n] = \mathtt{debt}[P_n]+1$
-  %\EndFor
-  %\EndIf
-  %\If{\textbf{received}~$[x,P_i,\mathtt{chunk}]$}
-  %\If{$P_m \notin T^k$}
-  %\State $T^k = T^k \cup P_m$
-  %\State $\mathtt{debt}[P_m]=0$
-  %\Else
-  %\State $\mathtt{debt}[P_m] = \mathtt{debt}[P_m]-1$
-  %\EndIf
-  %\ForAll{$P_n \in T^k \setminus P_m$}
-  %\State $[x,P_i,\mathtt{chunk}] \sendto P_n$
-  %\State $\mathtt{debt}[P_m] = \mathtt{debt}[P_m]+1$
-  %\EndFor
-  %\EndIf
-  %\State \textbf{sort} $T^k$ \textbf{ascending by} $\mathtt{debt[]}$
-  %\EndWhile
-  %\EndProcedure
+  \If{$x = \mathtt{hello}$}
+  \State $\mathtt{origin}=\mathtt{buffer}[\mathtt{chunk}\% B].\mathtt{origin}$
+  \State $\mathtt{forward}[\mathtt{P_k}] = \mathtt{forward}[\mathtt{P_ k}] \cup \mathtt{sender}$
+  \State $\mathtt{debt}[sender] = 0$
+  \State $\mathtt{neighbor} = \mathtt{sender}$
+  \EndIf
   
+  \If{$x = \mathtt{goodbye}$}
+  \ForAll {$\mathtt{peers\_list}\in\mathtt{forward}$}
+  \State $\mathtt{peers\_list} = \mathtt{peers\_list}\setminus \mathtt{sender}$
+  \EndFor
+  \EndIf
+  
+  \EndProcedure  
 \end{algorithmic}
 
 \end{document}
