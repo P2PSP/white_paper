@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\send}{\Rightarrow}
+\newcommand{\sendto}{\rightarrow}
+\algrenewcommand\algorithmicprocedure{\textbf{function}}
+
+\begin{algorithmic}
+  \Procedure{$P_k$.BufferData}{}
+  \State $(x,\_)=\textsc{DbsLogic}$
+  \State $\mathtt{chunk\_to\_play} = x$
+  \While{$x<\mathtt{chunk\_to\_play}$ \textbf{or} $(x-\mathtt{chunk\_to\_play})<B/2$}
+  \State $(x,\_)=\textsc{DbsLogic}$
+  \EndWhile
+  \EndProcedure  
+\end{algorithmic}
+
+\end{document}
+

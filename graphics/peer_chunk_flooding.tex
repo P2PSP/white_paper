@@ -9,18 +9,8 @@
 
 \newcommand{\send}{\Rightarrow}
 \newcommand{\sendto}{\rightarrow}
-\algrenewcommand\algorithmicprocedure{\textbf{task}}
+\algrenewcommand\algorithmicprocedure{\textbf{function}}
 
-\begin{algorithmic}
-
-  \Procedure{$P_k$.Run}{}
-  \State \textsc{BufferData}
-  \While{Player.alive}
-  \State \textsc{KeepBufferFull}
-  \EndWhile
-  \State \textsc{SayGoodbye}
-  \EndProcedure
-  
   %\Procedure{$P_k$.ChunkFlooding}{}
   %\While{True}
   %\State $\mathtt{message} \gets \mathtt{sender}$
@@ -58,10 +48,7 @@
   %\State \textbf{sort} $T^k$ \textbf{ascending by} $\mathtt{debt[]}$
   %\EndWhile
   %\EndProcedure
-  
-\end{algorithmic}
 
-\algrenewcommand\algorithmicprocedure{\textbf{function}}
 
 \begin{algorithmic}
   \Procedure{$P_k$.BufferData}{}
