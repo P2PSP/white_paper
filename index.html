@@ -34,52 +34,54 @@ href="#x1-20001" id="QQ2-1-2">DBS (Data Broadcasting Set)</a></span>
 <br />    <span class="subsectionToc" >1.1 <a 
 href="#x1-30001.1" id="QQ2-1-4">Peer’s life</a></span>
 <br />    <span class="subsectionToc" >1.2 <a 
-href="#x1-40001.2" id="QQ2-1-6">Joining a team</a></span>
+href="#x1-40001.2" id="QQ2-1-6">Buﬀer chunks</a></span>
 <br />    <span class="subsectionToc" >1.3 <a 
-href="#x1-50001.3" id="QQ2-1-8">Leaving a team</a></span>
+href="#x1-50001.3" id="QQ2-1-8">Joining a team</a></span>
 <br />    <span class="subsectionToc" >1.4 <a 
-href="#x1-60001.4" id="QQ2-1-10">Chunk generation</a></span>
+href="#x1-60001.4" id="QQ2-1-10">Leaving a team</a></span>
 <br />    <span class="subsectionToc" >1.5 <a 
-href="#x1-70001.5" id="QQ2-1-12">Chunk ﬂooding</a></span>
+href="#x1-70001.5" id="QQ2-1-12">Chunk generation</a></span>
 <br />    <span class="subsectionToc" >1.6 <a 
-href="#x1-80001.6" id="QQ2-1-14">Chunk buﬀering</a></span>
+href="#x1-80001.6" id="QQ2-1-14">Chunk ﬂooding</a></span>
 <br />    <span class="subsectionToc" >1.7 <a 
-href="#x1-90001.7" id="QQ2-1-15">Chunk routing</a></span>
+href="#x1-90001.7" id="QQ2-1-16">Chunk buﬀering</a></span>
 <br />    <span class="subsectionToc" >1.8 <a 
-href="#x1-100001.8" id="QQ2-1-16">Free-riding control at splitters</a></span>
+href="#x1-100001.8" id="QQ2-1-17">Chunk routing</a></span>
+<br />    <span class="subsectionToc" >1.9 <a 
+href="#x1-110001.9" id="QQ2-1-18">Free-riding control at splitters</a></span>
 <br />   <span class="sectionToc" >2 <a 
-href="#x1-110002" id="QQ2-1-17">FCS (Free-riding Control Set)</a></span>
+href="#x1-120002" id="QQ2-1-19">FCS (Free-riding Control Set)</a></span>
 <br />   <span class="sectionToc" >3 <a 
-href="#x1-120003" id="QQ2-1-18">IMS (Ip Multicast Set)</a></span>
+href="#x1-130003" id="QQ2-1-20">IMS (Ip Multicast Set)</a></span>
 <br />   <span class="sectionToc" >4 <a 
-href="#x1-130004" id="QQ2-1-19">MRS (Massively-lost chunk Recovery Set)</a></span>
+href="#x1-140004" id="QQ2-1-21">MRS (Massively-lost chunk Recovery Set)</a></span>
 <br />   <span class="sectionToc" >5 <a 
-href="#x1-140005" id="QQ2-1-20">TAS (Topology Adaptation Set)</a></span>
+href="#x1-150005" id="QQ2-1-22">TAS (Topology Adaptation Set)</a></span>
 <br />   <span class="sectionToc" >6 <a 
-href="#x1-150006" id="QQ2-1-21">ACS (Adaptive Capacity Set)</a></span>
+href="#x1-160006" id="QQ2-1-23">ACS (Adaptive Capacity Set)</a></span>
 <br />   <span class="sectionToc" >7 <a 
-href="#x1-160007" id="QQ2-1-22">MCS (Multi-Channel Set)</a></span>
+href="#x1-170007" id="QQ2-1-24">MCS (Multi-Channel Set)</a></span>
 <br />   <span class="sectionToc" >8 <a 
-href="#x1-170008" id="QQ2-1-23">NTS (NAT Traversal Set)</a></span>
+href="#x1-180008" id="QQ2-1-25">NTS (NAT Traversal Set)</a></span>
 <br />    <span class="subsectionToc" >8.1 <a 
-href="#x1-180008.1" id="QQ2-1-24">Traﬃc ﬁltering</a></span>
+href="#x1-190008.1" id="QQ2-1-26">Traﬃc ﬁltering</a></span>
 <br />    <span class="subsectionToc" >8.2 <a 
-href="#x1-190008.2" id="QQ2-1-27">Cone VS symmetric</a></span>
+href="#x1-200008.2" id="QQ2-1-29">Cone VS symmetric</a></span>
 <br />    <span class="subsectionToc" >8.3 <a 
-href="#x1-200008.3" id="QQ2-1-28">Port allocation</a></span>
+href="#x1-210008.3" id="QQ2-1-30">Port allocation</a></span>
 <br />    <span class="subsectionToc" >8.4 <a 
-href="#x1-210008.4" id="QQ2-1-29">NAT type analysis</a></span>
+href="#x1-220008.4" id="QQ2-1-31">NAT type analysis</a></span>
 <br />    <span class="subsectionToc" >8.5 <a 
-href="#x1-220008.5" id="QQ2-1-30">(Theoretical) NAT traversal performance of DBS</a></span>
+href="#x1-230008.5" id="QQ2-1-32">(Theoretical) NAT traversal performance of DBS</a></span>
 <br />    <span class="subsectionToc" >8.6 <a 
-href="#x1-230008.6" id="QQ2-1-35">A port prediction algorithm (Max’s proposal)</a></span>
+href="#x1-240008.6" id="QQ2-1-37">A port prediction algorithm (Max’s proposal)</a></span>
    </div>
-   <div 
-class="abstract" 
->
                                                                   
 
                                                                   
+   <div 
+class="abstract" 
+>
 <div class="center" 
 >
 <!--l. 7--><p class="noindent" >
@@ -436,19 +438,43 @@ because the chunks are not received in order, the ﬁrst received chunk not alwa
 be the ﬁrst chunk in the buﬀer.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">1.2   </span> <a 
- id="x1-40001.2"></a>Joining a team</h4>
+ id="x1-40001.2"></a>Buﬀer chunks</h4>
+                                                                  
+
+                                                                  
+<!--l. 4--><p class="indent" >   <a 
+ id="x1-40012"></a></p><hr class="float" /><div class="float" 
+>
+                                                                  
+
+                                                                  
+ <div style="text-align:center;"> <img width=200 src="graphics/peers_life.png" /> </div> 
+<br /> <div class="caption" 
+><span class="id">Figure 2: </span><span  
+class="content">Buﬀering of the chunks.</span></div><!--tex4ht:label?: x1-40012 -->
+                                                                  
+
+                                                                  
+   </div><hr class="endfloat" />
+<!--l. 7--><p class="noindent" >Fig. <a 
+href="#x1-40012">2<!--tex4ht:ref: fig:buffer_chunks --></a> shows how peer buﬀer the chunks before playing them. Notice that, because
+the chunks are not received in order, the ﬁrst received chunk not always will be the
+ﬁrst chunk in the buﬀer.
+</p>
+   <h4 class="subsectionHead"><span class="titlemark">1.3   </span> <a 
+ id="x1-50001.3"></a>Joining a team</h4>
                                                                   
 
                                                                   
 <!--l. 6--><p class="indent" >   <a 
- id="x1-40012"></a></p><hr class="float" /><div class="float" 
+ id="x1-50013"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
                                                                   
  <div style="text-align:center;"> <img width=600 src="graphics/joining.png" /> </div> 
 <br />     <div class="caption" 
-><span class="id">Figure 2:        </span><span  
+><span class="id">Figure 3:        </span><span  
 class="content">Tasks        involved        in        a        peer        joining.
 <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -500,7 +526,7 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math>
-will be added.</span></div><!--tex4ht:label?: x1-40012 -->
+will be added.</span></div><!--tex4ht:label?: x1-50013 -->
                                                                   
 
                                                                   
@@ -515,9 +541,9 @@ display="inline" ><msub><mrow
 ></math>
 (see the tasks<span class="footnote-mark"><a 
 href="index2.html#fn1x0"><sup class="textsuperscript">1</sup></a></span><a 
- id="x1-4002f1"></a> 
+ id="x1-5002f1"></a> 
 described in Fig. <a 
-href="#x1-40012">2<!--tex4ht:ref: fig:joining --></a>), interested in a given channel, ﬁrst must join a
+href="#x1-50013">3<!--tex4ht:ref: fig:joining --></a>), interested in a given channel, ﬁrst must join a
 team in order to access to the contents of such channel. For that,
 <!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -545,7 +571,7 @@ class="MathClass-close">}</mo></mrow></math>,
 <span 
 class="ecti-1000">reliable</span><span class="footnote-mark"><a 
 href="index3.html#fn2x0"><sup class="textsuperscript">2</sup></a></span><a 
- id="x1-4003f2"></a> 
+ id="x1-5003f2"></a> 
 messages containing the number of peers of each team of
 <!--l. 24--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -577,7 +603,7 @@ class="MathClass-open">[</mo><mrow><mi
 class="MathClass-close">]</mo></mrow></math>
 message<span class="footnote-mark"><a 
 href="index4.html#fn3x0"><sup class="textsuperscript">3</sup></a></span><a 
- id="x1-4004f3"></a> .
+ id="x1-5004f3"></a> .
 Then, <!--l. 27--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
@@ -764,7 +790,7 @@ display="inline" ><msub><mrow
 >k</mi></mrow></msub 
 ></math>),
 initially depends (see Sec. <a 
-href="#x1-70001.5">1.5<!--tex4ht:ref: sec:chunk_flooding --></a>) on the number of
+href="#x1-80001.6">1.6<!--tex4ht:ref: sec:chunk_flooding --></a>) on the number of
 <!--l. 46--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
@@ -795,22 +821,22 @@ display="inline" ><msup><mrow
 ></math> is
 kept sorted by ascending “debt”, a table of debts of chunks between neighbor peers
 (see Sec <a 
-href="#x1-70001.5">1.5<!--tex4ht:ref: sec:chunk_flooding --></a>).
+href="#x1-80001.6">1.6<!--tex4ht:ref: sec:chunk_flooding --></a>).
 </p>
-   <h4 class="subsectionHead"><span class="titlemark">1.3   </span> <a 
- id="x1-50001.3"></a>Leaving a team</h4>
+   <h4 class="subsectionHead"><span class="titlemark">1.4   </span> <a 
+ id="x1-60001.4"></a>Leaving a team</h4>
                                                                   
 
                                                                   
 <!--l. 3--><p class="indent" >   <a 
- id="x1-50013"></a></p><hr class="float" /><div class="float" 
+ id="x1-60014"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
                                                                   
  <div style="text-align:center;"> <img width=400 src="graphics/leaving.png" /> </div> 
 <br /> <div class="caption" 
-><span class="id">Figure 3: </span><span  
+><span class="id">Figure 4: </span><span  
 class="content">Tasks run when an peer <!--l. 5--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
@@ -834,7 +860,7 @@ display="inline" ><msub><mrow
 >P</mi></mrow><mrow 
 ><mi 
 >o</mi></mrow></msub 
-></math>.</span></div><!--tex4ht:label?: x1-50013 -->
+></math>.</span></div><!--tex4ht:label?: x1-60014 -->
                                                                   
 
                                                                   
@@ -848,7 +874,7 @@ display="inline" ><msub><mrow
 >o</mi></mrow></msub 
 ></math> (see
 Fig. <a 
-href="#x1-50013">3<!--tex4ht:ref: fig:leaving --></a>) must to: (1) say <!--l. 8--><math 
+href="#x1-60014">4<!--tex4ht:ref: fig:leaving --></a>) must to: (1) say <!--l. 8--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">goodbye</mi></mrow><mo 
@@ -954,21 +980,21 @@ class="MathClass-bin">∖</mo> <msub><mrow
 >o</mi></mrow></msub 
 ></math>.
 </p>
-   <h4 class="subsectionHead"><span class="titlemark">1.4   </span> <a 
- id="x1-60001.4"></a>Chunk generation</h4>
+   <h4 class="subsectionHead"><span class="titlemark">1.5   </span> <a 
+ id="x1-70001.5"></a>Chunk generation</h4>
                                                                   
 
                                                                   
 <!--l. 4--><p class="indent" >   <a 
- id="x1-60014"></a></p><hr class="float" /><div class="float" 
+ id="x1-70015"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
                                                                   
  <div style="text-align:center;"> <img width=300 src="graphics/splitter_chunk_generation.png" /> </div> 
 <br /> <div class="caption" 
-><span class="id">Figure 4: </span><span  
-class="content">Chunk generation at the splitter.</span></div><!--tex4ht:label?: x1-60014 -->
+><span class="id">Figure 5: </span><span  
+class="content">Chunk generation at the splitter.</span></div><!--tex4ht:label?: x1-70015 -->
                                                                   
 
                                                                   
@@ -997,7 +1023,7 @@ display="inline" ><msub><mrow
 class="MathClass-rel">∈</mo> <mi 
 >T</mi></math>, using
 a round-robin schema (see Fig. <a 
-href="#x1-60014">4<!--tex4ht:ref: fig:chunk_generation --></a>). Each chunk is enumerated with an index
+href="#x1-70015">5<!--tex4ht:ref: fig:chunk_generation --></a>). Each chunk is enumerated with an index
 <!--l. 11--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
@@ -1045,21 +1071,21 @@ bit-rate of the media, <!--l. 17--><math
 display="inline" ><mi 
 >A</mi></math>.
 </p>
-   <h4 class="subsectionHead"><span class="titlemark">1.5   </span> <a 
- id="x1-70001.5"></a>Chunk ﬂooding</h4>
+   <h4 class="subsectionHead"><span class="titlemark">1.6   </span> <a 
+ id="x1-80001.6"></a>Chunk ﬂooding</h4>
                                                                   
 
                                                                   
 <!--l. 4--><p class="indent" >   <a 
- id="x1-70015"></a></p><hr class="float" /><div class="float" 
+ id="x1-80016"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
                                                                   
  <div style="text-align:center;"> <img width=300 src="graphics/peer_chunk_flooding.png" /> </div> 
 <br /> <div class="caption" 
-><span class="id">Figure 5: </span><span  
-class="content">Chunk ﬂooding at peers.</span></div><!--tex4ht:label?: x1-70015 -->
+><span class="id">Figure 6: </span><span  
+class="content">Chunk ﬂooding at peers.</span></div><!--tex4ht:label?: x1-80016 -->
                                                                   
 
                                                                   
@@ -1082,7 +1108,7 @@ display="inline" ><msub><mrow
 ></math>
 ﬂoods the chunk to each of its neighbors (except the source), using a prioritized round-robin
 schema where those peers with a lower debt are selected ﬁrst (see Fig. <a 
-href="#x1-70015">5<!--tex4ht:ref: fig:peer_chunk_flooding --></a>). Every time
+href="#x1-80016">6<!--tex4ht:ref: fig:peer_chunk_flooding --></a>). Every time
 <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
@@ -1169,8 +1195,8 @@ class="MathClass-bin">±</mo> <mi
 >D</mi></math>.
 Obviously, a high supportivity means a low debt, and viceversa.
 </p>
-   <h4 class="subsectionHead"><span class="titlemark">1.6   </span> <a 
- id="x1-80001.6"></a>Chunk buﬀering</h4>
+   <h4 class="subsectionHead"><span class="titlemark">1.7   </span> <a 
+ id="x1-90001.7"></a>Chunk buﬀering</h4>
 <!--l. 2--><p class="noindent" >In order to hide the jitter generated by the physical network and the protocol itself,
 peers need to store the received chunks in a buﬀer before playing them. A chunk
 <!--l. 4--><math 
@@ -1193,13 +1219,13 @@ buﬀer, where <!--l. 5--><math
 display="inline" ><mi 
 >B</mi></math>
 is the buﬀer size in chunks.
-</p><!--l. 21--><p class="noindent" >
+</p><!--l. 24--><p class="noindent" >
 </p>
-   <h4 class="subsectionHead"><span class="titlemark">1.7   </span> <a 
- id="x1-90001.7"></a>Chunk routing</h4>
+   <h4 class="subsectionHead"><span class="titlemark">1.8   </span> <a 
+ id="x1-100001.8"></a>Chunk routing</h4>
 <!--l. 2--><p class="noindent" >It can happen<span class="footnote-mark"><a 
 href="index5.html#fn4x0"><sup class="textsuperscript">4</sup></a></span><a 
- id="x1-9001f4"></a>  that the
+ id="x1-10001f4"></a>  that the
 received chunk by peer a <!--l. 3--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
@@ -1407,8 +1433,8 @@ and <!--l. 25--><math
 display="inline" ><mi 
 >y</mi></math>.
 </p>
-   <h4 class="subsectionHead"><span class="titlemark">1.8   </span> <a 
- id="x1-100001.8"></a>Free-riding control at splitters</h4>
+   <h4 class="subsectionHead"><span class="titlemark">1.9   </span> <a 
+ id="x1-110001.9"></a>Free-riding control at splitters</h4>
 <!--l. 1--><p class="noindent" >In each team there are a set of <!--l. 1--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
@@ -1540,7 +1566,7 @@ class="ecbx-1000">counter of rounds.</span>
 </p><!--l. 18--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
- id="x1-110002"></a>FCS (Free-riding Control Set)</h3>
+ id="x1-120002"></a>FCS (Free-riding Control Set)</h3>
 <!--l. 1--><p class="noindent" >DBS does not imposes any control over the grade of solidarity of the peers. This
 means that some selﬁsh peers (on simply peers with reduced connectivity as a
 consecuence, for example, of NAT issues) can stay in the team thanks to the
@@ -1619,7 +1645,7 @@ should churn, unless it not interested in playing the media.
 </p><!--l. 22--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">3   </span> <a 
- id="x1-120003"></a>IMS (Ip Multicast Set)</h3>
+ id="x1-130003"></a>IMS (Ip Multicast Set)</h3>
 <!--l. 1--><p class="noindent" >IPM is available by default in LANs (Local Are Network)s and VLANs (Virtual
 LAN)s <span class="cite">[<a 
 href="#Xshabtay2011ip">5</a>]</span>, but not in the Internet <span class="cite">[]</span>. IMS runs on the top of DBS and provides
@@ -1687,7 +1713,7 @@ display="inline" ><mi mathvariant="monospace">1234</mi></math>.
 </p><!--l. 26--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">4   </span> <a 
- id="x1-130004"></a>MRS (Massively-lost chunk Recovery Set)</h3>
+ id="x1-140004"></a>MRS (Massively-lost chunk Recovery Set)</h3>
 <!--l. 1--><p class="noindent" >LRS extends DBS (or an extension of it) to retransmit massively-lost chunks. LRS should
 be implemented if error-prone communications are expected, specially if these channels
 are used by the splitter. LRS is based on the use of monitors (see Procedure <span 
@@ -1724,7 +1750,7 @@ the monitors (normal peers does no need to implement LRS or its extensions).
 </p><!--l. 30--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">5   </span> <a 
- id="x1-140005"></a>TAS (Topology Adaptation Set)</h3>
+ id="x1-150005"></a>TAS (Topology Adaptation Set)</h3>
 <!--l. 1--><p class="noindent" >In TAS, the splitter request to each peer of the team the list of neighbors
 (peers that send chunks directly, in one hop). This communication is reliable
 (TCP) and transmits the lists as a collection of end-points. The number of
@@ -1741,7 +1767,7 @@ proportional to the inverse of the degree.
                                                                   
 </p>
    <h3 class="sectionHead"><span class="titlemark">6   </span> <a 
- id="x1-150006"></a>ACS (Adaptive Capacity Set)</h3>
+ id="x1-160006"></a>ACS (Adaptive Capacity Set)</h3>
 <!--l. 1--><p class="noindent" >ACS relaxes the peer’s upload requirements imposed by DBS. It should be used in if
 it is known that some peers can provide the capacity than others cannot, or
 when we want to mix the CS and P2P models, sending more chunks from
@@ -1767,7 +1793,7 @@ mathvariant="bold-script">𝒮</mi></math>.
 </p><!--l. 38--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">7   </span> <a 
- id="x1-160007"></a>MCS (Multi-Channel Set)</h3>
+ id="x1-170007"></a>MCS (Multi-Channel Set)</h3>
 <!--l. 1--><p class="noindent" >When using MDC <span class="cite">[<a 
 href="#Xbaccichet2007content">1</a>]</span>, SVC <span class="cite">[<a 
 href="#Xchu2009auction">3</a>]</span>, or for emulating the CS model, it can be interesting
@@ -1783,11 +1809,11 @@ there are.
 </p><!--l. 42--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">8   </span> <a 
- id="x1-170008"></a>NTS (NAT Traversal Set)</h3>
+ id="x1-180008"></a>NTS (NAT Traversal Set)</h3>
 <!--l. 3--><p class="noindent" >Most most of the peers run inside of “private” networks, i.e. behind NAT devices.
 NTS<span class="footnote-mark"><a 
 href="index6.html#fn5x0"><sup class="textsuperscript">5</sup></a></span><a 
- id="x1-17001f5"></a> 
+ id="x1-18001f5"></a> 
 is an DBS extension which provides peer connectivity for
 some NAT conﬁgurations DBS can not provide direct peer
                                                                   
@@ -1795,7 +1821,7 @@ some NAT conﬁgurations DBS can not provide direct peer
                                                                   
 communication.<span class="footnote-mark"><a 
 href="index7.html#fn6x0"><sup class="textsuperscript">6</sup></a></span><a 
- id="x1-17002f6"></a> 
+ id="x1-18002f6"></a> 
 </p><!--l. 17--><p class="indent" >   Peers behind the same NAT will use the same external (also called “public”,
 because in most cases we have not nested NAT conﬁgurations) IP address of the
 NAT. Basically, there exist two diﬀerent types of NATs: (1) <span 
@@ -1814,7 +1840,7 @@ class="ecti-1000">random port</span>. Notice that in this discussion, only UDP t
 considered.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">8.1   </span> <a 
- id="x1-180008.1"></a>Traﬃc ﬁltering</h4>
+ id="x1-190008.1"></a>Traﬃc ﬁltering</h4>
 <!--l. 30--><p class="noindent" >Lets suppose a team in which, for the sake of simplicity, there is only one external (public) peer
 <!--l. 31--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -1840,7 +1866,7 @@ the sequence of [<!--l. 33--><math
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">hello</mi></math>]’s (see
 Sec <a 
-href="#x1-40001.2">1.2<!--tex4ht:ref: sec:peer_joining --></a>. Lets denote <!--l. 34--><math 
+href="#x1-50001.3">1.3<!--tex4ht:ref: sec:peer_joining --></a>. Lets denote <!--l. 34--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 
@@ -1911,14 +1937,14 @@ end-point.
 
                                                                   
 <a 
- id="x1-180016"></a>
+ id="x1-190017"></a>
                                                                   
 
                                                                   
 <!--l. 46--><p class="noindent" > <div style="text-align:center;"> <img width=200 src="graphics/cone_NAT.png" /> </div> 
 <br /> </p><div class="caption" 
-><span class="id">Figure 6: </span><span  
-class="content">Cone NAT port allocation.</span></div><!--tex4ht:label?: x1-180016 -->
+><span class="id">Figure 7: </span><span  
+class="content">Cone NAT port allocation.</span></div><!--tex4ht:label?: x1-190017 -->
                                                                   
 
                                                                   
@@ -1929,23 +1955,23 @@ class="content">Cone NAT port allocation.</span></div><!--tex4ht:label?: x1-1800
 
                                                                   
 <a 
- id="x1-180027"></a>
+ id="x1-190028"></a>
                                                                   
 
                                                                   
 <!--l. 51--><p class="noindent" > <div style="text-align:center;"> <img width=200 src="graphics/symmetric_NAT.png" /> </div> 
 <br /> </p><div class="caption" 
-><span class="id">Figure 7: </span><span  
-class="content">Symmetric NAT port allocation.</span></div><!--tex4ht:label?: x1-180027 -->
+><span class="id">Figure 8: </span><span  
+class="content">Symmetric NAT port allocation.</span></div><!--tex4ht:label?: x1-190028 -->
                                                                   
 
                                                                   
    </div><hr class="endfigure" />
    <h4 class="subsectionHead"><span class="titlemark">8.2   </span> <a 
- id="x1-190008.2"></a>Cone VS symmetric</h4>
+ id="x1-200008.2"></a>Cone VS symmetric</h4>
 <!--l. 56--><p class="noindent" >Cone NATs use the same external end-point for every packet that comes from the same
 internal end-point, independently on the destination of the packets (see Fig. <a 
-href="#x1-180027">7<!--tex4ht:ref: fig:cone_NAT --></a>). For the
+href="#x1-190028">8<!--tex4ht:ref: fig:cone_NAT --></a>). For the
 external peer <!--l. 58--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
@@ -1985,7 +2011,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 </p><!--l. 68--><p class="noindent" >
 </p>
    <h4 class="subsectionHead"><span class="titlemark">8.3   </span> <a 
- id="x1-200008.3"></a>Port allocation</h4>
+ id="x1-210008.3"></a>Port allocation</h4>
 <!--l. 69--><p class="noindent" >In  the  case  of  port  preservation,  if
 <!--l. 69--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -2019,7 +2045,7 @@ a the port assignment.
 </p><!--l. 84--><p class="noindent" >
 </p>
    <h4 class="subsectionHead"><span class="titlemark">8.4   </span> <a 
- id="x1-210008.4"></a>NAT type analysis</h4>
+ id="x1-220008.4"></a>NAT type analysis</h4>
 <!--l. 85--><p class="noindent" >An incoming peer <!--l. 85--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
@@ -2033,7 +2059,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 can determine its NAT behavior using the following steps:
      </p><ol  class="enumerate1" >
      <li 
-  class="enumerate" id="x1-21002x1">Let <!--l. 88--><math 
+  class="enumerate" id="x1-22002x1">Let <!--l. 88--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">{</mo><mrow><msub><mrow 
@@ -2099,7 +2125,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">hello</mi></math>].
      Compute <table class="equation"><tr><td> <a 
- id="x1-21003r1"></a>
+ id="x1-22003r1"></a>
      <!--l. 94--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
@@ -2144,9 +2170,9 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 ></math>.
      </p></li>
      <li 
-  class="enumerate" id="x1-21005x2">Determine a <span 
+  class="enumerate" id="x1-22005x2">Determine a <span 
 class="ecti-1000">port step </span><table class="equation"><tr><td> <a 
- id="x1-21006r2"></a>
+ id="x1-22006r2"></a>
      <!--l. 101--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
@@ -2191,7 +2217,7 @@ class="text"><mtext  >otherwise</mtext></mstyle>  </mtd></mtr><!--lr--></mtable>
      <!--l. 108--><p class="noindent" >where GCD is the Greatest Common Divisor operator.
      </p></li>
      <li 
-  class="enumerate" id="x1-21008x3">If <!--l. 109--><math 
+  class="enumerate" id="x1-22008x3">If <!--l. 109--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >Δ</mi> <mo 
@@ -2227,7 +2253,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
      as being using this type of NAT, also.
      </li>
      <li 
-  class="enumerate" id="x1-21010x4">If <!--l. 114--><math 
+  class="enumerate" id="x1-22010x4">If <!--l. 114--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >Δ</mi> <mo 
@@ -2249,8 +2275,8 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
      is behind a symmetric NAT. In this case:
          <ol  class="enumerate2" >
          <li 
-  class="enumerate" id="x1-21012x1">If <table class="equation"><tr><td> <a 
- id="x1-21013r3"></a>
+  class="enumerate" id="x1-22012x1">If <table class="equation"><tr><td> <a 
+ id="x1-22013r3"></a>
          <!--l. 119--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
@@ -2279,8 +2305,8 @@ display="inline" ><mi mathvariant="sans-serif">A</mi></math>
          is using sequentially port allocation.
          </p></li>
          <li 
-  class="enumerate" id="x1-21015x2">If <table class="equation"><tr><td> <a 
- id="x1-21016r4"></a>
+  class="enumerate" id="x1-22015x2">If <table class="equation"><tr><td> <a 
+ id="x1-22016r4"></a>
          <!--l. 124--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
@@ -2321,13 +2347,13 @@ display="inline" ><mi mathvariant="sans-serif">A</mi></math>
 <!--l. 131--><p class="noindent" >
 </p>
    <h4 class="subsectionHead"><span class="titlemark">8.5   </span> <a 
- id="x1-220008.5"></a>(Theoretical) NAT traversal performance of DBS</h4>
+ id="x1-230008.5"></a>(Theoretical) NAT traversal performance of DBS</h4>
    <div class="table">
                                                                   
 
                                                                   
 <!--l. 134--><p class="indent" >   <a 
- id="x1-220012"></a></p><hr class="float" /><div class="float" 
+ id="x1-230012"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
@@ -2397,7 +2423,7 @@ Address Filtering. CN-EF (also known by “port restricted cone NAT”) stands f
 Cone NAT source End-point Filtering. SN-PPA stands for Symmetric NAT Port
 Preservation Allocation, and no packet ﬁltering has been considered. SN-RPA
 stands for Symmetric NAT Random Port Allocation, and no packet ﬁltering has
-been used. </span></div><!--tex4ht:label?: x1-220012 -->
+been used. </span></div><!--tex4ht:label?: x1-230012 -->
                                                                   
 
                                                                   
@@ -2409,13 +2435,13 @@ been used. </span></div><!--tex4ht:label?: x1-220012 -->
 
                                                                   
 <a 
- id="x1-220028"></a>
+ id="x1-230029"></a>
                                                                   
 
                                                                   
 <!--l. 157--><p class="noindent" > <div style="text-align:center;"> <img width=400 src="graphics/UDP_Hole_Punching_RCN.png" /> </div> 
 <br /> </p><div class="caption" 
-><span class="id">Figure 8: </span><span  
+><span class="id">Figure 9: </span><span  
 class="content">An example that shows why it is possible to establish a connection
 with                  DBS                  when                  two                  peers
 <!--l. 160--><math 
@@ -2433,7 +2459,7 @@ display="inline" ><msub><mrow
 >P</mi></mrow><mrow 
 ><mn>2</mn></mrow></msub 
 ></math>
-that are behind cone NATs.</span></div><!--tex4ht:label?: x1-220028 -->
+that are behind cone NATs.</span></div><!--tex4ht:label?: x1-230029 -->
                                                                   
 
                                                                   
@@ -2444,14 +2470,14 @@ that are behind cone NATs.</span></div><!--tex4ht:label?: x1-220028 -->
 
                                                                   
 <a 
- id="x1-220039"></a>
+ id="x1-2300310"></a>
                                                                   
 
                                                                   
 <!--l. 164--><p class="noindent" > <div style="text-align:center;"> <img width=400 src="graphics/UDP_Hole_Punching_SN_failure.png" /> </div> 
 <br />           </p><div class="caption" 
-><span class="id">Figure 9:                  </span><span  
-class="content">An                  example                  that
+><span class="id">Figure 10:                 </span><span  
+class="content">An                 example                 that
 shows why its is impossible to establish a connection with DBS when two peers
 <!--l. 167--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -2468,7 +2494,7 @@ display="inline" ><msub><mrow
 >P</mi></mrow><mrow 
 ><mn>2</mn></mrow></msub 
 ></math>
-that are behind symmetric NATs.</span></div><!--tex4ht:label?: x1-220039 -->
+that are behind symmetric NATs.</span></div><!--tex4ht:label?: x1-2300310 -->
                                                                   
 
                                                                   
@@ -2477,14 +2503,14 @@ that are behind symmetric NATs.</span></div><!--tex4ht:label?: x1-220039 -->
 
                                                                   
 <!--l. 171--><p class="indent" >   <a 
- id="x1-2200410"></a></p><hr class="float" /><div class="float" 
+ id="x1-2300411"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
                                                                   
  <div style="text-align:center;"> <img width=600 src="graphics/SNTuCPP.png" /> </div> 
 <br /> <div class="caption" 
-><span class="id">Figure 10:  </span><span  
+><span class="id">Figure 11:  </span><span  
 class="content">Timeline  of  an  (ideal)  NTS  interaction  between  two  peers
 <!--l. 174--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -2501,13 +2527,13 @@ display="inline" ><msub><mrow
 >P</mi></mrow><mrow 
 ><mn>2</mn></mrow></msub 
 ></math>
-which are behind symmetric NATs. </span></div><!--tex4ht:label?: x1-2200410 -->
+which are behind symmetric NATs. </span></div><!--tex4ht:label?: x1-2300411 -->
                                                                   
 
                                                                   
    </div><hr class="endfloat" />
 <!--l. 177--><p class="indent" >   Table <a 
-href="#x1-220012">2<!--tex4ht:ref: tab:theoretical --></a> shows the theoretical traversal success of DBS (or an extension of it) for
+href="#x1-230012">2<!--tex4ht:ref: tab:theoretical --></a> shows the theoretical traversal success of DBS (or an extension of it) for
 diﬀerent NAT type combinations. Peer1 represents to a peer already joined to the
 team, and Peer2 to an incoming peer. The entries labeled with “DBS” are those that
 will be handled by DBS, out-of-the-box. An explanation of why the DBS handshake
@@ -2516,16 +2542,16 @@ class="ecbx-1000">??</span>. Notice that source end-point
 ﬁltering has been used in this example, although a similar results should be obtained
 for simple source address ﬁltering. On the other hand, the combinations labeled with
 “-” or “NTS” will not work with DBS (see Fig.<a 
-href="#x1-220039">9<!--tex4ht:ref: fig:UDP_Hole_Punching_SN_failure --></a>). In fact, only the “NTS” entries
+href="#x1-2300310">10<!--tex4ht:ref: fig:UDP_Hole_Punching_SN_failure --></a>). In fact, only the “NTS” entries
 should work, in general, with NTS, depending on the port prediction algorithm and
 the number of tries. Fig. <a 
-href="#x1-2200410">10<!--tex4ht:ref: fig:SNTuCPP --></a> shows an example of an NTS (NAT traversal)
+href="#x1-2300411">11<!--tex4ht:ref: fig:SNTuCPP --></a> shows an example of an NTS (NAT traversal)
 success.
 </p><!--l. 193--><p class="indent" >   Summarizing, NTS can provide connectivity for those peers that are behind
 port-preservation symmetric NATs with sequential port allocation.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">8.6   </span> <a 
- id="x1-230008.6"></a>A port prediction algorithm (Max’s proposal)</h4>
+ id="x1-240008.6"></a>A port prediction algorithm (Max’s proposal)</h4>
 <!--l. 198--><p class="noindent" >When both peers, Peer1 and Peer2, are behind symmetric NATs, both must predict
 the port that the NAT of the interlocutor peer will use to send the packets towards
 it. And obviously, this must be performed by each already incorporated peer that is
@@ -2545,7 +2571,7 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 >j</mi></mrow></msubsup 
 ></math>
 performs is determined by: </p><table class="equation"><tr><td> <a 
- id="x1-23001r5"></a>
+ id="x1-24001r5"></a>
 <!--l. 205--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
@@ -2641,7 +2667,7 @@ is the (maximum) port step measured for the incoming peer’s NAT.
 </p><!--l. 1--><p class="noindent" >
 </p>
    <h3 class="likesectionHead"><a 
- id="x1-240008.6"></a>References</h3>
+ id="x1-250008.6"></a>References</h3>
 <!--l. 1--><p class="noindent" >
    </p><div class="thebibliography">
    <p class="bibitem" ><span class="biblabel">
