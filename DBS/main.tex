@@ -4,15 +4,15 @@
   \begin{tabular}{rl}
     Parameter & Meaning \\
     \hline
-    $\mathtt{MaxNumTeams}$ & Maximum number of teams \\
-    $N$       & Maximum number of peers in a team \\
-    $C$       & Maximum size of a chunk of media \\
-    $B$       & buffer size in chunks \\
-    $D$       & Maximum chunk debt between peers \\
+    $\mathtt{MaxNumTeams}$  & Maximum number of teams \\
+    $\mathtt{MaxMumPeers}$  & Maximum number of peers in a team \\
+    $\mathtt{ChunkSize}$    & Size of a chunk of media \\
+    $\mathtt{BufferSize}$   & buffer size in chunks \\
+    $\mathtt{MaxChunkDebt}$ & Maximum chunk debt between peers \\
     ~\\
     Entity  & Role \\
     \hline
-    $O$     & the media source \\
+    $\mathtt{MediaSource}$  & the media source \\
     $\{T\}$ & all the teams that receive the same media stream \\
     $R$     & teams tracker \\
     $\{S\}$ & the set of splitters broadcasting the same stream \\
