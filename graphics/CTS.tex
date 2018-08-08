@@ -1,0 +1,16 @@
+\documentclass{article}
+%\usepackage[pdftex]{graphicx}
+\usepackage{graphicx}
+
+\begin{document}
+\pagestyle{empty}
+
+\def\imagetop#1{\vtop{\null\hbox{#1}}}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{cc}
+  \imagetop{\includegraphics{channels_tracker}} &
+  \imagetop{\includegraphics{player}}
+\end{tabular}
+}
+
+\end{document}

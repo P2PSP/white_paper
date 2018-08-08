@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\send}{\Rightarrow}
+\newcommand{\sendto}{\rightarrow}
+\algrenewcommand\algorithmicprocedure{\textbf{task}}
+
+\begin{algorithmic}
+  \Procedure{Player.Render}{}
+  \While{True}
+  \State $[\mathtt{hello}] \send \mathrm{ChannelsTracker}$
+  \State $[\mathtt{list~of~channels}] \gets \mathrm{ChannelsTracker}$
+  \State $[\mathtt{channel}] \send \mathrm{ChannelsTracker}$
+  \State $[\mathtt{teams\_tracker}] \gets \mathrm{ChannelsTracker}$
+  \EndWhile
+  \EndProcedure
+\end{algorithmic}
+
+\end{document}

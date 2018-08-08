@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\send}{\Rightarrow}
+\newcommand{\sendto}{\rightarrow}
+\algrenewcommand\algorithmicprocedure{\textbf{task}}
+
+\begin{algorithmic}
+  \Procedure{ChannelsTracker.Serve}{}
+  \While{True}
+  \State $[\mathtt{hello}] \gets \textsc{Player}$
+  \State $[\mathtt{list~of~channels}] \send \textsc{Player}$
+  \State $[\mathtt{channel}] \gets \textsc{Player}$
+  \State $\mathtt{teams\_tracker} = \textsc{Find}(\mathtt{channel})$
+  \State $[\mathtt{teams\_tracker}] \send \textsc{Player}$
+  \EndWhile
+  \EndProcedure
+\end{algorithmic}
+
+\end{document}
