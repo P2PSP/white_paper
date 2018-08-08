@@ -33,24 +33,14 @@
 
 DBS provides ALM~\cite{banerjee2002scalable} of a media stream in
 unicast environments~\cite{comer2003computer}. The media is sent by a
-streaming server $O$, called \emph{source} (the nomenclature used for
+streaming server, called \emph{source} (the nomenclature used for
 describing DBS is shown in Table~\ref{tab:DBS_nomenclature}), and
-received by a set of \emph{splitters} $\{S\}$.
-%=\{S^1,\cdots,S^{|T|}\}$ , where $1\leq |T|\leq G$.
-Each splitter $S$ divides the stream into a sequence of
-\emph{chunks}, and relay them to its corresponding \emph{team} $T$,
-where it can be up to $N$ \emph{peers}. We define the set of teams as
+received by a set of \emph{splitters}.  Each splitter divides the
+stream into a sequence of \emph{chunks}, and relay them to its
+corresponding \emph{team}, where it can be up to
+$\mathtt{MaxNumPeers}$ \emph{peers}.
+
+/* quitar: We define the set of teams as
 $\{T\}$,
 %=\{T^1,\cdots,T^{|T|}\}$,
-and enumerate the peers in the team $T$ as $T=\{P_1,\cdots,P_{|T|}\}$.
-
-%As can be seen, we have ignored that
-%more of one teams can be broadcasting the same media stream (most
-%sources support concurrent receivers, and therefore, multiple
-%splitters).
-
-%Consequently, if more channels are needed,
-%all these objects should be instantiated for each different channel
-%(for example, there should be a different tracker for each
-%channel). In P2PSP, a channel is the equivalent to a same concept, for
-%example, in the DVB (Digital Video Broadcasting) system.
+and enumerate the peers in the team $T$ as $T=\{P_1,\cdots,P_{|T|}\}$. */

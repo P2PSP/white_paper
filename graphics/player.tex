@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{amsmath}
 \usepackage{amsfonts}
+%\usepackage[ruled,vlined]{algorithm2e}
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
 
@@ -10,16 +11,18 @@
 \newcommand{\send}{\Rightarrow}
 \newcommand{\sendto}{\rightarrow}
 \algrenewcommand\algorithmicprocedure{\textbf{task}}
+\algrenewcommand\textproc{\textrm}
 
 \begin{algorithmic}
-  \Procedure{Player.Render}{}
-  \While{True}
+  \Function{Player(ChannelsTracker).Render}{}
   \State $[\mathtt{hello}] \send \mathrm{ChannelsTracker}$
-  \State $[\mathtt{list~of~channels}] \gets \mathrm{ChannelsTracker}$
-  \State $[\mathtt{channel}] \send \mathrm{ChannelsTracker}$
-  \State $[\mathtt{teams\_tracker}] \gets \mathrm{ChannelsTracker}$
-  \EndWhile
-  \EndProcedure
+  \State $[\text{list of channels}] \gets \mathrm{ChannelsTracker}$
+  \State /* The user selects a channel */
+  \State $[\mathrm{channel}] \send \mathrm{ChannelsTracker}$
+  \State $[\mathrm{TeamsTracker}] \gets \mathrm{ChannelsTracker}$
+  \State $[\mathtt{hello}] \send \mathrm{TeamsTracker}$
+  \State $[\mathrm{Splitter}] \gets \mathrm{TeamsTracker}$
+  \EndFunction
 \end{algorithmic}
 
 \end{document}

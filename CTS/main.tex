@@ -21,4 +21,12 @@ returns the end-point of a splitter. With this information (where the
 splitter is listening to the peers of its team), the player runs a
 peer and the retrieving of the media stream starts.
 
-The Fig.~\ref{fig:CTS} shows the main tasks related with CTS. 
+The Fig.~\ref{fig:CTS} shows the main tasks related with CTS. As can
+be seen, to find a splitter succesfully, up to four pieces of code
+must be run. One function in the Player, controlled by the user, to
+obtain the Splitter's end-point. One (concurrent) task in the channels
+tracker that listen to the players and serve, first the list of
+current channels and second, a teams tracker dedicated to such
+channel. Two tasks in the teams tracker, one for serving the splitter
+and another for keep updated the list of splitters with room in its
+teams.

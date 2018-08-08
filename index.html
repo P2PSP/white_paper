@@ -24,7 +24,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">August 8, 2018</span></div>
+class="ecrm-1200">August 9, 2018</span></div>
    </div>
    <h3 class="likesectionHead"><a 
  id="x1-1000"></a>Contents</h3>
@@ -148,7 +148,9 @@ trackerw hich returns the end-point of a splitter. With this information (where 
 splitter is listening to the peers of its team), the player runs a peer and the retrieving
 of the media stream starts.
 </p><!--l. 24--><p class="indent" >   The Fig. <a 
-href="#x1-20011">1<!--tex4ht:ref: fig:CTS --></a> shows the main tasks related with CTS.
+href="#x1-20011">1<!--tex4ht:ref: fig:CTS --></a> shows the main tasks related with CTS. As can be seen, to ﬁnd a
+splitter succesfully, up to four tasks must be run. One in the Player to obtain the
+Splitter’s end-point.
 </p>
    <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
  id="x1-30002"></a>DBS (Data Broadcasting Set)</h3>
@@ -180,28 +182,24 @@ class="td11"> Maximum number of teams                                           
  style="vertical-align:baseline;" id="TBL-2-3-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-3-1"  
 class="td11"> <!--l. 8--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->N</mi></math> </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-3-2"  
+display="inline" ><mi mathvariant="monospace">MaxMumPeers </mi> </math> </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-3-2"  
 class="td11"> Maximum number of peers in a team</td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-4-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-4-1"  
 class="td11"> <!--l. 9--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->C</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-4-2"  
-class="td11"> Maximum size of a chunk of media                                                                                                                                                                                              </td></tr><tr  
+display="inline" ><mi mathvariant="monospace">ChunkSize</mi></math> </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-4-2"  
+class="td11"> Size of a chunk of media                                                                                                                                                                                                            </td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-5-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-5-1"  
 class="td11"> <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->B</mi></math> </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-5-2"  
+display="inline" ><mi mathvariant="monospace">BufferSize </mi> </math> </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-5-2"  
 class="td11"> buﬀer size in chunks</td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-6-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-6-1"  
 class="td11"> <!--l. 11--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->D</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-6-2"  
+display="inline" ><mi mathvariant="monospace">MaxChunkDebt</mi></math> </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-6-2"  
 class="td11"> Maximum chunk debt between peers                                                                                                                                                                                            </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-7-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-7-1"  
@@ -214,8 +212,7 @@ class="hline"><td><hr /></td><td><hr /></td></tr><tr
  style="vertical-align:baseline;" id="TBL-2-9-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-9-1"  
 class="td11"> <!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->O</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-9-2"  
+display="inline" ><mi mathvariant="monospace">MediaSource</mi></math> </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-9-2"  
 class="td11"> the media source                                                                                                                                                                                                                      </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-10-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-10-1"  
@@ -378,48 +375,32 @@ class="content">Nomenclature used in DBS.</span></div><!--tex4ht:label?: x1-3001
    </div>
 <!--l. 34--><p class="indent" >   DBS provides ALM <span class="cite">[<a 
 href="#Xbanerjee2002scalable">2</a>]</span> of a media stream in unicast environments <span class="cite">[<a 
-href="#Xcomer2003computer">4</a>]</span>. The media is sent by a
-streaming server <!--l. 36--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->O</mi></math>,
-called <span 
-class="ecti-1000">source </span>(the nomenclature used for describing DBS is shown in Table <a 
-href="#x1-30011">1<!--tex4ht:ref: tab:DBS_nomenclature --></a>), and received by a
-set of <span 
-class="ecti-1000">splitters </span><!--l. 38--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mrow ><mo 
-class="MathClass-open">{</mo><mrow><mi 
->S</mi></mrow><mo 
-class="MathClass-close">}</mo></mrow></math>.
-Each splitter <!--l. 40--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->S</mi></math>
-divides the stream into a sequence of <span 
+href="#Xcomer2003computer">4</a>]</span>. The media
+is sent by a streaming server, called <span 
+class="ecti-1000">source </span>(the nomenclature used for describing DBS is
+shown in Table <a 
+href="#x1-30011">1<!--tex4ht:ref: tab:DBS_nomenclature --></a>), and received by a set of <span 
+class="ecti-1000">splitters</span>. Each splitter divides the stream
+into a sequence of <span 
 class="ecti-1000">chunks</span>, and relay them to its corresponding <span 
-class="ecti-1000">team</span>
-<!--l. 41--><math 
+class="ecti-1000">team</span>, where it can be
+up to <!--l. 41--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->T</mi></math>, where it can be up to
-<!--l. 42--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->N</mi></math> <span 
-class="ecti-1000">peers</span>. We deﬁne the set of
-teams as <!--l. 43--><math 
+display="inline" ><mi mathvariant="monospace">MaxNumPeers</mi></math>
+<span 
+class="ecti-1000">peers</span>.
+</p><!--l. 43--><p class="indent" >   /* quitar: We deﬁne the set of teams as
+<!--l. 44--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">{</mo><mrow><mi 
 >T</mi></mrow><mo 
-class="MathClass-close">}</mo></mrow></math>, and enumerate
-the peers in the team <!--l. 45--><math 
+class="MathClass-close">}</mo></mrow></math>, and enumerate the
+peers in the team <!--l. 46--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >T</mi></math>
-as <!--l. 45--><math 
+as <!--l. 46--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >T</mi> <mo 
@@ -440,6 +421,7 @@ class="MathClass-rel">|</mo><mi
 class="MathClass-rel">|</mo></mrow></msub 
 ></mrow><mo 
 class="MathClass-close">}</mo></mrow></math>.
+*/
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.1   </span> <a 
  id="x1-40002.1"></a>Peer’s life</h4>
