@@ -12,10 +12,10 @@
 \algrenewcommand\algorithmicprocedure{\textbf{function}}
 
 \begin{algorithmic}
-  \Procedure{$P_k$.BufferData}{}
+  \Procedure{$P_k$.BufferChunks}{}
   \State $(x,\_)=\textsc{DbsLogic}$
   \State $\mathtt{chunk\_to\_play} = x$
-  \While{$x<\mathtt{chunk\_to\_play}$ \textbf{or} $(x-\mathtt{chunk\_to\_play})<B/2$}
+  \While{\begin{tabular}{l}$x<\mathtt{chunk\_to\_play}$ \textbf{or} \\$(x-\mathtt{chunk\_to\_play})<B/2$\end{tabular}}
   \State $(x,\_)=\textsc{DbsLogic}$
   \EndWhile
   \EndProcedure  
