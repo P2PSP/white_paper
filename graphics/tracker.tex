@@ -11,12 +11,13 @@
 \newcommand{\sendto}{\rightarrow}
 \newcommand{\recv}{\Leftarrow}
 \algrenewcommand\algorithmicprocedure{\textbf{task}}
+\algrenewcommand\textproc{\textrm}
 
 \begin{algorithmic}
 
-  \Procedure{$R$.ServeSplitters}{}
+  \Procedure{TeamsTracker.ServeSplitters}{}
   \While{True}
-  \State $[\mathtt{hello}] \gets P_i$
+  \State $[\mathtt{hello}] \gets \mathrm{Player}$
   %\State \textbf{wait for a connection from} $P^?_i$
   \ForAll{$S \in \{S\}$}
   \If{$|T|<N$}
@@ -26,9 +27,10 @@
   \EndWhile
   \EndProcedure
   \newline
-  \Procedure{$R$.UpdateFullness}{}
+  \Procedure{TeamsTracker.UpdateFullness}{}
   \While{True}
-  \State $[|T|] \gets S$
+  \State $[|\mathrm{team}_i|] \gets \mathrm{splitter}_i$
+  \State \textbf{sort} $\{\mathrm{team}\}$ \textbf{acendently by} $|\cdot|$ 
   \EndWhile
   \EndProcedure
 
