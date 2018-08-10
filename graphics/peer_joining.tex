@@ -10,27 +10,18 @@
 \newcommand{\send}{\Rightarrow}
 \newcommand{\sendto}{\rightarrow}
 \algrenewcommand\algorithmicprocedure{\textbf{task}}
+\algrenewcommand\textproc{\textrm}
 
 \begin{algorithmic}
-  \Procedure{$P_i$.JoinATeam}{$R$, channel}
-  \State $[\mathtt{hello}] \send R$
-  \State $[S] \gets R$
-  %\ForAll{${\cal S}^j\in {\cal S}$}
-  \State $[\mathtt{hello}] \send S$
-  \ForAll{$P_k\in[T]\gets S$}
+  \Procedure{Peer.join\_a\_team}{Splitter}
+  \State $[\mathtt{hello}] \send$ Splitter
+  \ForAll{$P_k\in[\mathrm{list~of~peers}]\gets$ Splitter}
   \State $[\mathtt{hello}]\sendto P_k$
-  %\If{$[{\cal T}_j] \gets {\cal S}_j$}
-  %\State \textbf{Break}
-  %\EndIf
-  %\State $\text{RTT}_k=$ \textbf{timeit} \textbf{wait for} $[\mathtt{hello}] \gets {\cal P}_k$ \textbf{with} timeout
   \EndFor
-  %\State $T^*({\cal P}_i)=\{{\cal P}_k~|~\text{RTT}_k<\text{timeout}\}$
-  %\State $N({\cal P}_i)=\{\textbf{first}~K~{\cal P}_k \in T^*({\cal P}_i)~|~\text{RTT}_k < \text{RTT}_{k+1}\}$
-  %\ForAll{$P^t_k\in T^t$}
-  %\State $[\mathtt{hello}] \sendto P^t_k$
-  %\EndFor
   \EndProcedure
-  \newline
+\end{algorithmic}
+\begin{algorithmic}
+  %\newline
   \Procedure{$P_k$.AddNeighbors}{}
   \While{True}
   \State $[\mathtt{hello}] \gets P_i$

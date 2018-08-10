@@ -24,7 +24,7 @@ selects a team with room for $P_i$, and transmits to $P_i$ a $[S]$
 message\footnote{More exactly, $[S]$ transports the IP address and
   port, i.e. an end-point, of the splitter $S$}. Then, $P_i$ requests
 to $S$ to be included in $T$. If $S$ accepts (during the joining
-process of $P_i$ it could happen that $|T|=N$ because other peer are
+process of $P_i$ it could happen that $|T|=N$ because other peers are
 trying to join at the same time), then $S$ transmits to $P_i$ a
 message $[T]$ (more precisely, the list of peers in $T$, in a reliable
 message), and runs $T = T \cup P_i$, in this order. If $S$ does not

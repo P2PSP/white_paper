@@ -10,16 +10,17 @@
 \newcommand{\send}{\Rightarrow}
 \newcommand{\sendto}{\rightarrow}
 \algrenewcommand\algorithmicprocedure{\textbf{task}}
+\algrenewcommand\textproc{\textrm}
 
 \begin{algorithmic}
 
-  \Procedure{$P_k$.Peer'sLife}{Player}
-  \State \textsc{JoinATeam}($R$, Player.channel)
-  \State \textsc{BufferChunks}
+  \Procedure{Peer.live}{Player}
+  \State join\_a\_team(Player.get\_splitter)
+  \State buffer\_chunks
   \While{Player.alive}
-  \State \textsc{KeepTheBufferFull}
+  \State keep\_the\_buffer\_full
   \EndWhile
-  \State \textsc{LeaveTheTeam}
+  \State leave\_the\_team
   \EndProcedure
     
 \end{algorithmic}

@@ -14,14 +14,27 @@
 \algrenewcommand\textproc{\textrm}
 
 \begin{algorithmic}
-  \Function{Player(ChannelsTracker).Render}{}
+  \Function{Player(ChannelsTracker).{\bf join\_team}}{}
   \State $[\mathtt{hello}] \send \mathrm{ChannelsTracker}$
   \State $[\text{list of channels}] \gets \mathrm{ChannelsTracker}$
   \State /* The user selects a channel */
   \State $[\mathrm{channel}] \send \mathrm{ChannelsTracker}$
   \State $[\mathrm{TeamsTracker}] \gets \mathrm{ChannelsTracker}$
   \State $[\mathtt{hello}] \send \mathrm{TeamsTracker}$
-  \State $[\mathrm{Splitter}] \gets \mathrm{TeamsTracker}$
+  \State $[\{\mathrm{Splitter}\}] \gets \mathrm{TeamsTracker}$
+  \ForAll{$S in \{\mathrm{Splitter}\}$}
+  \EndFor 
+  \EndFunction
+\end{algorithmic}
+
+\algrenewcommand\algorithmicfunction{\textbf{thread}}
+
+\begin{algorithmic}
+  \Function{connect\_to}{$\mathrm{Splitter}, \mathrm{Queue}$}
+  \State $\mathrm{connection} =$ \textbf{connect to} $\mathrm{Splitter}$
+  \If{$\mathrm{Queue}=\mathrm{Empty}$}
+  \State $\mathrm{Queue}.\mathbf{put}=\mathrm{Splitter}$
+  \EndIf
   \EndFunction
 \end{algorithmic}
 
