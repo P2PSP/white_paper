@@ -1,108 +1,26 @@
 \label{sec:peer_joining}
 \begin{figure*}
   %\includegraphics[width=\textwidth]{joining}
-  \fig{600}{5cm}{joining} \caption{Tasks involved in a peer
-    joining. $P_i$ is the incoming peer, and $P_k$ is a peer that is
-    already in the team. $R$ represents the tracker, and $S$ the
-    splitter of the team $T$ to which $P_k$ belongs, and $P_i$ will be
-    added.\label{fig:joining}}
+  \fig{700}{7cm}{joining} \caption{Procedures involved in a peer
+    joining.\label{fig:joining}}
 \end{figure*}
-An incoming peer $P_i$ (see the tasks\footnote{By definition, all the
-described tasks must run in parallel.} described in
-Fig.~\ref{fig:joining}), interested in a given channel, first must
-join a team in order to access to the contents of such channel. For
-that, $P_i$ requests a splitter to the \emph{tracker} $R$. $R$, that
-continuously is receiving, from $\{S\}$,
-\emph{reliable}\footnote{Reliable messages are transmitted over TCP
-  and their transmission is denoted in the pseudocode by
-  $\Rightarrow$. On the other hand, unreliable messages, which can be
-  lost in transit, are transmitted over UDP and its transmission is
-  denoted by $\rightarrow$. In any case, the reception of a packet is
-  a permanent blocking action, at least a timeout is indicated.}
-messages containing the number of peers of each team of $\{T\}$,
-selects a team with room for $P_i$, and transmits to $P_i$ a $[S]$
-message\footnote{More exactly, $[S]$ transports the IP address and
-  port, i.e. an end-point, of the splitter $S$}. Then, $P_i$ requests
-to $S$ to be included in $T$. If $S$ accepts (during the joining
-process of $P_i$ it could happen that $|T|=N$ because other peers are
-trying to join at the same time), then $S$ transmits to $P_i$ a
-message $[T]$ (more precisely, the list of peers in $T$, in a reliable
-message), and runs $T = T \cup P_i$, in this order. If $S$ does not
-accept, $P_i$ requests a new team to $R$, and resets the procedure.
 
-%Then ${\cal P}_i$ polls
-%sequentially each splitter in $S$, requesting to be included in its
-%team until one of them (${\cal S}_j$, for example) accepts to ${\cal
-%  P}_i$. %Then, ${\cal S}_j$ performs ${\cal T}_j = {\cal T}_j \cup
-%{\cal P}_i$.  In parallel with the reception of $[{\cal T}_j]$,
-
-While arriving, $P_i$ does not store $T$ as it is received. Instead,
-$P_i$ sends an (unreliable) $[\mathtt{hello}]$ message to each $P_k\in
-[T]$, and when $P_k$ receives a $[\mathtt{hello}]$, it performs $T^k =
-T^k \cup P_i$. Therefore, the list of peers $T^k$ that a peer $P_k$
-handles (the neighbor peers of $P_k$), initially depends (see
-Sec.~\ref{sec:chunk_flooding}) on the number of $[\mathtt{hello}]$
-messages that it has received. Consequently, it holds that $|T^k| \le
-|T|$. $T^k$ is kept sorted by ascending ``debt'', a table of debts of
-chunks between neighbor peers (see Sec~\ref{sec:chunk_flooding}).
-
-% When a ${\cal P}_k$ receives a $[\mathtt{hello}]$ from ${\cal P}_i$,
-% replies to ${\cal P}_i$ with the same message. -> Ya no hace falta
-% porque los peers van a calcular las rutas óptimas al resto de peers
-% del team con el flooding con poda.
-% _________________________________________________________________
-% Cuando un peer llega al team, envía los hello's y comienza a recibir
-% chunks. Los peers por defecto reenvían todos los chunks recibidos al
-% resto de peers, excepto al que se lo ha enviado. Por cada chunk
-% recibido duplicado, los peers envía a quien se lo ha envíado un
-% mensaje de prunning con un peer origen (el que figura en el chunk
-% duplicado), indicando que no le envíe más chunks con ese
-% origen. Cuando un peer eche de menos un chunk de un determinado peer
-% origen (un determinado número de veces), enviará a uno o varios
-% peers (en pricipio a todos los peers) del team un mensaje de
-% revocación de prunning, para asegurarse de que aparece una mejor
-% ruta alternativa para ese peer origen.
-% __________________________________________________________________
-%Then, ${\cal P}_i$ computes the RTT (Round-Trip Time) for each
-%$[\mathtt{hello}]$ reply, and does $T^*({\cal P}_i) = T^*({\cal P}_i) \cup
-%{\cal P}_k$, for those peers which reply
-%%for the $K$ peers with lowest RTT
-%($T^*({\cal
-%  P}_i)$ is, by definition, the \emph{reacheable} team of ${\cal
-%  P}_i$).
-%%Later, all ${\cal P}_k\in N({\cal P}_i)$ performs $N({\cal
-%%  P}_k) = N({\cal P}_k) \cup {\cal P}_i$, when a chunk of stream is
-%%received from ${\cal P}_i$.
-% __________________________________________________________________
-% Ya no hace falta
-% __________________________________________________________________
-
-\begin{comment}
-$[{\cal L}]=[\{{\cal X}\in {\cal T}^0/|N({\cal
-    X})|<K\}]$ (being $K$ the maximum connectivity degree and $N({\cal
-  X})$ the neighborhood of ${\cal X}$), and after that, ${\cal S}^0$
-adds ${\cal P}$ to ${\cal T}^0$. In parallel with the reception of
-$[{\cal L}]$, ${\cal P}$ sends a $[\mathtt{hello}]$ message to each
-$\{{\cal X}\in {\cal T}^0\}$. When a ${\cal X}$ receives a
-$[\mathtt{hello}]$, replies to ${\cal R}$ with the same message. Then,
-${\cal X}$ computes a $\text{RTT}({\cal X})$ (Round-Trip Time) for
-each $[\mathtt{hello}]$ reply, and sends to the $K$ peers with lowest
-RTT
-%$\underset{{\cal P}_i^0\in X}{\operatorname{{\it K}-first~args~min}} \,
-%\text{RTT}({\cal P}_i^0)=\{K\text{-first}~{\cal P}_i^0~|~\forall
-%     {\cal P}_j\in X:\text{RTT}({\cal P}_j)\leq \text{RTT}({\cal
-%       P}_i)\}$,
-a $[\mathtt{neighborhood\_request}]$ message, which ${\cal X}$ must
-reply with a $[\mathtt{neighborhood\_accept}]$, if ${\cal X}$ accepts
-${\cal P}$ as a neighbor. For each found neighbor ${\cal X}$, ${\cal
-  P}$ sends to ${\cal S}^0$ a $[\mathtt{neighborhood\_accepted}~{\cal
-    X}]$, and ${\cal S}^0$ updates $N({\cal P}) = N({\cal P}) \cup
-\{{\cal X}\}$.
-\end{comment}
-
-% Ungraceful leaves occur when a peer leaves the group without
-% notice which may cause disconnection of the peer’s descendants
-% from the group.
-
-% Ungraceful exit made by a peer may cause interruption of data
-% reception at its descendants.
+As can be seen in Fig.~\ref{fig:joining}, incoming peers request
+(using a reliable\footnote{Reliable messages are transmitted over TCP
+and their transmission is denoted in the pseudocode by
+$\Rightarrow$. On the other hand, unreliable messages, which can be
+lost in transit, are transmitted over UDP and its transmission is
+denoted by $\rightarrow$. In any case, the reception of a packet is a
+permanent blocking action, at least a timeout is indicated.}
+communication) to the splitter the current list of peers in the
+team. To minimize the joining time, a $[\mathtt{hello}]$ message is
+sent to each peer of the team in parallel with the reception of the
+list. When a peer of the team receives a $[\mathtt{hello}]$, it runs
+the $\mathrm{add}\_\mathrm{neighbor}()$ function, which basically: (1)
+adds the sender of the message to a table of peers called
+$\mathrm{forward}[]$ (if in peer $P_i$ there is an entry
+$\mathrm{forward}[P_j]=P_k$ then, each chunk received by $P_i$ and
+originated at $P_j$ will be forwarded to $P_k$), initializes the table
+$\mathrm{debt}[]$ (which stores the chunk debts between neighbor
+peers), and (3) sets the variable $\mathrm{neighbor}$ with an index to
+$\mathrm{forward}[]$ (see Sec.~\ref{sec:chunk_DBS_processing}).

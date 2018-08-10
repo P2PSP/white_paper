@@ -14,19 +14,12 @@
 
 \begin{algorithmic}
 
-  \Procedure{$S$.AddPeers}{}
+  \Procedure{$\mathrm{Splitter}.\mathrm{add\_peers}$}{}
   \While{True}
-  \State $[\mathtt{hello}] \leftarrow P_i$
-  %\If{$P^t_i \notin T^t$}
-  \ForAll{$P_k \in T$}
-  \State $[P_k] \send P_i$
-  \EndFor
-  \State $T = T \cup P_i$
-  %\Else~\texttt{/* received $[\mathtt{goodbye}]$ */}
-  %\State $[\mathtt{goodbye}] \sendto P^_i$
-  %\State ${\cal T}_j={\cal T}_j \setminus {\cal P}_i$
-  %\EndIf
-  \State $[|T|] \send R$
+  \State $[\mathtt{hello}] \leftarrow \mathrm{peer}$
+  \State $[\mathrm{Splitter}.\mathrm{list\_of\_peers}] \send \mathrm{peer}$
+  \State $\mathrm{Splitter}.\mathrm{list\_of\_peers}.\mathrm{append}(\mathrm{peer})$
+  \State $[|\mathrm{Splitter}.\mathrm{list\_of\_peers}|] \send \mathrm{\mathrm{Splitter}.teams\_tracker}$
   \EndWhile
   \EndProcedure
   

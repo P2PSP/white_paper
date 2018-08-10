@@ -13,26 +13,19 @@
 \algrenewcommand\textproc{\textrm}
 
 \begin{algorithmic}
-  \Procedure{Peer.join\_a\_team}{Splitter}
+  \Function{$\mathrm{Peer.join\_a\_team}$}{$\mathrm{Splitter}$}
   \State $[\mathtt{hello}] \send$ Splitter
-  \ForAll{$P_k\in[\mathrm{list~of~peers}]\gets$ Splitter}
+  \ForAll{$P_k\in[\mathrm{list\_of\_peers}]\gets$ Splitter}
   \State $[\mathtt{hello}]\sendto P_k$
   \EndFor
-  \EndProcedure
+  \EndFunction
 \end{algorithmic}
 \begin{algorithmic}
-  %\newline
-  \Procedure{$P_k$.AddNeighbors}{}
-  \While{True}
-  \State $[\mathtt{hello}] \gets P_i$
-  %\State $[\mathtt{hello}] \sendto {\cal P}_i$
-  %\State $N({\cal P}_k) = N({\cal P}_k) \cup {\cal P}_i$
-  \State $T^i = T^i \cup P_i$
-  \State $\mathtt{debt}[P_i]=0$
-  \State \textbf{sort} $T^i$ \textbf{ascending by} $\mathtt{debt[]}$
-  \EndWhile
-  \EndProcedure
-  
+  \Function{Peer.add\_neighbor}{sender}
+  \State $\mathrm{forward}[\mathrm{Peer.me}].\mathrm{append}(\mathrm{sender})$
+  \State $\mathrm{Peer}.\mathrm{debt}[\mathrm{sender}] = 0$
+  \State $\mathrm{Peer.neighbor} = \mathrm{sender}$
+  \EndFunction  
 \end{algorithmic}
 
 \end{document}

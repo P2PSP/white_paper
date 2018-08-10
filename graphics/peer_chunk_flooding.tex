@@ -124,10 +124,7 @@
   \EndIf
   
   \If{$x = \mathtt{hello}$}
-  \State $\mathtt{origin}=\mathtt{buffer}[\mathtt{chunk}\% B].\mathtt{origin}$
-  \State $\mathtt{forward}[\mathtt{P_k}] = \mathtt{forward}[\mathtt{P_ k}] \cup \mathtt{sender}$
-  \State $\mathtt{debt}[sender] = 0$
-  \State $\mathtt{neighbor} = \mathtt{sender}$
+  \State $\mathrm{Peer}.\mathrm{add\_neighbor}(\mathrm{sender})$
   \EndIf
   
   \If{$x = \mathtt{goodbye}$}

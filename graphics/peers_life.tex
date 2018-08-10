@@ -14,13 +14,13 @@
 
 \begin{algorithmic}
 
-  \Procedure{Peer.live}{Player}
-  \State join\_a\_team(Player.get\_splitter)
-  \State buffer\_chunks
-  \While{Player.alive}
-  \State keep\_the\_buffer\_full
+  \Procedure{$\mathrm{Peer.live}$}{$\mathrm{player}$}
+  \State $\mathrm{join\_a\_team(player.splitter)}$
+  \State $\mathrm{buffer\_chunks}()$
+  \While{$\mathrm{player.alive}$}
+  \State $\mathrm{keep\_the\_buffer\_full}()$
   \EndWhile
-  \State leave\_the\_team
+  \State $\mathrm{leave\_the\_team}()$
   \EndProcedure
     
 \end{algorithmic}
