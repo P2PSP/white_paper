@@ -1,5 +1,7 @@
 include $(HOME)/Makefile_templates/Makefile
 
+TTS.pdf:	teams_tracker.pdf channels_tracker.pdf player.pdf
+
 joining.pdf:	joining.tex tracker.pdf splitter_serve_joining_peers.pdf peer_joining.pdf
 TMPs += joining.png
 
