@@ -7,11 +7,11 @@
 
 As can be seen in Fig.~\ref{fig:joining}, incoming peers request
 (using a reliable\footnote{Reliable messages are transmitted over TCP
-and their transmission is denoted in the pseudocode by
-$\Rightarrow$. On the other hand, unreliable messages, which can be
-lost in transit, are transmitted over UDP and its transmission is
-denoted by $\rightarrow$. In any case, the reception of a packet is a
-permanent blocking action, at least a timeout is indicated.}
+  and their transmission is denoted in the pseudocode by
+  $\Rightarrow$. On the other hand, unreliable messages, which can be
+  lost in transit, are transmitted over UDP and its transmission is
+  denoted by $\rightarrow$. In any case, the reception of a packet is
+  a permanent blocking action, at least a timeout is indicated.}
 communication) to the splitter the current list of peers in the
 team. To minimize the joining time, a $[\mathtt{hello}]$ message is
 sent to each peer of the team in parallel with the reception of the
@@ -24,3 +24,8 @@ originated at $P_j$ will be forwarded to $P_k$), initializes the table
 $\mathrm{debt}[]$ (which stores the chunk debts between neighbor
 peers), and (3) sets the variable $\mathrm{neighbor}$ with an index to
 $\mathrm{forward}[]$ (see Sec.~\ref{sec:chunk_DBS_processing}).
+
+The splitter, in an infinite loop: (1) listens to the peers, (2) sends
+the list of peers in the team to the peers, (3) adds the incoming peer
+to the list, and (4) sends to the teams tracker the number of peers
+in the team.

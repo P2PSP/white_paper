@@ -10,32 +10,35 @@
 
 \newcommand{\send}{\Rightarrow}
 \newcommand{\sendto}{\rightarrow}
-\algrenewcommand\algorithmicprocedure{\textbf{task}}
+\algrenewcommand\algorithmicprocedure{\textbf{class}}
 \algrenewcommand\textproc{\textrm}
 
 \begin{algorithmic}
-  \Function{Player(ChannelsTracker).{\bf join\_team}}{}
-  \State $[\mathtt{hello}] \send \mathrm{ChannelsTracker}$
-  \State $[\text{list of channels}] \gets \mathrm{ChannelsTracker}$
+  \Procedure{$\text{Player}$}{$\text{channels\_tracker}$}
+  \Function{$\text{join\_team()}$}{}
+  \State $[\mathtt{hello}] \send \text{channels\_tracker}$
+  \State $[\text{list\_of\_channels}] \gets \text{channels\_tracker}$
   \State /* The user selects a channel */
-  \State $[\mathrm{channel}] \send \mathrm{ChannelsTracker}$
-  \State $[\mathrm{TeamsTracker}] \gets \mathrm{ChannelsTracker}$
-  \State $[\mathtt{hello}] \send \mathrm{TeamsTracker}$
-  \State $[\{\mathrm{Splitter}\}] \gets \mathrm{TeamsTracker}$
-  \ForAll{$S in \{\mathrm{Splitter}\}$}
+  \State $[\text{channel}] \send \text{channels\_tracker}$
+  \State $[\text{teams\_tracker}] \gets \text{channels\_tracker}$
+  \State $[\mathtt{hello}] \send \text{teams\_tracker}$
+  \State $[\{\text{splitter}\}] \gets \text{teams\_tracker}$
+  \State $\text{queue}=[]$
+  \ForAll{$S \in \{\text{splitter}\}$}
+  \State $\text{connect\_to}(S, \text{queue})$
   \EndFor 
   \EndFunction
-\end{algorithmic}
 
-\algrenewcommand\algorithmicfunction{\textbf{thread}}
+  \algrenewcommand\algorithmicfunction{\textbf{thread}}
 
-\begin{algorithmic}
-  \Function{connect\_to}{$\mathrm{Splitter}, \mathrm{Queue}$}
-  \State $\mathrm{connection} =$ \textbf{connect to} $\mathrm{Splitter}$
-  \If{$\mathrm{Queue}=\mathrm{Empty}$}
-  \State $\mathrm{Queue}.\mathbf{put}=\mathrm{Splitter}$
+  \Function{$\text{connect\_to}$}{$\text{splitter}, \text{queue}$}
+  \State $\text{connection} =$ \textbf{connect to} $\text{splitter}$
+  \If{$\text{queue}=\emptyset$}
+  \State $\text{queue}.\text{put}(\text{connection})$
   \EndIf
   \EndFunction
+  \EndProcedure
+
 \end{algorithmic}
 
 \end{document}

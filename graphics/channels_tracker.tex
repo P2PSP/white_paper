@@ -9,17 +9,27 @@
 
 \newcommand{\send}{\Rightarrow}
 \newcommand{\sendto}{\rightarrow}
-\algrenewcommand\algorithmicprocedure{\textbf{task}}
+\algrenewcommand\textproc{\textrm}
 
 \begin{algorithmic}
-  \Procedure{ChannelsTracker.Serve}{}
+  \algrenewcommand\algorithmicprocedure{\textbf{class}}
+  \Procedure{$\text{ChannelsTracker}()$}{}
+  \algrenewcommand\algorithmicprocedure{\textbf{task}}
+  \Procedure{serve()}{}
+  \State $\text{ChannelsTracker}.\text{teams\_tracker}=[]$
   \While{True}
-  \State $[\mathtt{hello}] \gets \textsc{Player}$
-  \State $[\mathtt{list~of~channels}] \send \textsc{Player}$
-  \State $[\mathtt{channel}] \gets \textsc{Player}$
-  \State $\mathtt{teams\_tracker} = \textsc{Find}(\mathtt{channel})$
-  \State $[\mathtt{teams\_tracker}] \send \textsc{Player}$
+  \State $[\mathtt{hello}] \gets \text{player}$
+  \State $[\text{list\_of\_channels}] \send \text{player}$
+  \State $[\text{channel}] \gets \text{player}$
+  \State $\text{teams\_tracker} = \text{find}(\text{channel})$
+  \State $[\text{teams\_tracker}] \send \text{player}$
   \EndWhile
+  \EndProcedure
+
+  \Function{$\text{find}$}{\text{channel}}
+  \State \Return $\text{ChannelsTracker}.\text{teams\_tracker}[\text{channel}]$
+  \EndFunction
+  
   \EndProcedure
 \end{algorithmic}
 
