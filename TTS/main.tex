@@ -16,9 +16,28 @@ channels are available at one or more\footnote{Most client/server
   (Content Delivery Network), a tree of servers (sources) sending the
   same contents.} streaming servers, and each channel has a different
 URL (Universal Resource Locator), usually expressed as a HTTP
-address. Fig.~\ref{fig:icecast-P2PSP} shows an example of an hybrid
-Icecast/P2PSP streaming overlay where several servers (sources) relay
-a set of channels produced by a set of source-clients.
+address.
+
+% On data-flow control
+P2PSP does not perform data-flow control over the stream. The
+transmission bit-rate between P2PSP entities is controlled by an
+external server. Fig.~\ref{fig:icecast-P2PSP} shows an example of an
+hybrid Icecast/P2PSP streaming overlay where several servers (sources)
+relay a set of channels produced by a set of source-clients.
+% Creating channels (inserting entried in the channel2tracker table)
+To create a new channel, a new source client must
+send\footnote{Typically, in this moment access control is provided by
+  the relay server.} the stream to a server (or a relay server), a new
+teams tracker must be created, and the teams tracker should spawn a
+splitter and an empty\footnote{An empty team is built with a splitter
+  and at least one monitor peer.} connected to a
+source\footnote{Notice that we are supposing that at least a source
+  can handle a new listener. If this is not true, the splitter will
+  not be able to connect to a source, it will inform to the teams
+  tracker, which will inform to the player, which should inform to the
+  user with the warning ``The maximum number of concurrent users has
+  been reached for this channel. Please, wait or select a different
+  channel''.} team.
 
 \begin{figure*}
   \fig{900}{9cm}{TTS} \caption{Procedures to determine a suitable team
@@ -30,26 +49,20 @@ a set of channels produced by a set of source-clients.
 % The channels tracker
 When a user runs a P2PSP's media player, it connects to a channels
 tracker (see Fig.~\ref{fig:TTS}). The tracker returns the list of
-channels currently broadcasted, and the user must chose one of
+channels currently broadcasted, and the user must choose one of
 them. This selection is sent back to the channels tracker, which
 responds with the end-point of a teams tracker. There is exactly one
-teams tracker per channel. All teams tracked by the same teams tracker
-broadcast the same channel.
+teams tracker per channel. Every time a new channel is created, a new
+teams tracker is spawned and assigned to this channel. All teams
+tracked by the same teams tracker broadcast the same channel.
 
 % The teams tracker
-Then, the player connects to the teams tracker, that should returns a
-list end-point of splitter, with space in their teams. If none of the
-splitters that are broadcasting the channel has room for the incoming
-peer, the teams tracker will create a new empty team\footnote{An empty
-  team is built with a splitter and at least one monitor peer.}
-connected to a source\footnote{Notice that we are supposing that at
-  least a source can handle a new listener. If this is not true, the
-  splitter will not be able to connect to a source, it will inform to
-  the teams tracker, which will inform to the player, which should
-  inform to the user with the warning ``The maximum number of
-  concurrent users has been reached for this channel. Please, wait or
-  select a different channel''.} of the channel, and will return the
-splitter's end-point.
+Then, the player connects to the teams tracker provided by the
+channels tracker, that should returns a list end-points where the
+corresponding splitters, with space in their teams, are listening. If
+none of the splitters that are broadcasting the channel has room for
+the incoming peer, the teams tracker will create a new empty team of
+the channel, and will return the splitter's end-point.
 
 % Searching the closest team 
 With this information (a list of splitters with room in their teams),
