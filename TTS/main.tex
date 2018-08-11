@@ -15,20 +15,26 @@ channels are available at one or more\footnote{Most client/server
   streaming services provide the possibility of building a CDN
   (Content Delivery Network), a tree of servers (sources) sending the
   same contents.} streaming servers, and each channel has a different
-URL (Universal Resource Locator), usually expressed as a HTTP address.
+URL (Universal Resource Locator), usually expressed as a HTTP
+address. Fig.~\ref{fig:icecast-P2PSP} shows an example of an hybrid
+Icecast/P2PSP streaming overlay where several servers (sources) relay
+a set of channels produced by a set of source-clients.
 
 \begin{figure*}
   \fig{900}{9cm}{TTS} \caption{Procedures to determine a suitable team
-    given a channel.\label{fig:TTS}}
+    given a channel. By definition, tasks (infinite loops) and threads
+    (finite loops) are run in parallel with other tasks and
+    threads.\label{fig:TTS}}
 \end{figure*}
 
 % The channels tracker
 When a user runs a P2PSP's media player, it connects to a channels
 tracker (see Fig.~\ref{fig:TTS}). The tracker returns the list of
 channels currently broadcasted, and the user must chose one of
-them. This information is sent back to the channels tracker, which
+them. This selection is sent back to the channels tracker, which
 responds with the end-point of a teams tracker. There is exactly one
-teams tracker per channel.
+teams tracker per channel. All teams tracked by the same teams tracker
+broadcast the same channel.
 
 % The teams tracker
 Then, the player connects to the teams tracker, that should returns a
