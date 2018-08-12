@@ -24,13 +24,13 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">August 11, 2018</span></div>
+class="ecrm-1200">August 12, 2018</span></div>
    </div>
    <h3 class="likesectionHead"><a 
  id="x1-1000"></a>Contents</h3>
    <div class="tableofcontents">
    <span class="sectionToc" >1 <a 
-href="#x1-20001" id="QQ2-1-2">TTS (Teams Tracking Set)</a></span>
+href="#x1-20001" id="QQ2-1-2">STS (Splitters Tracking Set)</a></span>
 <br />   <span class="sectionToc" >2 <a 
 href="#x1-30002" id="QQ2-1-5">DBS (Data Broadcasting Set)</a></span>
 <br />    <span class="subsectionToc" >2.1 <a 
@@ -114,7 +114,7 @@ class="ecrm-0900">each module is especialized in implementing a diﬀerent funct
 <!--l. 11--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
- id="x1-20001"></a>TTS (Teams Tracking Set)</h3>
+ id="x1-20001"></a>STS (Splitters Tracking Set)</h3>
    <hr class="figure" /><div class="figure" 
 >
                                                                   
@@ -154,65 +154,81 @@ href="index2.html#fn1x0"><sup class="textsuperscript">1</sup></a></span><a
 available at one or more<span class="footnote-mark"><a 
 href="index3.html#fn2x0"><sup class="textsuperscript">2</sup></a></span><a 
  id="x1-2003f2"></a> 
-streaming servers, and each channel has a diﬀerent URL (Universal Resource Locator),
-usually expressed as a HTTP address. Fig. <a 
-href="#x1-20011">1<!--tex4ht:ref: fig:icecast-P2PSP --></a> shows an example of an hybrid
-Icecast/P2PSP streaming overlay where several servers (sources) relay a set of channels
-produced by a set of source-clients. To create a new channel, a new source client must
-send<span class="footnote-mark"><a 
-href="index4.html#fn3x0"><sup class="textsuperscript">3</sup></a></span><a 
- id="x1-2004f3"></a> 
-the stream to a server (or a relay server), a new teams tracker must
-be created, and the teams tracker should spawn a splitter and an
-empty<span class="footnote-mark"><a 
-href="index5.html#fn4x0"><sup class="textsuperscript">4</sup></a></span><a 
- id="x1-2005f4"></a>  connected
-to a source<span class="footnote-mark"><a 
-href="index6.html#fn5x0"><sup class="textsuperscript">5</sup></a></span><a 
- id="x1-2006f5"></a> 
-team.
+streaming servers, and each channel has a diﬀerent URL (Universal Resource
+Locator), usually expressed as a HTTP address with the structure:
                                                                   
 
                                                                   
-</p><!--l. 38--><p class="indent" >   <a 
- id="x1-20072"></a></p><hr class="float" /><div class="float" 
+</p>
+   <div class="verbatim" id="verbatim-1">
+  http://name.icecast.server/name_of_the_channel
+</div>
+<!--l. 22--><p class="nopar" >
+</p><!--l. 25--><p class="indent" >   P2PSP does not perform data-ﬂow control over the stream. The transmission
+bit-rate between P2PSP entities is controlled by an external server, which provides
+the stream. Fig. <a 
+href="#x1-20011">1<!--tex4ht:ref: fig:icecast-P2PSP --></a> shows an example of an hybrid Icecast/P2PSP streaming overlay
+where several Icecast servers relay a set of channels produced by a set of
+source-clients, directly or through other servers, and controlling the data-ﬂow. As can
+be seen, a listener (which usually plays de stream) can be replaced by a <span 
+class="ecti-1000">splitter</span>, a
+P2PSP entity that sends the received stream (a single channel) to a set of P2PSP
+<span 
+class="ecti-1000">peers</span>, called <span 
+class="ecti-1000">team</span>. Notice that, considering that a player can be attached to each
+peer, the scalability of the hybrid alternative is much higher than the pure
+client/server architecture.
+</p><!--l. 48--><p class="indent" >   Usually, users are mainly interested in receiving channels, not in knowing the
+topology of the overlay. In a pure Icecast system, users request the channels directly
+to the servers. Unfortunately, this simple procedure has a drawback: normally, users
+does not take care about the load of the servers nor their distance to the user’s
+player. This problem can be solved using a load balancer. The listeners (and the
+splitters) which know the URL of the required channel, connects ﬁrst to the
+load balancer which redirects them (with a HTTP 302 code) to a suitable
+server.
+</p><!--l. 59--><p class="indent" >   This idea can be extended to take advantage of the existence of P2PSP teams in
+the hybrid overlay, where those users that run a peer have a local server with a copy
+of the stream. In this case, the peer communicates to the load balancer to tell it that
+there is a peer running in the same host that the player. Thus, when the player
+requests to the load balancer the reception of the stream, the load balancer redirects
+it towards the local peer.
+</p><!--l. 70--><p class="indent" >   When a network entity (usually, a player) connects with a peer, it must
+connects with a splitter which is transmitting the stream selected by the
+user. Depending on maximum number of potential peers request the same
+channel, more than one splitter could be available. This information is
+provided by a splitters tracker. This entity keeps updated a table indexed by
+names of channels, where every entry contains the end-point of a splitter
+transmiting the corresponding channel. Therefore, to ﬁnd a suitable splitter, the
+peer ﬁrst retrieves from the splitters tracker the list of splitters that are
+transmitting the required channel. Then, the peer tries to connect with all the
+splitters<span class="footnote-mark"><a 
+href="index4.html#fn3x0"><sup class="textsuperscript">3</sup></a></span><a 
+ id="x1-2004f3"></a> 
+in parallel, and the fastest connection determines the selected splitter (the rest of
+successful connections are closed). This procedure should select the “closest” splitter
+                                                                  
+
+                                                                  
+to the peer in terms of network latency.
+                                                                  
+
+                                                                  
+</p><!--l. 87--><p class="indent" >   <a 
+ id="x1-20052"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
                                                                   
  <div style="text-align:center;"> <img width=900 src="graphics/TTS.png" /> </div> 
 <br /> <div class="caption" 
-><span class="id">Figure 2:  </span><span  
-class="content">Procedures  to  determine  a  suitable  team  given  a  channel.  By
-deﬁnition, tasks (inﬁnite loops) and threads (ﬁnite loops) are run in parallel
-with other tasks and threads.</span></div><!--tex4ht:label?: x1-20072 -->
+><span class="id">Figure 2: </span><span  
+class="content">Procedures run by the extended load balancer, the splitters tracker,
+the splitters and the peers. By deﬁnition, tasks (inﬁnite loops) and threads
+(ﬁnite loops) are run in parallel with other tasks, threads and functions. </span></div><!--tex4ht:label?: x1-20052 -->
                                                                   
 
                                                                   
    </div><hr class="endfloat" />
-<!--l. 45--><p class="indent" >   When a user runs a P2PSP’s media player, it connects to a channels tracker (see
-Fig. <a 
-href="#x1-20072">2<!--tex4ht:ref: fig:TTS --></a>). The tracker returns the list of channels currently broadcasted, and the user
-must choose one of them. This selection is sent back to the channels tracker, which
-responds with the end-point of a teams tracker. There is exactly one teams tracker
-per channel. Every time a new channel is created, a new teams tracker is spawned
-and assigned to this channel. All teams tracked by the same teams tracker broadcast
-the same channel.
-</p><!--l. 55--><p class="indent" >   Then, the player connects to the teams tracker provided by the channels
-tracker, that should returns a list end-points where the corresponding splitters,
-with space in their teams, are listening. If none of the splitters that are
-broadcasting the channel has room for the incoming peer, the teams tracker
-will create a new empty team of the channel, and will return the splitter’s
-end-point.
-</p><!--l. 63--><p class="indent" >   With this information (a list of splitters with room in their teams), the
-player connects with all the splitters in parallel and the fastest connection
-determines the ﬁnal selected splitter. The rest of connections are closed. This
-procedure should select the “closest” splitter to the player in terms of network
-latency.
-</p><!--l. 70--><p class="indent" >   Finally, the player spawns a peer and the team-attaching process, as described in
-Sec. <a 
-href="#x1-30002">2<!--tex4ht:ref: sec:DBS --></a>, starts.
-</p>
    <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
  id="x1-30002"></a>DBS (Data Broadcasting Set)</h3>
    <div class="table">
@@ -453,8 +469,8 @@ class="ecti-1000">peers</span>. Each peer gathers the chunks from the splitter a
 of peers of the team, and sends them to a <span 
 class="ecti-1000">player</span>. In single layered
 streams<span class="footnote-mark"><a 
-href="index7.html#fn6x0"><sup class="textsuperscript">6</sup></a></span><a 
- id="x1-3002f6"></a> ,
+href="index5.html#fn4x0"><sup class="textsuperscript">4</sup></a></span><a 
+ id="x1-3002f4"></a> ,
 each peer is spawned by a player (normal users should not run peers directly).
 </p><!--l. 48--><p class="indent" >   /* quitar: We deﬁne the set of teams as
 <!--l. 49--><math 
@@ -538,8 +554,8 @@ class="content">Procedures involved in a peer joining.</span></div><!--tex4ht:la
 <!--l. 8--><p class="noindent" >As can be seen in Fig. <a 
 href="#x1-50014">4<!--tex4ht:ref: fig:joining --></a>, incoming peers request (using a
 reliable<span class="footnote-mark"><a 
-href="index8.html#fn7x0"><sup class="textsuperscript">7</sup></a></span><a 
- id="x1-5002f7"></a> 
+href="index6.html#fn5x0"><sup class="textsuperscript">5</sup></a></span><a 
+ id="x1-5002f5"></a> 
 communication) to the splitter the current list of peers in the team. To minimize the joining
 time, a <!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -1057,8 +1073,8 @@ is the buﬀer size in chunks.
    <h4 class="subsectionHead"><span class="titlemark">2.8   </span> <a 
  id="x1-110002.8"></a>Chunk routing</h4>
 <!--l. 2--><p class="noindent" >It can happen<span class="footnote-mark"><a 
-href="index9.html#fn8x0"><sup class="textsuperscript">8</sup></a></span><a 
- id="x1-11001f8"></a>  that the
+href="index7.html#fn6x0"><sup class="textsuperscript">6</sup></a></span><a 
+ id="x1-11001f6"></a>  that the
 received chunk by peer a <!--l. 3--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
@@ -1645,16 +1661,16 @@ there are.
  id="x1-190009"></a>NTS (NAT Traversal Set)</h3>
 <!--l. 3--><p class="noindent" >Most most of the peers run inside of “private” networks, i.e. behind NAT devices.
 NTS<span class="footnote-mark"><a 
-href="index10.html#fn9x0"><sup class="textsuperscript">9</sup></a></span><a 
- id="x1-19001f9"></a> 
+href="index8.html#fn7x0"><sup class="textsuperscript">7</sup></a></span><a 
+ id="x1-19001f7"></a> 
 is an DBS extension which provides peer connectivity for
 some NAT conﬁgurations DBS can not provide direct peer
                                                                   
 
                                                                   
 communication.<span class="footnote-mark"><a 
-href="index11.html#fn10x0"><sup class="textsuperscript">10</sup></a></span><a 
- id="x1-19002f10"></a> 
+href="index9.html#fn8x0"><sup class="textsuperscript">8</sup></a></span><a 
+ id="x1-19002f8"></a> 
 </p><!--l. 17--><p class="indent" >   Peers behind the same NAT will use the same external (also called “public”,
 because in most cases we have not nested NAT conﬁgurations) IP address of the
 NAT. Basically, there exist two diﬀerent types of NATs: (1) <span 

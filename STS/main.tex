@@ -24,64 +24,75 @@ address with the structure:
 % Hybrid CDN structure
 P2PSP does not perform data-flow control over the stream. The
 transmission bit-rate between P2PSP entities is controlled by an
-external server, which privides the
+external server, which provides the
 stream. Fig.~\ref{fig:icecast-P2PSP} shows an example of an hybrid
-Icecast/P2PSP streaming overlay where several Icecast (HTTP) servers
-control the data-flow, and relay a set of channels produced by a set
-of source-clients, directly or through other servers. As can be seen,
-a listener (a player) can be replaced by a \emph{splitter}, a P2PSP
-entity that sends the received stream (a channel) to a set of P2PSP
-\emph{peers}, called a \emph{team}. All peers of a team receive the
-same stream, as the rest of listeners. The only difference is that, in
-the case of a listener, the stream is provided by a server
-exclusively, and in a P2PSP team, the stream is gathered from the
-splitter and the rest of peers of the team.
+Icecast/P2PSP streaming overlay where several Icecast servers relay a
+set of channels produced by a set of source-clients, directly or
+through other servers, and controlling the data-flow. As can be seen,
+a listener (which usually plays de stream) can be replaced by a
+\emph{splitter}, a P2PSP entity that sends the received stream (a
+single channel) to a set of P2PSP \emph{peers}, called
+\emph{team}. Notice that, considering that a player can be attached to
+each peer, the scalability of the hybrid alternative is much higher
+than the pure client/server architecture.
+%As the listeners, the peers receive
+%a copy of a stream
+
+%All peers of a team receive the same
+%stream, as the rest of listeners. The only difference is that, in the
+%case of a listener, the stream is provided by a server exclusively,
+%and in a P2PSP team, the stream is gathered from the splitter and the
+%rest of peers of the team.
 
 % A load balancer for Icecast
-Usually, users are only interested in receiving channels. In a pure
-Icecast system, users can: (1) request to a Icecast server the current
-list of channels available on that server or, (2) request directly a
-channel. This access procedure has a drawback: normally, users does
-not take care about the load of the servers nor their distance to the
-user's player. This problem can be solved using a load balancer if
-listeners and splitters which know the URL of a channel, connects
-first to the load balancer which redirects them (with a HTTP 302 code)
-to a suitable server.
+Usually, users are mainly interested in receiving channels, not in
+knowing the topology of the overlay. In a pure Icecast system, users
+request the channels directly to the servers. Unfortunately, this
+simple procedure has a drawback: normally, users does not take care
+about the load of the servers nor their distance to the user's
+player. This problem can be solved using a load balancer. The
+listeners (and the splitters) which know the URL of the required
+channel, connects first to the load balancer which redirects them
+(with a HTTP 302 code) to a suitable server.
 
 % An extended load balancer
-This idea can be extended to take advantage of an hybrid Icecast/P2PSP
-overlay, where those users that run a peer have a local server with a
-copy of the stream. In this case, the peer communicates to the load
-balancer to tell it that a peer is running in the same host that the
-player. Thus, when the player requests to the load balancer the
-reception of the stream, the load balancer redirects it to the local
-peer. The situation would be identical if the user would run a HTTP
-proxy locally.
+This idea can be extended to take advantage of the existence of P2PSP
+teams in the hybrid overlay, where those users that run a peer have a
+local server with a copy of the stream. In this case, the peer
+communicates to the load balancer to tell it that there is a peer
+running in the same host that the player. Thus, when the player
+requests to the load balancer the reception of the stream, the load
+balancer redirects it towards the local peer.
+%The situation would be identical if the user would run a HTTP proxy
+%locally.
 
 % The splitters tracker
 When a network entity (usually, a player) connects with a peer, it
 must connects with a splitter which is transmitting the stream
-selected by the user. Depending on the configuration of the overlay,
-more than one splitter could be available. This information is
-provided by a splitters tracker. This entity keeps updated a table
-indexed by names of channels, where every entry contains the end-point
-of a splitter transmiting the corresponding channel. Therefore, to
-find a suitable splitter, the peer first retrieves from the splitters
-tracker the list of splitters that are transmitting the required
-channel. Then, the peer tries to connect\footnote{Those splitters with
-  full teams should not allow to establish new connections from
-  peers.} with all the splitters in parallel and the fastest
-connection determines the selected splitter (the rest of successful
-connections are closed). This procedure should select the ``closest''
-splitter to the peer in terms of network latency.
+selected by the user. Depending on maximum number of potential peers
+request the same channel, more than one splitter could be
+available. This information is provided by a splitters tracker. This
+entity keeps updated a table indexed by names of channels, where every
+entry contains the end-point of a splitter transmiting the
+corresponding channel. Therefore, to find a suitable splitter, the
+peer first retrieves from the splitters tracker the list of splitters
+that are transmitting the required channel. Then, the peer tries to
+connect with all the splitters\footnote{Those splitters with full
+  teams should not accept new connections from peers.} in parallel,
+and the fastest connection determines the selected splitter (the rest
+of successful connections are closed). This procedure should select
+the ``closest'' splitter to the peer in terms of network latency.
 
 \begin{figure*}
-  \fig{900}{9cm}{TTS} \caption{Procedures run by the extended load
+  \fig{900}{9cm}{STS} \caption{Procedures run by the extended load
     balancer, the splitters tracker, the splitters and the peers. By
     definition, tasks (infinite loops) and threads (finite loops) are
     run in parallel with other tasks, threads and
-    functions. \label{fig:TTS}}
+    functions. \label{fig:STS}}
 \end{figure*}
+
+The Fig.~\ref{fig:STS} describes in more accurately the algorithms run
+by the different entities that participate in STS.
 
 \begin{comment}
 % The channels tracker
@@ -137,4 +148,4 @@ described in Sec.~\ref{sec:DBS}, starts.
 % splitters and another for keeping updated the list of splitters with
 % room in its teams, must be run.
 
-\end{verbatim}
+\end{comment}
