@@ -21,7 +21,7 @@ address with the structure:
   http://name.icecast.server/name_of_the_channel
 \end{verbatim}
 
-% Hybrid CDN structure
+% Hybrid P2PSP/CDN structure
 P2PSP does not perform data-flow control over the stream. The
 transmission bit-rate between P2PSP entities is controlled by an
 external server, which provides the
@@ -48,21 +48,21 @@ than the pure client/server architecture.
 Usually, users are mainly interested in receiving channels, not in
 knowing the topology of the overlay. In a pure Icecast system, users
 request the channels directly to the servers. Unfortunately, this
-simple procedure has a drawback: normally, users does not take care
-about the load of the servers nor their distance to the user's
-player. This problem can be solved using a load balancer. The
-listeners (and the splitters) which know the URL of the required
-channel, connects first to the load balancer which redirects them
-(with a HTTP 302 code) to a suitable server.
+simple procedure has a drawback: normally, users does not know the
+load of the servers nor their distance to the user's player. This
+problem can be solved using a load balancer. The listeners (and the
+splitters) which know the URL of the required channel, connects first
+to the load balancer which redirects them (with a HTTP 302 code) to a
+suitable server.
 
 % An extended load balancer
 This idea can be extended to take advantage of the existence of P2PSP
-teams in the hybrid overlay, where those users that run a peer have a
-local server with a copy of the stream. In this case, the peer
-communicates to the load balancer to tell it that there is a peer
-running in the same host that the player. Thus, when the player
-requests to the load balancer the reception of the stream, the load
-balancer redirects it towards the local peer.
+teams in the hybrid overlay, where those users that run a local peer
+to retrieve a copy of the stream. In this case, the peer communicates
+to the load balancer to tell it that there is a peer running in the
+same host that the player. Thus, when the player requests to the load
+balancer the reception of the stream, the load balancer redirects it
+towards the local peer.
 %The situation would be identical if the user would run a HTTP proxy
 %locally.
 
@@ -84,7 +84,7 @@ of successful connections are closed). This procedure should select
 the ``closest'' splitter to the peer in terms of network latency.
 
 \begin{figure*}
-  \fig{900}{9cm}{STS} \caption{Procedures run by the extended load
+  \fig{1100}{10cm}{STS} \caption{Procedures run by the extended load
     balancer, the splitters tracker, the splitters and the peers. By
     definition, tasks (infinite loops) and threads (finite loops) are
     run in parallel with other tasks, threads and

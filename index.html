@@ -181,17 +181,17 @@ client/server architecture.
 </p><!--l. 48--><p class="indent" >   Usually, users are mainly interested in receiving channels, not in knowing the
 topology of the overlay. In a pure Icecast system, users request the channels directly
 to the servers. Unfortunately, this simple procedure has a drawback: normally, users
-does not take care about the load of the servers nor their distance to the user’s
-player. This problem can be solved using a load balancer. The listeners (and the
+does not know the load of the servers nor their distance to the user’s player.
+This problem can be solved using a load balancer. The listeners (and the
 splitters) which know the URL of the required channel, connects ﬁrst to the
 load balancer which redirects them (with a HTTP 302 code) to a suitable
 server.
 </p><!--l. 59--><p class="indent" >   This idea can be extended to take advantage of the existence of P2PSP teams in
-the hybrid overlay, where those users that run a peer have a local server with a copy
-of the stream. In this case, the peer communicates to the load balancer to tell it that
-there is a peer running in the same host that the player. Thus, when the player
-requests to the load balancer the reception of the stream, the load balancer redirects
-it towards the local peer.
+the hybrid overlay, where those users that run a local peer to retrieve a copy of the
+stream. In this case, the peer communicates to the load balancer to tell it that there
+is a peer running in the same host that the player. Thus, when the player requests to
+the load balancer the reception of the stream, the load balancer redirects it towards
+the local peer.
 </p><!--l. 70--><p class="indent" >   When a network entity (usually, a player) connects with a peer, it must
 connects with a splitter which is transmitting the stream selected by the
 user. Depending on maximum number of potential peers request the same
@@ -219,7 +219,7 @@ to the peer in terms of network latency.
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img width=900 src="graphics/TTS.png" /> </div> 
+ <div style="text-align:center;"> <img width=1100 src="graphics/STS.png" /> </div> 
 <br /> <div class="caption" 
 ><span class="id">Figure 2: </span><span  
 class="content">Procedures run by the extended load balancer, the splitters tracker,
@@ -229,6 +229,10 @@ the splitters and the peers. By deﬁnition, tasks (inﬁnite loops) and threads
 
                                                                   
    </div><hr class="endfloat" />
+<!--l. 94--><p class="indent" >   The Fig. <a 
+href="#x1-20052">2<!--tex4ht:ref: fig:STS --></a> describes in more accurately the algorithms run by the diﬀerent
+entities that participate in STS.
+</p>
    <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
  id="x1-30002"></a>DBS (Data Broadcasting Set)</h3>
    <div class="table">

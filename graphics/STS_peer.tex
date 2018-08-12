@@ -14,28 +14,45 @@
 \algrenewcommand\textproc{\textrm}
 
 \begin{algorithmic}
-  \Procedure{$\text{Player}$}{$\text{channels\_tracker}$}
-  \Function{$\text{join\_team()}$}{}
-  \State $[\mathtt{hello}] \send \text{channels\_tracker}$
-  \State $[\text{list\_of\_channels}] \gets \text{channels\_tracker}$
-  \State /* The user selects a channel */
-  \State $[\text{channel}] \send \text{channels\_tracker}$
-  \State $[\text{teams\_tracker}] \gets \text{channels\_tracker}$
-  \State $[\mathtt{hello}] \send \text{teams\_tracker}$
-  \State $[\{\text{splitter}\}] \gets \text{teams\_tracker}$
-  \State $\text{queue}=[]$
+  \Procedure{$\text{Peer}$}{$\text{load\_balancer, player}$}
+
+  \Function{$\text{get\_tracker}$}{$\text{URL\_channel, load\_balancer}$}
+  \State $[\mathtt{URL\_channel}] \send \text{load\_balancer}$
+  \State \Return $\text{splitters\_tracker} \gets \text{load\_balancer}$
+  \EndFunction
+  
+  \Function{$\text{get\_list}$}{$\text{splitters\_tracker, URL\_channel}$}
+  \State $[\mathtt{URL\_channel}] \send \text{splitters\_tracker}$
+  \State \Return $[\{\mathrm{splitters}\}] \gets \mathrm{splitters\_tracker}$
+  \EndFunction
+
+  \Function{$\text{find\_splitter}$}{$\{\mathrm{splitters}\}$}
+  \State $\mathrm{queue}=[]$
   \ForAll{$S \in \{\text{splitter}\}$}
   \State $\text{connect\_to}(S, \text{queue})$
   \EndFor 
+  \State $[\mathtt{URL\_channel}] \send \text{splitters\_tracker}$
+  \State \Return $\mathrm{queue}[0]$
   \EndFunction
 
   \algrenewcommand\algorithmicfunction{\textbf{thread}}
 
   \Function{$\text{connect\_to}$}{$\text{splitter}, \text{queue}$}
-  \State $\text{connection} =$ \textbf{connect to} $\text{splitter}$
-  \If{$\text{queue}=\emptyset$}
+  \State $\text{connection} = \mathrm{connect}(\text{splitter})$
+  \If{$\text{queue.is\_empty()}$}
   \State $\text{queue}.\text{put}(\text{connection})$
   \EndIf
+  \EndFunction
+
+  \algrenewcommand\algorithmicfunction{\textbf{function}}
+  
+  \Function{$\text{main}$}{$\text{load\_balancer, player}$}
+  \State $\text{URL\_channel} \gets \text{player}$
+  %\State $\text{URL\_channel} \get \text{request\_to\_user}(``\mathtt{URL~channel}'')$
+  \State $\text{splitters\_tracker} = \text{get\_tracker}(\text{URL\_channel, load\_balancer})$
+  \State $\{\text{splitters}\} = \text{get\_list}(\text{splitters\_tracker})$
+  \State $\text{connection} = \text{find\_connection}(\{\text{splitters}\})$
+  \State $\vdots$
   \EndFunction
   \EndProcedure
 
