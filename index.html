@@ -34,7 +34,7 @@ href="#x1-20001" id="QQ2-1-2">STS (Splitters Tracking Set)</a></span>
 <br />   <span class="sectionToc" >2 <a 
 href="#x1-30002" id="QQ2-1-5">DBS (Data Broadcasting Set)</a></span>
 <br />    <span class="subsectionToc" >2.1 <a 
-href="#x1-40002.1" id="QQ2-1-7">Peer’s life</a></span>
+href="#x1-40002.1" id="QQ2-1-7">Peer’s life (quitar)</a></span>
 <br />    <span class="subsectionToc" >2.2 <a 
 href="#x1-50002.2" id="QQ2-1-9">Joining a team</a></span>
 <br />    <span class="subsectionToc" >2.3 <a 
@@ -186,51 +186,62 @@ This problem can be solved using a load balancer. The listeners (and the
 splitters) which know the URL of the required channel, connects ﬁrst to the
 load balancer which redirects them (with a HTTP 302 code) to a suitable
 server.
-</p><!--l. 59--><p class="indent" >   This idea can be extended to take advantage of the existence of P2PSP teams in
-hybrid overlays, where those users that run a local peer to retrieve a copy of the
-stream. In this case, the peer communicates to the load balancer to tell it that there
-is a peer running in the same host that the player. Thus, when the player requests to
-the load balancer the reception of the stream, the load balancer redirects it towards
-the local peer.
-</p><!--l. 70--><p class="indent" >   When a network entity (usually, a player) connects with a peer, it must
+</p><!--l. 59--><p class="indent" >   This idea can be extended to take advantage of the existence
+of P2PSP teams in hybrid overlays, where those users that run a
+local peer to retrieve a copy of the stream. In this case, the peer
+communicates<span class="footnote-mark"><a 
+href="index4.html#fn3x0"><sup class="textsuperscript">3</sup></a></span><a 
+ id="x1-2004f3"></a> 
+to the load balancer to tell it that there is a peer running in the same host that the
+player. Thus, when the player requests to the load balancer the reception of the
+stream, the load balancer redirects it towards the local peer.
+</p><!--l. 76--><p class="indent" >   When a network entity (usually, a player) connects with a peer, it must
 connects with a splitter which is transmitting the stream selected by the user.
 Depending on maximum number of potential peers request the same channel,
 more than one splitter could be available. This information is served by a
 splitters tracker, and generated when a new splitter is instantiated. This
 entity keeps updated a table indexed by names of channels, where every
 entry contains a list of end-points of splitters transmiting the corresponding
-channel. Therefore, to ﬁnd a suitable splitter, the peer ﬁrst retrieves from the
-splitters tracker a list of splitters. Then, the peer tries to connect with all the
-splitters<span class="footnote-mark"><a 
-href="index4.html#fn3x0"><sup class="textsuperscript">3</sup></a></span><a 
- id="x1-2004f3"></a> 
-in parallel, and the fastest connection determines the selected splitter (the rest of
-successful connections are closed). This procedure should select the “closest” splitter
                                                                   
 
                                                                   
+channel. Therefore, to ﬁnd a suitable splitter, the peer ﬁrst retrieves from the
+splitters tracker a list of splitters. Then, the peer tries to connect with all the
+splitters<span class="footnote-mark"><a 
+href="index5.html#fn4x0"><sup class="textsuperscript">4</sup></a></span><a 
+ id="x1-2005f4"></a> 
+in parallel, and the fastest connection determines the selected splitter (the rest of
+successful connections are closed). This procedure should select the “closest” splitter
 to the peer in terms of network latency.
                                                                   
 
                                                                   
-</p><!--l. 88--><p class="indent" >   <a 
- id="x1-20052"></a></p><hr class="float" /><div class="float" 
+</p><!--l. 94--><p class="indent" >   <a 
+ id="x1-20062"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
                                                                   
  <div style="text-align:center;"> <img width=900 src="graphics/STS.png" /> </div> 
-<br /> <div class="caption" 
-><span class="id">Figure 2: </span><span  
-class="content">Procedures run by the load balancer, the splitters tracker, the splitters
-and the peers. By deﬁnition, tasks (inﬁnite loops) and threads (ﬁnite loops) are
-run in parallel with other tasks, threads and functions. </span></div><!--tex4ht:label?: x1-20052 -->
+<br />                                                          <div class="caption" 
+><span class="id">Figure 2:
+</span><span  
+class="content">Procedures run by the load balancer, the splitters tracker, the splitters and the
+peers. By deﬁnition, tasks (inﬁnite loops) and threads (ﬁnite loops) are run in
+parallel with other tasks, threads and functions. All instances start running the
+<!--l. 98--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+class="text"><mtext  >main</mtext></mstyle><mrow ><mo 
+class="MathClass-open">(</mo><mrow></mrow><mo 
+class="MathClass-close">)</mo></mrow></math>
+function. </span></div><!--tex4ht:label?: x1-20062 -->
                                                                   
 
                                                                   
    </div><hr class="endfloat" />
-<!--l. 94--><p class="indent" >   The Fig. <a 
-href="#x1-20052">2<!--tex4ht:ref: fig:STS --></a> describes in more accurately the algorithms run by the diﬀerent
+<!--l. 101--><p class="indent" >   The Fig. <a 
+href="#x1-20062">2<!--tex4ht:ref: fig:STS --></a> describes in more accurately the algorithms run by the diﬀerent
 entities that participate in STS.
 </p>
    <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
@@ -457,9 +468,9 @@ class="content">Nomenclature used in DBS.</span></div><!--tex4ht:label?: x1-3001
 <!--l. 34--><p class="indent" >   DBS provides ALM <span class="cite">[<a 
 href="#Xbanerjee2002scalable">2</a>]</span> of a media stream in unicast environments <span class="cite">[<a 
 href="#Xcomer2003computer">4</a>]</span>. The media
-is sent by a streaming server, called <span 
-class="ecti-1000">source </span>(the nomenclature used for describing
-DBS is shown in Table <a 
+is sent by a streaming <span 
+class="ecti-1000">server</span>, (the nomenclature used for describing DBS is
+shown in Table <a 
 href="#x1-30011">1<!--tex4ht:ref: tab:DBS_nomenclature --></a>), and received by a <span 
 class="ecti-1000">splitter</span>. The splitter divides the stream
 into a sequence of <span 
@@ -467,51 +478,15 @@ class="ecti-1000">chunks</span>, and relay them to a <span
 class="ecti-1000">team</span>, where it can be up to
 <!--l. 40--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">MaxNumPeers</mi></math>
-<span 
-class="ecti-1000">peers</span>. Each peer gathers the chunks from the splitter and the rest
-of peers of the team, and sends them to a <span 
-class="ecti-1000">player</span>. In single layered
-streams<span class="footnote-mark"><a 
-href="index5.html#fn4x0"><sup class="textsuperscript">4</sup></a></span><a 
- id="x1-3002f4"></a> ,
-each peer is spawned by a player (normal users should not run peers directly).
-</p><!--l. 48--><p class="indent" >   /* quitar: We deﬁne the set of teams as
-<!--l. 49--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mrow ><mo 
-class="MathClass-open">{</mo><mrow><mi 
->T</mi></mrow><mo 
-class="MathClass-close">}</mo></mrow></math>, and enumerate the
-peers in the team <!--l. 51--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->T</mi></math>
-as <!--l. 51--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->T</mi> <mo 
-class="MathClass-rel">=</mo> <mrow ><mo 
-class="MathClass-open">{</mo><mrow><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mn>1</mn></mrow></msub 
-><mo 
-class="MathClass-punc">,</mo><mo 
-class="MathClass-rel">⋯</mo><mspace width="0.3em" class="thinspace"/><mo 
-class="MathClass-punc">,</mo><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mo 
-class="MathClass-rel">|</mo><mi 
->T</mi><mo 
-class="MathClass-rel">|</mo></mrow></msub 
-></mrow><mo 
-class="MathClass-close">}</mo></mrow></math>.
-*/
+display="inline" ><mstyle 
+class="text"><mtext  >max_num_peers</mtext></mstyle></math> <span 
+class="ecti-1000">peers</span>.
+Each peer gathers the chunks from the splitter and the rest of peers of the team, and
+sends them to a <span 
+class="ecti-1000">player</span>.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.1   </span> <a 
- id="x1-40002.1"></a>Peer’s life</h4>
+ id="x1-40002.1"></a>Peer’s life (quitar)</h4>
                                                                   
 
                                                                   
@@ -550,41 +525,39 @@ quites.
  <div style="text-align:center;"> <img width=700 src="graphics/joining.png" /> </div> 
 <br /> <div class="caption" 
 ><span class="id">Figure 4: </span><span  
-class="content">Procedures involved in a peer joining.</span></div><!--tex4ht:label?: x1-50014 -->
+class="content">Procedures run when a peer joins a team.</span></div><!--tex4ht:label?: x1-50014 -->
                                                                   
 
                                                                   
    </div><hr class="endfloat" />
-<!--l. 8--><p class="noindent" >As can be seen in Fig. <a 
-href="#x1-50014">4<!--tex4ht:ref: fig:joining --></a>, incoming peers request (using a
-reliable<span class="footnote-mark"><a 
-href="index6.html#fn5x0"><sup class="textsuperscript">5</sup></a></span><a 
- id="x1-5002f5"></a> 
-communication) to the splitter the current list of peers in the team. To minimize the joining
-time, a <!--l. 16--><math 
+<!--l. 8--><p class="noindent" >Incoming peers
+</p><!--l. 10--><p class="indent" >   As can be seen in Fig. <span 
+class="ecbx-1000">??</span>, incoming peers request (using a reliable communication) to the
+splitter the current list of peers in the team. To minimize the joining time, the peer sends
+a <!--l. 13--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> message
-is sent to each peer of the team in parallel with the reception of the list. When a peer of the
-team receives a <!--l. 18--><math 
+to each peer of the team in parallel with the reception of the list. When a peer of the team
+receives a <!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>,
-it runs the <!--l. 19--><math 
+it runs the <!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="normal">add</mi><mstyle 
 class="text"><mtext  >_</mtext></mstyle><mi mathvariant="normal">neighbor</mi><mrow ><mo 
 class="MathClass-open">(</mo><mrow></mrow><mo 
 class="MathClass-close">)</mo></mrow></math>
 function, which basically: (1) adds the sender of the message to a table of peers called
-<!--l. 21--><math 
+<!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="normal">forward</mi><mrow ><mo 
 class="MathClass-open">[</mo><mrow></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> (if in peer
-<!--l. 21--><math 
+<!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -592,7 +565,7 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math> there is an entry
-<!--l. 22--><math 
+<!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="normal">forward</mi><mrow ><mo 
 class="MathClass-open">[</mo><mrow><msub><mrow 
@@ -608,7 +581,7 @@ class="MathClass-rel">=</mo> <msub><mrow
 ><mi 
 >k</mi></mrow></msub 
 ></math> then, each chunk
-received by <!--l. 22--><math 
+received by <!--l. 19--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -616,7 +589,7 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math> and
-originated at <!--l. 23--><math 
+originated at <!--l. 19--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -624,7 +597,7 @@ display="inline" ><msub><mrow
 ><mi 
 >j</mi></mrow></msub 
 ></math> will
-be forwarded to <!--l. 23--><math 
+be forwarded to <!--l. 19--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -632,23 +605,23 @@ display="inline" ><msub><mrow
 ><mi 
 >k</mi></mrow></msub 
 ></math>),
-initializes the table <!--l. 24--><math 
+initializes the table <!--l. 20--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="normal">debt</mi><mrow ><mo 
 class="MathClass-open">[</mo><mrow></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
 (which stores the chunk debts between neighbor peers), and (3) sets the variable
-<!--l. 25--><math 
+<!--l. 21--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="normal">neighbor</mi></math> with an
-index to <!--l. 26--><math 
+index to <!--l. 22--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="normal">forward</mi><mrow ><mo 
 class="MathClass-open">[</mo><mrow></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
 (see Sec. <span 
 class="ecbx-1000">??</span>).
-</p><!--l. 28--><p class="indent" >   The splitter, in an inﬁnite loop: (1) listens to the peers, (2) sends the list of peers
+</p><!--l. 25--><p class="indent" >   The splitter, in an inﬁnite loop: (1) listens to the peers, (2) sends the list of peers
 in the team to the peers, (3) adds the incoming peer to the list, and (4) sends to the
 teams tracker the number of peers in the team.
 </p>
@@ -1077,8 +1050,8 @@ is the buﬀer size in chunks.
    <h4 class="subsectionHead"><span class="titlemark">2.8   </span> <a 
  id="x1-110002.8"></a>Chunk routing</h4>
 <!--l. 2--><p class="noindent" >It can happen<span class="footnote-mark"><a 
-href="index7.html#fn6x0"><sup class="textsuperscript">6</sup></a></span><a 
- id="x1-11001f6"></a>  that the
+href="index6.html#fn5x0"><sup class="textsuperscript">5</sup></a></span><a 
+ id="x1-11001f5"></a>  that the
 received chunk by peer a <!--l. 3--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
@@ -1665,16 +1638,16 @@ there are.
  id="x1-190009"></a>NTS (NAT Traversal Set)</h3>
 <!--l. 3--><p class="noindent" >Most most of the peers run inside of “private” networks, i.e. behind NAT devices.
 NTS<span class="footnote-mark"><a 
-href="index8.html#fn7x0"><sup class="textsuperscript">7</sup></a></span><a 
- id="x1-19001f7"></a> 
+href="index7.html#fn6x0"><sup class="textsuperscript">6</sup></a></span><a 
+ id="x1-19001f6"></a> 
 is an DBS extension which provides peer connectivity for
 some NAT conﬁgurations DBS can not provide direct peer
                                                                   
 
                                                                   
 communication.<span class="footnote-mark"><a 
-href="index9.html#fn8x0"><sup class="textsuperscript">8</sup></a></span><a 
- id="x1-19002f8"></a> 
+href="index8.html#fn7x0"><sup class="textsuperscript">7</sup></a></span><a 
+ id="x1-19002f7"></a> 
 </p><!--l. 17--><p class="indent" >   Peers behind the same NAT will use the same external (also called “public”,
 because in most cases we have not nested NAT conﬁgurations) IP address of the
 NAT. Basically, there exist two diﬀerent types of NATs: (1) <span 
@@ -1718,8 +1691,8 @@ mathvariant="bold-script">𝒫</mi></mrow><mrow
 the sequence of [<!--l. 33--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">hello</mi></math>]’s (see
-Sec <a 
-href="#x1-50002.2">2.2<!--tex4ht:ref: sec:peer_joining --></a>. Lets denote <!--l. 34--><math 
+Sec <span 
+class="ecbx-1000">??</span>. Lets denote <!--l. 34--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msubsup><mrow 
 ><mi 

@@ -1,6 +1,6 @@
 include $(HOME)/Makefile_templates/Makefile
 
-STS.pdf:	splitters_tracker.pdf load_balancer.pdf STS_peer.pdf
+STS.pdf:	splitters_tracker.pdf load_balancer.pdf STS_peer.pdf STS_splitter.pdf
 
 joining.pdf:	joining.tex tracker.pdf splitter_serve_joining_peers.pdf peer_joining.pdf
 TMPs += joining.png

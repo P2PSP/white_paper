@@ -17,7 +17,7 @@
   
   \Procedure{$\text{LoadBalancer}$}{$\{\text{servers}\}$}
   
-  \Function{$\text{find\_unloadest\_server}$}{$\{\text{servers}\}, \text{client}$}
+  \Function{$\text{find\_unloadest\_server}$}{$\text{client}$}
   \State $\text{min\_load}=\infty$
   \ForAll{$S \in \{\text{servers}\}$}
   \If{$\text{client}.\text{IP\_addr}=S.\text{IP\_addr}$}
@@ -39,16 +39,20 @@
   \Procedure{serve()}{}
   \While{True}
   \State $\text{message} \gets X$
-  \If{$\text{message}[0]=''\mathtt{HTTP~GET}''$}
+  \If{$\text{message}[0]=``\mathtt{HTTP~GET}"$}
   \State $[\text{find\_unloadest\_server}(\{\text{servers}\},X)] \send X$
   \Else
-  \If{$\text{message}[0]=''\mathtt{I'm~a~peer}''$}
+  \If{$\text{message}[0]=``\mathtt{I'm~a~peer}"$}
   \State $\{\text{servers}\}.\text{append}(X)$
   \EndIf
   \EndIf
   \EndWhile
   \EndProcedure
-  
+
+  \Function{$\text{main}()$}{}
+  \State $\text{serve}()$
+  \EndFunction
+
   \EndProcedure
 \end{algorithmic}
 

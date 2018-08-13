@@ -57,12 +57,18 @@ suitable server.
 
 % An extended load balancer
 This idea can be extended to take advantage of the existence of P2PSP
-teams in hybrid overlays, where those users that run a local peer
-to retrieve a copy of the stream. In this case, the peer communicates
-to the load balancer to tell it that there is a peer running in the
-same host that the player. Thus, when the player requests to the load
-balancer the reception of the stream, the load balancer redirects it
-towards the local peer.
+teams in hybrid overlays, where those users that run a local peer to
+retrieve a copy of the stream. In this case, the peer
+communicates\footnote{This is a reliable communication. Reliable
+  messages are transmitted over TCP and their sent is denoted in the
+  pseudocode by $\Rightarrow$. On the other hand, unreliable messages,
+  which can be lost in transit, are transmitted over UDP and its
+  transmission is denoted by $\rightarrow$. In any case, the reception
+  of a packet is a permanent blocking action, at least a timeout is
+  indicated.}  to the load balancer to tell it that there is a peer
+running in the same host that the player. Thus, when the player
+requests to the load balancer the reception of the stream, the load
+balancer redirects it towards the local peer.
 %The situation would be identical if the user would run a HTTP proxy
 %locally.
 
@@ -88,7 +94,8 @@ latency.
   \fig{900}{9cm}{STS} \caption{Procedures run by the load balancer,
     the splitters tracker, the splitters and the peers. By definition,
     tasks (infinite loops) and threads (finite loops) are run in
-    parallel with other tasks, threads and functions. \label{fig:STS}}
+    parallel with other tasks, threads and functions. All instances
+    start running the $\text{main}()$ function. \label{fig:STS}}
 \end{figure*}
 
 The Fig.~\ref{fig:STS} describes in more accurately the algorithms run

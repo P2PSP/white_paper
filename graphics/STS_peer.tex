@@ -16,7 +16,7 @@
 \begin{algorithmic}
   \Procedure{$\text{Peer}$}{$\text{load\_balancer, player}$}
 
-  \Function{$\text{get\_tracker}$}{$\text{URL\_channel, load\_balancer}$}
+  \Function{$\text{get\_tracker}$}{$\text{URL\_channel}$}
   \State $[\mathtt{URL\_channel}] \send \text{load\_balancer}$
   \State \Return $\text{splitters\_tracker} \gets \text{load\_balancer}$
   \EndFunction
@@ -44,12 +44,14 @@
   \EndIf
   \EndFunction
 
+  \State $\vdots$
+  
   \algrenewcommand\algorithmicfunction{\textbf{function}}
   
-  \Function{$\text{main}$}{$\text{load\_balancer, player}$}
-  \State $\text{URL\_channel} \gets \text{player}$
+  \Function{$\text{main}()$}{}
+  \State $[\text{URL\_channel}] \gets \text{player}$
   %\State $\text{URL\_channel} \get \text{request\_to\_user}(``\mathtt{URL~channel}'')$
-  \State $\text{splitters\_tracker} = \text{get\_tracker}(\text{URL\_channel, load\_balancer})$
+  \State $\text{splitters\_tracker} = \text{get\_tracker}(\text{URL\_channel})$
   \State $\{\text{splitters}\} = \text{get\_list}(\text{splitters\_tracker})$
   \State $\text{connection} = \text{find\_connection}(\{\text{splitters}\})$
   \State $\vdots$

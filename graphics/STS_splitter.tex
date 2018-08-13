@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\send}{\Rightarrow}
+\newcommand{\sendto}{\rightarrow}
+\newcommand{\recv}{\Leftarrow}
+\algrenewcommand\textproc{\textrm}
+
+\begin{algorithmic}
+
+  \algrenewcommand\algorithmicprocedure{\textbf{class}}
+  \Procedure{$\text{Splitter}$}{$\text{splitters\_tracker, channel}$}
+
+  \Function{$\text{salute\_tracker}()$}{}
+  \State $[\text{channel}] \send \text{splitters\_tracker}$
+  \EndFunction
+
+  \Function{$\text{main}()$}{}
+  \State $\text{salute\_tracker}(\text{splitters\_stracker}, \text{channel})$
+  \State $\vdots$
+  \EndFunction
+  
+  \EndProcedure
+\end{algorithmic}
+
+\end{document}
+
