@@ -513,51 +513,32 @@ quites.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.2   </span> <a 
  id="x1-50002.2"></a>Joining a team</h4>
-                                                                  
-
-                                                                  
-<!--l. 4--><p class="indent" >   <a 
- id="x1-50014"></a></p><hr class="float" /><div class="float" 
->
-                                                                  
-
-                                                                  
- <div style="text-align:center;"> <img width=700 src="graphics/joining.png" /> </div> 
-<br /> <div class="caption" 
-><span class="id">Figure 4: </span><span  
-class="content">Procedures run when a peer joins a team.</span></div><!--tex4ht:label?: x1-50014 -->
-                                                                  
-
-                                                                  
-   </div><hr class="endfloat" />
-<!--l. 8--><p class="noindent" >Incoming peers
-</p><!--l. 10--><p class="indent" >   As can be seen in Fig. <span 
-class="ecbx-1000">??</span>, incoming peers request (using a reliable communication) to the
-splitter the current list of peers in the team. To minimize the joining time, the peer sends
-a <!--l. 13--><math 
+<!--l. 3--><p class="noindent" >After connecting with a splitter, incoming peers request (using a reliable communication) to
+the splitter the current list of peers in the team. To minimize the joining time, the peer sends
+a <!--l. 6--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> message
 to each peer of the team in parallel with the reception of the list. When a peer of the team
-receives a <!--l. 15--><math 
+receives a <!--l. 8--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>,
-it runs the <!--l. 15--><math 
+it runs the <!--l. 8--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="normal">add</mi><mstyle 
 class="text"><mtext  >_</mtext></mstyle><mi mathvariant="normal">neighbor</mi><mrow ><mo 
 class="MathClass-open">(</mo><mrow></mrow><mo 
 class="MathClass-close">)</mo></mrow></math>
-function, which basically: (1) adds the sender of the message to a table of peers called
-<!--l. 17--><math 
+function, which basically adds the sender of the message to a table of peers called
+<!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="normal">forward</mi><mrow ><mo 
 class="MathClass-open">[</mo><mrow></mrow><mo 
-class="MathClass-close">]</mo></mrow></math> (if in peer
-<!--l. 17--><math 
+class="MathClass-close">]</mo></mrow></math>. If in a peer
+<!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -565,7 +546,7 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math> there is an entry
-<!--l. 18--><math 
+<!--l. 11--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="normal">forward</mi><mrow ><mo 
 class="MathClass-open">[</mo><mrow><msub><mrow 
@@ -581,7 +562,7 @@ class="MathClass-rel">=</mo> <msub><mrow
 ><mi 
 >k</mi></mrow></msub 
 ></math> then, each chunk
-received by <!--l. 19--><math 
+received by <!--l. 11--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -589,7 +570,7 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math> and
-originated at <!--l. 19--><math 
+originated at <!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -597,31 +578,36 @@ display="inline" ><msub><mrow
 ><mi 
 >j</mi></mrow></msub 
 ></math> will
-be forwarded to <!--l. 19--><math 
+be forwarded to <!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mi 
 >k</mi></mrow></msub 
-></math>),
-initializes the table <!--l. 20--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="normal">debt</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>
-(which stores the chunk debts between neighbor peers), and (3) sets the variable
-<!--l. 21--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="normal">neighbor</mi></math> with an
-index to <!--l. 22--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="normal">forward</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>
+></math>
 (see Sec. <span 
 class="ecbx-1000">??</span>).
-</p><!--l. 25--><p class="indent" >   The splitter, in an inﬁnite loop: (1) listens to the peers, (2) sends the list of peers
+                                                                  
+
+                                                                  
+</p><!--l. 23--><p class="indent" >   <a 
+ id="x1-50014"></a></p><hr class="float" /><div class="float" 
+>
+                                                                  
+
+                                                                  
+ <div style="text-align:center;"> <img width=800 src="graphics/joining.png" /> </div> 
+<br /> <div class="caption" 
+><span class="id">Figure 4: </span><span  
+class="content">Team joining procedures.</span></div><!--tex4ht:label?: x1-50014 -->
+                                                                  
+
+                                                                  
+   </div><hr class="endfloat" />
+<!--l. 27--><p class="indent" >   As can be seen in Fig. <span 
+class="ecbx-1000">??</span>, incoming peers
+</p><!--l. 29--><p class="indent" >   The splitter, in an inﬁnite loop: (1) listens to the peers, (2) sends the list of peers
 in the team to the peers, (3) adds the incoming peer to the list, and (4) sends to the
 teams tracker the number of peers in the team.
 </p>

@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\send}{\Rightarrow}
+\newcommand{\sendto}{\rightarrow}
+\algrenewcommand\textproc{\textrm}
+
+\begin{algorithmic}
+  \algrenewcommand\algorithmicprocedure{\textbf{class}}
+  \Procedure{$\text{PeerJoin}:\text{Peer}()$}{$\text{load\_balancer, player}$}
+  
+  \Function{$\text{join\_a\_team}$}{$\text{splitter}$}
+  \State $[\text{hello}] \send \text{plitter}$
+  \ForAll{$P \in [\text{list\_of\_peers}] \gets \text{splitter}$}
+  \State $[\mathtt{hello}] \sendto P$
+  \EndFor
+  \EndFunction
+
+  \Function{$\text{process\_message}()$}{}
+  \State $[\text{message}] \gets X$
+  \If{$\text{message}[0] < 0$}
+  \State $\text{process\_control\_message}(\text{message}, X)$
+  \Else
+  \State $\text{process\_chunk}(\text{message}, X)$
+  \EndIf
+  \EndFunction
+  
+  \Function{$\text{process\_control\_message}$}{$\text{message}, \text{sender}$}
+  \If{$\text{message}[0] = \mathtt{HELLO}$}
+  \State $\text{add\_neighbor}(\text{sender})$
+  \EndIf
+  \State $\vdots$
+  \EndFunction
+
+  \Function{$\text{add\_neighbor}$}{$\text{sender}$}
+  \State $\text{forward}[\text{Peer.me}].\text{append}(\text{sender})$
+  \State $\vdots$
+  %\State $\text{neighbor} = \text{sender}$
+  %\State $\text{debt}[\text{sender}]=0$
+  \EndFunction
+
+  \Function{\text{main}()}{}
+  \State $\text{splitter}=\text{Peer.main}()$
+  \State $\text{join\_a\_team}(\text{splitter})$
+  \State $\vdots$
+  \EndFunction
+  
+  \EndProcedure
+\end{algorithmic}
+
+\end{document}
+

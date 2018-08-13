@@ -10,10 +10,13 @@
 \newcommand{\send}{\Rightarrow}
 \newcommand{\sendto}{\rightarrow}
 \newcommand{\recv}{\Leftarrow}
-\algrenewcommand\algorithmicprocedure{\textbf{task}}
 
 \begin{algorithmic}
 
+  \algrenewcommand\algorithmicprocedure{\textbf{class}}
+  \Procedure{$\text{SplitterDBS}:\text{SplitterSTS}(\text{splitters\_traker},\text{channel})$}{}
+  
+  \algrenewcommand\algorithmicprocedure{\textbf{task}}
   \Procedure{$\mathrm{Splitter}.\mathrm{add\_peers}()$}{}
   \While{True}
   \State $[\mathtt{hello}] \leftarrow \mathrm{peer}$

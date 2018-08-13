@@ -44,8 +44,6 @@
   \EndIf
   \EndFunction
 
-  \State $\vdots$
-  
   \algrenewcommand\algorithmicfunction{\textbf{function}}
   
   \Function{$\text{main}()$}{}
@@ -54,7 +52,7 @@
   \State $\text{splitters\_tracker} = \text{get\_tracker}(\text{URL\_channel})$
   \State $\{\text{splitters}\} = \text{get\_list}(\text{splitters\_tracker})$
   \State $\text{connection} = \text{find\_connection}(\{\text{splitters}\})$
-  \State $\vdots$
+  \State \Return $\text{connection}$
   \EndFunction
   \EndProcedure
 
