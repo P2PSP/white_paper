@@ -57,7 +57,7 @@ suitable server.
 
 % An extended load balancer
 This idea can be extended to take advantage of the existence of P2PSP
-teams in the hybrid overlay, where those users that run a local peer
+teams in hybrid overlays, where those users that run a local peer
 to retrieve a copy of the stream. In this case, the peer communicates
 to the load balancer to tell it that there is a peer running in the
 same host that the player. Thus, when the player requests to the load
@@ -71,24 +71,24 @@ When a network entity (usually, a player) connects with a peer, it
 must connects with a splitter which is transmitting the stream
 selected by the user. Depending on maximum number of potential peers
 request the same channel, more than one splitter could be
-available. This information is provided by a splitters tracker. This
-entity keeps updated a table indexed by names of channels, where every
-entry contains the end-point of a splitter transmiting the
-corresponding channel. Therefore, to find a suitable splitter, the
-peer first retrieves from the splitters tracker the list of splitters
-that are transmitting the required channel. Then, the peer tries to
-connect with all the splitters\footnote{Those splitters with full
-  teams should not accept new connections from peers.} in parallel,
-and the fastest connection determines the selected splitter (the rest
-of successful connections are closed). This procedure should select
-the ``closest'' splitter to the peer in terms of network latency.
+available. This information is served by a splitters tracker, and
+generated when a new splitter is instantiated. This entity keeps updated a
+table indexed by names of channels, where every entry contains a list
+of end-points of splitters transmiting the corresponding
+channel. Therefore, to find a suitable splitter, the peer first
+retrieves from the splitters tracker a list of splitters. Then, the
+peer tries to connect with all the splitters\footnote{Those splitters
+with full teams should not accept new connections from peers.} in
+parallel, and the fastest connection determines the selected splitter
+(the rest of successful connections are closed). This procedure should
+select the ``closest'' splitter to the peer in terms of network
+latency.
 
 \begin{figure*}
-  \fig{1100}{10cm}{STS} \caption{Procedures run by the extended load
-    balancer, the splitters tracker, the splitters and the peers. By
-    definition, tasks (infinite loops) and threads (finite loops) are
-    run in parallel with other tasks, threads and
-    functions. \label{fig:STS}}
+  \fig{900}{9cm}{STS} \caption{Procedures run by the load balancer,
+    the splitters tracker, the splitters and the peers. By definition,
+    tasks (infinite loops) and threads (finite loops) are run in
+    parallel with other tasks, threads and functions. \label{fig:STS}}
 \end{figure*}
 
 The Fig.~\ref{fig:STS} describes in more accurately the algorithms run

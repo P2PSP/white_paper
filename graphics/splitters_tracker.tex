@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\send}{\Rightarrow}
+\newcommand{\sendto}{\rightarrow}
+\newcommand{\recv}{\Leftarrow}
+\algrenewcommand\textproc{\textrm}
+
+\begin{algorithmic}
+
+  \algrenewcommand\algorithmicprocedure{\textbf{class}}
+  \Procedure{$\text{SplittersTracker}$}{}
+  
+  \algrenewcommand\algorithmicprocedure{\textbf{task}}
+  \Procedure{serve()}{}
+  \While{True}
+  \State $[\text{message}] \gets X$
+  \If{$\text{message}[0]=``\mathtt{GET}"$}
+  \State $\text{channel} = \text{message}[1]$
+  \State $\text{channel\_to\_splitters}[\text{channel}] \send \text{X}$
+  \Else \If{$\text{message}[0] = ``\mathtt{NEW}"$}
+  \State $\text{new\_splitter} = \text{message}[1]$
+  \State $\text{channel\_to\_splitters}.\text{append}(\text{new\_splitter})$
+  \EndIf
+  \EndIf
+  \EndWhile
+  \EndProcedure
+
+  \EndProcedure
+\end{algorithmic}
+
+\end{document}
+

@@ -24,7 +24,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">August 12, 2018</span></div>
+class="ecrm-1200">August 13, 2018</span></div>
    </div>
    <h3 class="likesectionHead"><a 
  id="x1-1000"></a>Contents</h3>
@@ -187,20 +187,20 @@ splitters) which know the URL of the required channel, connects ﬁrst to the
 load balancer which redirects them (with a HTTP 302 code) to a suitable
 server.
 </p><!--l. 59--><p class="indent" >   This idea can be extended to take advantage of the existence of P2PSP teams in
-the hybrid overlay, where those users that run a local peer to retrieve a copy of the
+hybrid overlays, where those users that run a local peer to retrieve a copy of the
 stream. In this case, the peer communicates to the load balancer to tell it that there
 is a peer running in the same host that the player. Thus, when the player requests to
 the load balancer the reception of the stream, the load balancer redirects it towards
 the local peer.
 </p><!--l. 70--><p class="indent" >   When a network entity (usually, a player) connects with a peer, it must
-connects with a splitter which is transmitting the stream selected by the
-user. Depending on maximum number of potential peers request the same
-channel, more than one splitter could be available. This information is
-provided by a splitters tracker. This entity keeps updated a table indexed by
-names of channels, where every entry contains the end-point of a splitter
-transmiting the corresponding channel. Therefore, to ﬁnd a suitable splitter, the
-peer ﬁrst retrieves from the splitters tracker the list of splitters that are
-transmitting the required channel. Then, the peer tries to connect with all the
+connects with a splitter which is transmitting the stream selected by the user.
+Depending on maximum number of potential peers request the same channel,
+more than one splitter could be available. This information is served by a
+splitters tracker, and generated when a new splitter is instantiated. This
+entity keeps updated a table indexed by names of channels, where every
+entry contains a list of end-points of splitters transmiting the corresponding
+channel. Therefore, to ﬁnd a suitable splitter, the peer ﬁrst retrieves from the
+splitters tracker a list of splitters. Then, the peer tries to connect with all the
 splitters<span class="footnote-mark"><a 
 href="index4.html#fn3x0"><sup class="textsuperscript">3</sup></a></span><a 
  id="x1-2004f3"></a> 
@@ -213,18 +213,18 @@ to the peer in terms of network latency.
                                                                   
 
                                                                   
-</p><!--l. 87--><p class="indent" >   <a 
+</p><!--l. 88--><p class="indent" >   <a 
  id="x1-20052"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img width=1100 src="graphics/STS.png" /> </div> 
+ <div style="text-align:center;"> <img width=900 src="graphics/STS.png" /> </div> 
 <br /> <div class="caption" 
 ><span class="id">Figure 2: </span><span  
-class="content">Procedures run by the extended load balancer, the splitters tracker,
-the splitters and the peers. By deﬁnition, tasks (inﬁnite loops) and threads
-(ﬁnite loops) are run in parallel with other tasks, threads and functions. </span></div><!--tex4ht:label?: x1-20052 -->
+class="content">Procedures run by the load balancer, the splitters tracker, the splitters
+and the peers. By deﬁnition, tasks (inﬁnite loops) and threads (ﬁnite loops) are
+run in parallel with other tasks, threads and functions. </span></div><!--tex4ht:label?: x1-20052 -->
                                                                   
 
                                                                   

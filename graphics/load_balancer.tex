@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\send}{\Rightarrow}
+\newcommand{\sendto}{\rightarrow}
+\algrenewcommand\textproc{\textrm}
+
+\begin{algorithmic}
+  
+  \algrenewcommand\algorithmicprocedure{\textbf{class}}
+  
+  \Procedure{$\text{LoadBalancer}$}{$\{\text{servers}\}$}
+  
+  \Function{$\text{find\_unloadest\_server}$}{$\{\text{servers}\}, \text{client}$}
+  \State $\text{min\_load}=\infty$
+  \ForAll{$S \in \{\text{servers}\}$}
+  \If{$\text{client}.\text{IP\_addr}=S.\text{IP\_addr}$}
+  \State $\text{load} = -1$
+  \Else
+  \State $[\mathtt{get~load}] \send S$
+  \State $[\text{load}] \gets S$
+  \EndIf
+  \If{$\text{load} < \text{min\_load}$}
+  \State $\text{min\_load}=\text{load}$
+  \State $\text{server}=S$
+  \EndIf
+  \EndFor
+  \State \Return $\text{server}$
+  \EndFunction
+
+  \algrenewcommand\algorithmicprocedure{\textbf{task}}
+
+  \Procedure{serve()}{}
+  \While{True}
+  \State $\text{message} \gets X$
+  \If{$\text{message}[0]=''\mathtt{HTTP~GET}''$}
+  \State $[\text{find\_unloadest\_server}(\{\text{servers}\},X)] \send X$
+  \Else
+  \If{$\text{message}[0]=''\mathtt{I'm~a~peer}''$}
+  \State $\{\text{servers}\}.\text{append}(X)$
+  \EndIf
+  \EndIf
+  \EndWhile
+  \EndProcedure
+  
+  \EndProcedure
+\end{algorithmic}
+
+\end{document}
