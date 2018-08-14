@@ -24,7 +24,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">August 13, 2018</span></div>
+class="ecrm-1200">August 14, 2018</span></div>
    </div>
    <h3 class="likesectionHead"><a 
  id="x1-1000"></a>Contents</h3>
@@ -186,62 +186,63 @@ This problem can be solved using a load balancer. The listeners (and the
 splitters) which know the URL of the required channel, connects ﬁrst to the
 load balancer which redirects them (with a HTTP 302 code) to a suitable
 server.
-</p><!--l. 59--><p class="indent" >   This idea can be extended to take advantage of the existence
-of P2PSP teams in hybrid overlays, where those users that run a
-local peer to retrieve a copy of the stream. In this case, the peer
+</p><!--l. 59--><p class="indent" >   This idea can be extended to take advantage of the existence of P2PSP teams in hybrid
+overlays, where some users run a local peer to retrieve a copy of the stream. In this case, the peer
 communicates<span class="footnote-mark"><a 
 href="index4.html#fn3x0"><sup class="textsuperscript">3</sup></a></span><a 
  id="x1-2004f3"></a> 
-to the load balancer to tell it that there is a peer running in the same host that the
-player. Thus, when the player requests to the load balancer the reception of the
-stream, the load balancer redirects it towards the local peer.
-</p><!--l. 76--><p class="indent" >   When a network entity (usually, a player) connects with a peer, it must
-connects with a splitter which is transmitting the stream selected by the user.
-Depending on maximum number of potential peers request the same channel,
-more than one splitter could be available. This information is served by a
-splitters tracker, and generated when a new splitter is instantiated. This
-entity keeps updated a table indexed by names of channels, where every
-entry contains a list of end-points of splitters transmiting the corresponding
+with the load balancer to tell it that there is a peer running in the same
+host that the player. Thus, when the player requests to the load balancer
+the reception of the stream, the load balancer redirects it towards the local
+peer.<span class="footnote-mark"><a 
+href="index5.html#fn4x0"><sup class="textsuperscript">4</sup></a></span><a 
+ id="x1-2005f4"></a> 
+</p><!--l. 80--><p class="indent" >   When a network entity (usually, a player) connects with a peer, it must connects
+with a splitter which is transmitting the stream selected by the user. Depending on
+maximum number of potential peers request the same channel, more than one splitter
                                                                   
 
                                                                   
+could be available. This information is served by a splitters tracker, and generated when
+a new splitter is instantiated. This entity keeps updated a table indexed by names of
+channels, where every entry contains a list of splitters transmiting the corresponding
 channel. Therefore, to ﬁnd a suitable splitter, the peer ﬁrst retrieves from the
 splitters tracker a list of splitters. Then, the peer tries to connect with all the
 splitters<span class="footnote-mark"><a 
-href="index5.html#fn4x0"><sup class="textsuperscript">4</sup></a></span><a 
- id="x1-2005f4"></a> 
+href="index6.html#fn5x0"><sup class="textsuperscript">5</sup></a></span><a 
+ id="x1-2006f5"></a> 
 in parallel, and the fastest connection determines the selected splitter (the rest of
 successful connections are closed). This procedure should select the “closest” splitter
 to the peer in terms of network latency.
                                                                   
 
                                                                   
-</p><!--l. 94--><p class="indent" >   <a 
- id="x1-20062"></a></p><hr class="float" /><div class="float" 
+</p><!--l. 98--><p class="indent" >   <a 
+ id="x1-20072"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img width=900 src="graphics/STS.png" /> </div> 
+ <div style="text-align:center;"> <img width=800 src="graphics/STS.png" /> </div> 
 <br />                                                          <div class="caption" 
 ><span class="id">Figure 2:
 </span><span  
 class="content">Procedures run by the load balancer, the splitters tracker, the splitters and the
 peers. By deﬁnition, tasks (inﬁnite loops) and threads (ﬁnite loops) are run in
 parallel with other tasks, threads and functions. All instances start running the
-<!--l. 98--><math 
+<!--l. 102--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mstyle 
 class="text"><mtext  >main</mtext></mstyle><mrow ><mo 
 class="MathClass-open">(</mo><mrow></mrow><mo 
 class="MathClass-close">)</mo></mrow></math>
-function. </span></div><!--tex4ht:label?: x1-20062 -->
+function. </span></div><!--tex4ht:label?: x1-20072 -->
                                                                   
 
                                                                   
    </div><hr class="endfloat" />
-<!--l. 101--><p class="indent" >   The Fig. <a 
-href="#x1-20062">2<!--tex4ht:ref: fig:STS --></a> describes in more accurately the algorithms run by the diﬀerent
+<!--l. 105--><p class="indent" >   The Fig. <a 
+href="#x1-20072">2<!--tex4ht:ref: fig:STS --></a> describes in more accurately the algorithms run by the diﬀerent
 entities that participate in STS.
 </p>
    <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
@@ -1036,8 +1037,8 @@ is the buﬀer size in chunks.
    <h4 class="subsectionHead"><span class="titlemark">2.8   </span> <a 
  id="x1-110002.8"></a>Chunk routing</h4>
 <!--l. 2--><p class="noindent" >It can happen<span class="footnote-mark"><a 
-href="index6.html#fn5x0"><sup class="textsuperscript">5</sup></a></span><a 
- id="x1-11001f5"></a>  that the
+href="index7.html#fn6x0"><sup class="textsuperscript">6</sup></a></span><a 
+ id="x1-11001f6"></a>  that the
 received chunk by peer a <!--l. 3--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
@@ -1624,16 +1625,16 @@ there are.
  id="x1-190009"></a>NTS (NAT Traversal Set)</h3>
 <!--l. 3--><p class="noindent" >Most most of the peers run inside of “private” networks, i.e. behind NAT devices.
 NTS<span class="footnote-mark"><a 
-href="index7.html#fn6x0"><sup class="textsuperscript">6</sup></a></span><a 
- id="x1-19001f6"></a> 
+href="index8.html#fn7x0"><sup class="textsuperscript">7</sup></a></span><a 
+ id="x1-19001f7"></a> 
 is an DBS extension which provides peer connectivity for
 some NAT conﬁgurations DBS can not provide direct peer
                                                                   
 
                                                                   
 communication.<span class="footnote-mark"><a 
-href="index8.html#fn7x0"><sup class="textsuperscript">7</sup></a></span><a 
- id="x1-19002f7"></a> 
+href="index9.html#fn8x0"><sup class="textsuperscript">8</sup></a></span><a 
+ id="x1-19002f8"></a> 
 </p><!--l. 17--><p class="indent" >   Peers behind the same NAT will use the same external (also called “public”,
 because in most cases we have not nested NAT conﬁgurations) IP address of the
 NAT. Basically, there exist two diﬀerent types of NATs: (1) <span 

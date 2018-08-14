@@ -57,7 +57,7 @@ suitable server.
 
 % An extended load balancer
 This idea can be extended to take advantage of the existence of P2PSP
-teams in hybrid overlays, where those users that run a local peer to
+teams in hybrid overlays, where some users run a local peer to
 retrieve a copy of the stream. In this case, the peer
 communicates\footnote{This is a reliable communication. Reliable
   messages are transmitted over TCP and their sent is denoted in the
@@ -65,10 +65,14 @@ communicates\footnote{This is a reliable communication. Reliable
   which can be lost in transit, are transmitted over UDP and its
   transmission is denoted by $\rightarrow$. In any case, the reception
   of a packet is a permanent blocking action, at least a timeout is
-  indicated.}  to the load balancer to tell it that there is a peer
+  indicated.} with the load balancer to tell it that there is a peer
 running in the same host that the player. Thus, when the player
 requests to the load balancer the reception of the stream, the load
-balancer redirects it towards the local peer.
+balancer redirects it towards the local peer.\footnote{Obviously, to
+  establish a connection, both, the player and the local peer must
+  reference the same channel. Otherwise, the peer will remain asleep
+  waiting for a HTTP GET request and the player will be redirected to
+  a different server.}
 %The situation would be identical if the user would run a HTTP proxy
 %locally.
 
@@ -78,9 +82,9 @@ must connects with a splitter which is transmitting the stream
 selected by the user. Depending on maximum number of potential peers
 request the same channel, more than one splitter could be
 available. This information is served by a splitters tracker, and
-generated when a new splitter is instantiated. This entity keeps updated a
-table indexed by names of channels, where every entry contains a list
-of end-points of splitters transmiting the corresponding
+generated when a new splitter is instantiated. This entity keeps
+updated a table indexed by names of channels, where every entry
+contains a list of splitters transmiting the corresponding
 channel. Therefore, to find a suitable splitter, the peer first
 retrieves from the splitters tracker a list of splitters. Then, the
 peer tries to connect with all the splitters\footnote{Those splitters
@@ -91,7 +95,7 @@ select the ``closest'' splitter to the peer in terms of network
 latency.
 
 \begin{figure*}
-  \fig{900}{9cm}{STS} \caption{Procedures run by the load balancer,
+  \fig{800}{8cm}{STS} \caption{Procedures run by the load balancer,
     the splitters tracker, the splitters and the peers. By definition,
     tasks (infinite loops) and threads (finite loops) are run in
     parallel with other tasks, threads and functions. All instances

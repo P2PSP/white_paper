@@ -23,7 +23,7 @@
   \State $[\text{message}] \gets X$
   \If{$\text{message}[0]=``\mathtt{GET}"$}
   \State $\text{channel} = \text{message}[1]$
-  \State $\text{channel\_to\_splitters}[\text{channel}] \send \text{X}$
+  \State $[\text{channel\_to\_splitters}[\text{channel}]] \send X$
   \Else \If{$\text{message}[0] = ``\mathtt{NEW}"$}
   \State $\text{new\_splitter} = \text{message}[1]$
   \State $\text{channel\_to\_splitters}.\text{append}(\text{new\_splitter})$

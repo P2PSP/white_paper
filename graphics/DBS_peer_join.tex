@@ -13,9 +13,9 @@
 
 \begin{algorithmic}
   \algrenewcommand\algorithmicprocedure{\textbf{class}}
-  \Procedure{$\text{PeerJoin}:\text{Peer}()$}{$\text{load\_balancer, player}$}
+  \Procedure{$\text{DBS\_Peer}:\text{STS\_Peer}$}{$\text{load\_balancer, player}$}
   
-  \Function{$\text{join\_a\_team}$}{$\text{splitter}$}
+  \Function{$\text{join\_team}$}{$\text{splitter}$}
   \State $[\text{hello}] \send \text{plitter}$
   \ForAll{$P \in [\text{list\_of\_peers}] \gets \text{splitter}$}
   \State $[\mathtt{hello}] \sendto P$
@@ -46,8 +46,8 @@
   \EndFunction
 
   \Function{\text{main}()}{}
-  \State $\text{splitter}=\text{Peer.main}()$
-  \State $\text{join\_a\_team}(\text{splitter})$
+  \State $\text{splitter}=\text{STS\_Peer.main}()$
+  \State $\text{join\_team}(\text{splitter})$
   \State $\vdots$
   \EndFunction
   

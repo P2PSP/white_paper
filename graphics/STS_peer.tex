@@ -14,24 +14,24 @@
 \algrenewcommand\textproc{\textrm}
 
 \begin{algorithmic}
-  \Procedure{$\text{Peer}$}{$\text{load\_balancer, player}$}
+  \Procedure{$\text{STS\_Peer}$}{$\text{load\_balancer, player}$}
 
-  \Function{$\text{get\_tracker}$}{$\text{URL\_channel}$}
-  \State $[\mathtt{URL\_channel}] \send \text{load\_balancer}$
+  \Function{$\text{get\_tracker}$}{$\text{channel, load\_balancer}$}
+  \State $[\text{channel}] \send \text{load\_balancer}$
   \State \Return $\text{splitters\_tracker} \gets \text{load\_balancer}$
   \EndFunction
   
-  \Function{$\text{get\_list}$}{$\text{splitters\_tracker, URL\_channel}$}
-  \State $[\mathtt{URL\_channel}] \send \text{splitters\_tracker}$
+  \Function{$\text{get\_list}$}{$\text{splitters\_tracker, channel}$}
+  \State $[\text{channel}] \send \text{splitters\_tracker}$
   \State \Return $[\{\mathrm{splitters}\}] \gets \mathrm{splitters\_tracker}$
   \EndFunction
 
-  \Function{$\text{connect\_fastest\_splitter}$}{$\{\mathrm{splitters}\}$}
+  \Function{$\text{connect\_closest\_splitter}$}{$\{\mathrm{splitters}\}$}
   \State $\mathrm{queue}=[]$
   \ForAll{$S \in \{\text{splitter}\}$}
   \State $\text{connect\_to}(S, \text{queue})$
   \EndFor 
-  \State $[\mathtt{URL\_channel}] \send \text{splitters\_tracker}$
+  \State $[\text{channel}] \send \text{splitters\_tracker}$
   \State \Return $\mathrm{queue}[0]$
   \EndFunction
 
@@ -46,13 +46,13 @@
 
   \algrenewcommand\algorithmicfunction{\textbf{function}}
   
-  \Function{$\text{main}()$}{}
-  \State $[\text{URL\_channel}] \gets \text{player}$
+  \Function{$\text{main}(\text{load\_balancer, player})$}{}
+  \State $[\text{channel}] \gets \text{player}$
   %\State $\text{URL\_channel} \get \text{request\_to\_user}(``\mathtt{URL~channel}'')$
-  \State $\text{splitters\_tracker} = \text{get\_tracker}(\text{URL\_channel})$
+  \State $\text{splitters\_tracker} = \text{get\_tracker}(\text{channel, load\_balancer})$
   \State $\{\text{splitters}\} = \text{get\_list}(\text{splitters\_tracker})$
-  \State $\text{connection} = \text{find\_connection}(\{\text{splitters}\})$
-  \State \Return $\text{connection}$
+  \State $\text{connected\_splitter} = \text{find\_connection}(\{\text{splitters}\})$
+  \State \Return $\text{connected\_splitter}$
   \EndFunction
   \EndProcedure
 

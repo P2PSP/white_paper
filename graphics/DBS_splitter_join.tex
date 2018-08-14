@@ -10,20 +10,25 @@
 \newcommand{\send}{\Rightarrow}
 \newcommand{\sendto}{\rightarrow}
 \newcommand{\recv}{\Leftarrow}
+\algrenewcommand\textproc{\textrm}
 
 \begin{algorithmic}
 
   \algrenewcommand\algorithmicprocedure{\textbf{class}}
-  \Procedure{$\text{SplitterDBS}:\text{SplitterSTS}(\text{splitters\_traker},\text{channel})$}{}
+  \Procedure{$\text{Splitter\_DBS}:\text{Splitter\_STS}(\text{splitters\_traker},\text{channel})$}{}
   
   \algrenewcommand\algorithmicprocedure{\textbf{task}}
-  \Procedure{$\mathrm{Splitter}.\mathrm{add\_peers}()$}{}
+  \Procedure{$\text{Splitter}.\text{add\_peers}()$}{}
   \While{True}
-  \State $[\mathtt{hello}] \leftarrow \mathrm{peer}$
-  \State $[\mathrm{Splitter}.\mathrm{list\_of\_peers}] \send \mathrm{peer}$
-  \State $\mathrm{Splitter}.\mathrm{list\_of\_peers}.\mathrm{append}(\mathrm{peer})$
-  \State $[|\mathrm{Splitter}.\mathrm{list\_of\_peers}|] \send \mathrm{\mathrm{Splitter}.teams\_tracker}$
+  \State $[\mathtt{hello}] \leftarrow \text{peer}$
+  \State $[\text{SplitterDBS}.\text{list\_of\_peers}] \send \text{peer}$
+  \State $\text{SplitterDBS}.\text{list\_of\_peers}.\text{append}(\text{peer})$
   \EndWhile
+  \EndProcedure
+
+  \Function{$\text{main}$}{}
+  \EndFunction
+ 
   \EndProcedure
   
 \end{algorithmic}
