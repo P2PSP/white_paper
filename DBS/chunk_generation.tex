@@ -1,20 +1,31 @@
 \label{sec:chunk_generation}
+
+The splitter divides the stream into chunks of data of constant
+length, and sends exclusively each chunk to a different \emph{origin
+peer}\footnote{In the route that a chunk follows though the team, the
+origin peer of a chunk is first peer that receives that chunk.}, using
+a round-robin schema (see Fig.~\ref{fig:chunk_generation}). Each chunk
+is enumerated with an index $x$, conforming a message
+$c_x=[x,\text{chunk}]$, where
+$x=i \text{mod} \text{Splitter\_DBS.list\_of\_peers}.\text{length}()$.
+
 \begin{figure*}
   %\includegraphics[width=0.75\textwidth]{chunk_generation_and_flooding}
-  \fig{300}{3cm}{splitter_chunk_generation}
-  \caption{Chunk generation at the splitter.\label{fig:chunk_generation}}
+  \fig{300}{3cm}{DBS_splitter_chunk_generation}
+  \caption{Chunk generation.\label{fig:chunk_generation}}
 \end{figure*}
-The splitter $S$ divides the stream into chunks of data
-($\mathtt{chunk}$) of constant length $C$, and sends exclusively each
-chunk to a different \emph{origin peer} $P_i\in T$, using a
-round-robin schema (see Fig.~\ref{fig:chunk_generation}). Each chunk
-is enumerated with an index $x$, conforming a message
-$[c_x]=[x,\mathtt{chunk}]$, where $x=i \mathrm{mod} |T|$.
 
-We define a \emph{round} (in a team) as the time necessary to send two
+We define a \emph{round} as the process of sending a (different) chunk
+from the splitter to the same peer. Notice that the round-time is
+variable, and depends on the number of peers in the team, the
+chunk-size, and the average bit-rate of the media.
+
+\begin{comment}
+(in a team) as the time necessary to send two
 consecutive chunks from the splitter (of such team) to the same peer,
 using the round-robing. This time is variable and depends on $|T|$,
 $C$, and the average bit-rate of the media, $A$.
+\end{comment}
 
 \begin{comment}
 The round-time is defined by:

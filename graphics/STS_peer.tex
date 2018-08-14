@@ -16,6 +16,16 @@
 \begin{algorithmic}
   \Procedure{$\text{STS\_Peer}$}{$\text{load\_balancer, player}$}
 
+  %\algrenewcommand\algorithmicfunction{\textbf{function}}
+  
+  \Function{$\text{main}(\text{load\_balancer, player})$}{}
+  \State $[\text{channel}] \gets \text{player}$
+  %\State $\text{URL\_channel} \get \text{request\_to\_user}(``\mathtt{URL~channel}'')$
+  \State $\text{splitters\_tracker} = \text{get\_tracker}(\text{channel, load\_balancer})$
+  \State $\{\text{splitters}\} = \text{get\_list}(\text{splitters\_tracker})$
+  \State $\text{connected\_splitter} = \text{find\_connection}(\{\text{splitters}\})$
+  \State \Return $\text{connected\_splitter}$
+  \EndFunction
   \Function{$\text{get\_tracker}$}{$\text{channel, load\_balancer}$}
   \State $[\text{channel}] \send \text{load\_balancer}$
   \State \Return $\text{splitters\_tracker} \gets \text{load\_balancer}$
@@ -44,16 +54,6 @@
   \EndIf
   \EndFunction
 
-  \algrenewcommand\algorithmicfunction{\textbf{function}}
-  
-  \Function{$\text{main}(\text{load\_balancer, player})$}{}
-  \State $[\text{channel}] \gets \text{player}$
-  %\State $\text{URL\_channel} \get \text{request\_to\_user}(``\mathtt{URL~channel}'')$
-  \State $\text{splitters\_tracker} = \text{get\_tracker}(\text{channel, load\_balancer})$
-  \State $\{\text{splitters}\} = \text{get\_list}(\text{splitters\_tracker})$
-  \State $\text{connected\_splitter} = \text{find\_connection}(\{\text{splitters}\})$
-  \State \Return $\text{connected\_splitter}$
-  \EndFunction
   \EndProcedure
 
 \end{algorithmic}

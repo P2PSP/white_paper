@@ -1,4 +1,4 @@
-\label{sec:joining_a_tean}
+\label{sec:joining}
 
 After connecting with a splitter, incoming peers request (using a
 reliable communication) to the splitter the current list of peers in
@@ -18,15 +18,16 @@ Sec.~\ref{sec:DBS_process_chunk}).
 %index to $\mathrm{forward}[]$ (see
 %Sec.~\ref{sec:chunk_DBS_processing}).
 
+The splitter, in an infinite loop: (1) listens to the peers, (2) sends
+the list of peers in the team to the peers, and (3) adds the incoming peer
+to the list.
+
 \begin{figure*}
   %\includegraphics[width=\textwidth]{joining}
-  \fig{800}{8cm}{joining} \caption{Team joining
-    procedures.\label{fig:joining_a_team}}
+  \fig{800}{8cm}{joining} \caption{Code related to team
+    joining.\label{fig:joining}}
 \end{figure*}
 
-As can be seen in Fig.~\ref{fig:joining}, incoming peers 
+The new code related to joining a team is describen in the
+Fig.~\ref{fig:joining}.
 
-The splitter, in an infinite loop: (1) listens to the peers, (2) sends
-the list of peers in the team to the peers, (3) adds the incoming peer
-to the list, and (4) sends to the teams tracker the number of peers
-in the team.

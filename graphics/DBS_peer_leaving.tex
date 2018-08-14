@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\send}{\Rightarrow}
+\newcommand{\sendto}{\rightarrow}
+\algrenewcommand\textproc{\textrm}
+
+\begin{algorithmic}
+  \algrenewcommand\algorithmicprocedure{\textbf{class}}
+  \Procedure{$\text{DBS\_Peer}:\text{STS\_Peer}$}{$\text{load\_balancer, player}$}
+  
+  \Function{\text{main}}{$\text{load\_balancer, player}$}
+  \State $\vdots$
+  \State $\text{connected\_splitter}=\text{STS\_Peer.main}(\text{load\_balancer, player})$
+  \State $\text{leave\_team}(\text{connected\_splitter})$
+  \EndFunction
+
+  \Function{$\text{process\_control\_message}$}{$\text{message}, \text{sender}$}
+  \State $\vdots$
+  \If{$\text{message}[0] = ``\mathtt{goodbye}"$}
+  \State $\text{remove\_neighbor}(\text{sender})$
+  \EndIf
+  \State $\vdots$
+  \EndFunction
+
+  \Function{$\text{remove\_neighbor}$}{$\text{sender}$}
+  \ForAll {$\text{peers\_list} \in \text{forward}$}
+  \State $\text{peers\_list}.\text{remove}(\text{sender})$
+  \EndFor
+  \EndFunction
+  
+  \EndProcedure
+\end{algorithmic}
+
+\end{document}
+
