@@ -25,12 +25,12 @@
   \Procedure{serve()}{}
   \While{True}
   \State $[\text{message}] \gets X$
-  \If{$\text{message}[0]=``\mathtt{GET}"$}
+  \If{$\text{message}[0]=``\mathtt{I'm~a~new~splitter}"$}
+  \State $\text{channel} = \text{message}[1]$
+  \State $\text{channel\_to\_splitters}[\text{channel}]=X$
+  \Else \If{$\text{message}[0] = \begin{array}{l}``\mathtt{send~to~me~the~splitters}\\\mathtt{~for~the~channel}"\end{array}$}
   \State $\text{channel} = \text{message}[1]$
   \State $[\text{channel\_to\_splitters}[\text{channel}]] \send X$
-  \Else \If{$\text{message}[0] = ``\mathtt{NEW}"$}
-  \State $\text{new\_splitter} = \text{message}[1]$
-  \State $\text{channel\_to\_splitters}.\text{append}(\text{new\_splitter})$
   \EndIf
   \EndIf
   \EndWhile

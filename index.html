@@ -24,7 +24,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">August 14, 2018</span></div>
+class="ecrm-1200">August 15, 2018</span></div>
    </div>
    <h3 class="likesectionHead"><a 
  id="x1-1000"></a>Contents</h3>
@@ -34,11 +34,11 @@ href="#x1-20001" id="QQ2-1-2">STS (Splitters Tracking Set)</a></span>
 <br />   <span class="sectionToc" >2 <a 
 href="#x1-30002" id="QQ2-1-5">DBS (Data Broadcasting Set)</a></span>
 <br />    <span class="subsectionToc" >2.1 <a 
-href="#x1-40002.1" id="QQ2-1-7">Peer’s life (quitar)</a></span>
+href="#x1-40002.1" id="QQ2-1-7">Feeding the team</a></span>
 <br />    <span class="subsectionToc" >2.2 <a 
 href="#x1-50002.2" id="QQ2-1-9">Joining a team</a></span>
 <br />    <span class="subsectionToc" >2.3 <a 
-href="#x1-60002.3" id="QQ2-1-11">Chunk generation</a></span>
+href="#x1-60002.3" id="QQ2-1-11">Peer’s life (quitar)</a></span>
 <br />    <span class="subsectionToc" >2.4 <a 
 href="#x1-70002.4" id="QQ2-1-13">Chunk buﬀering</a></span>
 <br />    <span class="subsectionToc" >2.5 <a 
@@ -195,17 +195,18 @@ the reception of the stream, the load balancer redirects it towards the local
 peer.<span class="footnote-mark"><a 
 href="index5.html#fn4x0"><sup class="textsuperscript">4</sup></a></span><a 
  id="x1-2005f4"></a> 
-</p><!--l. 80--><p class="indent" >   When a network entity (usually, a player) connects with a peer, it must connects
-with a splitter which is transmitting the stream selected by the user. Depending on
-maximum number of potential peers request the same channel, more than one splitter
+</p><!--l. 82--><p class="indent" >   When a network entity (usually, a player) connects with a peer, it must
+connects with a splitter which is transmitting the stream selected by the user.
+Depending on maximum number of potential peers request the same channel,
                                                                   
 
                                                                   
-could be available. This information is served by a splitters tracker, and generated when
-a new splitter is instantiated. This entity keeps updated a table indexed by names of
-channels, where every entry contains a list of splitters transmiting the corresponding
-channel. Therefore, to ﬁnd a suitable splitter, the peer ﬁrst retrieves from the
-splitters tracker a list of splitters. Then, the peer tries to connect with all the
+more than one splitter could be available. This information is served by a
+splitters tracker, and generated when a new splitter is instantiated. The
+tracker keeps updated a table indexed by names of channels, where every
+entry contains a list of splitters that transmit the corresponding channel.
+Therefore, to ﬁnd a suitable splitter, the peer ﬁrst retrieves from the splitters
+tracker a list of splitters. Then, the peer tries to connect with all the
 splitters<span class="footnote-mark"><a 
 href="index6.html#fn5x0"><sup class="textsuperscript">5</sup></a></span><a 
  id="x1-2006f5"></a> 
@@ -215,7 +216,7 @@ to the peer in terms of network latency.
                                                                   
 
                                                                   
-</p><!--l. 98--><p class="indent" >   <a 
+</p><!--l. 100--><p class="indent" >   <a 
  id="x1-20072"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
@@ -228,7 +229,7 @@ to the peer in terms of network latency.
 class="content">Procedures run by the load balancer, the splitters tracker, the splitters and the
 peers. By deﬁnition, tasks (inﬁnite loops) and threads (ﬁnite loops) are run in
 parallel with other tasks, threads and functions. All instances start running the
-<!--l. 102--><math 
+<!--l. 104--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mstyle 
 class="text"><mtext  >main</mtext></mstyle><mrow ><mo 
@@ -239,7 +240,7 @@ function. </span></div><!--tex4ht:label?: x1-20072 -->
 
                                                                   
    </div><hr class="endfloat" />
-<!--l. 105--><p class="indent" >   The Fig. <a 
+<!--l. 107--><p class="indent" >   The Fig. <a 
 href="#x1-20072">2<!--tex4ht:ref: fig:STS --></a> describes in more accurately the algorithms run by the diﬀerent
 entities that participate in STS.
 </p>
@@ -485,30 +486,44 @@ sends them to a <span
 class="ecti-1000">player</span>.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.1   </span> <a 
- id="x1-40002.1"></a>Peer’s life (quitar)</h4>
+ id="x1-40002.1"></a>Feeding the team</h4>
+<!--l. 3--><p class="noindent" >The splitter divides the stream into chunks of data of constant
+length, and sends exclusively each chunk to a diﬀerent <span 
+class="ecti-1000">origin</span>
+<span 
+class="ecti-1000">peer</span><span class="footnote-mark"><a 
+href="index7.html#fn6x0"><sup class="textsuperscript">6</sup></a></span><a 
+ id="x1-4001f6"></a> ,
+using a round-robin schema. The teams are created with a least one
+peer<span class="footnote-mark"><a 
+href="index8.html#fn7x0"><sup class="textsuperscript">7</sup></a></span><a 
+ id="x1-4002f7"></a> 
+that runs, by default, in the same host that the splitter and listens to the port 9999.
+Chunks are enumerated to distinguish them at the peers. More details about the
+implementation are available in Fig. <a 
+href="#x1-40033">3<!--tex4ht:ref: fig:chunk_generation --></a>.
                                                                   
 
                                                                   
-<!--l. 4--><p class="indent" >   <a 
- id="x1-40013"></a></p><hr class="float" /><div class="float" 
+</p><!--l. 22--><p class="indent" >   <a 
+ id="x1-40033"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img width=250 src="graphics/peers_life.png" /> </div> 
+ <div style="text-align:center;"> <img width=300 src="graphics/DBS_splitter_feed.png" /> </div> 
 <br /> <div class="caption" 
 ><span class="id">Figure 3: </span><span  
-class="content">Main actions carried out by a peer.</span></div><!--tex4ht:label?: x1-40013 -->
+class="content">Chunk generation at the splitter and their transmission to the team.</span></div><!--tex4ht:label?: x1-40033 -->
                                                                   
 
                                                                   
    </div><hr class="endfloat" />
-<!--l. 8--><p class="noindent" >Peer’s life is described in Fig. <a 
-href="#x1-40013">3<!--tex4ht:ref: fig:peers_life --></a>. Peers must: (1) join a team (determined by the
-player) in order to access to the contents broadcasted in such team, (2)
-buﬀer some chunks before starting playing them and after that, and (3) keep
-buﬀering chunks (and sending them to the player) until the media player
-quites.
+<!--l. 27--><p class="indent" >   We deﬁne a <span 
+class="ecti-1000">round </span>as the process of sending a (diﬀerent) chunk from the splitter
+to the same peer. Notice that the round-time is variable, and depends on the
+number of peers in the team, the chunk-size, and the average bit-rate of the
+media.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.2   </span> <a 
  id="x1-50002.2"></a>Joining a team</h4>
@@ -611,68 +626,30 @@ class="content">Code related to team joining.</span></div><!--tex4ht:label?: x1-
 href="#x1-50014">4<!--tex4ht:ref: fig:joining --></a>.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.3   </span> <a 
- id="x1-60002.3"></a>Chunk generation</h4>
-<!--l. 3--><p class="noindent" >The splitter divides the stream into chunks of data of constant
-length, and sends exclusively each chunk to a diﬀerent <span 
-class="ecti-1000">origin</span>
-<span 
-class="ecti-1000">peer</span><span class="footnote-mark"><a 
-href="index7.html#fn6x0"><sup class="textsuperscript">6</sup></a></span><a 
- id="x1-6001f6"></a> ,
-using a round-robin schema (see Fig. <a 
-href="#x1-60025">5<!--tex4ht:ref: fig:chunk_generation --></a>). Each chunk is enumerated with an index
-<!--l. 8--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->x</mi></math>, conforming
-a message <!--l. 9--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->c</mi></mrow><mrow 
-><mi 
->x</mi></mrow></msub 
-> <mo 
-class="MathClass-rel">=</mo> <mrow ><mo 
-class="MathClass-open">[</mo><mrow><mi 
->x</mi><mo 
-class="MathClass-punc">,</mo><mstyle 
-class="text"><mtext  >chunk</mtext></mstyle></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>,
-where <!--l. 10--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->x</mi> <mo 
-class="MathClass-rel">=</mo> <mi 
->i</mi><mstyle 
-class="text"><mtext  >mod</mtext></mstyle><mstyle 
-class="text"><mtext  >Splitter_DBS.list_of_peers</mtext></mstyle><mo 
-class="MathClass-punc">.</mo><mstyle 
-class="text"><mtext  >length</mtext></mstyle><mrow ><mo 
-class="MathClass-open">(</mo><mrow></mrow><mo 
-class="MathClass-close">)</mo></mrow></math>.
+ id="x1-60002.3"></a>Peer’s life (quitar)</h4>
                                                                   
 
                                                                   
-</p><!--l. 14--><p class="indent" >   <a 
- id="x1-60025"></a></p><hr class="float" /><div class="float" 
+<!--l. 4--><p class="indent" >   <a 
+ id="x1-60015"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img width=300 src="graphics/DBS_splitter_chunk_generation.png" /> </div> 
+ <div style="text-align:center;"> <img width=250 src="graphics/peers_life.png" /> </div> 
 <br /> <div class="caption" 
 ><span class="id">Figure 5: </span><span  
-class="content">Chunk generation.</span></div><!--tex4ht:label?: x1-60025 -->
+class="content">Main actions carried out by a peer.</span></div><!--tex4ht:label?: x1-60015 -->
                                                                   
 
                                                                   
    </div><hr class="endfloat" />
-<!--l. 18--><p class="indent" >   We deﬁne a <span 
-class="ecti-1000">round </span>as the process of sending a (diﬀerent) chunk from the splitter
-to the same peer. Notice that the round-time is variable, and depends on the
-number of peers in the team, the chunk-size, and the average bit-rate of the
-media.
+<!--l. 8--><p class="noindent" >Peer’s life is described in Fig. <a 
+href="#x1-60015">5<!--tex4ht:ref: fig:peers_life --></a>. Peers must: (1) join a team (determined by the
+player) in order to access to the contents broadcasted in such team, (2)
+buﬀer some chunks before starting playing them and after that, and (3) keep
+buﬀering chunks (and sending them to the player) until the media player
+quites.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.4   </span> <a 
  id="x1-70002.4"></a>Chunk buﬀering</h4>
@@ -894,8 +871,8 @@ Obviously, a high supportivity means a low debt, and viceversa.
    <h4 class="subsectionHead"><span class="titlemark">2.7   </span> <a 
  id="x1-100002.7"></a>Chunk routing</h4>
 <!--l. 2--><p class="noindent" >It can happen<span class="footnote-mark"><a 
-href="index8.html#fn7x0"><sup class="textsuperscript">7</sup></a></span><a 
- id="x1-10001f7"></a>  that the
+href="index9.html#fn8x0"><sup class="textsuperscript">8</sup></a></span><a 
+ id="x1-10001f8"></a>  that the
 received chunk by peer a <!--l. 3--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
@@ -1482,13 +1459,13 @@ there are.
  id="x1-180009"></a>NTS (NAT Traversal Set)</h3>
 <!--l. 3--><p class="noindent" >Most most of the peers run inside of “private” networks, i.e. behind NAT devices.
 NTS<span class="footnote-mark"><a 
-href="index9.html#fn8x0"><sup class="textsuperscript">8</sup></a></span><a 
- id="x1-18001f8"></a> 
+href="index10.html#fn9x0"><sup class="textsuperscript">9</sup></a></span><a 
+ id="x1-18001f9"></a> 
 is an DBS extension which provides peer connectivity for
 some NAT conﬁgurations DBS can not provide direct peer
 communication.<span class="footnote-mark"><a 
-href="index10.html#fn9x0"><sup class="textsuperscript">9</sup></a></span><a 
- id="x1-18002f9"></a> 
+href="index11.html#fn10x0"><sup class="textsuperscript">10</sup></a></span><a 
+ id="x1-18002f10"></a> 
 </p><!--l. 17--><p class="indent" >   Peers behind the same NAT will use the same external (also called “public”,
 because in most cases we have not nested NAT conﬁgurations) IP address of the
 NAT. Basically, there exist two diﬀerent types of NATs: (1) <span 

@@ -14,31 +14,33 @@
 \algrenewcommand\textproc{\textrm}
 
 \begin{algorithmic}
-  \Procedure{$\text{STS\_Peer}$}{$\text{load\_balancer, player}$}
+  \Procedure{$\text{STS\_Peer}$}{$\text{load\_balancer, splitters\_tracker, player}$}
 
   %\algrenewcommand\algorithmicfunction{\textbf{function}}
   
-  \Function{$\text{main}(\text{load\_balancer, player})$}{}
-  \State $[\text{channel}] \gets \text{player}$
+  \Function{$\text{main}(\text{load\_balancer, splitters\_tracker, channel})$}{}
+  %\State $[\text{channel}] \gets \text{player}$
   %\State $\text{URL\_channel} \get \text{request\_to\_user}(``\mathtt{URL~channel}'')$
-  \State $\text{splitters\_tracker} = \text{get\_tracker}(\text{channel, load\_balancer})$
-  \State $\{\text{splitters}\} = \text{get\_list}(\text{splitters\_tracker})$
-  \State $\text{connected\_splitter} = \text{find\_connection}(\{\text{splitters}\})$
+  %\State $\text{splitters\_tracker} = \text{get\_tracker}(\text{channel, load\_balancer})$
+  \State $[``\mathtt{I'm~a~new~peer}", \text{channel}] \send \text{load\_balancer}$
+  \State $\text{splitters} = \text{get\_list}(\text{splitters\_tracker, channel})$
+  \State $\text{connected\_splitter} = \text{connect\_closest\_splitter}(\text{splitters})$
   \State \Return $\text{connected\_splitter}$
   \EndFunction
-  \Function{$\text{get\_tracker}$}{$\text{channel, load\_balancer}$}
-  \State $[\text{channel}] \send \text{load\_balancer}$
-  \State \Return $\text{splitters\_tracker} \gets \text{load\_balancer}$
-  \EndFunction
+
+  %\Function{$\text{get\_tracker}$}{$\text{channel, load\_balancer}$}
+  %\State $[\text{channel}] \send \text{load\_balancer}$
+  %\State \Return $\text{splitters\_tracker} \gets \text{load\_balancer}$
+  %\EndFunction
   
   \Function{$\text{get\_list}$}{$\text{splitters\_tracker, channel}$}
-  \State $[\text{channel}] \send \text{splitters\_tracker}$
-  \State \Return $[\{\mathrm{splitters}\}] \gets \mathrm{splitters\_tracker}$
+  \State $[\begin{array}{l}``\mathtt{send~to~me~the~splitters}\\\mathtt{for~the~channel}"\end{array}, \text{channel}] \send \text{splitters\_tracker}$
+  \State \Return $[\mathrm{splitters}] \gets \mathrm{splitters\_tracker}$
   \EndFunction
 
-  \Function{$\text{connect\_closest\_splitter}$}{$\{\mathrm{splitters}\}$}
+  \Function{$\text{connect\_closest\_splitter}$}{$\mathrm{splitters}$}
   \State $\mathrm{queue}=[]$
-  \ForAll{$S \in \{\text{splitter}\}$}
+  \ForAll{$S \in \text{splitters}$}
   \State $\text{connect\_to}(S, \text{queue})$
   \EndFor 
   \State $[\text{channel}] \send \text{splitters\_tracker}$

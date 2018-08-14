@@ -1,18 +1,27 @@
-\label{sec:chunk_generation}
+\label{sec:feeding_the_team}
 
 The splitter divides the stream into chunks of data of constant
 length, and sends exclusively each chunk to a different \emph{origin
-peer}\footnote{In the route that a chunk follows though the team, the
-origin peer of a chunk is first peer that receives that chunk.}, using
-a round-robin schema (see Fig.~\ref{fig:chunk_generation}). Each chunk
-is enumerated with an index $x$, conforming a message
-$c_x=[x,\text{chunk}]$, where
-$x=i \text{mod} \text{Splitter\_DBS.list\_of\_peers}.\text{length}()$.
+  peer}\footnote{In the route that a chunk follows though the team,
+  the origin peer of a chunk is first peer that receives that chunk.},
+using a round-robin schema. The teams are created with a least one
+peer\footnote{Usually, this peer is a monitor peer (see
+  Sec.~\ref{sec:...}), because it can be used by the overlay
+  administrator to monitorize the rendering of the stream.} that runs,
+by default, in the same host that the splitter and listens to the port
+9999. Chunks are enumerated to distinguish them at the peers. More
+details about the implementation are available in
+Fig.~\ref{fig:chunk_generation}.
+
+%$x$, conforming a message
+%$c_x=[x,\text{chunk}]$, where
+%$x=i \text{mod} \text{Splitter\_DBS.list\_of\_peers}.\text{length}()$.
 
 \begin{figure*}
   %\includegraphics[width=0.75\textwidth]{chunk_generation_and_flooding}
-  \fig{300}{3cm}{DBS_splitter_chunk_generation}
-  \caption{Chunk generation.\label{fig:chunk_generation}}
+  \fig{300}{3cm}{DBS_splitter_feed} \caption{Chunk
+    generation at the splitter and their transmission to the
+    team.\label{fig:chunk_generation}}
 \end{figure*}
 
 We define a \emph{round} as the process of sending a (different) chunk

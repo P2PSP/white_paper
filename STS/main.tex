@@ -68,11 +68,13 @@ communicates\footnote{This is a reliable communication. Reliable
   indicated.} with the load balancer to tell it that there is a peer
 running in the same host that the player. Thus, when the player
 requests to the load balancer the reception of the stream, the load
-balancer redirects it towards the local peer.\footnote{Obviously, to
-  establish a connection, both, the player and the local peer must
-  reference the same channel. Otherwise, the peer will remain asleep
-  waiting for a HTTP GET request and the player will be redirected to
-  a different server.}
+balancer redirects it towards the local peer.\footnote{If there is a
+  peer running in the same host that the player, the load balancer
+  will redirect the player to the local peer, and the channel served
+  to the player will be the one passed as a parameter when the peer
+  was instantiated. In other words, the channel specified by the
+  player in its request to the load balancer and the peer will be
+  ignored.}
 %The situation would be identical if the user would run a HTTP proxy
 %locally.
 
@@ -82,13 +84,13 @@ must connects with a splitter which is transmitting the stream
 selected by the user. Depending on maximum number of potential peers
 request the same channel, more than one splitter could be
 available. This information is served by a splitters tracker, and
-generated when a new splitter is instantiated. This entity keeps
+generated when a new splitter is instantiated. The tracker keeps
 updated a table indexed by names of channels, where every entry
-contains a list of splitters transmiting the corresponding
+contains a list of splitters that transmit the corresponding
 channel. Therefore, to find a suitable splitter, the peer first
 retrieves from the splitters tracker a list of splitters. Then, the
 peer tries to connect with all the splitters\footnote{Those splitters
-with full teams should not accept new connections from peers.} in
+  with full teams should not accept new connections from peers.} in
 parallel, and the fastest connection determines the selected splitter
 (the rest of successful connections are closed). This procedure should
 select the ``closest'' splitter to the peer in terms of network

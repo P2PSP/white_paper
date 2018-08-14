@@ -17,6 +17,14 @@
   \algrenewcommand\algorithmicprocedure{\textbf{class}}
   \Procedure{$\text{Splitter\_DBS}:\text{Splitter\_STS}$}{$\text{splitters\_traker},\text{channel}$}
 
+  \State $\text{list\_of\_peers}=[(``localhost", 9999)]$
+  
+  \Function{$\text{main}$}{$\text{splitters\_traker},\text{channel}$}
+  \State $\text{STS\_Splitter}.\text{main}(\text{splitters\_traker},\text{channel})$
+  \State $\text{feed\_the\_team}()$
+  \State $\vdots$
+  \EndFunction
+
   \algrenewcommand\algorithmicprocedure{\textbf{task}}
   \Procedure{$\text{feed\_the\_team}$}{}
   \State $x=i=0$

@@ -15,34 +15,36 @@
   
   \algrenewcommand\algorithmicprocedure{\textbf{class}}
   
-  \Procedure{$\text{LoadBalancer}$}{$\{\text{servers}\}$}
+  \Procedure{$\text{LoadBalancer}$}{$\text{servers}$}
   
-  \Function{$\text{main}()$}{}
-  \State $\text{serve}()$
+  \Function{$\text{main}$}{$\text{servers}$}
+  \State $\text{serve}(\text{servers})$
   \EndFunction
 
   \algrenewcommand\algorithmicprocedure{\textbf{task}}
 
-  \Procedure{$\text{serve}$}{$\{\text{servers}\}$}
+  \Procedure{$\text{serve}$}{$\text{servers}$}
   \While{True}
   \State $\text{message} \gets X$
+  \State $\text{channel}=\text{message}[1]$
   \If{$\text{message}[0]=``\mathtt{HTTP~GET}"$}
-  \State $[\text{find\_unloadest\_server}(\{\text{servers}\},X)] \send X$
+  \State $[\text{find\_unloadest\_server}(\text{servers[channel]},X)] \send X$
   \Else
-  \If{$\text{message}[0]=``\mathtt{I'm~a~peer}"$}
-  \State $\{\text{servers}\}.\text{append}(X)$
+  \If{$\text{message}[0]=``\mathtt{I'm~a~new~peer}"$}
+  \State $\text{servers}[\text{channel}].\text{append}(X)$
   \EndIf
   \EndIf
   \EndWhile
   \EndProcedure
 
-  \Function{$\text{find\_unloadest\_server}$}{$\text{client}$}
+  \Function{$\text{find\_unloadest\_server}$}{$\text{servers, client}$}
   \State $\text{min\_load}=\infty$
-  \ForAll{$S \in \{\text{servers}\}$}
+  \ForAll{$S \in \text{servers}$}
   \If{$\text{client}.\text{IP\_addr}=S.\text{IP\_addr}$}
-  \State $\text{load} = -1$
+  %\State $\text{load} = -1$
+  \State \textbf{break}
   \Else
-  \State $[\mathtt{get~load}] \send S$
+  \State $[``\mathtt{get~load}"] \send S$
   \State $[\text{load}] \gets S$
   \EndIf
   \If{$\text{load} < \text{min\_load}$}
