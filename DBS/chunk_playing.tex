@@ -3,7 +3,15 @@
 %%% TeX-master: "<none>"
 %%% End:
 
-\label{sec:joining}
+\label{sec:cnunk_playing}
+
+After receiving $\text{BUFFER\_SIZE}/2$ chunks, peers send the chunks
+stored in the head of the buffer, which is implemented as a circular
+queue. The number of chunks sent in a burst depends on how the chunks
+are disposed in the buffer. In an ideal scenario, where all chunks are
+received on time\footnote{A chunks is considered as lost when it is
+  time to send it to the player and the chunks has not been received.}, 
+
 
 After connecting with a splitter, incoming peers request (using a
 reliable communication) to the splitter the current list of peers in

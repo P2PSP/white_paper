@@ -13,26 +13,32 @@
 
 \begin{algorithmic}
   \algrenewcommand\algorithmicprocedure{\textbf{class}}
-  \Procedure{$\text{DBS\_Peer}:\text{STS\_Peer}$}{$\text{load\_balancer, player}$}
+  \Procedure{$\text{DBS\_Peer}:\text{STS\_Peer}$}{$\text{load\_balancer, splitters\_tracker, channel}$}
+  
+  \Function{\text{main}}{$\text{load\_balancer, splitters\_tracker, channel}$}
+  \State $\text{connected\_splitter}=\text{STS\_Peer.main}(\text{load\_balancer, splitters\_tracker, channel})$
+  \State $\text{join\_team}(\text{connected\_splitter})$
+  \State $\vdots$
+  \EndFunction
   
   \Function{$\text{join\_team}$}{$\text{splitter}$}
-  \State $[\mathtt{hello}] \send \text{plitter}$
+  \State $[``\mathtt{hello}"] \send \text{plitter}$
   \ForAll{$P \in [\text{list\_of\_peers}] \gets \text{splitter}$}
-  \State $[\mathtt{hello}] \sendto P$
+  \State $[``\mathtt{hello}"] \sendto P$
   \EndFor
   \EndFunction
 
-  \Function{$\text{process\_message}()$}{}
+  \Function{$\text{get\_chunk}()$}{}
   \State $[\text{message}] \gets X$
-  \If{$\text{message}[0] < 0$}
-  \State $\text{process\_control\_message}(\text{message}, X)$
+  \If{$\text{message}.length() < \text{MAX\_MESSAGE\_LENGTH}$}
+  \State \Return $\text{control\_message}(\text{message}, X)$
   \Else
-  \State $\text{process\_chunk}(\text{message}, X)$
+  \State \Return $\text{stream\_message}(\text{message}, X)$
   \EndIf
   \EndFunction
   
-  \Function{$\text{process\_control\_message}$}{$\text{message}, \text{sender}$}
-  \If{$\text{message}[0] = ``\mathtt{hello}"$}
+  \Function{$\text{control\_message}$}{$\text{message}, \text{sender}$}
+  \If{$\text{message}[0] = ``\text{HELLO\_CODE}"$}
   \State $\text{add\_neighbor}(\text{sender})$
   \EndIf
   \State $\vdots$
@@ -45,12 +51,8 @@
   %\State $\text{debt}[\text{sender}]=0$
   \EndFunction
 
-  \Function{\text{main}}{$\text{load\_balancer, player}$}
-  \State $\text{connected\_splitter}=\text{STS\_Peer.main}(\text{load\_balancer, player})$
-  \State $\text{join\_team}(\text{connected\_splitter})$
-  \State $\vdots$
-  \EndFunction
-  
+  $\vdots$
+
   \EndProcedure
 \end{algorithmic}
 

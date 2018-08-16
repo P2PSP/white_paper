@@ -15,13 +15,14 @@
 \begin{algorithmic}
 
   \algrenewcommand\algorithmicprocedure{\textbf{class}}
-  \Procedure{$\text{STS\_Splitter}$}{$\text{splitters\_tracker, channel}$}
+  \Procedure{$\text{STS\_Splitter}$}{$\text{splitters\_tracker, load\_balancer, channel}$}
 
-  \Function{$\text{main}$}{$\text{splitters\_tracker, channel}$}
+  \Function{$\text{main}$}{$\text{splitters\_tracker, load\_balancer, channel}$}
   %\State $\text{salute\_tracker}(\text{splitters\_tracker}, \text{channel})$
   \State $[``\mathtt{I'm~a~new~splitter}", \text{channel}] \send \text{splitters\_tracker}$
   \State $[``\mathtt{HTTP~GET}", \text{channel}] \send \text{load\_balancer}$
   \State $[\text{server}] \gets \text{load\_balancer}$
+  \State \Return $\text{server}$
   % Hay que hacer aquí o en feed_the_team un HTTP GET -> server (mejor
   % en feed_the_team()) es como está implementado ahora.
   \EndFunction

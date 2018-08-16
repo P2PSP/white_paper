@@ -28,7 +28,7 @@
   \If{$\text{message}[0]=``\mathtt{I'm~a~new~splitter}"$}
   \State $\text{channel} = \text{message}[1]$
   \State $\text{channel\_to\_splitters}[\text{channel}]=X$
-  \Else \If{$\text{message}[0] = \begin{array}{l}``\mathtt{send~to~me~the~splitters}\\\mathtt{~for~the~channel}"\end{array}$}
+  \Else \If{$\text{message}[0] = \begin{array}{l}``\mathtt{send~to~me}\\\mathtt{the~splitters}\\\mathtt{~for~the~channel}"\end{array}$}
   \State $\text{channel} = \text{message}[1]$
   \State $[\text{channel\_to\_splitters}[\text{channel}]] \send X$
   \EndIf

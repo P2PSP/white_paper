@@ -24,7 +24,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">August 15, 2018</span></div>
+class="ecrm-1200">August 16, 2018</span></div>
    </div>
    <h3 class="likesectionHead"><a 
  id="x1-1000"></a>Contents</h3>
@@ -38,9 +38,9 @@ href="#x1-40002.1" id="QQ2-1-7">Feeding the team</a></span>
 <br />    <span class="subsectionToc" >2.2 <a 
 href="#x1-50002.2" id="QQ2-1-9">Joining a team</a></span>
 <br />    <span class="subsectionToc" >2.3 <a 
-href="#x1-60002.3" id="QQ2-1-11">Peer’s life (quitar)</a></span>
+href="#x1-60002.3" id="QQ2-1-11">Chunk buﬀering</a></span>
 <br />    <span class="subsectionToc" >2.4 <a 
-href="#x1-70002.4" id="QQ2-1-13">Chunk buﬀering</a></span>
+href="#x1-70002.4" id="QQ2-1-13">Peer’s life (quitar)</a></span>
 <br />    <span class="subsectionToc" >2.5 <a 
 href="#x1-80002.5" id="QQ2-1-15">Leaving a team</a></span>
 <br />    <span class="subsectionToc" >2.6 <a 
@@ -487,7 +487,7 @@ class="ecti-1000">player</span>.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.1   </span> <a 
  id="x1-40002.1"></a>Feeding the team</h4>
-<!--l. 3--><p class="noindent" >The splitter divides the stream into chunks of data of constant
+<!--l. 8--><p class="noindent" >The splitter divides the stream into chunks of data of constant
 length, and sends exclusively each chunk to a diﬀerent <span 
 class="ecti-1000">origin</span>
 <span 
@@ -505,13 +505,13 @@ href="#x1-40033">3<!--tex4ht:ref: fig:chunk_generation --></a>.
                                                                   
 
                                                                   
-</p><!--l. 22--><p class="indent" >   <a 
+</p><!--l. 27--><p class="indent" >   <a 
  id="x1-40033"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img width=300 src="graphics/DBS_splitter_feed.png" /> </div> 
+ <div style="text-align:center;"> <img width=500 src="graphics/DBS_splitter_feed.png" /> </div> 
 <br /> <div class="caption" 
 ><span class="id">Figure 3: </span><span  
 class="content">Chunk generation at the splitter and their transmission to the team.</span></div><!--tex4ht:label?: x1-40033 -->
@@ -519,50 +519,57 @@ class="content">Chunk generation at the splitter and their transmission to the t
 
                                                                   
    </div><hr class="endfloat" />
-<!--l. 27--><p class="indent" >   We deﬁne a <span 
+<!--l. 32--><p class="indent" >   We deﬁne a <span 
 class="ecti-1000">round </span>as the process of sending a (diﬀerent) chunk from the splitter
-to the same peer. Notice that the round-time is variable, and depends on the
-number of peers in the team, the chunk-size, and the average bit-rate of the
-media.
+to all the peers of the team. In other words, in a round, all peers of the team should
+have received a diﬀerent chunk from the splitter. Notice that the round-time is
+variable, and depends on the number of peers in the team, the chunk-size, and the
+average bit-rate of the media.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.2   </span> <a 
  id="x1-50002.2"></a>Joining a team</h4>
-<!--l. 3--><p class="noindent" >After connecting with a splitter, incoming peers request (using a reliable communication) to
+<!--l. 8--><p class="noindent" >After connecting with a splitter, incoming peers request (using a reliable communication) to
 the splitter the current list of peers in the team. To minimize the joining time, the peer sends
-a <!--l. 6--><math 
+a <!--l. 11--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
-class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
+class="MathClass-open">[</mo><mrow><mi 
+>“</mi><mi mathvariant="monospace">hello</mi><mi 
+>”</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> message
 to each peer of the team in parallel with the reception of the list. When a peer of the team
-receives a <!--l. 8--><math 
+receives a <!--l. 13--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
-class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
+class="MathClass-open">[</mo><mrow><mi 
+>“</mi><mi mathvariant="monospace">hello</mi><mi 
+>”</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>,
-it runs the <!--l. 8--><math 
+it runs the <!--l. 13--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="normal">add</mi><mstyle 
-class="text"><mtext  >_</mtext></mstyle><mi mathvariant="normal">neighbor</mi><mrow ><mo 
+display="inline" ><mstyle 
+class="text"><mtext  >add_neighbor</mtext></mstyle><mrow ><mo 
 class="MathClass-open">(</mo><mrow></mrow><mo 
 class="MathClass-close">)</mo></mrow></math>
 function, which basically adds the sender of the message to a table of peers called
-<!--l. 10--><math 
+<!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="normal">forward</mi><mrow ><mo 
+display="inline" ><mstyle 
+class="text"><mtext  >forward</mtext></mstyle><mrow ><mo 
 class="MathClass-open">[</mo><mrow></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>. If in a peer
-<!--l. 10--><math 
+class="MathClass-close">]</mo></mrow></math>. If a peer
+<!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mi 
 >i</mi></mrow></msub 
-></math> there is an entry
-<!--l. 11--><math 
+></math> has an entry
+<!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="normal">forward</mi><mrow ><mo 
+display="inline" ><mstyle 
+class="text"><mtext  >forward</mtext></mstyle><mrow ><mo 
 class="MathClass-open">[</mo><mrow><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
@@ -576,7 +583,7 @@ class="MathClass-rel">=</mo> <msub><mrow
 ><mi 
 >k</mi></mrow></msub 
 ></math> then, each chunk
-received by <!--l. 11--><math 
+received by <!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -584,7 +591,7 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math> and
-originated at <!--l. 12--><math 
+originated at <!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -592,7 +599,7 @@ display="inline" ><msub><mrow
 ><mi 
 >j</mi></mrow></msub 
 ></math> will
-be forwarded to <!--l. 12--><math 
+be forwarded to <!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -602,19 +609,19 @@ display="inline" ><msub><mrow
 ></math>
 (see Sec. <span 
 class="ecbx-1000">??</span>).
-</p><!--l. 21--><p class="indent" >   The splitter, in an inﬁnite loop: (1) listens to the peers, (2) sends the list
+</p><!--l. 26--><p class="indent" >   The splitter, in an inﬁnite loop: (1) listens to the peers, (2) sends the list
 of peers in the team to the peers, and (3) adds the incoming peer to the
 list.
                                                                   
 
                                                                   
-</p><!--l. 27--><p class="indent" >   <a 
+</p><!--l. 32--><p class="indent" >   <a 
  id="x1-50014"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img width=800 src="graphics/joining.png" /> </div> 
+ <div style="text-align:center;"> <img width=1000 src="graphics/joining.png" /> </div> 
 <br /> <div class="caption" 
 ><span class="id">Figure 4: </span><span  
 class="content">Code related to team joining.</span></div><!--tex4ht:label?: x1-50014 -->
@@ -622,80 +629,120 @@ class="content">Code related to team joining.</span></div><!--tex4ht:label?: x1-
 
                                                                   
    </div><hr class="endfloat" />
-<!--l. 31--><p class="indent" >   The new code related to joining a team is describen in the Fig. <a 
+<!--l. 36--><p class="indent" >   The new pseudo-code related to joining a team is describen in the Fig. <a 
 href="#x1-50014">4<!--tex4ht:ref: fig:joining --></a>.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.3   </span> <a 
- id="x1-60002.3"></a>Peer’s life (quitar)</h4>
+ id="x1-60002.3"></a>Chunk buﬀering</h4>
+<!--l. 8--><p class="noindent" >In order to hide the jitter generated by the physical network and the protocol itself, peers
+need to store the received chunks in a buﬀer before playing them. A chunk with index
+<!--l. 10--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi></math> is inserted in the
+position <!--l. 11--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow ><mo 
+class="MathClass-open">(</mo><mrow><mi 
+>x</mi><mi mathvariant="italic">mod</mi><mstyle 
+class="text"><mtext  >BUFFER_SIZE</mtext></mstyle></mrow><mo 
+class="MathClass-close">)</mo></mrow></math> of the
+buﬀer, where <!--l. 12--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+class="text"><mtext  >BUFFER_SIZE</mtext></mstyle></math>
+is the maximum number of chunks that the buﬀer can store.
+                                                                  
+
+                                                                  
+</p><!--l. 16--><p class="indent" >   <a 
+ id="x1-60015"></a></p><hr class="float" /><div class="float" 
+>
+                                                                  
+
+                                                                  
+ <div style="text-align:center;"> <img width=500 src="graphics/DBS_peer_buffering.png" /> </div> 
+<br /> <div class="caption" 
+><span class="id">Figure 5: </span><span  
+class="content">Buﬀering of the chunks.</span></div><!--tex4ht:label?: x1-60015 -->
+                                                                  
+
+                                                                  
+   </div><hr class="endfloat" />
+<!--l. 20--><p class="indent" >   The buﬀer is implemented a circular queue of
+<!--l. 20--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+class="text"><mtext  >BUFFER_SIZE</mtext></mstyle></math> chunks, which is
+ﬁlled up to only <!--l. 21--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+class="text"><mtext  >BUFFER_SIZE</mtext></mstyle><mo 
+class="MathClass-bin">∕</mo><mn>2</mn></math>
+chunks in the buﬀering time (half of the queue is unﬁlled). Chunks with a higher
+index are inserted in the head of the buﬀer. The tail of the buﬀer is referenced by
+<!--l. 24--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+class="text"><mtext  >chunk_to_play</mtext></mstyle></math>,
+because this variable determines the chunks (of the buﬀer) that will be sent to the
+player.
+</p><!--l. 28--><p class="indent" >   The buﬀering time is a key feature in any streaming system because
+it determines how much time the peers must wait before start playing
+the chunks. Considering that chunks can be lost or delayed more than
+<!--l. 31--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+class="text"><mtext  >BUFFER_SIZE</mtext></mstyle><mo 
+class="MathClass-bin">∕</mo><mn>2</mn></math> times
+of chunk, randomly, it is diﬃcult to determine, a priori the optimal buﬀering
+time. An heuristic that works is the described in the Fig. <a 
+href="#x1-60015">5<!--tex4ht:ref: fig:DBS_peer_buffering --></a>. As can be seen,
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+class="text"><mtext  >chunk_to_play</mtext></mstyle></math>
+points to the ﬁrst received chunk, that not necessary is the received chunk with lower
+index.<span class="footnote-mark"><a 
+href="index9.html#fn8x0"><sup class="textsuperscript">8</sup></a></span><a 
+ id="x1-6002f8"></a> 
+After that, the buﬀering ﬁnishes when a chunk with index
+<!--l. 38--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+class="text"><mtext  >chunk_to_play</mtext></mstyle> <mo 
+class="MathClass-bin">+</mo> <mstyle 
+class="text"><mtext  >BUFFER_SIZE</mtext></mstyle><mo 
+class="MathClass-bin">∕</mo><mn>2</mn></math> has been
+received.<span class="footnote-mark"><a 
+href="index10.html#fn9x0"><sup class="textsuperscript">9</sup></a></span><a 
+ id="x1-6003f9"></a> 
+</p>
+   <h4 class="subsectionHead"><span class="titlemark">2.4   </span> <a 
+ id="x1-70002.4"></a>Peer’s life (quitar)</h4>
                                                                   
 
                                                                   
 <!--l. 4--><p class="indent" >   <a 
- id="x1-60015"></a></p><hr class="float" /><div class="float" 
+ id="x1-70016"></a></p><hr class="float" /><div class="float" 
 >
                                                                   
 
                                                                   
  <div style="text-align:center;"> <img width=250 src="graphics/peers_life.png" /> </div> 
 <br /> <div class="caption" 
-><span class="id">Figure 5: </span><span  
-class="content">Main actions carried out by a peer.</span></div><!--tex4ht:label?: x1-60015 -->
+><span class="id">Figure 6: </span><span  
+class="content">Main actions carried out by a peer.</span></div><!--tex4ht:label?: x1-70016 -->
                                                                   
 
                                                                   
    </div><hr class="endfloat" />
 <!--l. 8--><p class="noindent" >Peer’s life is described in Fig. <a 
-href="#x1-60015">5<!--tex4ht:ref: fig:peers_life --></a>. Peers must: (1) join a team (determined by the
+href="#x1-70016">6<!--tex4ht:ref: fig:peers_life --></a>. Peers must: (1) join a team (determined by the
 player) in order to access to the contents broadcasted in such team, (2)
 buﬀer some chunks before starting playing them and after that, and (3) keep
 buﬀering chunks (and sending them to the player) until the media player
 quites.
-</p>
-   <h4 class="subsectionHead"><span class="titlemark">2.4   </span> <a 
- id="x1-70002.4"></a>Chunk buﬀering</h4>
-<!--l. 3--><p class="noindent" >In order to hide the jitter generated by the physical network and the protocol itself,
-peers need to store the received chunks in a buﬀer before playing them. A chunk
-<!--l. 5--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->c</mi></mrow><mrow 
-><mi 
->x</mi></mrow></msub 
-></math> is inserted in the
-position <!--l. 6--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mrow ><mo 
-class="MathClass-open">(</mo><mrow><mi 
->x</mi><mi mathvariant="italic">mod</mi><mi 
->B</mi></mrow><mo 
-class="MathClass-close">)</mo></mrow></math> of the
-buﬀer, where <!--l. 6--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->B</mi></math>
-is the buﬀer size in chunks.
-                                                                  
-
-                                                                  
-</p><!--l. 10--><p class="indent" >   <a 
- id="x1-70016"></a></p><hr class="float" /><div class="float" 
->
-                                                                  
-
-                                                                  
- <div style="text-align:center;"> <img width=300 src="graphics/buffer_chunks.png" /> </div> 
-<br /> <div class="caption" 
-><span class="id">Figure 6: </span><span  
-class="content">Buﬀering of the chunks.</span></div><!--tex4ht:label?: x1-70016 -->
-                                                                  
-
-                                                                  
-   </div><hr class="endfloat" />
-<!--l. 13--><p class="indent" >   Fig. <a 
-href="#x1-70016">6<!--tex4ht:ref: fig:buffer_chunks --></a> shows how peers buﬀer the chunks before playing them. Notice that,
-because the chunks are not received in order, the ﬁrst received chunk not always will
-be the ﬁrst chunk in the buﬀer.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.5   </span> <a 
  id="x1-80002.5"></a>Leaving a team</h4>
@@ -871,8 +918,8 @@ Obviously, a high supportivity means a low debt, and viceversa.
    <h4 class="subsectionHead"><span class="titlemark">2.7   </span> <a 
  id="x1-100002.7"></a>Chunk routing</h4>
 <!--l. 2--><p class="noindent" >It can happen<span class="footnote-mark"><a 
-href="index9.html#fn8x0"><sup class="textsuperscript">8</sup></a></span><a 
- id="x1-10001f8"></a>  that the
+href="index11.html#fn10x0"><sup class="textsuperscript">10</sup></a></span><a 
+ id="x1-10001f10"></a>  that the
 received chunk by peer a <!--l. 3--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
@@ -1459,13 +1506,13 @@ there are.
  id="x1-180009"></a>NTS (NAT Traversal Set)</h3>
 <!--l. 3--><p class="noindent" >Most most of the peers run inside of “private” networks, i.e. behind NAT devices.
 NTS<span class="footnote-mark"><a 
-href="index10.html#fn9x0"><sup class="textsuperscript">9</sup></a></span><a 
- id="x1-18001f9"></a> 
+href="index12.html#fn11x0"><sup class="textsuperscript">11</sup></a></span><a 
+ id="x1-18001f11"></a> 
 is an DBS extension which provides peer connectivity for
 some NAT conﬁgurations DBS can not provide direct peer
 communication.<span class="footnote-mark"><a 
-href="index11.html#fn10x0"><sup class="textsuperscript">10</sup></a></span><a 
- id="x1-18002f10"></a> 
+href="index13.html#fn12x0"><sup class="textsuperscript">12</sup></a></span><a 
+ id="x1-18002f12"></a> 
 </p><!--l. 17--><p class="indent" >   Peers behind the same NAT will use the same external (also called “public”,
 because in most cases we have not nested NAT conﬁgurations) IP address of the
 NAT. Basically, there exist two diﬀerent types of NATs: (1) <span 

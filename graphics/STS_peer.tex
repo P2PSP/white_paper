@@ -14,7 +14,7 @@
 \algrenewcommand\textproc{\textrm}
 
 \begin{algorithmic}
-  \Procedure{$\text{STS\_Peer}$}{$\text{load\_balancer, splitters\_tracker, player}$}
+  \Procedure{$\text{STS\_Peer}$}{$\text{load\_balancer, splitters\_tracker, channel}$}
 
   %\algrenewcommand\algorithmicfunction{\textbf{function}}
   
@@ -34,8 +34,9 @@
   %\EndFunction
   
   \Function{$\text{get\_list}$}{$\text{splitters\_tracker, channel}$}
-  \State $[\begin{array}{l}``\mathtt{send~to~me~the~splitters}\\\mathtt{for~the~channel}"\end{array}, \text{channel}] \send \text{splitters\_tracker}$
-  \State \Return $[\mathrm{splitters}] \gets \mathrm{splitters\_tracker}$
+  \State $[\begin{array}{l}``\mathtt{send~to~me~}\\\mathtt{the~splitters}\\\mathtt{for~the~channel}"\end{array}, \text{channel}] \send \text{splitters\_tracker}$
+  \State $[\mathrm{splitters}] \gets \mathrm{splitters\_tracker}$
+  \State \Return $\mathrm{splitters}$
   \EndFunction
 
   \Function{$\text{connect\_closest\_splitter}$}{$\mathrm{splitters}$}

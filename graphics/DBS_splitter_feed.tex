@@ -15,25 +15,26 @@
 \begin{algorithmic}
 
   \algrenewcommand\algorithmicprocedure{\textbf{class}}
-  \Procedure{$\text{Splitter\_DBS}:\text{Splitter\_STS}$}{$\text{splitters\_traker},\text{channel}$}
+  \Procedure{$\text{Splitter\_DBS}:\text{Splitter\_STS}$}{$\text{splitters\_traker},\text{load\_balancer},\text{channel}$}
 
-  \State $\text{list\_of\_peers}=[(``localhost", 9999)]$
+  \State $\text{peers}=[(``\mathtt{localhost}", 9999)]$
+  \State $\text{destination\_of\_chunk}=[]$
   
-  \Function{$\text{main}$}{$\text{splitters\_traker},\text{channel}$}
-  \State $\text{STS\_Splitter}.\text{main}(\text{splitters\_traker},\text{channel})$
-  \State $\text{feed\_the\_team}()$
+  \Function{$\text{main}$}{$\text{splitters\_traker},\text{load\_balancer},\text{channel}$}
+  \State $\text{server}=\text{STS\_Splitter}.\text{main}(\text{splitters\_traker},\text{load\_balancer}, \text{channel})$
+  \State $\text{feed\_the\_team}(\text{server})$
   \State $\vdots$
   \EndFunction
 
   \algrenewcommand\algorithmicprocedure{\textbf{task}}
-  \Procedure{$\text{feed\_the\_team}$}{}
+  \Procedure{$\text{feed\_the\_team}$}{$\text{server}$}
   \State $x=i=0$
   \While{True}
-  \State $[\mathtt{chunk}] \gets O$
-  \State $[x,\mathtt{chunk}] \sendto P_i$
-  \State $D[x]=P_i$
-  \State $i=(i+1)~\text{mod}~|T|$
-  \State $x=(x+1)~\text{mod}~\mathtt{MAX\_CHUNK\_NUMBER}$
+  \State $[\text{chunk}] \gets \text{server}$
+  \State $[x,\text{chunk}] \sendto \text{peers}[i]$
+  \State $\text{destination\_of\_chunk}[x]=\text{peers}[i]$
+  \State $i=(i+1)~\mathit{mod}~\text{peers}.\text{length}()$
+  \State $x=(x+1)~\mathit{mod}~\text{MAX\_CHUNK\_NUMBER}$
   %\If{$x=0$}
   %$r=(r+1)~\text{mod}~\mathtt{MAX\_ROUND\_NUMBER}$
   %\EndIf

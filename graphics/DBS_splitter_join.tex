@@ -15,12 +15,10 @@
 \begin{algorithmic}
 
   \algrenewcommand\algorithmicprocedure{\textbf{class}}
-  \Procedure{$\text{Splitter\_DBS}:\text{Splitter\_STS}$}{$\text{splitters\_traker},\text{channel}$}
+  \Procedure{$\text{Splitter\_DBS}:\text{Splitter\_STS}$}{$\text{splitters\_tracker},\text{load\_balancer}, \text{channel}$}
   
-  \State $\text{list\_of\_peers}=[]$
-  
-  \Function{$\text{main}$}{$\text{splitters\_traker},\text{channel}$}
-  \State $\text{STS\_Splitter}.\text{main}(\text{splitters\_traker},\text{channel})$
+  \Function{$\text{main}$}{$\text{splitters\_tracker},\text{channel}$}
+  \State $\vdots$
   \State $\text{listen\_to\_the\_team}()$
   \State $\vdots$
   \EndFunction
@@ -37,8 +35,8 @@
   \EndProcedure
 
   \Function{$\text{add\_peers}(\text{peer})$}{}
-  \State $[\text{list\_of\_peers}] \send \text{peer}$
-  \State $\text{list\_of\_peers}.\text{append}(\text{peer})$
+  \State $[\text{peers}] \send \text{peer}$
+  \State $\text{peers}.\text{append}(\text{peer})$
   \EndFunction
 
   \EndProcedure

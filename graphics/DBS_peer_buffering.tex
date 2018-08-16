@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+\pagestyle{empty}
+
+\newcommand{\send}{\Rightarrow}
+\newcommand{\sendto}{\rightarrow}
+\algrenewcommand\textproc{\textrm}
+
+\begin{algorithmic}
+  \algrenewcommand\algorithmicprocedure{\textbf{class}}
+  \Procedure{$\text{DBS\_Peer}:\text{STS\_Peer}$}{$\text{load\_balancer, splitters\_tracker, channel}$}
+
+  \Function{\text{main}}{$\text{load\_balancer, splitters\_tracker, channel}$}
+  \State $\vdots$
+  \State $\text{chunk\_to\_play} = \text{load\_buffer}()$
+  \While{player.connected}
+  \State $\text{get\_chunk}()$
+  \EndWhile
+  %\State $\text{play\_chunks}()$
+  \State $\vdots$
+  \EndFunction
+
+  \Function{load\_buffer()}{}
+  \State $(x,\text{sender}) = text{get\_chunk}()$
+  \State $\text{chunk\_to\_play} = x$
+  \While{$\begin{array}{l}x<\text{chunk\_to\_play}~\textbf{or}\\ (x-\text{chunk\_to\_play})<\text{BUFFER\_SIZE}/2\end{array}$}
+  \While{$x<\text{chunk\_to\_play}$}
+  \State $(x,\text{sender})=\text{get\_chunk}()$
+  \EndWhile
+  \EndWhile
+  \State\Return $x$
+  \EndFunction
+
+  \Function{get\_chunk()}{}
+  \Repeat
+  \State $(x, \text{sender})=\text{get\_message}()$
+  \Until{$x\geq 0$}
+  \State\Return $(x,\text{sender})$
+  \EndFunction
+
+  \EndProcedure  
+\end{algorithmic}
+
+\end{document}
+
