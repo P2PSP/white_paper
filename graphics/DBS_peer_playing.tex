@@ -13,30 +13,23 @@
 
 \begin{algorithmic}
   \algrenewcommand\algorithmicprocedure{\textbf{class}}
-  \Procedure{$\text{DBS\_Peer}:\text{STS\_Peer}$}{$\text{balancer, tracker, channel}$}
+  \Procedure{$\text{DBS\_Peer}:\text{STS\_Peer}$}{$\text{load\_balancer, splitters\_tracker, channel}$}
 
-  \State $\text{chunk\_to\_play}=0$ \Comment{/* next chunk to be sent to the player */}
-  \State $\text{prev}=0$ \Comment{/* previosly received chunk */}
-  
-  \Function{\text{main}}{$\text{balancer, tracker, channel}$}
+  \Function{\text{main}}{$\text{load\_balancer, splitters\_tracker, channel}$}
   \State $\vdots$
-  \State $\text{load\_buffer}()$
-  \While{player.connected}
-  \State $\text{get\_chunk}()$
-  \EndWhile
-  %\State $\text{play\_chunks}()$
+  \State $\text{play\_chunks}()$
   \State $\vdots$
   \EndFunction
 
   \Function{load\_buffer()}{}
   \State $(x,\text{sender}) = \text{get\_chunk}()$
   \State $\text{chunk\_to\_play} = x$
-  \While{$\left(\begin{array}{l}x<\text{chunk\_to\_play}~\textbf{or}\\ ((x-\text{chunk\_to\_play})~\mathit{mod}~\text{BUFFER\_SIZE}) \\ < \text{BUFFER\_SIZE}/2\end{array}\right)$}
-  \While{$x<\text{first}$}
+  \While{$\begin{array}{l}x<\text{chunk\_to\_play}~\textbf{or}\\ (x-\text{chunk\_to\_play})<\text{BUFFER\_SIZE}/2\end{array}$}
+  \While{$x<\text{chunk\_to\_play}$}
   \State $(x,\text{sender})=\text{get\_chunk}()$
   \EndWhile
   \EndWhile
-  \State $\text{previous} = x$
+  \State\Return $x$
   \EndFunction
 
   \Function{get\_chunk()}{}
