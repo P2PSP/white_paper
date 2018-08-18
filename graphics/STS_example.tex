@@ -24,17 +24,17 @@
 
   % Timelines
   \begin{pgfonlayer}{timelines}
-    \coordinate (Pla) at ($(Player.center) + (0.0,-17)$);
+    \coordinate (Pla) at ($(Player.center) + (0.0,-6)$);
     \draw[myptr] ($(Player.center) + (0,-2ex)$) -- (Pla);  
-    \coordinate (Bal) at ($(Balancer.center) + (0.0,-17)$);
+    \coordinate (Bal) at ($(Balancer.center) + (0.0,-6)$);
     \draw[myptr] ($(Balancer.center) + (0,-2ex)$) -- (Bal);
-    \coordinate (Pee) at ($(Peer.center) + (0.0,-17)$);
+    \coordinate (Pee) at ($(Peer.center) + (0.0,-6)$);
     \draw[myptr] ($(Peer.center) + (0,-2ex)$) -- (Pee);
-    \coordinate (Sp1) at ($(Splitter1.center) + (0.0,-17)$);
+    \coordinate (Sp1) at ($(Splitter1.center) + (0.0,-6)$);
     \draw[myptr] ($(Splitter1.center) + (0,-2ex)$) -- (Sp1);
-    \coordinate (Sp2) at ($(Splitter2.center) + (0.0,-17)$);
+    \coordinate (Sp2) at ($(Splitter2.center) + (0.0,-6)$);
     \draw[myptr] ($(Splitter2.center) + (0,-2ex)$) -- (Sp2);
-    \coordinate (Tra) at ($(Tracker.center) + (0.0,-17)$);
+    \coordinate (Tra) at ($(Tracker.center) + (0.0,-6)$);
     \draw[myptr] (Tracker) -- (Tra);
   \end{pgfonlayer}
   % Time steps
@@ -65,23 +65,54 @@
   \path let \p{Player}=(Player),\p{021}=(021) in node (Pl02) at (\x{Player},\y{021}) [fill=white!100,draw,rounded corners] {};
   \draw[myptr] (Ba02) -- (Pl02) node [pos=0.5,fill=white!100] {$\mathtt{HTTP~302}~\text{peer}$};
 
-  
+  % 03
+  \node (03) at ($(02) + (0, -3ex)$) {};
+  \path let \p{Player}=(Player),\p{03}=(03) in node (Pl03) at (\x{Player},\y{03}) [fill=white!100,draw,rounded corners] {};
+  \node (031) at ($(02) + (0,-4ex)$) {};
+  \path let \p{Peer}=(Peer),\p{031}=(031) in node (Pe03) at (\x{Peer},\y{031}) [fill=white!100,draw,rounded corners] {};
+  \draw[myptr] (Pl03) -- (Pe03) node [pos=0.25,fill=white!100] {$\mathtt{GET}~\text{channel}$};
+
+  % 04
+  \node (04) at ($(03) + (0, -3ex)$) {};
+  \path let \p{Peer}=(Peer),\p{04}=(04) in node (Pe04) at (\x{Peer},\y{04}) [fill=white!100,draw,rounded corners] {};
+  \node (041) at ($(03) + (0,-4ex)$) {};
+  \path let \p{Tracker}=(Tracker),\p{041}=(041) in node (Tr04) at (\x{Tracker},\y{041}) [fill=white!100,draw,rounded corners] {};
+  \draw[myptr] (Pe04) -- (Tr04) node [pos=0.5,fill=white!100] {$\mathtt{GET~list~for}~\text{channel}$};
+
+  % 05
+  \node (05) at ($(04) + (0, -3ex)$) {};
+  \path let \p{Tracker}=(Tracker),\p{05}=(05) in node (Tr05) at (\x{Tracker},\y{05}) [fill=white!100,draw,rounded corners] {};
+  \node (051) at ($(04) + (0,-4ex)$) {};
+  \path let \p{Peer}=(Peer),\p{051}=(051) in node (Pe05) at (\x{Peer},\y{051}) [fill=white!100,draw,rounded corners] {};
+  \draw[myptr] (Tr05) -- (Pe05) node [pos=0.5,fill=white!100] {$\text{list~of~splitters}$};
+
+  % 06
+  \node (06) at ($(05) + (0, -3ex)$) {};
+  \path let \p{Peer}=(Peer),\p{06}=(06) in node (Pe06) at (\x{Peer},\y{06}) [fill=white!100,draw,rounded corners] {};
+  \node (061) at ($(05) + (0,-4ex)$) {};
+  \path let \p{Peer}=(Peer),\p{061}=(061) in node (Pe061) at (\x{Peer},\y{061}) [fill=white!100,draw,rounded corners] {};
+  \node (062) at ($(05) + (0,-6ex)$) {};
+  \path let \p{Splitter1}=(Splitter1),\p{061}=(061) in node (S106) at (\x{Splitter1},\y{061}) [fill=white!100,draw,rounded corners] {};
+  \draw[myptr] (Pe06) -- (S106) node [pos=0.5,fill=white!100] {$\mathtt{hello}$};
+  \path let \p{Splitter2}=(Splitter2),\p{062}=(062) in node (S206) at (\x{Splitter2},\y{062}) [fill=white!100,draw,rounded corners] {};
+  \draw[myptr] (Pe061) -- (S206) node [pos=0.75,fill=white!100] {$\mathtt{hello}$};
+
+  % 07
+  \node (07) at ($(06) + (0, -3ex)$) {};
+  \path let \p{Splitter1}=(Splitter1),\p{07}=(07) in node (S107) at (\x{Splitter1},\y{07}) [fill=white!100,draw,rounded corners] {};
+  \node (071) at ($(06) + (0,-4ex)$) {};
+  \path let \p{Peer}=(Peer),\p{071}=(071) in node (Pe071) at (\x{Peer},\y{071}) [fill=white!100,draw,rounded corners] {};
+  \node (072) at ($(06) + (0,-6ex)$) {};
+  \node (073) at ($(06) + (0,-8ex)$) {};
+  \path let \p{Peer}=(Peer),\p{073}=(073) in node (Pe073) at (\x{Peer},\y{073}) [fill=white!100,draw,rounded corners] {};
+  \draw[myptr] (S107) -- (Pe071) node [pos=0.5,fill=white!100] {$\mathtt{hello}$};
+  \path let \p{Splitter2}=(Splitter2),\p{072}=(072) in node (S207) at (\x{Splitter2},\y{072}) [fill=white!100,draw,rounded corners] {};
+  \draw[myptr] (S207) -- (Pe073) node [pos=0.25,fill=white!100] {$\mathtt{hello}$};
+  \node (Sel) at ($(Pe071) + (-4ex,0)$) {\begin{tabular}{r} select \\ Splitter$_1$ \end{tabular}};
   
 \end{tikzpicture}
 \end{document}
 
-  % 02
-  \node (02) at ($(01) + (0,-3ex)$) {02};
-  \path let \p{NAT A}=(NAT A),\p{02}=(02) in node (NA02) at (\x{NAT A},\y{02}) [inner sep=0pt,minimum size=0pt] {};
-  \path let \p{Peer A}=(Peer A),\p{02}=(02) in node (PA02) at (\x{Peer A},\y{02}) [inner sep=0pt,minimum size=0pt] {};
-  \draw[myptr] (NA02) -- (PA02) node [pos=0.5,fill=white!100] {$\{M=(\cal{M},\mathsf{M})\}$};
-
-  % 03
-  \node (03) at ($(02) + (0,-3ex)$) {03};
-  \path let \p{03}=(03),\p{Peer A}=(Peer A) in node (PA03) at (\x{Peer A},\y{03}) [inner sep=0pt,minimum size=0pt] {};  
-  \path let \p{03}=(03),\p{NAT A}=(NAT A) in node (NA03) at (\x{NAT A},\y{03}) [inner sep=0pt,minimum size=0pt] {};
-  \draw[myptr] (PA03) -- (NA03) node [pos=0.5,fill=white!100] {$\mathtt{hello}~M$};
-  
   % 04
   \node (04) at ($(03) + (0,-3ex)$) {04};
   \path let \p{04}=(04),\p{NAT A}=(NAT A) in node (N04) at (\x{NAT A},\y{04}) [fill=white!100,draw,rounded corners] {$\mathsf{A1}$};
