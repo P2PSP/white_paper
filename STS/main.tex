@@ -96,16 +96,22 @@ parallel, and the fastest connection determines the selected splitter
 select the ``closest'' splitter to the peer in terms of network
 latency.
 
+%\begin{figure*}
+%  \fig{800}{8cm}{STS} \caption{Procedures run by the load balancer,
+%    the splitters tracker, the splitters and the peers. By definition,
+%    tasks (infinite loops) and threads (finite loops) are run in
+%    parallel with other tasks, threads and functions. All instances
+%    start running the $\text{main}()$ function. \label{fig:STS}}
+%\end{figure*}
+
 \begin{figure*}
-  \fig{800}{8cm}{STS} \caption{Procedures run by the load balancer,
-    the splitters tracker, the splitters and the peers. By definition,
-    tasks (infinite loops) and threads (finite loops) are run in
-    parallel with other tasks, threads and functions. All instances
-    start running the $\text{main}()$ function. \label{fig:STS}}
+\fig{900}{9cm}{STS_example}
+\caption{Timeline example of an STS interaction.\label{fig:STS_example}}
 \end{figure*}
 
-The Fig.~\ref{fig:STS} describes in more accurately the algorithms run
-by the different entities that participate in STS.
+%The Fig.~\ref{fig:STS} describes in more accurately the algorithms run
+%by the different entities that participate in STS.
+The Fig.~\ref{fig:STS_example} shown an example of an STS communication. 
 
 \begin{comment}
 % The channels tracker
