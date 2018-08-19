@@ -24,7 +24,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">August 18, 2018</span></div>
+class="ecrm-1200">August 19, 2018</span></div>
    </div>
    <h3 class="likesectionHead"><a 
  id="x1-1000"></a>Contents</h3>
@@ -180,7 +180,8 @@ client/server architecture.
 topology of the overlay. In a pure Icecast system, users request the channels directly
 to the servers. Unfortunately, this simple procedure has a drawback: normally, users
 does not know the load of the servers nor their distance to the user’s player.
-This problem can be solved using a load balancer. The listeners (and the
+This problem can be solved using a <span 
+class="ecti-1000">load balancer</span>. The listeners (and the
 splitters) which know the URL of the required channel, connects ﬁrst to the
 load balancer which redirects them (with a HTTP 302 code) to a suitable
 server.
@@ -202,7 +203,8 @@ Depending on maximum number of potential peers that request the same channel,
 
                                                                   
 more than one splitter could be available. This information is served by a
-splitters tracker, and generated when a new splitter is instantiated. The
+<span 
+class="ecti-1000">splitters tracker</span>, and generated when a new splitter is instantiated. The
 tracker keeps updated a table indexed by names of channels, where every
 entry contains a list of splitters that transmit the corresponding channel.
 Therefore, to ﬁnd a suitable splitter, the peer ﬁrst retrieves from the splitters
@@ -232,6 +234,28 @@ class="content">Timeline example of an STS interaction.</span></div><!--tex4ht:l
    </div><hr class="endfloat" />
 <!--l. 114--><p class="indent" >   The Fig. <a 
 href="#x1-20072">2<!--tex4ht:ref: fig:STS_example --></a> shown an example of an STS communication.
+When the peer and the splitters are created, they send a
+<!--l. 116--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow ><mo 
+class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">I</mi><mi mathvariant="monospace">am</mi><mi mathvariant="monospace">new</mi></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>
+message to tell the load balancer and the splitters tracker, respectively, that a
+player running in the same host that the peer should be redirected toward it,
+and that the peer has two teams to join. The player is redirected to the
+peer which, after receiving the list of splitters from the tracker, selects the
+Splitter<!--l. 121--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></math> because answers
+ﬁrst than the Splitter<!--l. 121--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>.
 </p>
    <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
  id="x1-30002"></a>DBS (Data Broadcasting Set)</h3>

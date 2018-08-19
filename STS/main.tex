@@ -50,10 +50,10 @@ knowing the topology of the overlay. In a pure Icecast system, users
 request the channels directly to the servers. Unfortunately, this
 simple procedure has a drawback: normally, users does not know the
 load of the servers nor their distance to the user's player. This
-problem can be solved using a load balancer. The listeners (and the
-splitters) which know the URL of the required channel, connects first
-to the load balancer which redirects them (with a HTTP 302 code) to a
-suitable server.
+problem can be solved using a \emph{load balancer}. The listeners (and
+the splitters) which know the URL of the required channel, connects
+first to the load balancer which redirects them (with a HTTP 302 code)
+to a suitable server.
 
 % An extended load balancer
 This idea can be extended to take advantage of the existence of P2PSP
@@ -81,16 +81,16 @@ balancer redirects it towards the local peer.\footnote{If there is a
 % The splitters tracker
 When a network entity (usually, a player) connects with a peer, it
 must connects with a splitter which is transmitting the stream
-selected by the user. Depending on maximum number of potential peers that
-request the same channel, more than one splitter could be
-available. This information is served by a splitters tracker, and
-generated when a new splitter is instantiated. The tracker keeps
+selected by the user. Depending on maximum number of potential peers
+that request the same channel, more than one splitter could be
+available. This information is served by a \emph{splitters tracker},
+and generated when a new splitter is instantiated. The tracker keeps
 updated a table indexed by names of channels, where every entry
 contains a list of splitters that transmit the corresponding
 channel. Therefore, to find a suitable splitter, the peer first
 retrieves from the splitters tracker a list of splitters. Then, the
 peer tries to connect with all the splitters\footnote{Those splitters
-  with full teams should not accept new connections from peers.} in
+with full teams should not accept new connections from peers.} in
 parallel, and the fastest connection determines the selected splitter
 (the rest of successful connections are closed). This procedure should
 select the ``closest'' splitter to the peer in terms of network
@@ -111,7 +111,14 @@ latency.
 
 %The Fig.~\ref{fig:STS} describes in more accurately the algorithms run
 %by the different entities that participate in STS.
-The Fig.~\ref{fig:STS_example} shown an example of an STS communication. 
+The Fig.~\ref{fig:STS_example} shown an example of an STS
+communication. When the peer and the splitters are created, they send
+a $[\mathtt{I}\mathtt{am}\mathtt{new}]$ message to tell the load balancer and the
+splitters tracker, respectively, that a player running in the same
+host that the peer should be redirected toward it, and that the peer
+has two teams to join. The player is redirected to the peer which,
+after receiving the list of splitters from the tracker, selects the
+Splitter$_1$ because answers first than the Splitter$_2$.
 
 \begin{comment}
 % The channels tracker
