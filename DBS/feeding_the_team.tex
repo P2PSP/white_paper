@@ -5,18 +5,21 @@
 
 \label{sec:feeding_the_team}
 
-The splitter divides the stream into chunks of data of constant
-length, and sends exclusively each chunk to a different \emph{origin
+The splitter divides the stream into chunks of constant length, and
+sends exclusively each chunk to a different \emph{origin
   peer}\footnote{In the route that a chunk follows though the team,
-  the origin peer of a chunk is first peer that receives that chunk.},
-using a round-robin schema. The teams are created with a least one
+  the origin peer of a chunk is first peer that receives that chunk,
+  i.e. the peer selected by the splitter.}, using a round-robin
+schema. The teams are created with a least one monitor
 peer\footnote{Usually, this peer is a monitor peer (see
   Sec.~\ref{sec:...}), because it can be used by the overlay
   administrator to monitorize the rendering of the stream.} that runs,
-by default, in the same host that the splitter and listens to the port
-9999. Chunks are enumerated to distinguish them at the peers. More
-details about the implementation are available in
-Fig.~\ref{fig:chunk_generation}.
+by default, in the same host that the splitter, and listens to the
+port 9999. Chunks are enumerated to distinguish them at the peers.
+
+\begin{comment}
+More details about the implementation
+are available in Fig.~\ref{fig:chunk_generation}.
 
 %$x$, conforming a message
 %$c_x=[x,\text{chunk}]$, where
@@ -28,6 +31,7 @@ Fig.~\ref{fig:chunk_generation}.
     generation at the splitter and their transmission to the
     team.\label{fig:chunk_generation}}
 \end{figure*}
+\end{comment}
 
 We define a \emph{round} as the process of sending a (different) chunk
 from the splitter to all the peers of the team. In other words, in a
@@ -36,11 +40,21 @@ from the splitter. Notice that the round-time is variable, and depends
 on the number of peers in the team, the chunk-size, and the average
 bit-rate of the media.
 
+The splitter remembers which chunk, of a list of the last $B$ chunks
+transmitted to a peer of the team, was sent to each peer.
+
+\begin{notex}
+  See \href{https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py#L296}{$\text{destination\_of\_chunk}[]$}
+\end{notex}
+%\note{See
+%\href{https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py#L296}{$\text{destination\_of\_chunk}[]$}.
+%}
+
 \begin{comment}
-(in a team) as the time necessary to send two
-consecutive chunks from the splitter (of such team) to the same peer,
-using the round-robing. This time is variable and depends on $|T|$,
-$C$, and the average bit-rate of the media, $A$.
+(in a team) as the time necessary to send two consecutive chunks from
+  the splitter (of such team) to the same peer, using the
+  round-robing. This time is variable and depends on $|T|$, $C$, and
+  the average bit-rate of the media, $A$.
 \end{comment}
 
 \begin{comment}

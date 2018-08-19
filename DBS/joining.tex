@@ -8,10 +8,9 @@
 After connecting with a splitter, incoming peers request (using a
 reliable communication) to the splitter the current list of peers in
 the team. To minimize the joining time, the peer sends a
-$[``\mathtt{hello}"]$ message to each peer of the team in parallel
+$[\mathtt{hello}]$ message to each peer of the team in parallel
 with the reception of the list. When a peer of the team receives a
-$[``\mathtt{hello}"]$, it runs the $\text{add\_neighbor}()$ function,
-which basically adds the sender of the message to a table of peers
+$[\mathtt{hello}]$, it adds the sender of the message to a table of peers
 called $\text{forward}[]$. If a peer $P_i$ has an entry
 $\text{forward}[P_j]=P_k$ then, each chunk received by $P_i$ and
 originated at $P_j$ will be forwarded to $P_k$ (see
@@ -23,10 +22,11 @@ Sec.~\ref{sec:DBS_process_chunk}).
 %index to $\mathrm{forward}[]$ (see
 %Sec.~\ref{sec:chunk_DBS_processing}).
 
-The splitter, in an infinite loop: (1) listens to the peers, (2) sends
-the list of peers in the team to the peers, and (3) adds the incoming peer
-to the list.
+The splitter, in an infinite loop: listens to the incoming peers,
+sends the list of peers in the team, and adds the incoming peer to the
+list.
 
+\begin{comment}
 \begin{figure*}
   %\includegraphics[width=\textwidth]{joining}
   \fig{1000}{10cm}{joining} \caption{Code related to team
@@ -35,4 +35,4 @@ to the list.
 
 The new pseudo-code related to joining a team is describen in the
 Fig.~\ref{fig:joining}.
-
+\end{comment}

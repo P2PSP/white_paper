@@ -95,7 +95,7 @@ contains a list of splitters that transmit the corresponding
 channel. Therefore, to find a suitable splitter, the peer first
 retrieves from the splitters tracker a list of splitters. Then, the
 peer tries to connect with all the splitters\footnote{Those splitters
-with full teams should not accept new connections from peers.} in
+  with full teams should not accept new connections from peers.} in
 parallel, and the fastest connection determines the selected splitter
 (the rest of successful connections are closed). This procedure should
 select the ``closest'' splitter to the peer in terms of network
@@ -109,6 +109,18 @@ latency.
 %    start running the $\text{main}()$ function. \label{fig:STS}}
 %\end{figure*}
 
+The splitters send to the tracker a message with the current number
+$t$ of peers in their teams. When a splitters (and its team) is
+created, it sends a message with $t \geq N-1$ where $N$ is the maximum
+team size\footnote{A parameter decided by the overlay administrator.}
+for that splitter (at least one monitor peer must be in each
+team). When the team is full, the splitter sends a message with
+$t=0$. When the team is shutted down, the splitter sends a
+$t=-1$. Using the number of free spaces in each team, the splitters
+tracker can perform some load balacing amount the teams including
+those teams with more room in the $[\text{list of splitters}]$
+response.
+
 \begin{figure*}
 \fig{900}{9cm}{STS_example}
 \caption{Timeline example of an STS interaction.\label{fig:STS_example}}
@@ -117,13 +129,14 @@ latency.
 %The Fig.~\ref{fig:STS} describes in more accurately the algorithms run
 %by the different entities that participate in STS.
 The Fig.~\ref{fig:STS_example} shown an example of an STS
-communication. When the peer and the splitters are created, they send
-a $[\mathtt{I}\mathtt{am}\mathtt{new}]$ message to tell the load balancer and the
-splitters tracker, respectively, that a player running in the same
-host that the peer should be redirected toward it, and that the peer
-has two teams to join. The player is redirected to the peer which,
-after receiving the list of splitters from the tracker, selects the
-Splitter$_1$ because answers first than the Splitter$_2$.
+communication. When the peer is created, it sends a $[\mathtt{hello}]$
+message to the load balancer telling that a player is running in the
+same host that the peer and therefore, the peers should be redirected
+towards it. When the splitters are instantiated, they send their teams
+sizes ($1$, supposing that only one monitor has added to each
+team). The player is redirected to the peer which, after receiving the
+list of splitters from the tracker, selects the Splitter$_1$ because
+answers first than the Splitter$_2$.
 
 \begin{comment}
 % The channels tracker

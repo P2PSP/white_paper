@@ -1,4 +1,19 @@
-\newcommand{\note}[1]{\color{red}\textbf{#1}}
+%\newcommand{\note}[1]{\color{red}{\vbox{\textbf{#1}}}}
+
+%\newenvironment{note}
+%               {\begin{tabular}{|p{0.9\textwidth}|}
+%                   \hline\\
+%               }          
+%               {          
+%                 \\\\\hline
+%                 \end{tabular} 
+%}
+
+\newenvironment{notex}
+               {\textbf{Note}:
+               }
+               {
+               }
 
 \title{P2PSP (Peer-to-Peer Straightforward Protocol)}
 \maketitle
@@ -13,6 +28,8 @@
 
 \section{DBS (Data Broadcasting Set)}
 \input{DBS/body}
+
+\begin{comment}
 
 \section{FCS (Free-riding Control Set)}
 \input{FCS/body}
@@ -34,5 +51,7 @@
 
 \section{NTS (NAT Traversal Set)}
 \input{NTS/body}
+
+\end{comment}
 
 \bibliography{networking,P2P,streaming,misc,simulcasting,SVC,MDC,local}
