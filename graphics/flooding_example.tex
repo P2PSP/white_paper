@@ -1,0 +1,22 @@
+\documentclass{article}
+%\usepackage[pdftex]{graphicx}
+\usepackage{graphicx}
+
+\begin{document}
+\pagestyle{empty}
+
+\def\imagetop#1{\vtop{\null\hbox{#1}}}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{rrrr}
+  \imagetop{\includegraphics{team_0}} & \imagetop{\includegraphics{team_1}} &
+  \imagetop{\includegraphics{team_2}} & \imagetop{\includegraphics{team_3}} \\
+  \imagetop{\includegraphics{team_4}} & \imagetop{\includegraphics{team_5}} &
+  \imagetop{\includegraphics{team_6}} & \imagetop{\includegraphics{team_7}} \\
+  \imagetop{\includegraphics{team_8}} & \imagetop{\includegraphics{team_9}} &
+  \imagetop{\includegraphics{team_10}} & \imagetop{\includegraphics{team_11}} \\
+  \imagetop{\includegraphics{team_12}} & \imagetop{\includegraphics{team_13}} &
+  \imagetop{\includegraphics{team_14}} &  \\
+\end{tabular}
+}
+
+\end{document}
