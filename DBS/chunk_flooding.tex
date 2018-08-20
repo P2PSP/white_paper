@@ -27,6 +27,33 @@ supportivity means a low debt, and viceversa.
   implmented.
 \end{notex}
 
+DBS is a content-unaware push-based protocol, where when a peer
+received a chunk, it can be retransmitted to a large number of
+neighbors. To avoid network congestion while flooding, sending peers
+must perform some kind of data flow-control.
+
+%Moreover, to achieve an ideal I/O ratio of $1$, peers should send one
+%chunk for every received one.
+
+Congestion control is performed by means of the basic idea of, {\sl if
+  I have received a chunk, I should send a chunk}. It is easy to see
+that, in a fully connected overlay, this allows to control the data
+flow. However, peers can be ``connected'' with a variable number of
+neighbors and therefore, if the splitter follows a pure round-robin
+strategy, some peers can send more chunks that they receive.
+
+The previous idea can be improved to handle a variable connectivity
+degree. Each peer use an array of FIFO queues, $\text{pending}[]$,
+indexed by the neighbor end-points, where each queue stores buffer
+positions. Thus, if for example $\text{pending}[P_x]=\{11,22\}$,
+chunks found at positions $11$ and $22$ of the buffer have to be sent
+to peer $P_x$ when the prioritized round-robin scheduler used by the
+peer select $P_x$. The scheduler selects a different neighbor for each
+new received chunk.
+
+An example of the flooding with congestion control algorithm has been
+show in the Fig.~\ref{fig:example_flooding}.
+
 \begin{comment}
 In each round, peers check if a chunk have been received from the rest
 of peers of the team (${\cal P}_k\in {\cal T}_j)$). If not, peers send
@@ -54,7 +81,6 @@ N({\cal P}_i)\setminus{\cal P}_k$, and stops sending to ${\cal P}_k$
 more chunks.
 \end{comment}
 
-
 %When peers receive chunks from their splitter, they must flood them to
 %their neighbors until the chunks are broadcasted to the whole team
 %(Fig.~\ref{fig:chunk_generation_and_flooding}). Lets suppose that
@@ -68,35 +94,7 @@ more chunks.
 %chunk. This will be true if ${\cal P}_k$ is the gateway of ${\cal
 %  P}_n$ to go from ${\cal P}_n$ to ${\cal P}_i$. Therefore, a flooding
 %with prunning based on shortest path routing is used.
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "<none>"
-%%% End:
 
-\label{sec:congestion_control}
-
-DBS is a content-unaware push-based protocol, where when a peer
-received a chunk, it can be retransmitted to a large number of
-neighbors. To avoid network congestion while flooding, sending peers
-must perform some kind of data flow-control.
-
-%Moreover, to achieve an ideal I/O ratio of $1$, peers should send one
-%chunk for every received one.
-
-Congestion control is performed by means of the basic idea of, {\sl if
-  I have received a chunk, I should send a chunk}. It is easy to see
-that, in a fully connected overlay, this allows to control the data
-flow. However, peers can be ``connected'' with a variable number of
-neighbors and therefore, if the splitter follows a pure round-robin
-strategy, some peers can send more chunks that they receive.
-
-The previous idea can be improved to handle a variable connectivity
-degree. Each peer use an array of FIFO queues, $\text{pending}[]$,
-indexed by the neighbor end-points, where each queue stores buffer
-positions. Thus, if for example $\text{pending}[P_x]=\{11,22\}$,
-chunks found at positions $11$ and $22$ of the buffer have to be sent
-to peer $P_x$ when the priority round-robin scheduler used by the peer
-select $P_x$ (see Sec.~\ref{sec:chunk_flooding}).
 
 
 ............
