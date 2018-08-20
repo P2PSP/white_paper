@@ -1,32 +1,20 @@
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "<none>"
+%%% End:
+
 \label{sec:DBS}
 
 \begin{table}
   \begin{tabular}{rl}
     Parameter & Meaning \\
     \hline
-    $\mathtt{MaxNumTeams}$  & Maximum number of teams \\
-    $\mathtt{MaxMumPeers}$  & Maximum number of peers in a team \\
-    $\mathtt{ChunkSize}$    & Size of a chunk of media \\
-    $\mathtt{BufferSize}$   & buffer size in chunks \\
-    $\mathtt{MaxChunkDebt}$ & Maximum chunk debt between peers \\
-    ~\\
-    Entity  & Role \\
-    \hline
-    $\mathtt{MediaSource}$  & the media source \\
-    $\{T\}$ & all the teams that receive the same media stream \\
-    $R$     & teams tracker \\
-    $\{S\}$ & the set of splitters broadcasting the same stream \\
-    $T$     & one of the $|T|$ teams in $\{T\}$ \\
-    $S$     & the splitter of $T$ \\
-    $P_i$   & $i$-th peer of $T$ \\
-    $T^i$   & the neighbors of $P_i$ \\
-    ~\\
-    Variable            & Meaning \\
-    \hline
-    $1\leq |\{T\}|\leq G$ & current number of teams broadcasting the same channel \\
-    %$1\leq |S|\leq G$   & current number of splitters related with $T$ \\
-    $1\leq |T|\leq N$     & current number of peers in team $T$ \\
-    $1\leq |T^i|\leq N$   & current number of neighbor peers in $T^i$ \\
+    $B$    & Buffer size in chunks \\
+    $C$    & Chunk size \\
+    $D^*$  & Maximum chunk debt between peers \\
+    $L^*$  & Maximum losses of chunk \\
+    $M$    & Number of monitors \\
+    $N^*$  & Maximum number of peers in a team
   \end{tabular}
   \caption{Nomenclature used in DBS.\label{tab:DBS_nomenclature}}
 \end{table}
@@ -37,9 +25,10 @@ streaming server,
 %(the nomenclature used for describing DBS is shown in Table~\ref{tab:DBS_nomenclature}),
 and received by a splitter (see Sec.~\ref{sec:STS}). The splitter
 divides the stream into a sequence of \emph{chunks}, and relay them to
-its team, where it can be up to $N$ peers. Each peer gathers
-the chunks from the splitter and the rest of peers of the team, and
-sends them to a player.
+its team, where it can be up to $N$ peers. Each peer gathers the
+chunks from the splitter and the rest of peers of the team, and sends
+them to a player. The Tab.~\ref{tab:DBS_nomenclature} gathers up the
+definitions used in the DBS.
 \begin{comment}
 In single layered streams\footnote{Each layer of a
   scalable stream is received by a different peer attached to the same

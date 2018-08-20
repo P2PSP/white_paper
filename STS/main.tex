@@ -3,7 +3,7 @@
 %%% TeX-master: "<none>"
 %%% End:
 
-\label{sec:TTS}
+\label{sec:STS}
 
 \begin{figure}
   \fig{600}{6cm}{icecast-P2PSP} \caption{A possible data-flow in an
@@ -21,7 +21,7 @@ channels are available at one or more\footnote{Most client/server
   (Content Delivery Network), a tree of servers (sources) sending the
   same contents.} streaming \emph{servers}, and each channel has a
 different URL (Universal Resource Locator), usually expressed as a
-HTTP address with the structure:
+Web address with the structure:
 \begin{verbatim}
   http://name.icecast.server/name_of_the_channel
 \end{verbatim}
@@ -33,13 +33,12 @@ external server, which provides the
 stream. Fig.~\ref{fig:icecast-P2PSP} shows an example of an hybrid
 Icecast/P2PSP streaming overlay where several Icecast servers relay a
 set of channels produced by a set of source-clients, directly or
-through other servers, and controlling the data-flow. As can be seen,
-a listener (which usually plays de stream) can be replaced by a
-\emph{splitter}, a P2PSP entity that sends the received stream (a
-single channel) to a set of P2PSP \emph{peers}, called
-\emph{team}. Notice that, considering that a player can be attached to
-each peer, the scalability of the hybrid alternative is much higher
-than the pure client/server architecture.
+through other servers. As can be seen, a listener (which usually plays
+de stream) can be replaced by a \emph{splitter}, a P2PSP entity that
+sends the received stream (a single channel) to a set of P2PSP
+\emph{peers}, called \emph{team}. Notice that, considering that a
+player can be attached to each peer, the scalability of the hybrid
+alternative is much higher than the pure client/server architecture.
 %As the listeners, the peers receive
 %a copy of a stream
 
@@ -65,29 +64,27 @@ This idea can be extended to take advantage of the existence of P2PSP
 teams in hybrid overlays, where some users run a local peer to
 retrieve a copy of the stream. In this case, the peer
 communicates\footnote{This is a reliable communication. Reliable
-  messages are transmitted over TCP and their sent is denoted in the
-  pseudocode by $\Rightarrow$. On the other hand, unreliable messages,
-  which can be lost in transit, are transmitted over UDP and its
-  transmission is denoted by $\rightarrow$. In any case, the reception
-  of a packet is a permanent blocking action, at least a timeout is
-  indicated.} with the load balancer to tell it that there is a peer
-running in the same host that the player. Thus, when the player
-requests to the load balancer the reception of the stream, the load
-balancer redirects it towards the local peer.\footnote{If there is a
-  peer running in the same host that the player, the load balancer
-  will redirect the player to the local peer, and the channel served
-  to the player will be the one passed as a parameter when the peer
-  was instantiated. In other words, the channel specified by the
-  player in its request to the load balancer and the peer will be
-  ignored.}
+  messages are transmitted over TCP. On the other hand, unreliable
+  messages, which can be lost in transit, are transmitted over UDP. In
+  any case, the reception of a packet is a permanent blocking action,
+  at least a timeout is indicated.} with the load balancer to tell it
+that there is a peer running in the same host that the player. Thus,
+when the player requests to the load balancer the reception of the
+stream, the load balancer redirects it towards the local
+peer.\footnote{If there is a peer running in the same host that the
+  player, the load balancer will redirect the player to the local
+  peer, and the channel served to the player will be the one passed as
+  a parameter when the peer was instantiated. In other words, the
+  channel specified by the player in its request to the load balancer
+  and the peer will be ignored.}
 %The situation would be identical if the user would run a HTTP proxy
 %locally.
 
 % The splitters tracker
-When a network entity (usually, a player) connects with a peer, it
+When a network entity (usually, a player) connects with a peer, this
 must connects with a splitter which is transmitting the stream
 selected by the user. Depending on maximum number of potential peers
-that request the same channel, more than one splitter could be
+that are retrieving the same channel, more than one splitter could be
 available. This information is served by a \emph{splitters tracker},
 and generated when a new splitter is instantiated. The tracker keeps
 updated a table indexed by names of channels, where every entry
@@ -111,19 +108,19 @@ latency.
 
 The splitters send to the tracker a message with the current number
 $t$ of peers in their teams. When a splitters (and its team) is
-created, it sends a message with $t \geq N-1$ where $N$ is the maximum
-team size\footnote{A parameter decided by the overlay administrator.}
-for that splitter (at least one monitor peer must be in each
-team). When the team is full, the splitter sends a message with
-$t=0$. When the team is shutted down, the splitter sends a
+created, it sends a message $[t]$ with $t \geq N^*-1$ where $N^*$ is
+the maximum team size\footnote{A parameter decided by the overlay
+  administrator.}  for that splitter (at least one monitor peer must
+be in each team). When the team is full, the splitter sends a message
+with $t=0$. When the team is shutted down, the splitter sends a
 $t=-1$. Using the number of free spaces in each team, the splitters
-tracker can perform some load balacing amount the teams including
-those teams with more room in the $[\text{list of splitters}]$
+tracker can perform some load balacing among the teams, by including
+only those teams with more room in the $[\text{list of splitters}]$
 response.
 
 \begin{figure*}
-\fig{900}{9cm}{STS_example}
-\caption{Timeline example of an STS interaction.\label{fig:STS_example}}
+  \fig{900}{9cm}{STS_example}
+  \caption{Timeline example of an STS interaction.\label{fig:STS_example}}
 \end{figure*}
 
 %The Fig.~\ref{fig:STS} describes in more accurately the algorithms run

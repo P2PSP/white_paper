@@ -1,16 +1,22 @@
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "<none>"
+%%% End:
+
 \label{sec:leaving}
 
 An outgoing peer must to: (1) say $[\mathtt{goodbye}]$ to the splitter
 and the neighbor peers (in this order), (2) relay any pending
 (received but yet not sent) chunks, and (3) wait for a
-$[\mathtt{goodbye}]$ from the splitter, in this order. In case of
-timeout, the leaving procedure is reset.
+$[\mathtt{goodbye}]$ from the splitter. In case of timeout, the
+leaving procedure is reset.
 
 When a peer of the team receives a $[\mathtt{goodbye}]$, removes the
 sender from the $\text{forward}$.
 
 The splitter removes the peer from the list of peers.
 
+\begin{comment}
 \begin{figure*}
   %\includegraphics[width=0.55\textwidth]{leaving}
   \fig{400}{4cm}{leaving}
@@ -18,6 +24,7 @@ The splitter removes the peer from the list of peers.
 \end{figure*}
 
 All these rules have been describen in Fig.~\ref{fig:leaving}.
+\end{comment}
 
 \begin{comment}
 An outgoing peer $P_o$ (see Fig.~\ref{fig:leaving}) must to: (1) say

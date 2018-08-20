@@ -15,12 +15,12 @@
 
 When a peer $P_k$ receives a chunk, $P_k$ floods the chunk to each of
 its neighbors (except the source), using a prioritized round-robin
-schema, where those peers with a low chunk debt are selected first (see
-Fig.~\ref{fig:peer_chunk_flooding}). Every time $P_k$ sends a chunk to
-$P_l\in T^k$, $P_k$ runs $\mathtt{debt}[P_l] = \mathtt{debt}[P_l]+1$,
-and $P_l$ runs $\mathtt{debt}[P_k] = \mathtt{debt}[P_k]-1$. In ideal
-circunstances, debs should be $0$. Debs are clipped to $\pm
-D$. Obviously, a high supportivity means a low debt, and viceversa.
+schema, where those peers with a low chunk debt are selected
+first. Every time $P_k$ sends a chunk to $P_l$, $P_k$ runs
+$\text{debt}[P_l] = \text{debt}[P_l]+1$, and $P_l$ runs
+$\text{debt}[P_k] = \text{debt}[P_k]-1$. In ideal circunstances, debs
+should be $0$. Debs are clipped to $\pm D$. Obviously, a high
+supportivity means a low debt, and viceversa.
 
 \begin{notex}
   The prioritized round-robin neighbor selection has not yet been
