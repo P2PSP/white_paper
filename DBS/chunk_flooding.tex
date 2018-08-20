@@ -13,13 +13,13 @@
 \end{figure*}
 \end{comment}
 
-When a peer $P_k$ receives a chunk, $P_k$ floods the chunk to each of
-its neighbors (except the source), using a prioritized round-robin
-schema, where those peers with a low chunk debt are selected
-first. Every time $P_k$ sends a chunk to $P_l$, $P_k$ runs
-$\text{debt}[P_l] = \text{debt}[P_l]+1$, and $P_l$ runs
-$\text{debt}[P_k] = \text{debt}[P_k]-1$. In ideal circunstances, debs
-should be $0$. Debs are clipped to $\pm D$. Obviously, a high
+When a peer $P_k$ receives a chunk, $P_k$ floods a number of chunks to
+one of its its neighbors (obviously, except the neighbor sender of the
+chunk), using a prioritized round-robin schema, where those peers with
+a low chunk debt are selected first. Every time $P_k$ sends a chunk to
+$P_l$, $P_k$ runs $\text{debt}[P_l] = \text{debt}[P_l]+1$, and $P_l$
+runs $\text{debt}[P_k] = \text{debt}[P_k]-1$.  Debs are clipped to
+$\pm D$. In ideal circunstances, debs should be $0$. Obviously, a high
 supportivity means a low debt, and viceversa.
 
 \begin{notex}
@@ -68,3 +68,69 @@ more chunks.
 %chunk. This will be true if ${\cal P}_k$ is the gateway of ${\cal
 %  P}_n$ to go from ${\cal P}_n$ to ${\cal P}_i$. Therefore, a flooding
 %with prunning based on shortest path routing is used.
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "<none>"
+%%% End:
+
+\label{sec:congestion_control}
+
+DBS is a content-unaware push-based protocol, where when a peer
+received a chunk, it can be retransmitted to a large number of
+neighbors. To avoid network congestion while flooding, sending peers
+must perform some kind of data flow-control.
+
+%Moreover, to achieve an ideal I/O ratio of $1$, peers should send one
+%chunk for every received one.
+
+Congestion control is performed by means of the basic idea of, {\sl if
+  I have received a chunk, I should send a chunk}. It is easy to see
+that, in a fully connected overlay, this allows to control the data
+flow. However, peers can be ``connected'' with a variable number of
+neighbors and therefore, if the splitter follows a pure round-robin
+strategy, some peers can send more chunks that they receive.
+
+The previous idea can be improved to handle a variable connectivity
+degree. Each peer use an array of FIFO queues, $\text{pending}[]$,
+indexed by the neighbor end-points, where each queue stores buffer
+positions. Thus, if for example $\text{pending}[P_x]=\{11,22\}$,
+chunks found at positions $11$ and $22$ of the buffer have to be sent
+to peer $P_x$ when the priority round-robin scheduler used by the peer
+select $P_x$ (see Sec.~\ref{sec:chunk_flooding}).
+
+
+............
+
+in DBS is very simple: if a new chunk is
+received, peers forward (using the flooding with prunning algorithm
+described in Sec~\ref{dbs:chunk_generation_and_flooding}) each
+received chunk to the next peer of their list of peers (following a
+round-robin pattern).
+
+%Peers do not understand the content, but it is
+%known that in order to achieve a I/O ratio of 1, peers should send one
+%chunk for every received one, on average. To acomplish this, a ${\cal
+%  P}_i$ creates a FIFO queue of chunks for each $N({\cal P}_i)$, and,
+%for each received chunk, ${\cal P}_i$ forwards a queued chunk from
+%each of these queues.
+
+\begin{comment}
+A ${\cal P}_i$ forwards one or more chunks if and only if it has
+received a chunk. For each received chunk $c_j$, ${\cal P}_i$: 1)
+creates a list $l_{c_j}$ with the contents of $N'({\cal P}_i)$, and 2)
+sends $c_j$ to $l_{c_j}[0]$ (the first element), and removes
+$l_{c_j}[0]$. For each chunk reception, Step 2) is repeated for all
+the previously created lists while they are not exhausted.
+
+A solution is a forwarding algorithm based on the following
+idea. Peers manage a list of chunks, where every item is a 2-tuple
+($c_k$, $P_l$). The field $c_k$ represents the chunk that must be
+flooded (if the node that has delivered the chunk is the splitter,
+$c_k$ must be relayed towards all the neighbors, otherwise, $c_k$ must
+be sent to all the neighbors except the peer that delivered $c_k$),
+and the field $P_l$ the last neighbor to which $c_k$ was sent. For
+every chunk received, a new tuple is appended to the list of chunks
+and the rest of tuples are updated. The field $c_k$ remains constant
+but $P_l$ is replaced by the next peer in the list of neighbors for
+every received chunk.
+\end{comment}
