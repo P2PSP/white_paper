@@ -35,40 +35,39 @@ discussion, only UDP transmissions will be considered.
 Lets suppose a team in which, for the sake of simplicity, there is
 only one external (public) peer $P_e$, and that a new internal
 (private) peer $P_i$ has sent the sequence of [$\mathtt{hello}$]'s
-(see Sec~\ref{sec:joining}). Lets denote $P_i$'s NAT as
-$\mathsf{A}$. When no filtering is used at all, $\mathsf{A}$ forwards
-to ${\cal P}^t_i$ any external packet that arrives to it (obviously,
-if it was sent to the entry in $\mathsf{A}$'s translation table that
-was created during the transmission of the sequence of
-[$\mathtt{hello}$]'s), independently on the source end-points of the
-packets. In the case of source (IP) address filtering, $\mathsf{A}$
-will forward the packets only if they come from ${\cal P}^t_e$'s host.
-When source end-point filtering is used, $\mathsf{A}$ also checks the
-source port, i.e., that the packets were originated at ${\cal
-  P}^t_e$'s end-point.
+(see Sec~\ref{sec:joining}). Lets denote $P_i$'s NAT as $A$. When no
+filtering is used at all, $A$ forwards to $P_i$ any external packet
+that arrives to it (obviously, if it was sent to the entry in $A$'s
+translation table that was created during the transmission of the
+sequence of [$\mathtt{hello}$]'s), independently on the source
+end-points of the packets. In the case of source (IP) address
+filtering, $A$ will forward the packets only if they come from
+$P_e$'s host.  When source end-point filtering is used, $A$ also
+checks the source port, i.e., that the packets were originated at
+$P_e$'s end-point.
 
 \begin{figure}
-  \fig{200}{6cm}{cone_NAT}
+  \fig{500}{5cm}{cone_NAT}
   \caption{Cone NAT port allocation.\label{fig:cone_NAT}}
 \end{figure}
 
 \begin{figure}
-  \fig{200}{6cm}{symmetric_NAT}
+  \fig{500}{5cm}{symmetric_NAT}
   \caption{Symmetric NAT port allocation.\label{fig:cone_NAT}}
 \end{figure}
 
 \subsection{Cone VS symmetric}
 Cone NATs use the same external end-point for every packet that comes
 from the same internal end-point, independently on the destination of
-the packets (see Fig.~\ref{fig:cone_NAT}). For the external peer ${\cal
-  P}^t_e$, the situation is identical to the case in which the NATed
-peer ${\cal P}^t_i$ would be running in a public host.
+the packets (see Fig.~\ref{fig:cone_NAT}). For the external peer
+$P_e$, the situation is identical to the case in which the NATed peer
+$P_i$ would be running in a public host.
 
 Symmetric NATs use different external end-points for different packets
 that comes from the same internal end-point, when these packets have
-different destination end-points (see Fig.~\ref{fig:symmetric_NAT}). Thus,
-two different external peers will see two different public end-points
-of ${\cal P}^t_e$.
+different destination end-points (see
+Fig.~\ref{fig:symmetric_NAT}). Thus, two different external peers will
+see two different public end-points of $P_e$.
 
 \subsection{Port allocation}
 In the case of port preservation, if $X$:$Y$ is the private end-point
@@ -87,21 +86,19 @@ of randomization should be always expected during a the port
 assignment.
 
 \subsection{NAT type analysis}
-An incoming peer ${\cal P}^t_i$ can determine its NAT behavior using
-the following steps:
+An incoming peer $P_i$ can determine its NAT behavior using the
+following steps:
 \begin{enumerate}
-\item Let $\{\mathsf{A}_0, \mathsf{A}_1, \cdots, \mathsf{A}_M\}$ the
-  public ports used by peer ${\cal P}^t_i$, whose NAT is $\mathsf{A}$,
-  to send the [$\mathtt{hello}$] UDP packets towards ${\cal S}^t$ and
-  the $M$ monitor peers of the team, in this order. This data is known
-  by ${\cal P}^t_i$ after receiving the acknowledgment of each
-  [$\mathtt{hello}$]. Compute
+\item Let $A_0, A_1, \cdots, A_M\}$ the public ports used by peer
+  $P_i$, whose NAT is $A$, to send the [$\mathtt{hello}$] UDP packets
+  towards the splitter $S$ and the $M$ monitor peers of the team, in
+  this order. This data is known by $P_i$ after receiving the
+  acknowledgment of each [$\mathtt{hello}$]. Compute
   \begin{equation}
     \Delta_k = \mathsf{A}_k - \mathsf{A}_{k-1}
     \label{eq:port_distancies}
   \end{equation}
-  for $k=1,2,\cdots,M$, the \emph{port distances} gathered by ${\cal
-    P}^t_i$.
+  for $k=1,2,\cdots,M$, the \emph{port distances} gathered by $P_i$.
 \item Determine a \emph{port step}
   \begin{equation}
     \Delta = \left\{\begin{array}{lr}
@@ -111,25 +108,23 @@ the following steps:
     \label{eq:port_step}
   \end{equation}
   where GCD is the Greatest Common Divisor operator.
-\item If $\Delta=0$ ($\mathsf{A}$ is using the same external port for
-  communicating ${\cal P}^t_i$ with the rest of peers of the team)
-  then ${\cal P}^t_i$ is behind a cone NAT. Notice that public (not
-  NATed) peers will be considered as being using this type of NAT,
-  also.
-\item If $\Delta>0$ ($\mathsf{A}$ is using a different external port
-  for each external peer) then ${\cal P}^t_i$ is behind a symmetric
-  NAT. In this case:
+\item If $\Delta=0$ ($A$ is using the same external port for
+  communicating $P_i$ with the rest of peers of the team) then $P_i$
+  is behind a cone NAT. Notice that public (not NATed) peers will be
+  considered as being using this type of NAT, also.
+\item If $\Delta>0$ ($A$ is using a different external port for each
+  external peer) then $P_i$ is behind a symmetric NAT. In this case:
   \begin{enumerate}
   \item If
     \begin{equation}
       \Delta_1 = \Delta_2 = \cdots = \Delta_m
     \end{equation}
-    then $\mathsf{A}$ is using sequentially port allocation.
+    then $A$ is using sequentially port allocation.
   \item If
     \begin{equation}
       \Delta = \lim_{m\to\infty} \mathrm{GCD}(\Delta_1, \cdots, \Delta_m) = 1.
     \end{equation}
-    then $\mathsf{A}$ is using random port allocation.
+    then $A$ is using random port allocation.
   \end{enumerate}
 \end{enumerate}
 
@@ -159,21 +154,21 @@ the following steps:
 \end{table}
 
 \begin{figure}
-  \fig{400}{6cm}{UDP_Hole_Punching_RCN}
-  \caption{An example that shows why it is possible to establish a
+  \fig{600}{6cm}{UDP_Hole_Punching_RCN}
+  \caption{An example that shows how it is possible to establish a
     connection with DBS when two peers $P_1$ and $P_2$ that are behind
-    cone NATs.\label{fig:UHP_Hole_Punching_RCN}}
+    cone NATs.\label{fig:UDP_Hole_Punching_RCN}}
 \end{figure}
 
 \begin{figure}
-  \fig{400}{6cm}{UDP_Hole_Punching_SN_failure}
+  \fig{600}{6cm}{UDP_Hole_Punching_SN_failure}
   \caption{An example that shows why its is impossible to establish a
     connection with DBS when two peers $P_1$ and $P_2$ that are behind
     symmetric NATs.\label{fig:UDP_Hole_Punching_SN_failure}}
 \end{figure}
 
 \begin{figure*}
-  \fig{600}{8cm}{SNTuCPP}
+  \fig{800}{8cm}{SNTuCPP}
   \caption{Timeline of an (ideal) NTS interaction between two peers
     $P_1$ and $P_2$ which are behind symmetric NATs.
     \label{fig:SNTuCPP}}
@@ -192,8 +187,102 @@ hand, the combinations labeled with ``-'' or ``NTS'' will not work
 with DBS (see Fig.\ref{fig:UDP_Hole_Punching_SN_failure}). In fact,
 only the ``NTS'' entries should work, in general, with NTS, depending
 on the port prediction algorithm and the number of
-tries. Fig.~\ref{fig:SNTuCPP} shows an example of an NTS (NAT
-traversal) success.
+tries.
+
+Fig.~\ref{fig:SNTuCPP} shows an example of an NTS (NAT traversal)
+success. When the new NATed peers, $P_1$ and $P_2$, arrive at the
+team,
+%\footnote{The same principle applies if
+%  there is more than one monitor or more than one already incorporated
+%  peer in the team.}
+the following events happen:
+
+\begin{itemize}
+  \item [00.] $M$ requests to join the team (the joining request is
+    not shown in the figure for brevity) and $S$ sends to $M$ an empty
+    list of peers. At this moment, $M$ has joined the team.
+  \item [01.] $P_1$ requests $S$ to join through an external port
+    $A_0$ (again, this message is not shown).  $S$ sends to $P_1$ the
+    list of peers. This list contains only the endpoint of $M$.
+  \item [02.] NAT $A$ relays towards $P_1$ the previuos message.
+  \item [03.] $P_1$ answers $[\mathtt{hello} M]$ to $M$.
+  \item [04.] $A$ relays the previous message, which is received by
+    $M$. Due to $A$ is a symmetric NAT, a new source port $A_1$ is
+    used for this message.
+  \item [05.] $M$ sends $[\mathtt{ack} M]$ towards $(A, A_1)$.
+  \item [06.] The previous message is relayed by $A$. Simultaneously,
+    $M$ informs to $S$ that $P_1$ has communicated
+    with it, using the external endpoint $(A,A_1)$.
+  \item [07.] $S$ acknowledges the reception of the
+    previous message.
+  \item [08.] $P_2$ requests to join the team (not shown) and $S$
+    sends to it the current list of peers, which contains the endpoint
+    of $M$ and the tuple $((A,A_0),\Delta_{A},\#P_2)$ (the external
+    endpoint used by $P_1$ to communicate with $S$, the maximum port
+    step in NAT $A$, $\Delta_{A}$ measured by $S$ for $P_1$
+    thoroughtout its incorporation to the team, and the index of
+    $P_2$, $\#P_2$, in the list of peers). Using this information,
+    $P_2$ will perform the port prediction for the external port that
+    $\cal{A}$ will assign to $P_1$ when it be communicating with
+    $P_2$. This prediction is the list of ports
+    $Z_{\#P_1}=${~\tt{\footnotesize
+        get\_guessed\_ports}($\#P_2${\footnotesize,}$A_0${\footnotesize,}$\Delta_A$)}
+    is populated by $P_2$ using the Algorithm~\ref{alg:prediction}.
+  \item [09.] $B$ retransmits the previous message.
+  \item [10.] $P_2$ sends a $[\mathtt{hello} M]$ towards $M$.
+  \item [11.] $B$ retransmits the previous message, which
+    arrives to $M$, and $P_2$ sends a
+    $[\mathtt{hello} (A,A_2)]$ towards
+    $(A,A_2)$, which has been computed in the Step 08.
+  \item [12.] The previous message arrives to $(A,A_2)$
+    (which is correct), but $A$ discards this packet
+    because still there is not a working entry in its translation
+    table for the key
+    $((B,B_2),A_2)$.
+  \item [13.] $M$ acknowledges the $[\mathtt{hello} M]$, which arrived
+    in the Step 11.
+  \item [14.] The $[\mathtt{ack} M]$ message is received by $P_2$ and
+    $M$ informs to $S$ that $P_2$ is also using the port $B_1$ (this
+    information is used to compute the maximum port step $\Delta_B$
+      in NAT $B$, measured for $P_2$ thoroughout its incorporation.
+  \item [15.] $S$ acknowledges the previous reception.
+  \item [16.] $S$ sends to $P_1$ the message $[(B,B_0),\Delta_B,S']$
+    (external end-point used by $P_2$ to talk with $S$, port step
+    measured for $P_2$ and a new temporaly listenning port
+    $S'$ at node $S$). The tuple
+    $((B,B_0),\Delta_B)$ allows $P_1$ to
+    predict which external port ($B_2$) will use
+    $\mathrm{NAT} B$ when $P_2$ sends a packet to $P_1$. The
+    extra socket bound by $S$ to $S'$ will be used to update
+    the external port that $P_1$ is currently using to communicate
+    with the rest of peers of the team. % (see Appendix~\ref{ape:SYMPP}).
+  \item [17.] $P_1$ receives the previous message.
+  \item [18.] $P_1$ says $[\mathtt{hello} P_2]$ to EEP
+    $(\mathrm{NAT} B,B_2)$.
+  \item [19.] $P_1$ says $[\mathtt{hello} S]$ to EEP $(S,S')$.
+  \item [20.] $\mathrm{NAT} B$ relays the message
+    $[\mathtt{hello} P_2]$ towards $P_2$ and $[\mathtt{hello} S]$ is
+      received by $S$ (which updates the external port for
+      $P_1$). Notice that at this moment, $P_2$ knows that $P_1$ is
+      able to send data to it.
+  \item [21.] Both, $S$ and $P_2$ acknowledges the $[\mathtt{hello}]$
+    messages.
+  \item [22.] $[\mathtt{ack} S]$ is received by $P_1$,
+    $[\mathtt{ack} P_2]$ is received by $\mathrm{NAT} A$ and the timer
+    assigned to the message $[\mathtt{hello} P_1]$ sent in Step 11
+    timeouts and this message is re-sent.
+  \item [23.] $P_1$ receives $[\mathtt{ack} P_2]$ and $\mathrm{NAT} A$
+    receives $[\mathtt{hello} P_1]$.
+  \item [24.] $[\mathtt{hello} P_1]$ is delivered to $P_1$. At this
+    moment, $P_1$ knows that $P_2$ is able to send data to it.
+  \item [25.] $P_1$ acknowledges the previous $[\mathtt{hello} P_1]$.
+  \item [26.] $[\mathtt{ack} P_1]$ arrives to $\mathrm{NAT} B$.
+  \item [27.] $[\mathtt{ack} P_1]$ arrives to $P_2$.
+  \item [28.] $P_1$ and $P_2$ annouce to the $S$ the source port used
+    by the other peer.
+  \item [29.] This information is received by the $S$, which updates
+    the external port information for $P_1$ and $P_2$.
+\end{itemize}
 
 Summarizing, NTS can provide connectivity for those peers that are
 behind port-preservation symmetric NATs with sequential port
@@ -205,16 +294,16 @@ predict the port that the NAT of the interlocutor peer will use to
 send the packets towards it. And obviously, this must be performed by
 each already incorporated peer that is behind a symmetric NAT.
 
-The list of predicted ports $Z$ that a a peer ${\cal P}^j_x$ performs
-is determined by:
+The list of predicted ports $Z$ that a a peer $P_x$ performs is
+determined by:
 \begin{equation}
   \begin{array}{rcl}
-    Z & = & \textsf{A}_0 + x + \{s\in\{0,1,\cdots,N/2-1\}\}; \\
-    Z & += & \textsf{A}_0 + (x + \{s\in\{0,1,\cdots, N-1\}\}) \cdot \Delta.
+    Z & = & A_0 + x + \{s\in\{0,1,\cdots,N/2-1\}\}; \\
+    Z & += & A_0 + (x + \{s\in\{0,1,\cdots, N-1\}\}) \cdot \Delta.
   \end{array}
 \end{equation}
 where ``$+=$'' denotes the concatenation of lists and $N$ is the
-number of guessed ports, $\textsf{A}_0$ is the first external port (the
+number of guessed ports, $A_0$ is the first external port (the
 port used to communicate with $S$) assigned to the incoming peer and
 $\Delta$ is the (maximum) port step measured for the incoming peer's
 NAT.
