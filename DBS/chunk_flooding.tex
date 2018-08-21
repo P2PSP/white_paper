@@ -51,8 +51,15 @@ to peer $P_x$ when the prioritized round-robin scheduler used by the
 peer select $P_x$. The scheduler selects a different neighbor for each
 new received chunk.
 
+\begin{figure*}
+  \fig{400}{4cm}{team_0} \caption{A team has been created with a
+  single monitor $M_0$ ($[\mathtt{hello}]$ messages are not
+  shown. Chunks with numbers 0 and 1 have been transmitted from the
+  splitter $S$ to $M_0$. \label{fig:team_0}}
+\end{figure*}
+
 An example of the flooding with congestion control algorithm has been
-show in the Fig.~\ref{fig:example_flooding}.
+show in the Figs.~\ref{fig:team_0}, ..., \ref{fig:team_13}.
 
 \begin{comment}
 In each round, peers check if a chunk have been received from the rest
