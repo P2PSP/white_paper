@@ -76,10 +76,72 @@ new received chunk.
     the stream.\label{fig:team_1}}
 \end{figure*}
 
+\begin{figure*}
+  \fig{300}{3cm}{team_2} \caption{$P_2$ joins the team (sending the
+    $[\mathtt{hello}]$ not shown). $M_0$ and $P_1$ includes $P_2$ in
+    their forwarding tables. The chunk 3 is received by $P_1$ which
+    decides to send it to $P_2$, which adds $P_1$ to its forwarding
+    table. Chunk 3 remains as pending to be sent to $M_0$ when the
+    next chunk is received by $P_1$.\label{fig:team_2}}
+\end{figure*}
+
+\begin{figure*}
+  \fig{330}{3.3cm}{team_3} \caption{Chunk 4 is received by $P_2$ which
+    relays it to $P_1$, what relays chunk 3 to
+    $M_0$.\label{fig:team_3}}
+\end{figure*}
+
+\begin{figure*}
+  \fig{330}{3.3cm}{team_4} \caption{Chunk 5 is received by $M_0$ which
+    relays it to $P_2$. $P_2$ adds $M_0$ to its forwarding table. At
+    this moment, all nodes knows the rest of the
+    team.\label{fig:team_4}}
+\end{figure*}
+
+\begin{notex}
+  
+  \begin{figure*}
+    \fig{350}{3.5cm}{team_5}
+  \end{figure*}
+
+  \begin{figure*}
+    \fig{380}{3.8cm}{team_6}
+  \end{figure*}
+  
+  \begin{figure*}
+    \fig{320}{3.2cm}{team_7}
+  \end{figure*}
+
+  \begin{figure*}
+    \fig{200}{2cm}{team_8}
+  \end{figure*}
+
+  \begin{figure*}
+    \fig{280}{2.8cm}{team_9}
+  \end{figure*}
+
+  \begin{figure*}
+    \fig{350}{3.5cm}{team_10}
+  \end{figure*}
+
+  \begin{figure*}
+    \fig{210}{2.1cm}{team_11}
+  \end{figure*}
+
+  \begin{figure*}
+    \fig{210}{2.1cm}{team_12}
+  \end{figure*}
+
+  \begin{figure*}
+    \fig{210}{2.1cm}{team_13}
+  \end{figure*}
+
+\end{notex}
+
 An example of the flooding with congestion control algorithm has been
-show in the Figs.~\ref{fig:team_0}, ..., \ref{fig:team_13}. Notice
-that in this example, the debts have not been considered, and that all
-messages are received successfully.
+show in the Figs.~\ref{fig:team_0}, ... Notice that in this example,
+the debts have not been considered, and that all messages are received
+successfully.
 
 \begin{comment}
 In each round, peers check if a chunk have been received from the rest
@@ -123,14 +185,6 @@ more chunks.
 %with prunning based on shortest path routing is used.
 
 
-
-............
-
-in DBS is very simple: if a new chunk is
-received, peers forward (using the flooding with prunning algorithm
-described in Sec~\ref{dbs:chunk_generation_and_flooding}) each
-received chunk to the next peer of their list of peers (following a
-round-robin pattern).
 
 %Peers do not understand the content, but it is
 %known that in order to achieve a I/O ratio of 1, peers should send one
