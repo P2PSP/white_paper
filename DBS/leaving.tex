@@ -9,12 +9,14 @@ An outgoing peer must to: (1) say $[\mathtt{goodbye}]$ to the splitter
 and the neighbor peers (in this order), (2) relay any pending
 (received but yet not sent) chunks, and (3) wait for a
 $[\mathtt{goodbye}]$ from the splitter. In case of timeout, the
-leaving procedure is reset.
+leaving procedure is reset a number of times.
 
 When a peer of the team receives a $[\mathtt{goodbye}]$, removes the
 sender from the $\text{forward}$.
 
 The splitter removes the peer from the list of peers.
+
+Outgoing peers does not wait for a any reply from the neighbors to go.
 
 \begin{comment}
 \begin{figure*}

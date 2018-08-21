@@ -13,20 +13,6 @@
 \end{figure*}
 \end{comment}
 
-When a peer $P_k$ receives a chunk, $P_k$ floods a number of chunks to
-one of its its neighbors (obviously, except the neighbor sender of the
-chunk), using a prioritized round-robin schema, where those peers with
-a low chunk debt are selected first. Every time $P_k$ sends a chunk to
-$P_l$, $P_k$ runs $\text{debt}[P_l] = \text{debt}[P_l]+1$, and $P_l$
-runs $\text{debt}[P_k] = \text{debt}[P_k]-1$.  Debs are clipped to
-$\pm D$. In ideal circunstances, debs should be $0$. Obviously, a high
-supportivity means a low debt, and viceversa.
-
-\begin{notex}
-  The prioritized round-robin neighbor selection has not yet been
-  implmented.
-\end{notex}
-
 DBS is a content-unaware push-based protocol, where when a peer
 received a chunk, it can be retransmitted to a large number of
 neighbors. To avoid network congestion while flooding, sending peers
@@ -47,9 +33,9 @@ degree. Each peer use an array of FIFO queues, $\text{pending}[]$,
 indexed by the neighbor end-points, where each queue stores buffer
 positions. Thus, if for example $\text{pending}[P_x]=\{11,22\}$,
 chunks found at positions $11$ and $22$ of the buffer have to be sent
-to peer $P_x$ when the prioritized round-robin scheduler used by the
-peer select $P_x$. The scheduler selects a different neighbor for each
-new received chunk.
+to peer $P_x$ when a round-robin scheduler used by the peer select
+$P_x$. The scheduler selects a different neighbor, using a round-robin
+scheme, for each new received chunk.
 
 \begin{figure*}
   \fig{250}{2.5cm}{team_0} \caption{A team has been created with a
@@ -139,9 +125,30 @@ new received chunk.
 \end{notex}
 
 An example of the flooding with congestion control algorithm has been
-show in the Figs.~\ref{fig:team_0}, ... Notice that in this example,
-the debts have not been considered, and that all messages are received
-successfully.
+show in the Figs.~\ref{fig:team_0}, ... Notice that in this example
+all messages are received successfully.
+
+As can be seen in the previous example, when a peer $P_k$ receives a
+chunk, $P_k$ floods a set of chunks to one of its its neighbors
+(obviously, except the neighbor sender of the chunk), using
+round-robin schema. The size of this set, what we call
+$\text{pending}$, depends on how many neighbors a peer has.
+
+
+% Alternative: increment by +1 and decrement by /2
+
+% Alternative: peers keep sorted the neighbors by debt, and the list
+% is run from the beginning each time a chunk arrives from the
+% splitter.
+
+% Alternative: the debt is only incremented if the relayed chunk has
+% been received from the splitter.
+
+% Alternative: if between two consecutive chunks received from the
+% splitter (a round), a peer does not receive a chunk from a neighbor
+% with origin such neighbor, the peer is removed from the forwaring
+% list.
+
 
 \begin{comment}
 In each round, peers check if a chunk have been received from the rest
