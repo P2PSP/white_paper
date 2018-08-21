@@ -1,18 +1,23 @@
-% NTS
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "<none>"
+%%% End:
 
-Most most of the peers run inside of ``private'' networks, i.e. behind
-NAT devices. NTS\footnote{This work was supported by GSoC15, developed
-  by Max Mertens, and mentored by Vicente González-Ruiz and Juan Pablo
-  Gracía-Ortiz. The original information is available at
-  \url{https://github.com/P2PSP/core/tree/master/doc/NTS}.} is an DBS
+\label{sec:NTS}
+
+Most of the peers run inside of ``private'' networks, i.e. behind NAT
+devices. NTS\footnote{This work was supported by GSoC15, developed by
+Max Mertens, and mentored by Vicente González-Ruiz and Juan Pablo
+Gracía-Ortiz. The original information is available
+at \url{https://github.com/P2PSP/core/tree/master/doc/NTS}.} is an DBS
 extension which provides peer connectivity for some NAT configurations
-DBS can not provide direct peer communication.\footnote{Normally, this
-  problem does not prevent prevent the peers from receiving the
-  stream. However, a low degree of connectivity among peers reduces
-  the tolerance of the team to transmission errors and attacks, and
-  makes that the peers with a higher degree to send more chunks that
-  the others, which can be considered undesirable in specific
-  environments.}
+where DBS can not provide direct peer
+communication.\footnote{Normally, this problem does not prevent
+prevent the peers from receiving the stream. However, a low degree of
+connectivity among peers reduces the tolerance of the team to
+transmission errors and attacks, and makes that the peers with a
+higher degree to send more chunks that the others, which can be
+considered undesirable in specific environments.}
 
 Peers behind the same NAT will use the same external (also called
 ``public'', because in most cases we have not nested NAT
@@ -24,23 +29,23 @@ the packets that comes from the external side: (a) \emph{no
   end-point filtering}. Finally, NATs can use several port allocation
 algorithms, among which, the most frequent are: (i) \emph{port
   preservation} and (ii) \emph{random port}. Notice that in this
-discussion, only UDP transmission will be considered.
+discussion, only UDP transmissions will be considered.
 
 \subsection{Traffic filtering}
 Lets suppose a team in which, for the sake of simplicity, there is
-only one external (public) peer $P^t_e$, and that a new
-internal (private) peer ${\cal P}^t_i$ has sent the sequence of
-[$\mathtt{hello}$]'s (see Sec~\ref{sec:peer_joining}. Lets denote
-${\cal P}^t_i$'s NAT as $\mathsf{A}$. When no filtering is used at
-all, $\mathsf{A}$ forwards to ${\cal P}^t_i$ any external packet that
-arrives to it (obviously, if it was sent to the entry in
-$\mathsf{A}$'s translation table that was created during the
-transmission of the sequence of [$\mathtt{hello}$]'s), independently
-on the source end-points of the packets. In the case of source (IP)
-address filtering, $\mathsf{A}$ will forward the packets only if they
-come from ${\cal P}^t_e$'s host.  When source end-point filtering is
-used, $\mathsf{A}$ also checks the source port, i.e., that the packets
-were originated at ${\cal P}^t_e$'s end-point.
+only one external (public) peer $P_e$, and that a new internal
+(private) peer $P_i$ has sent the sequence of [$\mathtt{hello}$]'s
+(see Sec~\ref{sec:joining}). Lets denote $P_i$'s NAT as
+$\mathsf{A}$. When no filtering is used at all, $\mathsf{A}$ forwards
+to ${\cal P}^t_i$ any external packet that arrives to it (obviously,
+if it was sent to the entry in $\mathsf{A}$'s translation table that
+was created during the transmission of the sequence of
+[$\mathtt{hello}$]'s), independently on the source end-points of the
+packets. In the case of source (IP) address filtering, $\mathsf{A}$
+will forward the packets only if they come from ${\cal P}^t_e$'s host.
+When source end-point filtering is used, $\mathsf{A}$ also checks the
+source port, i.e., that the packets were originated at ${\cal
+  P}^t_e$'s end-point.
 
 \begin{figure}
   \fig{200}{6cm}{cone_NAT}
