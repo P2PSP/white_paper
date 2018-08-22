@@ -24,7 +24,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">August 21, 2018</span></div>
+class="ecrm-1200">August 22, 2018</span></div>
    </div>
    <div 
 class="abstract" 
@@ -101,6 +101,8 @@ href="#x1-190008.4" id="QQ2-1-29">NAT type analysis</a></span>
 href="#x1-200008.5" id="QQ2-1-30">(Theoretical) NAT traversal performance of DBS</a></span>
 <br />    <span class="subsectionToc" >8.6 <a 
 href="#x1-210008.6" id="QQ2-1-35">A port prediction algorithm (Max’s proposal)</a></span>
+<br />   <span class="sectionToc" >9 <a 
+href="#x1-220009" id="QQ2-1-36">MCS (Multi-Channel Set)</a></span>
    </div>
 <!--l. 32--><p class="noindent" >
 </p>
@@ -384,8 +386,8 @@ class="content">Nomenclature used in DBS.</span></div><!--tex4ht:label?: x1-3001
    </div><hr class="endfloat" />
    </div>
 <!--l. 22--><p class="indent" >   DBS provides ALM <span class="cite">[<a 
-href="#Xbanerjee2002scalable">1</a>]</span> of a media stream in unicast environments <span class="cite">[<a 
-href="#Xcomer2003computer">3</a>]</span>. The media
+href="#Xbanerjee2002scalable">2</a>]</span> of a media stream in unicast environments <span class="cite">[<a 
+href="#Xcomer2003computer">5</a>]</span>. The media
 is sent by a streaming server, and received by a splitter (see Sec. <a 
 href="#x1-20001">1<!--tex4ht:ref: sec:STS --></a>). The splitter divides
 the stream into a sequence of <span 
@@ -1434,8 +1436,8 @@ of its forwaring table.
  id="x1-100003"></a>IMS (Ip Multicast Set)</h3>
 <!--l. 8--><p class="noindent" >IPM is available by default in LANs (Local Are Network)s and VLANs (Virtual
 LANs) <span class="cite">[<a 
-href="#Xshabtay2011ip">4</a>]</span>, but not in the Internet <span class="cite">[<a 
-href="#XComer1">2</a>]</span>. IMS runs on the top of DBS and provides
+href="#Xshabtay2011ip">6</a>]</span>, but not in the Internet <span class="cite">[<a 
+href="#XComer1">4</a>]</span>. IMS runs on the top of DBS and provides
 eﬃcient native IPM, where available.
 </p><!--l. 13--><p class="indent" >   The idea of IMS is simple: all peers in the same LAN or
 VLAN have the same network address. When a joining peer
@@ -3489,34 +3491,69 @@ incoming peer and <!--l. 308--><math
 display="inline" ><mi 
 >Δ</mi></math>
 is the (maximum) port step measured for the incoming peer’s NAT.
+</p><!--l. 56--><p class="noindent" >
+</p>
+   <h3 class="sectionHead"><span class="titlemark">9   </span> <a 
+ id="x1-220009"></a>MCS (Multi-Channel Set)</h3>
+<!--l. 1--><p class="noindent" >When using MDC <span class="cite">[<a 
+href="#Xbaccichet2007content">1</a>]</span>, SVC <span class="cite">[<a 
+href="#Xchu2009auction">3</a>]</span>, or for emulating the CS model, it can be interesting
+for peers to belong to more than one team. To implement MCS, peers must
+replicate the LP2PLS protocol layers for each team (channel), except the
+buﬀer.
+</p><!--l. 6--><p class="indent" >   The use of MDC is trivial: the higher the number received descriptions (channels),
+even partially, the higher the quality of the playback. However, when transmitting
+SVC media, peers should prioritize the reception of the most important layers.
+Finally, a pure CS service could be provided if the corresponding splitter announces
+one empty team and sends each chunk so many times as teams (with one peer/team)
+there are.
 </p><!--l. 1--><p class="noindent" >
 </p>
    <h3 class="likesectionHead"><a 
- id="x1-220008.6"></a>References</h3>
+ id="x1-230009"></a>References</h3>
 <!--l. 1--><p class="noindent" >
    </p><div class="thebibliography">
    <p class="bibitem" ><span class="biblabel">
  [1]<span class="bibsp">   </span></span><a 
+ id="Xbaccichet2007content"></a>Pierpaolo  Baccichet,  Jeonghun  Noh,  Eric  Setton,  and  Bernd  Girod.
+   Content-aware p2p video streaming with low latency.  In <span 
+class="ecti-1000">Multimedia and</span>
+   <span 
+class="ecti-1000">Expo, 2007 IEEE International Conference on</span>, pages 400–403. IEEE, 2007.
+                                                                  
+
+                                                                  
+   </p>
+   <p class="bibitem" ><span class="biblabel">
+ [2]<span class="bibsp">   </span></span><a 
  id="Xbanerjee2002scalable"></a>Suman Banerjee, Bobby Bhattacharjee, and Christopher Kommareddy.
    <span 
 class="ecti-1000">Scalable application layer multicast</span>, volume 32. ACM, 2002.
    </p>
    <p class="bibitem" ><span class="biblabel">
- [2]<span class="bibsp">   </span></span><a 
+ [3]<span class="bibsp">   </span></span><a 
+ id="Xchu2009auction"></a>Xiaowen  Chu,  Kaiyong  Zhao,  Zongpeng  Li,  and  Anirban  Mahanti.
+   Auction-based  on-demand  p2p  min-cost  media  streaming  with  network
+   coding.      <span 
+class="ecti-1000">IEEE  Transactions  on  Parallel  and  Distributed  Systems</span>,
+   20(12):1816–1829, 2009.
+   </p>
+   <p class="bibitem" ><span class="biblabel">
+ [4]<span class="bibsp">   </span></span><a 
  id="XComer1"></a>Douglas E. Comer. <span 
 class="ecti-1000">Internetworking with TCP/IP. Principles, Protocols,</span>
    <span 
 class="ecti-1000">and Architectures (4th Edition)</span>, volume 1. Prentice Hall, 2000.
    </p>
    <p class="bibitem" ><span class="biblabel">
- [3]<span class="bibsp">   </span></span><a 
+ [5]<span class="bibsp">   </span></span><a 
  id="Xcomer2003computer"></a>Douglas E  Comer  and  Ralph E  Droms.    <span 
 class="ecti-1000">Computer  networks  and</span>
    <span 
 class="ecti-1000">internets</span>. Prentice-Hall, Inc., 2003.
    </p>
    <p class="bibitem" ><span class="biblabel">
- [4]<span class="bibsp">   </span></span><a 
+ [6]<span class="bibsp">   </span></span><a 
  id="Xshabtay2011ip"></a>Lior  Shabtay  and  Benny  Rodrig.   Ip  multicast  in  vlan  environment,
    April 12 2011. US Patent 7,924,837.
 </p>
