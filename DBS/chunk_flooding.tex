@@ -37,7 +37,7 @@ to peer $P_x$ when a round-robin scheduler used by the peer select
 $P_x$. The scheduler selects a different neighbor, using a round-robin
 scheme, for each new received chunk.
 
-\begin{figure*}
+\begin{figure}
   \fig{250}{2.5cm}{team_0} \caption{A team has been created with a
     single monitor $M_0$ ($[\mathtt{hello}]$ messages are not
     shown). Chunks with numbers 0 and 1 (the time $t$ is measured in
@@ -45,9 +45,9 @@ scheme, for each new received chunk.
     $M_0$. $F$ and $P$ represents the $\text{forward}[]$ and the
     $\text{pending}[]$ structures, respectively. The chunks stored in
     the buffer is shown under the entity.\label{fig:team_0}}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}
+\begin{figure}
   \fig{250}{2.5cm}{team_1} \caption{Peer $P_1$ joins the team (the
     $[\mathtt{hello}]$'s are not shown). In $M_0$, $F=\{M_0:[P_1]\}$
     because when $M_0$ receives the $[\mathtt{hello}]$ from $P_1$,
@@ -60,36 +60,35 @@ scheme, for each new received chunk.
     as a neighbor. Notice that $P_1$ does not receive chunks 0 and 1
     because these chunks belong to a old (already played) section of
     the stream.\label{fig:team_1}}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}
+\begin{figure}
   \fig{300}{3cm}{team_2} \caption{$P_2$ joins the team (sending the
     $[\mathtt{hello}]$ not shown). $M_0$ and $P_1$ includes $P_2$ in
     their forwarding tables. The chunk 3 is received by $P_1$ which
     decides to send it to $P_2$, which adds $P_1$ to its forwarding
     table. Chunk 3 remains as pending to be sent to $M_0$ when the
     next chunk is received by $P_1$.\label{fig:team_2}}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}
+\begin{figure}
   \fig{330}{3.3cm}{team_3} \caption{Chunk 4 is received by $P_2$ which
     relays it to $P_1$, what relays chunk 3 to
     $M_0$.\label{fig:team_3}}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}
+\begin{figure}
   \fig{330}{3.3cm}{team_4} \caption{Chunk 5 is received by $M_0$ which
     relays it to $P_2$. $P_2$ adds $M_0$ to its forwarding table. At
     this moment, all nodes knows the rest of the
     team.\label{fig:team_4}}
-\end{figure*}
+\end{figure}
 
 \begin{notex}
-  
   \begin{figure*}
     \fig{350}{3.5cm}{team_5}
   \end{figure*}
-
+  
   \begin{figure*}
     \fig{380}{3.8cm}{team_6}
   \end{figure*}
@@ -97,27 +96,27 @@ scheme, for each new received chunk.
   \begin{figure*}
     \fig{320}{3.2cm}{team_7}
   \end{figure*}
-
+  
   \begin{figure*}
     \fig{200}{2cm}{team_8}
   \end{figure*}
-
+  
   \begin{figure*}
     \fig{280}{2.8cm}{team_9}
   \end{figure*}
-
+  
   \begin{figure*}
     \fig{350}{3.5cm}{team_10}
   \end{figure*}
-
+  
   \begin{figure*}
     \fig{210}{2.1cm}{team_11}
   \end{figure*}
-
+  
   \begin{figure*}
     \fig{210}{2.1cm}{team_12}
   \end{figure*}
-
+  
   \begin{figure*}
     \fig{210}{2.1cm}{team_13}
   \end{figure*}
