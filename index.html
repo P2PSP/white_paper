@@ -24,7 +24,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">August 22, 2018</span></div>
+class="ecrm-1200">August 23, 2018</span></div>
    </div>
    <div 
 class="abstract" 
@@ -445,15 +445,20 @@ and the average bit-rate of the media.
 display="inline" ><mi 
 >B</mi></math>
 chunks transmitted to the team, was sent to each peer.
-</p><!--l. 47--><p class="indent" >   <span 
-class="ecbx-1000">hola</span>
+</p><!--l. 48--><p class="indent" >   See <a 
+href="https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py#L296" ><!--l. 48--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+class="text"><mtext  >destination_of_chunk</mtext></mstyle><mrow ><mo 
+class="MathClass-open">[</mo><mrow></mrow><mo 
+class="MathClass-close">]</mo></mrow></math></a>.
 </p>
-   <h4 class="subsectionHead"><span class="titlemark">2.2   </span> <a 
- id="x1-50002.2"></a>Joining a team</h4>
-<!--l. 8--><p class="noindent" >After connecting with a splitter, incoming peers request (using a reliable communication) to
                                                                   
 
                                                                   
+   <h4 class="subsectionHead"><span class="titlemark">2.2   </span> <a 
+ id="x1-50002.2"></a>Joining a team</h4>
+<!--l. 8--><p class="noindent" >After connecting with a splitter, incoming peers request (using a reliable communication) to
 the splitter the current list of peers in the team. To minimize the joining time, the peer sends
 a <!--l. 11--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -1191,30 +1196,44 @@ display="inline" ><mn>2</mn><mi
 display="inline" ><mi 
 >B</mi></math>
 chunks in the buﬀering time. Chunks with a higher number (newer chunks) are
-inserted in the head of the buﬀer, and viceversa. The chunk pointed by the tail of the
-buﬀer is sent to the player. This action is carried out each time a new chunk is
-received.
+inserted in the head of the buﬀer. The chunk pointed by the tail of the buﬀer is sent
+to the player (if there is a chunk in that cell of the buﬀer). This action is carried out
+each time a new chunk is received.
 </p><!--l. 22--><p class="indent" >   Chunks can be lost.<span class="footnote-mark"><a 
 href="index10.html#fn9x0"><sup class="textsuperscript">9</sup></a></span><a 
  id="x1-7001f9"></a> 
 A chunk is considered as lost when it is time to send it to the player and the chunk
-has not been received. In this situation, for each lost chunk, the peer sends the
-chunk number of the lost chunk (that is the number of the next chunk to be
-played) to the neighbor with the smaller chunk debt. This is done using a
-<!--l. 29--><math 
+has not been received. In this situation, for each lost chunk, the peer sends a
+<!--l. 26--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">request</mi><mstyle 
 class="text"><mtext  >lost_chunk_number</mtext></mstyle></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>
-message.
-</p><!--l. 31--><p class="indent" >   In this situation, it is also possible that some peers can request redundant
-paths between an origin peer and itself, and therefore, some chunks could
-be received more than once. If this case, for each duplicate chunk, a peer
+class="MathClass-close">]</mo></mrow></math> (that
+is the number of the next chunk to be played) to the origin peer of the next chunk
+stored in the buﬀer. This peer has to characteristics: (1) it is not necessary a
+neighbor peer, and (2) there is a high probability that this chunk has been stored in
+the buﬀer “for a long time”, so, if it is not a neighbor, the link between it and the
+peer is working fairly well.
+</p><!--l. 35--><p class="indent" >   In the current implementation, the destination of the
                                                                   
 
                                                                   
-<!--l. 34--><math 
+<!--l. 36--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow ><mo 
+class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">request</mi><mo 
+class="MathClass-punc">.</mo><mo 
+class="MathClass-punc">.</mo><mo 
+class="MathClass-punc">.</mo></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>
+message is the neighbor with the smaller chunk debt. This, a priori, has
+the drawback that this peer will always selected for relaying all the lost
+chunks because i will have a smaller debt as a consequence of the requests.
+</p><!--l. 42--><p class="indent" >   In this situation, it is also possible that some peers can request redundant
+paths between an origin peer and itself, and therefore, some chunks could
+be received more than once. If this case, for each duplicate chunk, a peer
+<!--l. 45--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -1222,14 +1241,14 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math> should send
-a <!--l. 34--><math 
+a <!--l. 45--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">prune</mi><mstyle 
 class="text"><mtext  >duplicate_chunk_number</mtext></mstyle></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> message to
 those neighbors that have sent to it the duplicate chunk. Neighbors receiving such message from
-peer <!--l. 37--><math 
+peer <!--l. 48--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -1237,7 +1256,7 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math> should
-remove the <!--l. 37--><math 
+remove the <!--l. 48--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -1245,7 +1264,7 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math>
-from <!--l. 37--><math 
+from <!--l. 48--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mstyle 
 class="text"><mtext  >forward</mtext></mstyle><mrow ><mo 
@@ -1256,7 +1275,7 @@ class="MathClass-open">[</mo><mrow><msub><mrow
 >o</mi></mrow></msub 
 ></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>,
-where <!--l. 38--><math 
+where <!--l. 49--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -1265,16 +1284,16 @@ display="inline" ><msub><mrow
 >o</mi></mrow></msub 
 ></math>
 is the origin peer of the duplicate chunk.
-</p><!--l. 47--><p class="indent" >   The buﬀering time determines how much time the peers must wait before start
+</p><!--l. 58--><p class="indent" >   The buﬀering time determines how much time the peers must wait before start
 playing the chunks. Considering that chunks can be lost in transit or delayed more
-than <!--l. 49--><math 
+than <!--l. 60--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >B</mi></math>
 times of chunk, randomly, it is diﬃcult to determine, a priori the optimal
 buﬀering time. In the current implementation, peers buﬀer a variable number
 of chunks that depends on the order in which chunks are received. If
-<!--l. 52--><math 
+<!--l. 63--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -1282,7 +1301,7 @@ display="inline" ><msub><mrow
 ><mn>1</mn></mrow></msub 
 ></math> is the (number
 of the) ﬁrst chunk received (the ﬁrst chunk to be played), the buﬀering time ﬁnishes when
-the chunk <!--l. 54--><math 
+the chunk <!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -1317,6 +1336,9 @@ times.
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">goodbye</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>, removes the
+                                                                  
+
+                                                                  
 sender from the <!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mstyle 
@@ -1327,9 +1349,6 @@ class="text"><mtext  >forward</mtext></mstyle></math>.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.6   </span> <a 
  id="x1-90002.6"></a>Free-riding control</h4>
-                                                                  
-
-                                                                  
 <!--l. 8--><p class="noindent" >In each team there are a set of <span 
 class="ecti-1000">monitors </span>(trusted peers whose behavior is predictable
 and that are only known by the splitter), which complain to their splitter with a
@@ -1445,6 +1464,9 @@ of its forwaring table.
    <h3 class="sectionHead"><span class="titlemark">3   </span> <a 
  id="x1-100003"></a>IMS (Ip Multicast Set)</h3>
 <!--l. 8--><p class="noindent" >IPM is available by default in LANs (Local Are Network)s and VLANs (Virtual
+                                                                  
+
+                                                                  
 LANs) <span class="cite">[<a 
 href="#Xshabtay2011ip">6</a>]</span>, but not in the Internet <span class="cite">[<a 
 href="#XComer1">4</a>]</span>. IMS runs on the top of DBS and provides
@@ -1472,9 +1494,6 @@ display="inline" ><msub><mrow
 <!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">224.0.0.1</mi></math> (all systems on this
-                                                                  
-
-                                                                  
 subnet), (default) port <!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">1234</mi></math>,
@@ -1609,6 +1628,9 @@ display="inline" ><mstyle
 class="text"><mtext  >pending</mtext></mstyle><mrow ><mo 
 class="MathClass-open">[</mo><mrow></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> list
+                                                                  
+
+                                                                  
 will be reset. In this way, supportive peers will be served ﬁrst, incrementing
 the QoE of the corresponding users. On the other hand, those peers with
 a higher chunk debt will tend to be unserved if no enough bandwidth is
@@ -1623,9 +1645,6 @@ class="MathClass-close">]</mo></mrow></math> to
 those peers with a higher debt. So, if the insolidarity is produced by a overlay
 topology imbalance, badly connected peers peers can mitigate this problem
 forwarding more chunks to their neighbors.
-                                                                  
-
-                                                                  
 </p><!--l. 68--><p class="indent" >   The prioritized round-robin neighbor selection has not yet been implemented as it has been
 explained here. The <!--l. 69--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -1662,6 +1681,9 @@ chunk (by normal peers), monitors halves the number of chunks in their buﬀers 
 relation to common peers. Notice that MRS only modiﬁes the behavior of the
 splitters and the monitors (normal peers does no need to implement LRS or its
 extensions).
+                                                                  
+
+                                                                  
 </p><!--l. 50--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">7   </span> <a 
@@ -1671,9 +1693,6 @@ used in if it is known that some peers can provide the capacity than others
 cannot, or when we want to mix the CS and P2P models, sending more
 chunks from the splitter to one or more monitors controlled by the contents
 provider.
-                                                                  
-
-                                                                  
 </p><!--l. 14--><p class="indent" >   ACS is based on the idea of using the information that the splitter knows about
 the number of chunks that each peer has lost (see Sec <a 
 href="#x1-90002.6">2.6<!--tex4ht:ref: sec:free_riding_control --></a>), to send to those more
@@ -1710,6 +1729,9 @@ class="ecti-1000">port preservation </span>and (ii)
 class="ecti-1000">random port</span>. Notice that in this discussion, only UDP transmissions will be
 considered.
 </p>
+                                                                  
+
+                                                                  
    <h4 class="subsectionHead"><span class="titlemark">8.1   </span> <a 
  id="x1-160008.1"></a>Traﬃc ﬁltering</h4>
 <!--l. 35--><p class="noindent" >Lets suppose a team in which, for the sake of simplicity, there is only one external (public) peer
@@ -1749,9 +1771,6 @@ display="inline" ><mi
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >A</mi></math>
-                                                                  
-
-                                                                  
 forwards to <!--l. 39--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
