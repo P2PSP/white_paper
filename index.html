@@ -24,7 +24,7 @@ src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLor
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">August 26, 2018</span></div>
+class="ecrm-1200">August 31, 2018</span></div>
    </div>
    <div 
 class="abstract" 
@@ -538,28 +538,28 @@ in the team, and (3) adds the incoming peer to the list.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.3   </span> <a 
  id="x1-60002.3"></a>Chunk ﬂooding</h4>
-<!--l. 16--><p class="noindent" >DBS is a content-unaware push-based protocol, where when a peer received a chunk,
-it can be retransmitted to a large number of neighbors. To avoid network
-congestion while ﬂooding, sending peers must perform some kind of data
-ﬂow-control.
-</p><!--l. 24--><p class="indent" >   Congestion control is performed by means of the basic idea of, <span 
-class="ecsl-1000">if I have received a</span>
+<!--l. 16--><p class="noindent" >DBS is a content-unaware push-based protocol, where when a peer receives a chunk,
+it can be retransmitted to a large number of neighbors. To avoid network congestion
+while ﬂooding, some kind of ﬂow control must be performed.
+</p><!--l. 24--><p class="indent" >   Congestion may be avoided by means of a basic idea:<span 
+class="ecss-1000">if I have received a chunk, I</span>
 <span 
-class="ecsl-1000">chunk, I should send a chunk</span>. It is easy to see that, in a fully connected
-overlay, this allows to control the data ﬂow. However, peers can be “connected”
+class="ecss-1000">should send a chunk</span>. It is easy to see that, in a fully connected overlay, this allows to
+control the data ﬂow. However, in more realistic scenarios, peers can be “connected”
 with a variable number of neighbors and therefore, if the splitter follows
 a pure round-robin strategy, some peers can send more chunks that they
 receive.
-</p><!--l. 31--><p class="indent" >   The previous idea can be improved to handle a variable
-connectivity degree. Each peer use an array of FIFO queues,
-<!--l. 32--><math 
+</p><!--l. 32--><p class="indent" >   The previous idea can be improved to handle a variable connectivity degree. Each peer use
+a table of lists, <!--l. 33--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mstyle 
 class="text"><mtext  >pending</mtext></mstyle><mrow ><mo 
 class="MathClass-open">[</mo><mrow></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>, indexed
-by the neighbor end-points, where each queue stores buﬀer positions. Thus, if for example
-<!--l. 34--><math 
+class="MathClass-close">]</mo></mrow></math>,
+indexed by the neighbor end-points, where each list stores the positions in
+the buﬀer of those chunks that must be transmited to the corresponding
+neighbor, the next time such neighbor be selected. Thus, if for example
+<!--l. 37--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mstyle 
 class="text"><mtext  >pending</mtext></mstyle><mrow ><mo 
@@ -574,13 +574,13 @@ class="MathClass-rel">=</mo> <mrow ><mo
 class="MathClass-open">{</mo><mrow><mn>1</mn><mn>1</mn><mo 
 class="MathClass-punc">,</mo><mn>2</mn><mn>2</mn></mrow><mo 
 class="MathClass-close">}</mo></mrow></math>, chunks found
-at positions <!--l. 35--><math 
+at positions <!--l. 38--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mn>1</mn><mn>1</mn></math> and
-<!--l. 35--><math 
+<!--l. 38--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mn>2</mn><mn>2</mn></math> of the buﬀer have
-to be sent to peer <!--l. 36--><math 
+to be sent to peer <!--l. 38--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -589,7 +589,7 @@ display="inline" ><msub><mrow
 >x</mi></mrow></msub 
 ></math>
 when a round-robin scheduler used by the peer select
-<!--l. 37--><math 
+<!--l. 39--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -610,54 +610,54 @@ received chunk.
                                                                   
 
                                                                   
-<!--l. 41--><p class="noindent" > <div style="text-align:center;"> <img width=250 src="graphics/team_0.png" /> </div> 
+<!--l. 44--><p class="noindent" > <div style="text-align:center;"> <img width=250 src="graphics/team_0.png" /> </div> 
 <br />  </p><div class="caption" 
 ><span class="id">Figure 3:    </span><span  
 class="content">A    team    has    been    created    with    a    single    monitor
-<!--l. 47--><math 
+<!--l. 50--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >M</mi></mrow><mrow 
 ><mn>0</mn></mrow></msub 
 ></math>
-(<!--l. 47--><math 
+(<!--l. 50--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
 messages   are   not   shown).   Chunks   with   numbers   0   and   1   (the   time
-<!--l. 47--><math 
+<!--l. 50--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >t</mi></math>
 is   measured   in   chunks-time)   have   been   transmitted   from   the   splitter
-<!--l. 47--><math 
+<!--l. 50--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >S</mi></math>
-to <!--l. 47--><math 
+to <!--l. 50--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >M</mi></mrow><mrow 
 ><mn>0</mn></mrow></msub 
 ></math>.
-<!--l. 47--><math 
+<!--l. 50--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >F</mi></math>
-and <!--l. 47--><math 
+and <!--l. 50--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >P</mi></math>
-represents the <!--l. 47--><math 
+represents the <!--l. 50--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mstyle 
 class="text"><mtext  >forward</mtext></mstyle><mrow ><mo 
 class="MathClass-open">[</mo><mrow></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
-and the <!--l. 47--><math 
+and the <!--l. 50--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mstyle 
 class="text"><mtext  >pending</mtext></mstyle><mrow ><mo 
@@ -679,29 +679,29 @@ entity.</span></div><!--tex4ht:label?: x1-60013 -->
                                                                   
 
                                                                   
-<!--l. 51--><p class="noindent" > <div style="text-align:center;"> <img width=250 src="graphics/team_1.png" /> </div> 
+<!--l. 54--><p class="noindent" > <div style="text-align:center;"> <img width=250 src="graphics/team_1.png" /> </div> 
 <br /> </p><div class="caption" 
 ><span class="id">Figure 4: </span><span  
-class="content">Peer <!--l. 62--><math 
+class="content">Peer <!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mn>1</mn></mrow></msub 
 ></math>
-joins the team (the <!--l. 62--><math 
+joins the team (the <!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>’s
-are not shown). In <!--l. 62--><math 
+are not shown). In <!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >M</mi></mrow><mrow 
 ><mn>0</mn></mrow></msub 
 ></math>,
-<!--l. 62--><math 
+<!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >F</mi> <mo 
@@ -719,26 +719,26 @@ class="MathClass-open">[</mo><mrow><msub><mrow
 ></mrow><mo 
 class="MathClass-close">]</mo></mrow></mrow><mo 
 class="MathClass-close">}</mo></mrow></math>
-because when <!--l. 62--><math 
+because when <!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >M</mi></mrow><mrow 
 ><mn>0</mn></mrow></msub 
 ></math>
-receives the <!--l. 62--><math 
+receives the <!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
-from <!--l. 62--><math 
+from <!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mn>1</mn></mrow></msub 
 ></math>,
-<!--l. 62--><math 
+<!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -746,11 +746,11 @@ display="inline" ><msub><mrow
 ><mn>0</mn></mrow></msub 
 ></math>
 is      the      origin      peer      for      all      chunks      received      from
-<!--l. 62--><math 
+<!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >S</mi></math>
-and <!--l. 62--><math 
+and <!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -758,18 +758,18 @@ display="inline" ><msub><mrow
 ><mn>1</mn></mrow></msub 
 ></math>
 is   its   neighbor.   After   that,   when   the   chunk   number   2   arrives   to
-<!--l. 62--><math 
+<!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >M</mi></mrow><mrow 
 ><mn>0</mn></mrow></msub 
 ></math>
-from <!--l. 62--><math 
+from <!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >S</mi></math>,
-an entry <!--l. 62--><math 
+an entry <!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -777,35 +777,35 @@ display="inline" ><msub><mrow
 ><mn>1</mn></mrow></msub 
 > <mo 
 class="MathClass-punc">:</mo> <mn>2</mn></math>
-is created in <!--l. 62--><math 
+is created in <!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >P</mi><mrow ><mo 
 class="MathClass-open">{</mo><mrow></mrow><mo 
 class="MathClass-close">}</mo></mrow></math>
 for  that  chunk,  and  this  entry  is  deleted  when  the  chunk  2  is  sent  to
-<!--l. 62--><math 
+<!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mn>1</mn></mrow></msub 
 ></math>.
-When <!--l. 62--><math 
+When <!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mn>1</mn></mrow></msub 
 ></math>
-receives the chunk 2, <!--l. 62--><math 
+receives the chunk 2, <!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mn>1</mn></mrow></msub 
 ></math>
-inserts the entry <!--l. 62--><math 
+inserts the entry <!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -817,21 +817,21 @@ class="MathClass-punc">:</mo> <msub><mrow
 >M</mi></mrow><mrow 
 ><mn>0</mn></mrow></msub 
 ></math>
-in its forwarding table because <!--l. 62--><math 
+in its forwarding table because <!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mn>1</mn></mrow></msub 
 ></math>
-considers to <!--l. 62--><math 
+considers to <!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >M</mi></mrow><mrow 
 ><mn>0</mn></mrow></msub 
 ></math>
-as a neighbor. Notice that <!--l. 62--><math 
+as a neighbor. Notice that <!--l. 65--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -854,36 +854,36 @@ played) section of the stream.</span></div><!--tex4ht:label?: x1-60024 -->
                                                                   
 
                                                                   
-<!--l. 66--><p class="noindent" > <div style="text-align:center;"> <img width=300 src="graphics/team_2.png" /> </div> 
+<!--l. 69--><p class="noindent" > <div style="text-align:center;"> <img width=300 src="graphics/team_2.png" /> </div> 
 <br /> </p><div class="caption" 
 ><span class="id">Figure 5: </span><span  
-class="content"><!--l. 71--><math 
+class="content"><!--l. 74--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mn>2</mn></mrow></msub 
 ></math>
-joins the team (sending the <!--l. 71--><math 
+joins the team (sending the <!--l. 74--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
-not shown). <!--l. 71--><math 
+not shown). <!--l. 74--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >M</mi></mrow><mrow 
 ><mn>0</mn></mrow></msub 
 ></math>
-and <!--l. 71--><math 
+and <!--l. 74--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mn>1</mn></mrow></msub 
 ></math>
-includes <!--l. 71--><math 
+includes <!--l. 74--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -891,21 +891,21 @@ display="inline" ><msub><mrow
 ><mn>2</mn></mrow></msub 
 ></math>
 in     their     forwarding     tables.     The     chunk     3     is     received     by
-<!--l. 71--><math 
+<!--l. 74--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mn>1</mn></mrow></msub 
 ></math>
-which decides to send it to <!--l. 71--><math 
+which decides to send it to <!--l. 74--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mn>2</mn></mrow></msub 
 ></math>,
-which adds <!--l. 71--><math 
+which adds <!--l. 74--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -913,14 +913,14 @@ display="inline" ><msub><mrow
 ><mn>1</mn></mrow></msub 
 ></math>
 to  its  forwarding  table.  Chunk  3  remains  as  pending  to  be  sent  to
-<!--l. 71--><math 
+<!--l. 74--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >M</mi></mrow><mrow 
 ><mn>0</mn></mrow></msub 
 ></math>
-when the next chunk is received by <!--l. 71--><math 
+when the next chunk is received by <!--l. 74--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -941,24 +941,24 @@ display="inline" ><msub><mrow
                                                                   
 
                                                                   
-<!--l. 75--><p class="noindent" > <div style="text-align:center;"> <img width=330 src="graphics/team_3.png" /> </div> 
+<!--l. 78--><p class="noindent" > <div style="text-align:center;"> <img width=330 src="graphics/team_3.png" /> </div> 
 <br /> </p><div class="caption" 
 ><span class="id">Figure 6: </span><span  
-class="content">Chunk 4 is received by <!--l. 77--><math 
+class="content">Chunk 4 is received by <!--l. 80--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mn>2</mn></mrow></msub 
 ></math>
-which relays it to <!--l. 77--><math 
+which relays it to <!--l. 80--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mn>1</mn></mrow></msub 
 ></math>,
-what relays chunk 3 to <!--l. 77--><math 
+what relays chunk 3 to <!--l. 80--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -979,31 +979,31 @@ display="inline" ><msub><mrow
                                                                   
 
                                                                   
-<!--l. 81--><p class="noindent" > <div style="text-align:center;"> <img width=330 src="graphics/team_4.png" /> </div> 
+<!--l. 84--><p class="noindent" > <div style="text-align:center;"> <img width=330 src="graphics/team_4.png" /> </div> 
 <br /> </p><div class="caption" 
 ><span class="id">Figure 7: </span><span  
-class="content">Chunk 5 is received by <!--l. 84--><math 
+class="content">Chunk 5 is received by <!--l. 87--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >M</mi></mrow><mrow 
 ><mn>0</mn></mrow></msub 
 ></math>
-which relays it to <!--l. 84--><math 
+which relays it to <!--l. 87--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mn>2</mn></mrow></msub 
 ></math>.
-<!--l. 84--><math 
+<!--l. 87--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
 ><mn>2</mn></mrow></msub 
 ></math>
-adds <!--l. 84--><math 
+adds <!--l. 87--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -1015,12 +1015,12 @@ to its forwarding table. At this moment, all nodes knows the rest of the team.</
 
                                                                   
    </div><hr class="endfigure" />
-<!--l. 87--><p class="indent" >   <span 
+<!--l. 90--><p class="indent" >   <span 
 class="ecbx-1000">Note:</span>
                                                                   
 
                                                                   
-</p><!--l. 89--><p class="indent" >   </p><hr class="float" /><div class="float" 
+</p><!--l. 92--><p class="indent" >   </p><hr class="float" /><div class="float" 
 >
                                                                   
 
@@ -1033,7 +1033,7 @@ class="ecbx-1000">Note:</span>
                                                                   
 
                                                                   
-<!--l. 93--><p class="indent" >   </p><hr class="float" /><div class="float" 
+<!--l. 96--><p class="indent" >   </p><hr class="float" /><div class="float" 
 >
                                                                   
 
@@ -1046,7 +1046,7 @@ class="ecbx-1000">Note:</span>
                                                                   
 
                                                                   
-<!--l. 97--><p class="indent" >   </p><hr class="float" /><div class="float" 
+<!--l. 100--><p class="indent" >   </p><hr class="float" /><div class="float" 
 >
                                                                   
 
@@ -1059,7 +1059,7 @@ class="ecbx-1000">Note:</span>
                                                                   
 
                                                                   
-<!--l. 101--><p class="indent" >   </p><hr class="float" /><div class="float" 
+<!--l. 104--><p class="indent" >   </p><hr class="float" /><div class="float" 
 >
                                                                   
 
@@ -1072,7 +1072,7 @@ class="ecbx-1000">Note:</span>
                                                                   
 
                                                                   
-<!--l. 105--><p class="indent" >   </p><hr class="float" /><div class="float" 
+<!--l. 108--><p class="indent" >   </p><hr class="float" /><div class="float" 
 >
                                                                   
 
@@ -1085,7 +1085,7 @@ class="ecbx-1000">Note:</span>
                                                                   
 
                                                                   
-<!--l. 109--><p class="indent" >   </p><hr class="float" /><div class="float" 
+<!--l. 112--><p class="indent" >   </p><hr class="float" /><div class="float" 
 >
                                                                   
 
@@ -1098,7 +1098,7 @@ class="ecbx-1000">Note:</span>
                                                                   
 
                                                                   
-<!--l. 113--><p class="indent" >   </p><hr class="float" /><div class="float" 
+<!--l. 116--><p class="indent" >   </p><hr class="float" /><div class="float" 
 >
                                                                   
 
@@ -1111,7 +1111,7 @@ class="ecbx-1000">Note:</span>
                                                                   
 
                                                                   
-<!--l. 117--><p class="indent" >   </p><hr class="float" /><div class="float" 
+<!--l. 120--><p class="indent" >   </p><hr class="float" /><div class="float" 
 >
                                                                   
 
@@ -1124,7 +1124,7 @@ class="ecbx-1000">Note:</span>
                                                                   
 
                                                                   
-<!--l. 121--><p class="indent" >   </p><hr class="float" /><div class="float" 
+<!--l. 124--><p class="indent" >   </p><hr class="float" /><div class="float" 
 >
                                                                   
 
@@ -1134,34 +1134,9 @@ class="ecbx-1000">Note:</span>
 
                                                                   
    </div><hr class="endfloat" />
-<!--l. 126--><p class="indent" >   An example of the ﬂooding with congestion control algorithm has been
-show in the Figs. <a 
-href="#x1-60013">3<!--tex4ht:ref: fig:team_0 --></a>, ... Notice that in this example all messages are received
-successfully.
-</p><!--l. 130--><p class="indent" >   As can be seen in the previous example, when a peer
-<!--l. 130--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->k</mi></mrow></msub 
-></math> receives
-a chunk, <!--l. 131--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->k</mi></mrow></msub 
-></math>
-ﬂoods a set of chunks to one of its its neighbors (obviously, except the neighbor
-sender of the chunk), using round-robin schema. The size of this set, what we call
-<!--l. 134--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mstyle 
-class="text"><mtext  >pending</mtext></mstyle></math>,
-depends on how many neighbors a peer has.
+<!--l. 129--><p class="indent" >   An example of the ﬂooding with congestion control algorithm has been show in
+the Figs. <a 
+href="#x1-60013">3<!--tex4ht:ref: fig:team_0 --></a>, ...
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.4   </span> <a 
  id="x1-70002.4"></a>Buﬀering chunks</h4>
@@ -1224,9 +1199,6 @@ the buﬀer “for a long time”, so, if it is not a neighbor, the link between
 peer is working fairly well.
 </p><!--l. 34--><p class="indent" >   <span 
 class="ecbx-1000">Note:  </span>In the current implementation, the destination of the
-                                                                  
-
-                                                                  
 <!--l. 36--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
@@ -1240,6 +1212,9 @@ the drawback that this peer will always selected for relaying all the lost
 chunks because i will have a smaller debt as a consequence of the requests.
 </p><!--l. 42--><p class="indent" >   In this situation, it is also possible that some peers can request redundant
 paths between an origin peer and itself, and therefore, some chunks could
+                                                                  
+
+                                                                  
 be received more than once. If this case, for each duplicate chunk, a peer
 <!--l. 45--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -1344,9 +1319,6 @@ times.
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">goodbye</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>, removes the
-                                                                  
-
-                                                                  
 sender from the <!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mstyle 
@@ -1357,6 +1329,9 @@ class="text"><mtext  >forward</mtext></mstyle></math>.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.6   </span> <a 
  id="x1-90002.6"></a>Free-riding control</h4>
+                                                                  
+
+                                                                  
 <!--l. 8--><p class="noindent" >In each team there are a set of <span 
 class="ecti-1000">monitors </span>(trusted peers whose behavior is predictable
 and that are only known by the splitter), which complain to their splitter with a
@@ -1473,9 +1448,6 @@ of its forwaring table.
    <h3 class="sectionHead"><span class="titlemark">3   </span> <a 
  id="x1-100003"></a>IMS (Ip Multicast Set)</h3>
 <!--l. 8--><p class="noindent" >IPM is available by default in LANs (Local Are Network)s and VLANs (Virtual
-                                                                  
-
-                                                                  
 LANs) <span class="cite">[<a 
 href="#Xshabtay2011ip">6</a>]</span>, but not in the Internet <span class="cite">[<a 
 href="#XComer1">4</a>]</span>. IMS runs on the top of DBS and provides
@@ -1503,6 +1475,9 @@ display="inline" ><msub><mrow
 <!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">224.0.0.1</mi></math> (all systems on this
+                                                                  
+
+                                                                  
 subnet), (default) port <!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">1234</mi></math>,
@@ -1637,9 +1612,6 @@ display="inline" ><mstyle
 class="text"><mtext  >pending</mtext></mstyle><mrow ><mo 
 class="MathClass-open">[</mo><mrow></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> list
-                                                                  
-
-                                                                  
 will be reset. In this way, supportive peers will be served ﬁrst, incrementing
 the QoE of the corresponding users. On the other hand, those peers with
 a higher chunk debt will tend to be unserved if no enough bandwidth is
@@ -1654,6 +1626,9 @@ class="MathClass-close">]</mo></mrow></math> to
 those peers with a higher debt. So, if the insolidarity is produced by a overlay
 topology imbalance, badly connected peers peers can mitigate this problem
 forwarding more chunks to their neighbors.
+                                                                  
+
+                                                                  
 </p><!--l. 67--><p class="indent" >   <span 
 class="ecbx-1000">Note:  </span>The prioritized round-robin neighbor selection has
 not yet been implemented as it has been explained here. The
@@ -1692,9 +1667,6 @@ chunk (by normal peers), monitors halves the number of chunks in their buﬀers 
 relation to common peers. Notice that MRS only modiﬁes the behavior of the
 splitters and the monitors (normal peers does no need to implement LRS or its
 extensions).
-                                                                  
-
-                                                                  
 </p><!--l. 50--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">7   </span> <a 
@@ -1703,6 +1675,9 @@ extensions).
 used in if it is known that some peers can provide the capacity than others
 cannot, or when we want to mix the CS and P2P models, sending more
 chunks from the splitter to one or more monitors controlled by the contents
+                                                                  
+
+                                                                  
 provider.
 </p><!--l. 14--><p class="indent" >   ACS is based on the idea of using the information that the splitter knows about
 the number of chunks that each peer has lost (see Sec <a 
@@ -1740,9 +1715,6 @@ class="ecti-1000">port preservation </span>and (ii)
 class="ecti-1000">random port</span>. Notice that in this discussion, only UDP transmissions will be
 considered.
 </p>
-                                                                  
-
-                                                                  
    <h4 class="subsectionHead"><span class="titlemark">8.1   </span> <a 
  id="x1-160008.1"></a>Traﬃc ﬁltering</h4>
 <!--l. 35--><p class="noindent" >Lets suppose a team in which, for the sake of simplicity, there is only one external (public) peer
@@ -1778,6 +1750,9 @@ NAT as <!--l. 38--><math
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >A</mi></math>. When no
+                                                                  
+
+                                                                  
 ﬁltering is used at all, <!--l. 39--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
