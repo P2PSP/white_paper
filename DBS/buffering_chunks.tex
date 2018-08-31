@@ -27,7 +27,10 @@ Chunks can be lost.\footnote{Chunks are transmitted using a
 it to the player and the chunk has not been received.  In this
 situation, for each lost chunk, the peer sends a $[\mathtt{request}
   \text{lost\_chunk\_number}]$ (that is the number of the next chunk
-to be played) to the last neighbor served.
+to be played) to the last neighbor served. When a peer $P_x$ receives
+a $[\mathtt{request} \text{lost\_chunk\_number}]$ from $P_y$, $P_x$
+adds $P_y$ to $\text{forward}[P_o]$, where $P_o$ is the origin peer of
+the chunk stored in the position $lost\_chunk\_number$ of the buffer.
 
 % As an alternative ...
 \begin{comment}
@@ -36,7 +39,7 @@ buffer. This peer has to characteristics: (1) it is not necessary a
 neighbor peer, and (2) there is a high probability that this chunk has
 been stored in the buffer ``for a long time'', so, if it is not a
 neighbor, the link between it and the peer is working fairly well.
-\end{comment}ç
+\end{comment}
 
 \begin{notex}
   In the current implementation, the destination of the

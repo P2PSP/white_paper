@@ -1193,19 +1193,167 @@ has not been received. In this situation, for each lost chunk, the peer sends a
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">request</mi><mstyle 
 class="text"><mtext  >lost_chunk_number</mtext></mstyle></mrow><mo 
+class="MathClass-close">]</mo></mrow></math> (that is
+the number of the next chunk to be played) to the last neighbor served. When a peer
+<!--l. 30--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>x</mi></mrow></msub 
+></math> receives
+a <!--l. 31--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow ><mo 
+class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">request</mi><mstyle 
+class="text"><mtext  >lost_chunk_number</mtext></mstyle></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
-(that is the number of the next chunk to be played) to the last neighbor
-served.
-</p><!--l. 65--><p class="indent" >   The buﬀering time determines how much time the peers must wait before start
+from <!--l. 31--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>y</mi></mrow></msub 
+></math>,
+<!--l. 31--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>x</mi></mrow></msub 
+></math> adds
+<!--l. 32--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>y</mi></mrow></msub 
+></math> to
+<!--l. 32--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+class="text"><mtext  >forward</mtext></mstyle><mrow ><mo 
+class="MathClass-open">[</mo><mrow><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>o</mi></mrow></msub 
+></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>,
+where <!--l. 32--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>o</mi></mrow></msub 
+></math>
+is the origin peer of the chunk stored in the position
+<!--l. 33--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>l</mi><mi 
+>o</mi><mi 
+>s</mi><mi 
+>t</mi><mstyle 
+class="text"><mtext  >_</mtext></mstyle><mi 
+>c</mi><mi 
+>h</mi><mi 
+>u</mi><mi 
+>n</mi><mi 
+>k</mi><mstyle 
+class="text"><mtext  >_</mtext></mstyle><mi 
+>n</mi><mi 
+>u</mi><mi 
+>m</mi><mi 
+>b</mi><mi 
+>e</mi><mi 
+>r</mi></math> of the
+buﬀer.
+</p><!--l. 44--><p class="indent" >   <span 
+class="ecbx-1000">Note:  </span>In the current implementation, the destination of the
+                                                                  
+
+                                                                  
+<!--l. 46--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow ><mo 
+class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">request</mi><mo 
+class="MathClass-punc">.</mo><mo 
+class="MathClass-punc">.</mo><mo 
+class="MathClass-punc">.</mo></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>
+message is the neighbor with the smaller chunk debt. This, a priori, has
+the drawback that this peer will always selected for relaying all the lost
+chunks because i will have a smaller debt as a consequence of the requests.
+</p><!--l. 52--><p class="indent" >   In this situation, it is also possible that some peers can request redundant
+paths between an origin peer and itself, and therefore, some chunks could
+be received more than once. If this case, for each duplicate chunk, a peer
+<!--l. 55--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math> should send
+a <!--l. 55--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow ><mo 
+class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">prune</mi><mstyle 
+class="text"><mtext  >duplicate_chunk_number</mtext></mstyle></mrow><mo 
+class="MathClass-close">]</mo></mrow></math> message to
+those neighbors that have sent to it the duplicate chunk. Neighbors receiving such message from
+peer <!--l. 58--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math> should
+remove the <!--l. 58--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math>
+from <!--l. 58--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+class="text"><mtext  >forward</mtext></mstyle><mrow ><mo 
+class="MathClass-open">[</mo><mrow><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>o</mi></mrow></msub 
+></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>,
+where <!--l. 59--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>o</mi></mrow></msub 
+></math>
+is the origin peer of the duplicate chunk.
+</p><!--l. 68--><p class="indent" >   The buﬀering time determines how much time the peers must wait before start
 playing the chunks. Considering that chunks can be lost in transit or delayed more
-than <!--l. 67--><math 
+than <!--l. 70--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >B</mi></math>
 times of chunk, randomly, it is diﬃcult to determine, a priori the optimal
 buﬀering time. In the current implementation, peers buﬀer a variable number
 of chunks that depends on the order in which chunks are received. If
-<!--l. 70--><math 
+<!--l. 73--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -1213,7 +1361,7 @@ display="inline" ><msub><mrow
 ><mn>1</mn></mrow></msub 
 ></math> is the (number
 of the) ﬁrst chunk received (the ﬁrst chunk to be played), the buﬀering time ﬁnishes when
-the chunk <!--l. 72--><math 
+the chunk <!--l. 75--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -1222,9 +1370,6 @@ display="inline" ><msub><mrow
 > <mo 
 class="MathClass-bin">+</mo> <mi 
 >B</mi></math> is
-                                                                  
-
-                                                                  
 received.<span class="footnote-mark"><a 
 href="index11.html#fn10x0"><sup class="textsuperscript">10</sup></a></span><a 
  id="x1-7002f10"></a> 
@@ -1251,6 +1396,9 @@ times.
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">goodbye</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>, removes the
+                                                                  
+
+                                                                  
 sender from the <!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mstyle 
@@ -1327,9 +1475,6 @@ messages.
 </p><!--l. 20--><p class="indent" >   <span 
 class="ecbx-1000">Note:  </span>This last functionality has not been implemented, at least, as it has been
 explained here. The forget() thread is controlled by a timer, not by a counter of
-                                                                  
-
-                                                                  
 rounds.
 </p><!--l. 26--><p class="indent" >   Peers also control that at least one chunk is received from a neighbor in each
 round.<span class="footnote-mark"><a 
@@ -1380,6 +1525,9 @@ of its forwaring table.
    <h3 class="sectionHead"><span class="titlemark">3   </span> <a 
  id="x1-100003"></a>IMS (Ip Multicast Set)</h3>
 <!--l. 8--><p class="noindent" >IPM is available by default in LANs (Local Are Network)s and VLANs (Virtual
+                                                                  
+
+                                                                  
 LANs) <span class="cite">[<a 
 href="#Xshabtay2011ip">6</a>]</span>, but not in the Internet <span class="cite">[<a 
 href="#XComer1">4</a>]</span>. IMS runs on the top of DBS and provides
@@ -1429,9 +1577,6 @@ consecuence, for example, of NAT issues) can stay in the team thanks to the
 generosity of the rest of peers. If this is unnaceptable, this set of rules try to that
 all the peers of the team to share the same number of chunks that they
 receive.
-                                                                  
-
-                                                                  
 </p><!--l. 13--><p class="indent" >   To know the level of solidarity between neighbor peers, each peer implements a table of chunk
 debts, <!--l. 14--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -1544,6 +1689,9 @@ display="inline" ><mstyle
 class="text"><mtext  >pending</mtext></mstyle><mrow ><mo 
 class="MathClass-open">[</mo><mrow></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> list
+                                                                  
+
+                                                                  
 will be reset. In this way, supportive peers will be served ﬁrst, incrementing
 the QoE of the corresponding users. On the other hand, those peers with
 a higher chunk debt will tend to be unserved if no enough bandwidth is
@@ -1579,9 +1727,6 @@ requests per round is limited by the available bandwidth in the overlay, and by
 the request-ratio deﬁned at the splitter. Obviously, the higher the ratio, a
 more accurate description of the real connectivity in the overlay will be
 obtained.
-                                                                  
-
-                                                                  
 </p><!--l. 26--><p class="indent" >   After knowing the connectivity degree of each peer, the slitter can adapt the
 round-robin scheduling of the origin peers by sending a number of chunks
 proportional to the inverse of the degree of the origin peer.
@@ -1599,6 +1744,9 @@ chunk (by normal peers), monitors halves the number of chunks in their buﬀers 
 relation to common peers. Notice that MRS only modiﬁes the behavior of the
 splitters and the monitors (normal peers does no need to implement LRS or its
 extensions).
+                                                                  
+
+                                                                  
 </p><!--l. 50--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">7   </span> <a 
@@ -1622,9 +1770,6 @@ adapts the round-time of each peer to its capacity.
 NTS<span class="footnote-mark"><a 
 href="index13.html#fn12x0"><sup class="textsuperscript">12</sup></a></span><a 
  id="x1-15001f12"></a> 
-                                                                  
-
-                                                                  
 is an DBS extension which provides peer connectivity for some
 NAT conﬁgurations where DBS can not provide direct peer
 communication.<span class="footnote-mark"><a 
@@ -1647,6 +1792,9 @@ class="ecti-1000">port preservation </span>and (ii)
 class="ecti-1000">random port</span>. Notice that in this discussion, only UDP transmissions will be
 considered.
 </p>
+                                                                  
+
+                                                                  
    <h4 class="subsectionHead"><span class="titlemark">8.1   </span> <a 
  id="x1-160008.1"></a>Traﬃc ﬁltering</h4>
 <!--l. 35--><p class="noindent" >Lets suppose a team in which, for the sake of simplicity, there is only one external (public) peer
