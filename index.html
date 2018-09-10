@@ -24,7 +24,7 @@ src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLor
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">August 31, 2018</span></div>
+class="ecrm-1200">September 10, 2018</span></div>
    </div>
    <div 
 class="abstract" 
@@ -193,8 +193,9 @@ class="ecti-1000">load balancer</span>. The listeners (and the
 splitters) which know the URL of the required channel, connects ﬁrst to the
 load balancer which redirects them (with a HTTP 302 code) to a suitable
 server.
-</p><!--l. 63--><p class="indent" >   This idea can be extended to take advantage of the existence of P2PSP teams in hybrid
-overlays, where some users run a local peer to retrieve a copy of the stream. In this case, the peer
+</p><!--l. 63--><p class="indent" >   This idea can be extended to take advantage of the existence
+of P2PSP teams in hybrid overlays, where some users run a local
+peer to retrieve a copy of the stream. In this case, the player
 communicates<span class="footnote-mark"><a 
 href="index4.html#fn3x0"><sup class="textsuperscript">3</sup></a></span><a 
  id="x1-2004f3"></a> 
@@ -207,10 +208,10 @@ href="index5.html#fn4x0"><sup class="textsuperscript">4</sup></a></span><a
 </p><!--l. 84--><p class="indent" >   When a network entity (usually, a player) connects with a peer, this must
 connects with a splitter which is transmitting the stream selected by the user.
 Depending on maximum number of potential peers that are retrieving the same
-channel, more than one splitter could be available. This information is served by a
                                                                   
 
                                                                   
+channel, more than one splitter could be available. This information is served by a
 <span 
 class="ecti-1000">splitters tracker</span>, and generated when a new splitter is instantiated. The
 tracker keeps updated a table indexed by names of channels, where every
