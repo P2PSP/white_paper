@@ -88,7 +88,7 @@ that are retrieving the same channel, more than one splitter could be
 available. This information is served by a \emph{splitters tracker},
 and generated when a new splitter is instantiated. The tracker keeps
 updated a table indexed by names of channels, where every entry
-contains a list of splitters that transmit the corresponding
+contains a list of splitters that are transmitting the corresponding
 channel. Therefore, to find a suitable splitter, the peer first
 retrieves from the splitters tracker a list of splitters. Then, the
 peer tries to connect with all the splitters\footnote{Those splitters
@@ -106,17 +106,17 @@ latency.
 %    start running the $\text{main}()$ function. \label{fig:STS}}
 %\end{figure*}
 
-The splitters send to the tracker a message with the current number
-$t$ of peers in their teams. When a splitters (and its team) is
-created, it sends a message $[t]$ with $t \geq N^*-1$ where $N^*$ is
-the maximum team size\footnote{A parameter decided by the overlay
-  administrator.}  for that splitter (at least one monitor peer must
-be in each team). When the team is full, the splitter sends a message
-with $t=0$. When the team is shutted down, the splitter sends a
-$t=-1$. Using the number of free spaces in each team, the splitters
-tracker can perform some load balacing among the teams, by including
-only those teams with more room in the $[\text{list of splitters}]$
-response.
+The splitters send to the tracker messages with the current number $t$
+of ``spaces'' in their teams. When a splitters (and its team) is
+created, it sends a message $[t]$ ($t \leq N^*-1$ where $N^*$ is the
+maximum team size\footnote{A parameter decided by the overlay
+administrator.} for that splitter (notice that at least one monitor
+peer must be in each team, attached manually). When the team is full,
+the splitter sends a message $[t=0]$. When the team is shutted
+down, the splitter sends $[t=-1]$. Using the number of free spaces in
+each team, the splitters tracker can perform some load balacing among
+the teams, by including only those teams with more room in the
+$[\text{list of splitters}]$ response.
 
 \begin{figure*}
   \fig{900}{9cm}{STS_example}

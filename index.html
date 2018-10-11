@@ -24,7 +24,7 @@ src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLor
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">September 10, 2018</span></div>
+class="ecrm-1200">October 11, 2018</span></div>
    </div>
    <div 
 class="abstract" 
@@ -215,32 +215,32 @@ channel, more than one splitter could be available. This information is served b
 <span 
 class="ecti-1000">splitters tracker</span>, and generated when a new splitter is instantiated. The
 tracker keeps updated a table indexed by names of channels, where every
-entry contains a list of splitters that transmit the corresponding channel.
-Therefore, to ﬁnd a suitable splitter, the peer ﬁrst retrieves from the splitters
-tracker a list of splitters. Then, the peer tries to connect with all the
+entry contains a list of splitters that are transmitting the corresponding
+channel. Therefore, to ﬁnd a suitable splitter, the peer ﬁrst retrieves from the
+splitters tracker a list of splitters. Then, the peer tries to connect with all the
 splitters<span class="footnote-mark"><a 
 href="index6.html#fn5x0"><sup class="textsuperscript">5</sup></a></span><a 
  id="x1-2006f5"></a> 
 in parallel, and the fastest connection determines the selected splitter (the rest of
 successful connections are closed). This procedure should select the “closest” splitter
 to the peer in terms of network latency.
-</p><!--l. 109--><p class="indent" >   The splitters send to the tracker a message with the current number
-<!--l. 110--><math 
+</p><!--l. 109--><p class="indent" >   The splitters send to the tracker messages with the current number
+<!--l. 109--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >t</mi></math> of
-peers in their teams. When a splitters (and its team) is created, it sends a message
+“spaces” in their teams. When a splitters (and its team) is created, it sends a message
 <!--l. 111--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi 
 >t</mi></mrow><mo 
-class="MathClass-close">]</mo></mrow></math> with
-<!--l. 111--><math 
+class="MathClass-close">]</mo></mrow></math>
+(<!--l. 111--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >t</mi> <mo 
-class="MathClass-rel">≥</mo> <msup><mrow 
+class="MathClass-rel">≤</mo> <msup><mrow 
 ><mi 
 >N</mi></mrow><mrow 
 ><mo 
@@ -258,23 +258,27 @@ class="MathClass-bin">∗</mo></mrow></msup
 team size<span class="footnote-mark"><a 
 href="index7.html#fn6x0"><sup class="textsuperscript">6</sup></a></span><a 
  id="x1-2007f6"></a> 
-for that splitter (at least one monitor peer must be in each
-team). When the team is full, the splitter sends a message with
+for that splitter (notice that at least one monitor peer must be in each team,
+attached manually). When the team is full, the splitter sends a message
 <!--l. 115--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
+display="inline" ><mrow ><mo 
+class="MathClass-open">[</mo><mrow><mi 
 >t</mi> <mo 
-class="MathClass-rel">=</mo> <mn>0</mn></math>.
-When the team is shutted down, the splitter sends a
+class="MathClass-rel">=</mo> <mn>0</mn></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>.
+When the team is shutted down, the splitter sends
 <!--l. 116--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
+display="inline" ><mrow ><mo 
+class="MathClass-open">[</mo><mrow><mi 
 >t</mi> <mo 
 class="MathClass-rel">=</mo> <mo 
-class="MathClass-bin">−</mo><mn>1</mn></math>.
+class="MathClass-bin">−</mo><mn>1</mn></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>.
 Using the number of free spaces in each team, the splitters tracker can perform some
 load balacing among the teams, by including only those teams with more room in the
-<!--l. 118--><math 
+<!--l. 119--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mstyle 
