@@ -7,7 +7,7 @@
 
 \begin{figure}
   \fig{600}{6cm}{icecast-P2PSP} \caption{A possible data-flow in an
-  hybrid Icecast/P2PSP network. $S$ represents a splitter and $P_i$ a
+  hybrid CDN(Icecast)/P2PSP network. $S$ represents a splitter and $P_i$ a
   peer.\label{fig:icecast-P2PSP}}
 \end{figure}
 
@@ -23,22 +23,22 @@ channels are available at one or more\footnote{Most client/server
 different URL (Universal Resource Locator), usually expressed as a
 Web address with the structure:
 \begin{verbatim}
-  http://name.icecast.server/name_of_the_channel
+  http://server/mount_point
 \end{verbatim}
 
 % Hybrid P2PSP/CDN structure
 P2PSP does not perform data-flow control over the stream. The
 transmission bit-rate between P2PSP entities is controlled by an
-external server, which provides the
-stream. Fig.~\ref{fig:icecast-P2PSP} shows an example of an hybrid
-Icecast/P2PSP streaming overlay where several Icecast servers relay a
-set of channels produced by a set of source-clients, directly or
-through other servers. As can be seen, a listener (which usually plays
-de stream) can be replaced by a \emph{splitter}, a P2PSP entity that
-sends the received stream (a single channel) to a set of P2PSP
-\emph{peers}, called \emph{team}. Notice that, considering that a
-player can be attached to each peer, the scalability of the hybrid
-alternative is much higher than the pure client/server architecture.
+external (Icecast, for example) server, which provides the
+stream. Fig.~\ref{fig:icecast-P2PSP} shows an example of a streaming
+overlay where several servers relay a set of channels produced by a
+set of source-clients, directly or through other servers. As can be
+seen, a listener (which usually plays de stream) can be replaced by
+a \emph{splitter}, a P2PSP entity that sends the received stream (a
+single channel) to a set of P2PSP \emph{peers}, called
+\emph{team}. Notice that, considering that a player can be attached to
+each peer, the scalability of the hybrid alternative is much higher
+than the pure client/server architecture.
 %As the listeners, the peers receive
 %a copy of a stream
 
@@ -48,21 +48,53 @@ alternative is much higher than the pure client/server architecture.
 %and in a P2PSP team, the stream is gathered from the splitter and the
 %rest of peers of the team.
 
+%Usually, users are mainly interested in receiving channels, not in
+%knowing the topology of the overlay.
+
 % A load balancer for Icecast
-Usually, users are mainly interested in receiving channels, not in
-knowing the topology of the overlay. In a pure Icecast system, users
-request the channels directly to the servers. Unfortunately, this
-simple procedure has a drawback: normally, users does not know the
-load of the servers nor their distance to the user's player. This
-problem can be solved using a \emph{load balancer}. The listeners (and
-the splitters) which know the URL of the required channel, connects
-first to the load balancer which redirects them (with a HTTP 302 code)
-to a suitable server.
+In a pure CDN system, users request the channels directly to the
+servers. Unfortunately, this simple procedure has a drawback:
+normally, users do not know the load or the distance to the
+servers. This problem can be solved by using a \emph{load
+  balancer}. The listeners, which know the URL of the required
+channel, connects first to a load balancer which redirects them (with
+a HTTP 302 code) to a suitable server.
 
 % An extended load balancer
-This idea can be extended to take advantage of the existence of P2PSP
-teams in hybrid overlays, where some users run a local peer to
-retrieve a copy of the stream. In this case, the player
+This idea can be extended to minimize the response time of hybrid
+CDN/P2PSP structures. When a P2PSP user (which knows an URL of the
+channel) runs a local peer, it provides to the peer with the URL of
+the channel: a server and a mount point. Then, the peer (as any other
+listener does) contacts with a load balancer which in this case sends
+a list of splitters which are broadcasting the channel.\footnote{In
+the HTTP request sent to the load balancer, clients must include
+an \texttt{User-Agent:} header line which indicates the type of
+client. Thus, when the load balancer receives the request from a P2PSP
+peer, it returns a list of splitters instead of a simple HTTP
+redirection message.}  Then, the peer tries to connect with all the
+splitters in parallel, and the first establised connection determines
+the selected splitter (the rest of connections are closed). If only
+those splitters with space in their teams answer to the peer, this
+procedure should select the ``optimal'' splitter for the peer in terms
+of response time.
+
+For the case of the incorporation of new splitters to the network the
+procedure is similar. A new splitter (which is instantiated knowing an
+URL of a channel) contacts with the load balancer which returns a list
+of servers and peers, which are serving the channel. Then, the
+splitter tries to connect with all of them in parallel and the first
+successfull connection is finally selected.\footnote{In this case, the
+  load balancer should provide to the splitter if each entry of the
+  list is a server or a peer, in order to prioritize the type of
+  source.}
+
+Finally, using the idea of the extended load balancer, when a player
+(listener) connects to it, if there is a local peer running in the
+same host or the same private network that the player, the balancer
+will redirect the player to the local peer.
+
+\begin{comment}
+the player
 communicates\footnote{This is a reliable communication. Reliable
   messages are transmitted over TCP. On the other hand, unreliable
   messages, which can be lost in transit, are transmitted over UDP. In
@@ -134,6 +166,7 @@ sizes ($1$, supposing that only one monitor has added to each
 team). The player is redirected to the peer which, after receiving the
 list of splitters from the tracker, selects the Splitter$_1$ because
 answers first than the Splitter$_2$.
+\end{comment}
 
 \begin{comment}
 % The channels tracker
