@@ -12,10 +12,14 @@ which complain to their splitter with a $[\mathtt{lost}
 considers these type of messages if they come from a monitor.
 
 If a peer $P_o$ accumulates more than $L^*$ losts in $R$ rounds, $P_o$
-is removed from the splitter's list of peers. Notice that $L$ will
-tend to be proportional to the number $M$ of monitors, especially if
-those cases where $P_o$ is a gone peer that was unable to transmit the
-$[\mathtt{goodbye}]$ messages.
+is removed from the splitter's list of peers. Peers do the same, but
+in this case they remove the selfish neighbors from the
+$\text{forward}$ and $\text{pending}$ tables.
+
+%Notice that $L$ will
+%tend to be proportional to the number $M$ of monitors, especially if
+%those cases where $P_o$ is a gone peer that was unable to transmit the
+%$[\mathtt{goodbye}]$ messages.
 
 \begin{notex}
 This last functionality has not been implemented, at least, as it has
@@ -23,8 +27,8 @@ been explained here. The forget() thread is controlled by a timer, not
 by a counter of rounds.
 \end{notex}
 
-Peers also control that at least one chunk is received from a neighbor
-in each round.\footnote{Peers recognize that a new round has started
-  when a new chunk is received from the splitter.} If happens that a
-peer $P_x$ does not receives a chunk from peer $P_y$ between $D^*$
-consecutive rounds, $P_x$ removes $P_y$ of its forwaring table.
+%Peers also control that at least one chunk is received from a neighbor
+%in each round.\footnote{Peers recognize that a new round has started
+%  when a new chunk is received from the splitter.} If happens that a
+%peer $P_x$ does not receives a chunk from peer $P_y$ between $D^*$
+%consecutive rounds, $P_x$ removes $P_y$ of its forwaring table.

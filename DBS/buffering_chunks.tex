@@ -21,54 +21,10 @@ buffer. The chunk pointed by the tail of the buffer is sent to the
 player (if there is a chunk in that cell of the buffer). This action
 is carried out each time a new chunk is received.
 
-Chunks can be lost.\footnote{Chunks are transmitted using a
-  unrealiable communication, and therefore, network congestion can
-  lose chunks.} A chunk is considered as lost when it is time to send
-it to the player and the chunk has not been received.  In this
-situation, for each lost chunk, the peer sends a $[\mathtt{request}
-  \text{lost\_chunk\_number}]$ (that is the number of the next chunk
-to be played) to the last neighbor served. When a peer $P_x$ receives
-a $[\mathtt{request} \text{lost\_chunk\_number}]$ from $P_y$, $P_x$
-adds $P_y$ to $\text{forward}[P_o]$, where $P_o$ is the origin peer of
-the chunk stored in the position $lost\_chunk\_number$ of the buffer.
-
-% As an alternative ...
-\begin{comment}
-origin peer of the next chunk stored in the
-buffer. This peer has to characteristics: (1) it is not necessary a
-neighbor peer, and (2) there is a high probability that this chunk has
-been stored in the buffer ``for a long time'', so, if it is not a
-neighbor, the link between it and the peer is working fairly well.
-\end{comment}
-
-\begin{notex}
-  In the current implementation, the destination of the
-  $[\mathtt{request} ...]$ message is the neighbor with the smaller
-  chunk debt. This, a priori, has the drawback that this peer will
-  always selected for relaying all the lost chunks because i will have
-  a smaller debt as a consequence of the requests.
-\end{notex}
-  
-In this situation, it is also possible that some peers can request
-redundant paths between an origin peer and itself, and therefore, some
-chunks could be received more than once. If this case, for each
-duplicate chunk, a peer $P_i$ should send a $[\mathtt{prune}
-  \text{duplicate\_chunk\_number}]$ message to those neighbors that
-have sent to it the duplicate chunk. Neighbors receiving such message
-from peer $P_i$ should remove the $P_i$ from $\text{forward}[P_o]$,
-where $P_o$ is the origin peer of the duplicate chunk.
-
-\begin{comment}
-\begin{figure*}
-  \fig{500}{5cm}{DBS_peer_buffering} \caption{Buffering of the
-    chunks.\label{fig:DBS_peer_buffering}}
-\end{figure*}
-\end{comment}
-
 The buffering time determines how much time the peers must wait before
 start playing the chunks. Considering that chunks can be lost in
 transit or delayed more than $B$ times of chunk, randomly, it is
-difficult to determine, a priori the optimal buffering time. In the
+difficult to determine, a priori, the optimal buffering time. In the
 current implementation, peers buffer a variable number of chunks that
 depends on the order in which chunks are received. If $x_1$ is the
 (number of the) first chunk received (the first chunk to be played),

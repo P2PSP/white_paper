@@ -18,10 +18,8 @@ all those peers, $P_i$ uses the IP address $\mathtt{224.0.0.1}$ (all
 systems on this subnet), (default) port $\mathtt{1234}$, to multicast
 (only) the chunks received from the splitter. When implementing IMS,
 all peers in the same local network communicate using this IPM group
-address and port. The splitter do a similar check: for all those peers
-that are in the same local network that then splitter, the splitter
-sends the chunk to the multicast channel
-$\mathtt{224.0.0.1}$:$\mathtt{1234}$.
+address and port. The rest of external peers will be referenced using
+their public end-points.
 
 \begin{comment}
 \subsubsection{Listening IPM}

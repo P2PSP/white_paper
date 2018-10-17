@@ -1,0 +1,45 @@
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "<none>"
+%%% End:
+
+\label{sec:overlay_organization}
+
+Chunks can be lost.\footnote{Chunks are transmitted using a
+  unrealiable communication, and therefore, network congestion can
+  produce a loss of chunks.} A chunk is considered as lost when it is
+time to send it to the player and the chunk has not been received.  In
+this situation, for each lost chunk, the peer sends a
+$[\mathtt{request} \text{lost\_chunk\_number}]$ (that is the number of
+the next chunk to be played) to a randomly selected peer of the
+team. When a peer $P_x$ receives a $[\mathtt{request}
+  \text{lost\_chunk\_number}]$ from $P_y$, $P_x$ adds $P_y$ to
+$\text{forward}[P_o]$, where $P_o$ is the origin peer of the chunk
+stored in the position $lost\_chunk\_number$ of the buffer.
+
+% As an alternative ...
+\begin{comment}
+origin peer of the next chunk stored in the
+buffer. This peer has to characteristics: (1) it is not necessary a
+neighbor peer, and (2) there is a high probability that this chunk has
+been stored in the buffer ``for a long time'', so, if it is not a
+neighbor, the link between it and the peer is working fairly well.
+\end{comment}
+
+%\begin{notex}
+%  In the current implementation, the destination of the
+%  $[\mathtt{request} ...]$ message is the neighbor with the smaller
+%  chunk debt. This, a priori, has the drawback that this peer will
+%  always selected for relaying all the lost chunks because i will have
+%  a smaller debt as a consequence of the requests.
+%\end{notex}
+  
+In this situation, it is also possible that some peers can request
+redundant paths between an origin peer and itself, and therefore, some
+chunks could be received more than once. If this case, for each
+duplicate chunk, a peer $P_i$ should send a $[\mathtt{prune}
+  \text{duplicate\_chunk\_number}]$ message to those neighbors that
+have sent to it the duplicate chunk. Neighbors receiving such message
+from peer $P_i$ should remove the $P_i$ from $\text{forward}[P_o]$,
+where $P_o$ is the origin peer of the duplicate chunk.
+
