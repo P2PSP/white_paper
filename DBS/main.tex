@@ -21,13 +21,14 @@
 
 DBS provides ALM~\cite{banerjee2002scalable} of a media stream in
 unicast environments~\cite{comer2003computer}. The media is sent by a
-streaming server, and received by a splitter\note{ (see
+streaming \emph{server}, and received by a \emph{splitter}\note{ (see
   Sec.~\ref{sec:STS})}. The splitter divides the stream into a
-sequence of \emph{chunks}, and relay them to its team, where it can be
-up to $N^*$ peers. Each peer gathers the chunks from the splitter and
-the rest of peers of the team, and sends them to a player. In
-Tab.~\ref{tab:DBS_nomenclature} the definitions used in
-the DBS have been summarized.
+sequence of chunks of data, and relay them to its \emph{team} using a
+round-robing schema, where it can be up to $N^*$ \emph{peers}. Each
+peer gathers the chunks from the splitter and the rest of peers of the
+team, and sends them to a \emph{player}. In
+Tab.~\ref{tab:DBS_nomenclature} the definitions used in the DBS have
+been summarized.
 \begin{comment}
 In single layered streams\footnote{Each layer of a
   scalable stream is received by a different peer attached to the same
