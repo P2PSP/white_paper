@@ -106,20 +106,20 @@
 .ectt-0800{ font-family: monospace;}
 .ectt-0800{ font-family: monospace;}
 .ectt-0800{ font-family: monospace;}
-.ecbx-1000{ font-weight: bold;}
-.ecbx-1000{ font-weight: bold;}
-.ecbx-1000{ font-weight: bold;}
-.ecbx-1000{ font-weight: bold;}
-.ecbx-1000{ font-weight: bold;}
-.ecbx-1000{ font-weight: bold;}
-.ecbx-1000{ font-weight: bold;}
-.ecbx-1000{ font-weight: bold;}
-.ecbx-1000{ font-weight: bold;}
-.ecbx-1000{ font-weight: bold;}
-.ecbx-1000{ font-weight: bold;}
-.ecbx-1000{ font-weight: bold;}
-.ecbx-1000{ font-weight: bold;}
 .cmtt-10{font-family: monospace;}
+.ecbx-1000{ font-weight: bold;}
+.ecbx-1000{ font-weight: bold;}
+.ecbx-1000{ font-weight: bold;}
+.ecbx-1000{ font-weight: bold;}
+.ecbx-1000{ font-weight: bold;}
+.ecbx-1000{ font-weight: bold;}
+.ecbx-1000{ font-weight: bold;}
+.ecbx-1000{ font-weight: bold;}
+.ecbx-1000{ font-weight: bold;}
+.ecbx-1000{ font-weight: bold;}
+.ecbx-1000{ font-weight: bold;}
+.ecbx-1000{ font-weight: bold;}
+.ecbx-1000{ font-weight: bold;}
 .cmti-10{ font-style: italic;}
 .ecss-1000{ font-family: sans-serif;}
 .ecss-1000{ font-family: sans-serif;}
@@ -248,6 +248,7 @@ mtd.align-even{margin-right:2em; text-align:left;}
 .boxed{border: 1px solid black; padding-left:2px; padding-right:2px;}
 mo.qopname + mi{margin-left:0.3em}
 mi + mo.qopname{margin-left:0.3em}
+.rotatebox{display: inline-block;}
 .figure img.graphics {margin-left:10%;}
 div.tabular, div.center div.tabular {text-align: center; margin-top:0.5em; margin-bottom:0.5em; }
 table.tabular td p{margin-top:0em;}

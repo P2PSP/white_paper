@@ -7,7 +7,7 @@
 
 \begin{figure}
   \fig{600}{6cm}{icecast-P2PSP} \caption{A possible data-flow in an
-  hybrid CDN(Icecast)/P2PSP network. $S$ represents a splitter and $P_i$ a
+  hybrid CDN(Icecast)/P2PSP network. $S$ represents a splitter and $P_i$ the $i$-th
   peer.\label{fig:icecast-P2PSP}}
 \end{figure}
 
@@ -62,10 +62,10 @@ a HTTP 302 code) to a suitable server.
 
 % An extended load balancer
 This idea can be extended to minimize the response time of hybrid
-CDN/P2PSP structures. When a P2PSP user (which knows an URL of the
-channel) runs a local peer, it provides to the peer with the URL of
+CDN/P2P structures. When a P2PSP user (who knows an URL of the
+channel) runs a local peer, it provides the peer with the URL of
 the channel: a server and a mount point. Then, the peer (as any other
-listener does) contacts with a load balancer which in this case sends
+listener does) contacts a load balancer which in this case sends
 a list of splitters which are broadcasting the channel.\footnote{In
 the HTTP request sent to the load balancer, clients must include
 an \texttt{User-Agent:} header line which indicates the type of
@@ -80,12 +80,12 @@ of response time.
 
 For the case of the incorporation of new splitters to the network the
 procedure is similar. A new splitter (which is instantiated knowing an
-URL of a channel) contacts with the load balancer which returns a list
+URL of a channel) contacts the load balancer which returns a list
 of servers and peers, which are serving the channel. Then, the
 splitter tries to connect with all of them in parallel and the first
 successfull connection is finally selected.\footnote{In this case, the
-  load balancer should provide to the splitter if each entry of the
-  list is a server or a peer, in order to prioritize the type of
+  load balancer should communicate to the splitter if each entry of the
+  list is a server or a peer, in order to know the type of
   source.}
 
 Finally, using the idea of the extended load balancer, when a player

@@ -11,7 +11,7 @@ the team. To minimize the joining time, the peer sends a
 $[\mathtt{hello}]$ message to each peer of the team, in parallel
 with the reception of the list. When a peer of the team receives a
 $[\mathtt{hello}]$, it adds the sender of the message to a table of peers
-called $\text{forward}[]$. If a peer $P_i$ has an entry
+called $\text{forward}[]$ \note{(see \href{https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/peer_dbs.py\#L491}{$\text{forward[]}$ in \texttt{peer.py}})}. If a peer $P_i$ has an entry
 $\text{forward}[P_j]=P_k$ then, each chunk received by $P_i$ and
 originated at $P_j$ will be forwarded to $P_k$.
 
@@ -35,3 +35,7 @@ list.
 The new pseudo-code related to joining a team is describen in the
 Fig.~\ref{fig:joining}.
 \end{comment}
+
+\begin{notex}
+  See \href{https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py#L296}{$\text{destination\_of\_chunk}[]$ in \texttt{peer\_dbs.py}}.
+\end{notex}

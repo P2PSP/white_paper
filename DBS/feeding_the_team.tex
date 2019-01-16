@@ -28,19 +28,17 @@ are available in Fig.~\ref{fig:chunk_generation}.
 \end{figure*}
 \end{comment}
 
-We define a \emph{round} as the process of sending a (different) chunk
-from the splitter to all the peers of the team. In other words, in a
-round, all peers of the team should have received a different chunk
-from the splitter. Notice that the round-time is variable, and depends
-on the current number of peers in the team, the chunk-size, and the
-average bit-rate of the media stream.
+We define a \emph{round} as the process of transmitting $N$ different
+chunks from the splitter to a team of $N$ peers. In other words, for a
+team of size $N$, the round-time is $N$ chunk-times. Notice that the
+round-time is variable, and depends on the current number of peers in
+the team ($N$), the chunk size ($C$), and the average bit-rate of the
+media stream.
 
-The splitter remembers which chunk, of a list of the last $B$ chunks
-transmitted to the team, was sent to each peer.
-
-\begin{notex}
-  See \href{https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py#L296}{$\text{destination\_of\_chunk}[]$}.
-\end{notex}
+The splitter remembers which chunk, of a list of the last $B$
+transmitted chunks, was sent to each peer of the team. Notice that, in
+order to remember in a round which chunk was sent to each peer, $B\ge
+N$. \note{See \href{https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py\#L296}{$\text{destination\_of\_chunk}[]$ in \texttt{splitter\_dbs.py}}.}
 
 \begin{comment}
 (in a team) as the time necessary to send two consecutive chunks from
