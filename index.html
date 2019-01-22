@@ -24,7 +24,7 @@ src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLor
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">January 16, 2019</span></div>
+class="ecrm-1200">January 22, 2019</span></div>
    </div>
    <div 
 class="abstract" 
@@ -65,7 +65,7 @@ class="ecrm-0900">diﬀerent functionalities.</span>
  id="x1-1000"></a>Contents</h3>
    <div class="tableofcontents">
    <span class="sectionToc" >1 <a 
-href="#x1-20001" id="QQ2-1-2">STS (Splitters Tracking Set)</a></span>
+href="#x1-20001" id="QQ2-1-2">LBS (Load Balancing Set)</a></span>
 <br />   <span class="sectionToc" >2 <a 
 href="#x1-30002" id="QQ2-1-4">DBS (Data Broadcasting Set)</a></span>
 <br />    <span class="subsectionToc" >2.1 <a 
@@ -121,7 +121,7 @@ href="#x1-2600011" id="QQ2-1-39">DPS (Data Privacy Set)</a></span>
 <!--l. 33--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
- id="x1-20001"></a>STS (Splitters Tracking Set)</h3>
+ id="x1-20001"></a>LBS (Load Balancing Set)</h3>
    <hr class="figure" /><div class="figure" 
 >
                                                                   
@@ -132,7 +132,7 @@ href="#x1-2600011" id="QQ2-1-39">DPS (Data Privacy Set)</a></span>
                                                                   
 
                                                                   
-<!--l. 9--><p class="noindent" > <div style="text-align:center;"> <img width=600 src="icecast-P2PSP" /> </div> 
+<!--l. 9--><p class="noindent" > <div style="text-align:center;"> <img width=600 src="graphics/icecast-P2PSP.svg" /> </div> 
 <br /> </p><div class="caption" 
 ><span class="id">Figure 1: </span><span  
 class="content">A possible data-ﬂow in an hybrid CDN(Icecast)/P2PSP network.
@@ -185,8 +185,8 @@ de stream) can be replaced by a <span
 class="ecti-1000">splitter</span>, a P2PSP entity that sends the
 received stream (a single channel) to a set of P2PSP <span 
 class="ecti-1000">peers</span>, called <span 
-class="ecti-1000">team</span>.
-Notice that, considering that a player can be attached to each peer, the
+class="ecti-1000">team</span>. Notice
+that, considering that at least one player can be attached to each peer, the
 scalability of the hybrid alternative is much higher than the pure client/server
 architecture.
 </p><!--l. 55--><p class="indent" >   In a pure CDN system, users request the channels directly to the servers.
@@ -221,10 +221,13 @@ with all of them in parallel and the ﬁrst successfull connection is ﬁnally
 selected.<span class="footnote-mark"><a 
 href="index5.html#fn4x0"><sup class="textsuperscript">4</sup></a></span><a 
  id="x1-2005f4"></a> 
-</p><!--l. 91--><p class="indent" >   Finally, using the idea of the extended load balancer, when a player (listener)
-connects to it, if there is a local peer running in the same host or the same private
+</p><!--l. 91--><p class="indent" >   Using the idea of the extended load balancer, when a player (listener) connects
+to it, if there is a local peer running in the same host or the same private
 network that the player, the balancer will redirect the player to the local
 peer.
+</p><!--l. 96--><p class="indent" >   Finally, all splitters associated to the same stream should generate exactly the
+same chunks (content and header). See Section <a 
+href="#x1-240009">9<!--tex4ht:ref: sec:MCS --></a>.
 </p>
    <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
  id="x1-30002"></a>DBS (Data Broadcasting Set)</h3>
@@ -305,7 +308,7 @@ The media is sent by a streaming <span
 class="ecti-1000">server</span>, and received by a <span 
 class="ecti-1000">splitter </span>(see
 Sec. <a 
-href="#x1-20001">1<!--tex4ht:ref: sec:STS --></a>). The splitter divides the stream into a sequence of chunks of data, and
+href="#x1-20001">1<!--tex4ht:ref: sec:LBS --></a>). The splitter divides the stream into a sequence of chunks of data, and
 relay them to its <span 
 class="ecti-1000">team </span>using a round-robing schema, where it can be up to
 <!--l. 27--><math 
@@ -316,13 +319,13 @@ display="inline" ><msup><mrow
 ><mo 
 class="MathClass-bin">∗</mo></mrow></msup 
 ></math> <span 
-class="ecti-1000">peers</span>. Each
-peer gathers the chunks from the splitter and the rest of peers of the team, and sends them
-to a <span 
+class="ecti-1000">peers</span>. Each peer
+gathers the chunks from the splitter and the rest of peers of the team, and sends them to at least
+one <span 
 class="ecti-1000">player</span><span class="footnote-mark"><a 
 href="index6.html#fn5x0"><sup class="textsuperscript">5</sup></a></span><a 
  id="x1-3002f5"></a> .
-In Tab. <a 
+</p><!--l. 32--><p class="indent" >   In Tab. <a 
 href="#x1-30011">1<!--tex4ht:ref: tab:DBS_nomenclature --></a> the deﬁnitions used in the DBS have been summarized.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.1   </span> <a 
@@ -333,7 +336,7 @@ class="ecti-1000">monitor </span>peer. In a team with more than
 one peer, at least one of them must be a monitor peer. Monitor peers are instantiated
 by the overlay administrator to monitorize diﬀerent aspects of the broadcasting, such
 as, the quality of the rendered video.
-</p><!--l. 6--><p class="noindent" >
+</p><!--l. 7--><p class="noindent" >
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.2   </span> <a 
  id="x1-50002.2"></a>Feeding the team</h4>
@@ -378,10 +381,10 @@ the chunk size (<!--l. 35--><math
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >C</mi></math>),
+and the average bit-rate of the media stream.
                                                                   
 
                                                                   
-and the average bit-rate of the media stream.
 </p><!--l. 38--><p class="indent" >   The splitter remembers which chunk, of a list of the last
 <!--l. 38--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -494,7 +497,7 @@ class="MathClass-open">[</mo><mrow></mrow><mo
 class="MathClass-close">]</mo></mrow></math>
 in <span 
 class="ectt-1000">peer_dbs.py</span></a>.
-</p><!--l. 12--><p class="noindent" >
+</p><!--l. 13--><p class="noindent" >
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.4   </span> <a 
  id="x1-70002.4"></a>Buﬀering chunks</h4>
@@ -526,10 +529,10 @@ constant, but it is not compulsory that all peers of the same team use the same
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >B</mi></math>
+value.
                                                                   
 
                                                                   
-value.
 </p><!--l. 16--><p class="indent" >   The buﬀer is implemented as a circular queue of
 <!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -613,12 +616,12 @@ class="MathClass-rel">=</mo> <mrow ><mo
 class="MathClass-open">{</mo><mrow><mn>1</mn><mn>1</mn><mo 
 class="MathClass-punc">,</mo><mn>2</mn><mn>2</mn></mrow><mo 
 class="MathClass-close">}</mo></mrow></math>, chunks found
-                                                                  
-
-                                                                  
 at positions <!--l. 38--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mn>1</mn><mn>1</mn></math> and
+                                                                  
+
+                                                                  
 <!--l. 38--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mn>2</mn><mn>2</mn></math> of the buﬀer have
@@ -652,7 +655,7 @@ scheme, for each new received chunk.
                                                                   
 
                                                                   
-<!--l. 44--><p class="noindent" > <div style="text-align:center;"> <img width=250 src="team_0" /> </div> 
+<!--l. 44--><p class="noindent" > <div style="text-align:center;"> <img width=250 src="graphics/team_0.svg" /> </div> 
 <br />  </p><div class="caption" 
 ><span class="id">Figure 2:    </span><span  
 class="content">A    team    has    been    created    with    a    single    monitor
@@ -721,7 +724,7 @@ entity.</span></div><!--tex4ht:label?: x1-80012 -->
                                                                   
 
                                                                   
-<!--l. 54--><p class="noindent" > <div style="text-align:center;"> <img width=250 src="team_1" /> </div> 
+<!--l. 54--><p class="noindent" > <div style="text-align:center;"> <img width=250 src="graphics/team_1.svg" /> </div> 
 <br /> </p><div class="caption" 
 ><span class="id">Figure 3: </span><span  
 class="content">Peer <!--l. 65--><math 
@@ -885,7 +888,7 @@ played) section of the stream.</span></div><!--tex4ht:label?: x1-80023 -->
                                                                   
 
                                                                   
-<!--l. 69--><p class="noindent" > <div style="text-align:center;"> <img width=300 src="team_2" /> </div> 
+<!--l. 69--><p class="noindent" > <div style="text-align:center;"> <img width=300 src="graphics/team_2.svg" /> </div> 
 <br /> </p><div class="caption" 
 ><span class="id">Figure 4: </span><span  
 class="content"><!--l. 75--><math 
@@ -999,7 +1002,7 @@ display="inline" ><mi
                                                                   
 
                                                                   
-<!--l. 79--><p class="noindent" > <div style="text-align:center;"> <img width=330 src="team_3" /> </div> 
+<!--l. 79--><p class="noindent" > <div style="text-align:center;"> <img width=330 src="graphics/team_3.svg" /> </div> 
 <br /> </p><div class="caption" 
 ><span class="id">Figure 5: </span><span  
 class="content">Chunk 4 is received by <!--l. 81--><math 
@@ -1037,7 +1040,7 @@ display="inline" ><msub><mrow
                                                                   
 
                                                                   
-<!--l. 85--><p class="noindent" > <div style="text-align:center;"> <img width=330 src="team_4" /> </div> 
+<!--l. 85--><p class="noindent" > <div style="text-align:center;"> <img width=330 src="graphics/team_4.svg" /> </div> 
 <br /> </p><div class="caption" 
 ><span class="id">Figure 6: </span><span  
 class="content">Chunk 5 is received by <!--l. 86--><math 
@@ -1068,7 +1071,7 @@ class="ecbx-1000">Note:</span>
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img width=350 src="team_5" /> </div> 
+ <div style="text-align:center;"> <img width=350 src="graphics/team_5.svg" /> </div> 
                                                                   
 
                                                                   
@@ -1081,7 +1084,7 @@ class="ecbx-1000">Note:</span>
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img width=380 src="team_6" /> </div> 
+ <div style="text-align:center;"> <img width=380 src="graphics/team_6.svg" /> </div> 
                                                                   
 
                                                                   
@@ -1094,7 +1097,7 @@ class="ecbx-1000">Note:</span>
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img width=320 src="team_7" /> </div> 
+ <div style="text-align:center;"> <img width=320 src="graphics/team_7.svg" /> </div> 
                                                                   
 
                                                                   
@@ -1107,7 +1110,7 @@ class="ecbx-1000">Note:</span>
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img width=200 src="team_8" /> </div> 
+ <div style="text-align:center;"> <img width=200 src="graphics/team_8.svg" /> </div> 
                                                                   
 
                                                                   
@@ -1120,7 +1123,7 @@ class="ecbx-1000">Note:</span>
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img width=280 src="team_9" /> </div> 
+ <div style="text-align:center;"> <img width=280 src="graphics/team_9.svg" /> </div> 
                                                                   
 
                                                                   
@@ -1133,7 +1136,7 @@ class="ecbx-1000">Note:</span>
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img width=350 src="team_10" /> </div> 
+ <div style="text-align:center;"> <img width=350 src="graphics/team_10.svg" /> </div> 
                                                                   
 
                                                                   
@@ -1146,7 +1149,7 @@ class="ecbx-1000">Note:</span>
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img width=210 src="team_11" /> </div> 
+ <div style="text-align:center;"> <img width=210 src="graphics/team_11.svg" /> </div> 
                                                                   
 
                                                                   
@@ -1159,7 +1162,7 @@ class="ecbx-1000">Note:</span>
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img width=210 src="team_12" /> </div> 
+ <div style="text-align:center;"> <img width=210 src="graphics/team_12.svg" /> </div> 
                                                                   
 
                                                                   
@@ -1172,7 +1175,7 @@ class="ecbx-1000">Note:</span>
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img width=210 src="team_13" /> </div> 
+ <div style="text-align:center;"> <img width=210 src="graphics/team_13.svg" /> </div> 
                                                                   
 
                                                                   
@@ -1360,7 +1363,7 @@ display="inline" ><mstyle
 class="text"><mtext  >forward</mtext></mstyle></math>
 table.
 </p><!--l. 17--><p class="indent" >   The splitter removes the outgoing peer from the list of peers.
-</p><!--l. 24--><p class="noindent" >
+</p><!--l. 25--><p class="noindent" >
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.8   </span> <a 
  id="x1-110002.8"></a>Free-riding control</h4>
@@ -1782,7 +1785,7 @@ end-point.
                                                                   
 
                                                                   
-<!--l. 50--><p class="noindent" > <div style="text-align:center;"> <img width=500 src="cone_NAT" /> </div> 
+<!--l. 50--><p class="noindent" > <div style="text-align:center;"> <img width=500 src="graphics/cone_NAT.svg" /> </div> 
 <br /> </p><div class="caption" 
 ><span class="id">Figure 7: </span><span  
 class="content">Cone NAT port allocation.</span></div><!--tex4ht:label?: x1-180017 -->
@@ -1800,7 +1803,7 @@ class="content">Cone NAT port allocation.</span></div><!--tex4ht:label?: x1-1800
                                                                   
 
                                                                   
-<!--l. 55--><p class="noindent" > <div style="text-align:center;"> <img width=500 src="symmetric_NAT" /> </div> 
+<!--l. 55--><p class="noindent" > <div style="text-align:center;"> <img width=500 src="graphics/symmetric_NAT.svg" /> </div> 
 <br /> </p><div class="caption" 
 ><span class="id">Figure 8: </span><span  
 class="content">Symmetric NAT port allocation.</span></div><!--tex4ht:label?: x1-180028 -->
@@ -2263,7 +2266,7 @@ been used. </span></div><!--tex4ht:label?: x1-220012 -->
                                                                   
 
                                                                   
-<!--l. 157--><p class="noindent" > <div style="text-align:center;"> <img width=600 src="UDP_Hole_Punching_RCN" /> </div> 
+<!--l. 157--><p class="noindent" > <div style="text-align:center;"> <img width=600 src="graphics/UDP_Hole_Punching_RCN.svg" /> </div> 
 <br /> </p><div class="caption" 
 ><span class="id">Figure 9: </span><span  
 class="content">An example that shows how it is possible to establish a connection
@@ -2298,7 +2301,7 @@ that are behind cone NATs.</span></div><!--tex4ht:label?: x1-220029 -->
                                                                   
 
                                                                   
-<!--l. 164--><p class="noindent" > <div style="text-align:center;"> <img width=600 src="UDP_Hole_Punching_SN_failure" /> </div> 
+<!--l. 164--><p class="noindent" > <div style="text-align:center;"> <img width=600 src="graphics/UDP_Hole_Punching_SN_failure.svg" /> </div> 
 <br />           </p><div class="caption" 
 ><span class="id">Figure 10:                 </span><span  
 class="content">An                 example                 that
@@ -2332,7 +2335,7 @@ that are behind symmetric NATs.</span></div><!--tex4ht:label?: x1-2200310 -->
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img width=800 src="SNTuCPP" /> </div> 
+ <div style="text-align:center;"> <img width=800 src="graphics/SNTuCPP.svg" /> </div> 
 <br /> <div class="caption" 
 ><span class="id">Figure 11:  </span><span  
 class="content">Timeline  of  an  (ideal)  NTS  interaction  between  two  peers
@@ -3477,20 +3480,20 @@ is the (maximum) port step measured for the incoming peer’s NAT.
 </p>
    <h3 class="sectionHead"><span class="titlemark">9   </span> <a 
  id="x1-240009"></a>MCS (Multi-Channel Set)</h3>
-<!--l. 1--><p class="noindent" >When using MDC <span class="cite">[<a 
+<!--l. 8--><p class="noindent" >When using MDC <span class="cite">[<a 
 href="#Xbaccichet2007content">1</a>]</span>, SVC <span class="cite">[<a 
 href="#Xchu2009auction">3</a>]</span>, or for emulating the CS model, it can be interesting
 for peers to belong to more than one team. To implement MCS, peers must replicate
 the P2PSP modules (DBS at least) for each team (channel), except the
 buﬀer.
-</p><!--l. 7--><p class="indent" >   The use of MDC is trivial: the higher the number received descriptions (channels),
+</p><!--l. 14--><p class="indent" >   The use of MDC is trivial: the higher the number received descriptions (channels),
 even partially, the higher the quality of the playback. However, when transmitting
 SVC media, peers should prioritize the reception of the most important
 layers.
-</p><!--l. 12--><p class="indent" >   When a peer is in more than one team, and the teams broadcast exactly the same
+</p><!--l. 19--><p class="indent" >   When a peer is in more than one team, and the teams broadcast exactly the same
 stream (the same chunks and headers), it could move between teams seamless
 (without losts of signal).
-</p><!--l. 16--><p class="indent" >   A pure CS service could be provided if the corresponding splitter announces one
+</p><!--l. 23--><p class="indent" >   A pure CS service could be provided if the corresponding splitter announces one
 empty team and sends each chunk so many times as teams (with one peer/team)
 there are.
 </p><!--l. 60--><p class="noindent" >

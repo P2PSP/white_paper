@@ -8,7 +8,7 @@
 \begin{comment}
 \begin{figure*}
   %\includegraphics[width=0.75\textwidth]{chunk_generation_and_flooding}
-  \fig{300}{3cm}{peer_chunk_flooding}
+  \imgw{300}{graphics/peer_chunk_flooding.svg}
   \caption{Chunk flooding at peers.\label{fig:peer_chunk_flooding}}
 \end{figure*}
 \end{comment}
@@ -41,7 +41,7 @@ current scheduler used by the peers selects a different neighbor,
 using a round-robin scheme, for each new received chunk.
 
 \begin{figure}
-  \fig{250}{2.5cm}{team_0} \caption{A team has been created with a
+  \imgw{250}{graphics/team_0.svg} \caption{A team has been created with a
     single monitor $M_0$ ($[\mathtt{hello}]$ messages are not
     shown). Chunks with numbers 0 and 1 (the time $t$ is measured in
     chunks-time) have been transmitted from the splitter $S$ to
@@ -51,7 +51,7 @@ using a round-robin scheme, for each new received chunk.
 \end{figure}
 
 \begin{figure}
-  \fig{250}{2.5cm}{team_1} \caption{Peer $P_1$ joins the team (the
+  \imgw{250}{graphics/team_1.svg} \caption{Peer $P_1$ joins the team (the
     $[\mathtt{hello}]$'s are not shown). In $M_0$, $F=\{M_0:[P_1]\}$
     because when $M_0$ receives the $[\mathtt{hello}]$ from $P_1$,
     $M_0$ is the origin peer for all chunks received from $S$ and
@@ -66,7 +66,7 @@ using a round-robin scheme, for each new received chunk.
 \end{figure}
 
 \begin{figure}
-  \fig{300}{3cm}{team_2} \caption{$P_2$ joins the team (sending the
+  \imgw{300}{graphics/team_2.svg} \caption{$P_2$ joins the team (sending the
     $[\mathtt{hello}]$'s not shown). $M_0$ and $P_1$ includes $P_2$ in
     their forwarding tables. The chunk 3 is received by $P_1$ which
     decides to send it to $P_2$. Chunk 3 remains as pending to be sent
@@ -76,51 +76,51 @@ using a round-robin scheme, for each new received chunk.
 \end{figure}
 
 \begin{figure}
-  \fig{330}{3.3cm}{team_3} \caption{Chunk 4 is received by $P_2$ which
+  \imgw{330}{graphics/team_3.svg} \caption{Chunk 4 is received by $P_2$ which
     relays it to $P_1$, what relays chunk 3 to
     $M_0$.\label{fig:team_3}}
 \end{figure}
 
 \begin{figure}
-  \fig{330}{3.3cm}{team_4} \caption{Chunk 5 is received by $M_0$ which
+  \imgw{330}{graphics/team_4.svg} \caption{Chunk 5 is received by $M_0$ which
     relays it to $P_2$.\label{fig:team_4}}
 \end{figure}
 
 \begin{notex}
   \begin{figure*}
-    \fig{350}{3.5cm}{team_5}
+    \imgw{350}{graphics/team_5.svg}
   \end{figure*}
   
   \begin{figure*}
-    \fig{380}{3.8cm}{team_6}
+    \imgw{380}{graphics/team_6.svg}
   \end{figure*}
   
   \begin{figure*}
-    \fig{320}{3.2cm}{team_7}
+    \imgw{320}{graphics/team_7.svg}
   \end{figure*}
   
   \begin{figure*}
-    \fig{200}{2cm}{team_8}
+    \imgw{200}{graphics/team_8.svg}
   \end{figure*}
   
   \begin{figure*}
-    \fig{280}{2.8cm}{team_9}
+    \imgw{280}{graphics/team_9.svg}
   \end{figure*}
   
   \begin{figure*}
-    \fig{350}{3.5cm}{team_10}
+    \imgw{350}{graphics/team_10.svg}
   \end{figure*}
   
   \begin{figure*}
-    \fig{210}{2.1cm}{team_11}
+    \imgw{210}{graphics/team_11.svg}
   \end{figure*}
   
   \begin{figure*}
-    \fig{210}{2.1cm}{team_12}
+    \imgw{210}{graphics/team_12.svg}
   \end{figure*}
   
   \begin{figure*}
-    \fig{210}{2.1cm}{team_13}
+    \imgw{210}{graphics/team_13.svg}
   \end{figure*}
 
 \end{notex}

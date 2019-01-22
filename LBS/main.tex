@@ -3,10 +3,10 @@
 %%% TeX-master: "<none>"
 %%% End:
 
-\label{sec:STS}
+\label{sec:LBS}
 
 \begin{figure}
-  \fig{600}{6cm}{icecast-P2PSP} \caption{A possible data-flow in an
+  \imgw{600}{graphics/icecast-P2PSP.svg} \caption{A possible data-flow in an
   hybrid CDN(Icecast)/P2PSP network. $S$ represents a splitter and $P_i$ the $i$-th
   peer.\label{fig:icecast-P2PSP}}
 \end{figure}
@@ -33,12 +33,12 @@ external (Icecast, for example) server, which provides the
 stream. Fig.~\ref{fig:icecast-P2PSP} shows an example of a streaming
 overlay where several servers relay a set of channels produced by a
 set of source-clients, directly or through other servers. As can be
-seen, a listener (which usually plays de stream) can be replaced by
-a \emph{splitter}, a P2PSP entity that sends the received stream (a
+seen, a listener (which usually plays de stream) can be replaced by a
+\emph{splitter}, a P2PSP entity that sends the received stream (a
 single channel) to a set of P2PSP \emph{peers}, called
-\emph{team}. Notice that, considering that a player can be attached to
-each peer, the scalability of the hybrid alternative is much higher
-than the pure client/server architecture.
+\emph{team}. Notice that, considering that at least one player can be
+attached to each peer, the scalability of the hybrid alternative is
+much higher than the pure client/server architecture.
 %As the listeners, the peers receive
 %a copy of a stream
 
@@ -88,10 +88,12 @@ successfull connection is finally selected.\footnote{In this case, the
   list is a server or a peer, in order to know the type of
   source.}
 
-Finally, using the idea of the extended load balancer, when a player
+Using the idea of the extended load balancer, when a player
 (listener) connects to it, if there is a local peer running in the
 same host or the same private network that the player, the balancer
 will redirect the player to the local peer.
+
+Finally, all splitters associated to the same stream should generate exactly the same chunks (content and header). See Section~\ref{sec:MCS}.
 
 \begin{comment}
 the player
@@ -157,7 +159,7 @@ $[\text{list of splitters}]$ response.
 
 %The Fig.~\ref{fig:STS} describes in more accurately the algorithms run
 %by the different entities that participate in STS.
-The Fig.~\ref{fig:STS_example} shown an example of an STS
+The Fig.~\ref{fig:STS_example} shown an example of an LBS
 communication. When the peer is created, it sends a $[\mathtt{hello}]$
 message to the load balancer telling that a player is running in the
 same host that the peer and therefore, the peers should be redirected
