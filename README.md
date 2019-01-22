@@ -1,4 +1,7 @@
 # P2PSP.github.io
+
+[![Join the chat at https://gitter.im/P2PSP/P2PSP.github.io](https://badges.gitter.im/P2PSP/P2PSP.github.io.svg)](https://gitter.im/P2PSP/P2PSP.github.io?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A P2PSP description.
 
 DBS = Data Broadcasting Set             (implemented)
