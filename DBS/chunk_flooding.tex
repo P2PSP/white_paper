@@ -13,15 +13,16 @@
 \end{figure*}
 \end{comment}
 
-DBS implements a content-unaware push-based protocol, and when a
-peer receives a chunk, it can be retransmitted to a large number of
-neighbors. To avoid network congestion while flooding, some kind of
-flow control must be performed.
+DBS implements a content-unaware push-based protocol, and when a peer
+receives a chunk, it can be retransmitted to a large number of
+neighbors. Even controlling the chunk rate by the servers, in order to
+reduce network congestion while peers's flooding, some kind of flow
+control must be performed.
 
 %Moreover, to achieve an ideal I/O ratio of $1$, peers should send one
 %chunk for every received one.
 
-Congestion may be avoided by means of a basic idea: \textsf{if I have
+Congestion may be avoided by means of a basic idea: \emph{if I have
   received a chunk, I should send a chunk}. It is easy to see that, in
 a fully connected overlay, this allows to control the data
 flow. However, in more realistic scenarios, peers can be ``connected''
@@ -29,16 +30,19 @@ with a variable number of neighbors and therefore, if the splitter
 follows a pure round-robin strategy, some peers can send more chunks
 that they receive.
 
-The previous idea can be improved to handle a variable connectivity
+The previous idea can be adapted to handle a variable connectivity
 degree. Each peer uses a table of lists, $\text{pending}[]$, indexed
 by the neighbor end-points, where each list stores the positions in
 the buffer of those chunks that must be transmited to the
-corresponding neighbor, the next time such neighbor be selected. Thus,
-if for example $\text{pending}[P_x]=\{11,22\}$, chunks found at
-positions $11$ and $22$ of the buffer have to be sent to peer $P_x$
-(when a round-robin scheduler used by the peer selects $P_x$). The
-current scheduler used by the peers selects a different neighbor,
-using a round-robin scheme, for each new received chunk.
+corresponding neighbor, the next time such neighbor be selected in the
+flooding process. Thus, if for example
+$\text{pending}[P_x]=\{11,22\}$, chunks found at positions $11$ and
+$22$ of the buffer have to be sent to peer $P_x$ (when the round-robin
+scheduler used by the peer selects $P_x$). The current scheduler used
+by the peers selects a different neighbor, using a round-robin scheme,
+for each new received chunk. An example of the temporal evolution of a
+team has been described in the Figures \ref{fig:team_0},
+\ref{fig:team_1}, ...
 
 \begin{figure}
   \imgw{250}{graphics/team_0.svg} \caption{A team has been created with a
@@ -47,34 +51,31 @@ using a round-robin scheme, for each new received chunk.
     chunks-time) have been transmitted from the splitter $S$ to
     $M_0$. $F$ and $P$ represents the $\text{forward}[]$ and the
     $\text{pending}[]$ structures, respectively. The chunks stored in
-    the buffer is shown under the entity.\label{fig:team_0}}
+    the buffer are shown under the entity.\label{fig:team_0}}
 \end{figure}
 
 \begin{figure}
-  \imgw{250}{graphics/team_1.svg} \caption{Peer $P_1$ joins the team (the
-    $[\mathtt{hello}]$'s are not shown). In $M_0$, $F=\{M_0:[P_1]\}$
-    because when $M_0$ receives the $[\mathtt{hello}]$ from $P_1$,
-    $M_0$ is the origin peer for all chunks received from $S$ and
-    $P_1$ is its neighbor. $P_1$ includes an entry $P_1:[M_0]$ in its
-    forwarding table because $M_0$ is in the list of peers received
-    from the splitter. After that, when the chunk number 2 arrives
-    to $M_0$ from $S$, an entry $P_1:2$ is created in $P\{\}$ for that
-    chunk, and this entry is deleted when the chunk 2 is sent to
-    $P_1$. Notice that $P_1$ does not receive chunks 0 and 1
-    because these chunks belong to a old (already played) section of
-    the stream.\label{fig:team_1}}
+  \imgw{250}{graphics/team_1.svg} \caption{At $t_2$, peer $P_1$ joins
+    the team (the $[\mathtt{hello}]$'s are not shown). In $M_0$,
+    $F=\{M_0:[P_1]\}$ because when $M_0$ receives the
+    $[\mathtt{hello}]$ from $P_1$, $M_0$ is the origin peer for all
+    chunks received from $S$ and $P_1$ is its neighbor. $P_1$ includes
+    an entry $P_1:[M_0]$ in its forwarding table because $M_0$ is in
+    the list of peers received from the splitter. After that, when the
+    chunk number 2 arrives to $M_0$ from $S$, an entry $P_1:2$ is
+    created in $P\{\}$ for that chunk, and this entry is deleted when
+    the chunk 2 is sent to $P_1$.\label{fig:team_1}}
 \end{figure}
 
 \begin{figure}
-  \imgw{300}{graphics/team_2.svg} \caption{$P_2$ joins the team (sending the
-    $[\mathtt{hello}]$'s not shown). $M_0$ and $P_1$ includes $P_2$ in
-    their forwarding tables. The chunk 3 is received by $P_1$ which
-    decides to send it to $P_2$. Chunk 3 remains as pending to be sent
-    to $M_0$ when the next chunk is received by $P_1$. $P_2$ is the
-    origin peer for $M_0$ and $P_1$ because both of them are in the
-    list of peers that $P_2$ receives from $S$. \label{fig:team_2}}
+  \imgw{300}{graphics/team_2.svg} \caption{$P_2$ joins the team. $M_0$
+    and $P_1$ includes $P_2$ in their forwarding tables. The chunk 3
+    is received by $P_1$ which decides to send it to $P_2$. Chunk 3
+    remains as pending to be sent to $M_0$ when the next chunk is
+    received by $P_1$. \label{fig:team_2}}
 \end{figure}
-
+%  $P_2$ is the origin peer for $M_0$ and $P_1$ because both of them are in the list of peers that $P_2$ receives from $S$.
+    
 \begin{figure}
   \imgw{330}{graphics/team_3.svg} \caption{Chunk 4 is received by $P_2$ which
     relays it to $P_1$, what relays chunk 3 to

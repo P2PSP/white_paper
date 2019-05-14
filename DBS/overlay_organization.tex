@@ -6,16 +6,16 @@
 \label{sec:overlay_organization}
 
 Chunks can be lost.\footnote{Chunks are transmitted using a
-  unrealiable communication, and therefore, network congestion can
-  produce a loss of chunks.} A chunk is considered as lost when it is
-time to send it to the player and the chunk has not been received.  In
-this situation, for each lost chunk, the peer sends a
-$[\mathtt{request} \text{lost\_chunk\_number}]$ (that is the number of
-the next chunk to be played) to a randomly selected peer of the
-team. When a peer $P_x$ receives a $[\mathtt{request}
-  \text{lost\_chunk\_number}]$ from $P_y$, $P_x$ adds $P_y$ to
-$\text{forward}[P_o]$, where $P_o$ is the origin peer of the chunk
-stored in the position $lost\_chunk\_number$ of the buffer.
+  unrealiable communication, and therefore, among other transmission
+  problems, network congestion can produce a loss of chunks.} A chunk
+is considered as lost when it is time to send it to the player and the
+chunk has not been received.  In this situation, for each lost chunk,
+the peer sends a $[\mathtt{request} \text{lost\_chunk\_number}]$ to a
+randomly selected peer of the team. When a peer $P_x$ receives a
+$[\mathtt{request} \text{lost\_chunk\_number}]$ from $P_y$, $P_x$ adds
+$P_y$ to $\text{forward}[P_o]$, where $P_o$ is the origin peer of the
+chunk stored in the position $lost\_chunk\_number \mathit{mod} 2B$ of
+its buffer.
 
 % As an alternative ...
 \begin{comment}
@@ -34,7 +34,7 @@ neighbor, the link between it and the peer is working fairly well.
 %  a smaller debt as a consequence of the requests.
 %\end{notex}
   
-In this situation, it is also possible that some peers can request
+In this situation, it can happens that some peers request
 redundant paths between an origin peer and itself, and therefore, some
 chunks could be received more than once. If this case, for each
 duplicate chunk, a peer $P_i$ should send a $[\mathtt{prune}

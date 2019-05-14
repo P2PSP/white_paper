@@ -13,13 +13,12 @@ efficient native IPM, where available.
 The idea of IMS is simple: all peers in the same LAN or VLAN have the
 same network address. When a joining peer $P_i$ receives the list of
 peers from its splitter, first checks if there are neighbors in the
-same subnet (all of them share the same private network address). For
-all those peers, $P_i$ uses the IP address $\mathtt{224.0.0.1}$ (all
-systems on this subnet), (default) port $\mathtt{1234}$, to multicast
-(only) the chunks received from the splitter. When implementing IMS,
-all peers in the same local network communicate using this IPM group
-address and port. The rest of external peers will be referenced using
-their public end-points.
+same subnet. For all those peers, $P_i$ uses the IP address
+$\mathtt{224.0.0.1}$ (all systems on this subnet), (default) port
+$\mathtt{1234}$, to multicast (only) the chunks received from the
+splitter. Therefore, all peers in the same local network
+communicate using this IPM group address and port. The rest of
+external peers will be referenced using their public end-points.
 
 \begin{comment}
 \subsubsection{Listening IPM}
