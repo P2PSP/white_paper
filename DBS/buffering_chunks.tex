@@ -22,7 +22,7 @@ buffer. The chunk pointed by the tail of the buffer is sent to the
 player, if there is a chunk in that cell of the buffer. This action
 is carried out each time a new chunk is received.
 
-The buffering time determines how much time the peers must wait before
+The buffering time determines how much time the peers must wait for
 start playing the chunks. Considering that the chunks can be lost in
 transit or delayed more than $B$ times of chunk, randomly, it is
 difficult to determine, a priori, the optimal buffering time. In the
