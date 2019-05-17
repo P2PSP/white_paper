@@ -21,9 +21,11 @@ originated at $P_j$ will be forwarded to $P_k$.
 %index to $\mathrm{forward}[]$ (see
 %Sec.~\ref{sec:chunk_DBS_processing}).
 
-The splitter, in an infinite loop: (1) listens to the incoming peers, (2) sends
-the list of peers in the team, and (3) adds the incoming peer to the
-list.
+The splitter, in an infinite loop: (1) listens to the incoming peers,
+(2) sends the list of peers in the team, and (3) adds the incoming
+peer to the list. Notice that only those peers that are in the list of
+peers of the splitter are considered to be in the team of such
+splitter.
 
 \begin{comment}
 \begin{figure*}
