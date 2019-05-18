@@ -48,9 +48,9 @@ team has been described in the Figures \ref{fig:team_0},
 \begin{figure}
   \myfig{graphics/team_0}{4cm}{250} \caption{A team has been created with a
     single monitor $M_0$ ($[\mathtt{hello}]$ messages are not
-    shown). Chunks with numbers 0 and 1 (the time $t$ is measured in
+    shown). Chunks with indexes 0 and 1 (the time $t$ is measured in
     chunks-time) have been transmitted from the splitter $S$ to
-    $M_0$. $F$ and $P$ represents the $\text{forward}[]$ and the
+    $M_0$. $f$ and $p$ represents the $\text{forward}[]$ and the
     $\text{pending}[]$ structures, respectively. The chunks stored in
     the buffer are shown under the entity.\label{fig:team_0}}
 \end{figure}
@@ -58,7 +58,7 @@ team has been described in the Figures \ref{fig:team_0},
 \begin{figure}
   \myfig{graphics/team_1}{4cm}{250} \caption{At $t_2$, peer $P_1$ joins
     the team (the $[\mathtt{hello}]$'s are not shown). In $M_0$,
-    $F=\{M_0:[P_1]\}$ because when $M_0$ receives the
+    $f=\{M_0:[P_1]\}$ because when $M_0$ receives the
     $[\mathtt{hello}]$ from $P_1$, $M_0$ is the origin peer for all
     chunks received from $S$ and $P_1$ is its neighbor. $P_1$ includes
     an entry $P_1:[M_0]$ in its forwarding table because $M_0$ is in
