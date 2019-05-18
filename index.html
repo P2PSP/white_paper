@@ -258,7 +258,7 @@ id="TBL-2-1" /><col
 id="TBL-2-2" /></colgroup><tr  
  style="vertical-align:baseline;" id="TBL-2-1-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-1-1"  
 class="td11">                                                          Parameter  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-1-2"  
-class="td11"> Meaning                                       </td>
+class="td11"> Meaning                                            </td>
 </tr><tr 
 class="hline"><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-2-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-2-1"  
@@ -266,7 +266,7 @@ class="td11"> <!--l. 12--><math
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >B</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-2-2"  
-class="td11"> Buﬀer size in chunks                        </td></tr><tr  
+class="td11"> Buﬀer size in chunks                             </td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-3-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-3-1"  
 class="td11"> <!--l. 13--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -283,14 +283,14 @@ display="inline" ><msup><mrow
 ><mo 
 class="MathClass-bin">∗</mo></mrow></msup 
 ></math> </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-4-2"  
-class="td11"> Maximum losses of chunk allowed      </td>
+class="td11"> Maximum allowed number of lost chunks  </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-5-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-5-1"  
 class="td11"> <!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >M</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-5-2"  
-class="td11"> Number of monitors                        </td>
+class="td11"> Number of monitors                             </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-6-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-6-1"  
 class="td11"> <!--l. 17--><math 
@@ -301,7 +301,7 @@ display="inline" ><msup><mrow
 ><mo 
 class="MathClass-bin">∗</mo></mrow></msup 
 ></math> </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-6-2"  
-class="td11"> Maximum number of peers in a team  </td></tr></table>
+class="td11"> Maximum number of peers in a team       </td></tr></table>
 </div>
 <br /> <div class="caption" 
 ><span class="id">Table 1: </span><span  
@@ -356,32 +356,41 @@ the rendered video at the peers.
 <!--l. 8--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->C</mi></math>,
-and sends exclusively each chunk to a diﬀerent <span 
+>C</mi></math>
+(see Tab. <a 
+href="#x1-50011">1<!--tex4ht:ref: tab:DBS_nomenclature --></a>), and sends exclusively each chunk to a diﬀerent <span 
 class="ecti-1000">origin</span>
 <span 
 class="ecti-1000">peer</span><span class="footnote-mark"><a 
 href="index7.html#fn6x0"><sup class="textsuperscript">6</sup></a></span><a 
  id="x1-7001f6"></a> ,
 using a round-robin schema. Chunks are enumerated to distinguish them, and this
-information is transmitted as a part of a chunk header.
-</p><!--l. 32--><p class="indent" >   We deﬁne a <span 
+information is transmitted as a part of a chunk <span 
+class="ecti-1000">header</span>.
+</p><!--l. 33--><p class="indent" >   We deﬁne a <span 
 class="ecti-1000">round  </span>as the process of transmitting
-<!--l. 32--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->N</mi></math>
-diﬀerent chunks from the splitter to a team of
 <!--l. 33--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
+>N</mi> <mo 
+class="MathClass-rel">≤</mo> <msup><mrow 
+><mi 
+>N</mi></mrow><mrow 
+><mo 
+class="MathClass-bin">∗</mo></mrow></msup 
+></math>
+(see Tab. <a 
+href="#x1-50011">1<!--tex4ht:ref: tab:DBS_nomenclature --></a>) diﬀerent chunks from the splitter to a team of
+<!--l. 35--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
 >N</mi></math> peers. Therefore,
-for a team of size <!--l. 34--><math 
+for a team of size <!--l. 35--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >N</mi></math>,
 the <span 
-class="ecti-1000">round-time </span>is <!--l. 34--><math 
+class="ecti-1000">round-time </span>is <!--l. 36--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >N</mi></math>
@@ -390,30 +399,32 @@ and depends on the current number of peers in the team
                                                                   
 
                                                                   
-(<!--l. 36--><math 
+(<!--l. 38--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >N</mi></math>), the chunk
-size (<!--l. 36--><math 
+size (<!--l. 38--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->C</mi></math>),
-and the average bit-rate of the media stream.
-</p><!--l. 39--><p class="indent" >   The splitter remembers which chunk, of a list of the last
-<!--l. 39--><math 
+>C</mi></math>,
+see Tab. <a 
+href="#x1-50011">1<!--tex4ht:ref: tab:DBS_nomenclature --></a>), and the average bit-rate of the media stream.
+</p><!--l. 42--><p class="indent" >   The splitter remembers which chunk, of a list of the last
+<!--l. 42--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->B</mi></math>
-transmitted chunks, was sent to each peer of the team. Notice that, in
+>B</mi></math> (see
+Tab. <a 
+href="#x1-50011">1<!--tex4ht:ref: tab:DBS_nomenclature --></a>) transmitted chunks, was sent to each peer of the team. Notice that, in
 order to remember the chunk that was sent to each peer in each round,
-<!--l. 41--><math 
+<!--l. 45--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >B</mi> <mo 
 class="MathClass-rel">≥</mo> <mi 
 >N</mi></math>. See
 <a 
-href="https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py#L296" ><!--l. 42--><math 
+href="https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py#L296" ><!--l. 47--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mstyle 
 class="text"><mtext  >destination_of_chunk</mtext></mstyle><mrow ><mo 
@@ -430,7 +441,8 @@ a <!--l. 11--><math
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
-class="MathClass-close">]</mo></mrow></math> message
+class="MathClass-close">]</mo></mrow></math> <span 
+class="ecti-1000">message</span>
 to each peer of the team, in parallel with the reception of the list. When a peer of the team
 receives a <!--l. 13--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -445,12 +457,12 @@ class="text"><mtext  >forward</mtext></mstyle><mrow ><mo
 class="MathClass-open">[</mo><mrow></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> (see
 <a 
-href="https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/peer_dbs.py#L491" ><!--l. 14--><math 
+href="https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/peer_dbs.py#L491" ><!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mstyle 
 class="text"><mtext  >forward[]</mtext></mstyle></math> in <span 
 class="ectt-1000">peer.py</span></a>). If a
-peer <!--l. 14--><math 
+peer <!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -458,7 +470,7 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math> has an entry
-<!--l. 15--><math 
+<!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mstyle 
 class="text"><mtext  >forward</mtext></mstyle><mrow ><mo 
@@ -475,7 +487,7 @@ class="MathClass-rel">=</mo> <msub><mrow
 ><mi 
 >k</mi></mrow></msub 
 ></math>, then each chunk
-received by <!--l. 15--><math 
+received by <!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -483,7 +495,7 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math> and
-originated at <!--l. 16--><math 
+originated at <!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -491,7 +503,7 @@ display="inline" ><msub><mrow
 ><mi 
 >j</mi></mrow></msub 
 ></math> will
-be forwarded to <!--l. 16--><math 
+be forwarded to <!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -499,13 +511,13 @@ display="inline" ><msub><mrow
 ><mi 
 >k</mi></mrow></msub 
 ></math>.
-</p><!--l. 24--><p class="indent" >   The splitter, in an inﬁnite loop: (1) listens to the incoming peers, (2) sends the
-list of peers in the team, and (3) adds the incoming peer to the list. Notice that only
-those peers that are in the list of peers of the splitter are considered to be in the
-team of such splitter.
-</p><!--l. 41--><p class="indent" >   <span 
+</p><!--l. 26--><p class="indent" >   The splitter, in an inﬁnite loop: 1) listens to the incoming peers, 2) sends the list
+of peers in the team, and 3) adds the incoming peer to the list. Notice that only those
+peers that are in the list of peers of the splitter are considered to be in the team of
+such splitter.
+</p><!--l. 43--><p class="indent" >   <span 
 class="ecbx-1000">Note:  </span>See <a 
-href="https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py#L296" ><!--l. 42--><math 
+href="https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py#L296" ><!--l. 44--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mstyle 
 class="text"><mtext  >destination_of_chunk</mtext></mstyle><mrow ><mo 
@@ -535,12 +547,13 @@ class="MathClass-close">)</mo></mrow></math> of the
 buﬀer, where <!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->B</mi></math>
+>B</mi></math>(see
                                                                   
 
                                                                   
-is the maximum number of chunks that the buﬀer will store. In a peer&#x2019;s life,
-<!--l. 13--><math 
+Tab. <a 
+href="#x1-50011">1<!--tex4ht:ref: tab:DBS_nomenclature --></a>) is the maximum number of chunks that the buﬀer will store. In a peer&#x2019;s life,
+<!--l. 14--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >B</mi></math> is a
@@ -559,12 +572,13 @@ display="inline" ><mn>2</mn><mi
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >B</mi></math>
-chunks in the <span 
-class="ecti-1000">buﬀering time </span>(which is the main part of the start-up time that the
-users experiment). Chunks with a higher number (newer chunks) are inserted in the
-head of the buﬀer. The chunk pointed by the tail of the buﬀer is sent to the player, if
-there is a chunk in that cell of the buﬀer. This action is carried out each time a new
-chunk is received.
+chunks during the <span 
+class="ecti-1000">buﬀering time </span>(which is the main part of the <span 
+class="ecti-1000">start-up time </span>that
+the users experiment). Chunks with a higher number (newer chunks) are inserted in
+the head of the buﬀer. The chunk pointed by the tail of the buﬀer is sent to the
+player, if there is a chunk in that cell of the buﬀer. This action is carried out each
+time a new chunk is received.
 </p><!--l. 25--><p class="indent" >   The buﬀering time determines how much time the peers must wait for start playing
 the chunks. Considering that the chunks can be lost in transit or delayed more than
 <!--l. 27--><math 
@@ -580,7 +594,7 @@ display="inline" ><msub><mrow
 ><mi 
 >x</mi></mrow><mrow 
 ><mn>1</mn></mrow></msub 
-></math> is the (number
+></math> is the (index
 of the) ﬁrst received chunk (the ﬁrst chunk to be played), the buﬀering time ﬁnishes when
 the chunk <!--l. 32--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -598,9 +612,9 @@ href="index8.html#fn7x0"><sup class="textsuperscript">7</sup></a></span><a
    <h4 class="subsectionHead"><span class="titlemark">2.5   </span> <a 
  id="x1-100002.5"></a>Chunk ﬂooding</h4>
 <!--l. 16--><p class="noindent" >DBS implements a content-unaware push-based protocol, and when a peer receives a
-chunk, it can be retransmitted to a large number of neighbors. Even controlling the
-chunk rate by the servers, in order to reduce network congestion while peers&#x2019;s
-ﬂooding, some kind of ﬂow control must be performed.
+chunk, it can be retransmitted to a large number of neighbors. Even by controlling
+the chunk rate in the servers, some kind of ﬂow control must be performed in order
+to reduce network congestion while peers&#x2019;s ﬂooding.
 </p><!--l. 25--><p class="indent" >   Congestion may be avoided by means of a basic idea: <span 
 class="ecti-1000">if I have received a chunk, I</span>
 <span 
@@ -1117,7 +1131,7 @@ class="ecbx-1000">Note:</span>
                                                                   
 
                                                                   
- <div style="text-align:center;"> <img width=350 src="graphics/team_10.svg" /> </div> 
+ <div style="text-align:center;"> <img width=380 src="graphics/team_10.svg" /> </div> 
                                                                   
 
                                                                   

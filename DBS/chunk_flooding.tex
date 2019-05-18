@@ -15,23 +15,24 @@
 
 DBS implements a content-unaware push-based protocol, and when a peer
 receives a chunk, it can be retransmitted to a large number of
-neighbors. Even controlling the chunk rate by the servers, in order to
-reduce network congestion while peers's flooding, some kind of flow
-control must be performed.
+neighbors. Even by controlling the chunk rate in the servers, some
+kind of flow control must be performed in order to reduce network
+congestion while peers's flooding.
 
 %Moreover, to achieve an ideal I/O ratio of $1$, peers should send one
 %chunk for every received one.
 
-Congestion may be avoided by means of a basic idea: \emph{if I have
+Congestion may be avoided by means of a basic idea: \textit{if I have
   received a chunk, I should send a chunk}. It is easy to see that, in
 a fully connected overlay, this allows to control the data
 flow. However, in more realistic scenarios, peers can be ``connected''
 with a variable number of neighbors and therefore, if the splitter
 follows a pure round-robin strategy, some peers can send more chunks
-that they receive.
+that they receive and therefore, the simple rule of sending a chunk
+for each received one will not work.
 
 The previous idea can be adapted to handle a variable connectivity
-degree. Each peer uses a table of lists, $\text{pending}[]$, indexed
+degree if each peer uses a table of lists, $\text{pending}[]$, indexed
 by the neighbor end-points, where each list stores the positions in
 the buffer of those chunks that must be transmited to the
 corresponding neighbor, the next time such neighbor be selected in the
@@ -42,10 +43,10 @@ scheduler used by the peer selects $P_x$). The current scheduler used
 by the peers selects a different neighbor, using a round-robin scheme,
 for each new received chunk. An example of the temporal evolution of a
 team has been described in the Figures \ref{fig:team_0},
-\ref{fig:team_1}, ...
+\ref{fig:team_1} and \ref{fig:team_2}.
 
 \begin{figure}
-  \imgw{250}{graphics/team_0.svg} \caption{A team has been created with a
+  \myfig{graphics/team_0}{4cm}{250} \caption{A team has been created with a
     single monitor $M_0$ ($[\mathtt{hello}]$ messages are not
     shown). Chunks with numbers 0 and 1 (the time $t$ is measured in
     chunks-time) have been transmitted from the splitter $S$ to
@@ -55,7 +56,7 @@ team has been described in the Figures \ref{fig:team_0},
 \end{figure}
 
 \begin{figure}
-  \imgw{250}{graphics/team_1.svg} \caption{At $t_2$, peer $P_1$ joins
+  \myfig{graphics/team_1}{4cm}{250} \caption{At $t_2$, peer $P_1$ joins
     the team (the $[\mathtt{hello}]$'s are not shown). In $M_0$,
     $F=\{M_0:[P_1]\}$ because when $M_0$ receives the
     $[\mathtt{hello}]$ from $P_1$, $M_0$ is the origin peer for all
@@ -68,7 +69,7 @@ team has been described in the Figures \ref{fig:team_0},
 \end{figure}
 
 \begin{figure}
-  \imgw{300}{graphics/team_2.svg} \caption{$P_2$ joins the team. $M_0$
+  \myfig{graphics/team_2}{4cm}{300} \caption{$P_2$ joins the team. $M_0$
     and $P_1$ includes $P_2$ in their forwarding tables. The chunk 3
     is received by $P_1$ which decides to send it to $P_2$. Chunk 3
     remains as pending to be sent to $M_0$ when the next chunk is
@@ -77,57 +78,57 @@ team has been described in the Figures \ref{fig:team_0},
 %  $P_2$ is the origin peer for $M_0$ and $P_1$ because both of them are in the list of peers that $P_2$ receives from $S$.
     
 \begin{figure}
-  \imgw{330}{graphics/team_3.svg} \caption{Chunk 4 is received by $P_2$ which
+  \myfig{graphics/team_3}{4cm}{330} \caption{Chunk 4 is received by $P_2$ which
     relays it to $P_1$, what relays chunk 3 to
     $M_0$.\label{fig:team_3}}
 \end{figure}
 
 \begin{figure}
-  \imgw{330}{graphics/team_4.svg} \caption{Chunk 5 is received by $M_0$ which
+  \myfig{graphics/team_4}{4cm}{330} \caption{Chunk 5 is received by $M_0$ which
     relays it to $P_2$.\label{fig:team_4}}
 \end{figure}
 
 \begin{notex}
   \begin{figure*}
-    \imgw{350}{graphics/team_5.svg}
+    \myfig{graphics/team_5}{4cm}{350}
   \end{figure*}
   
   \begin{figure*}
-    \imgw{380}{graphics/team_6.svg}
+    \myfig{graphics/team_6}{4cm}{380}
   \end{figure*}
   
   \begin{figure*}
-    \imgw{320}{graphics/team_7.svg}
+    \myfig{graphics/team_7}{4cm}{320}
   \end{figure*}
   
   \begin{figure*}
-    \imgw{200}{graphics/team_8.svg}
+    \myfig{graphics/team_8}{4cm}{200}
   \end{figure*}
   
   \begin{figure*}
-    \imgw{280}{graphics/team_9.svg}
+    \myfig{graphics/team_9}{4cm}{280}
   \end{figure*}
   
   \begin{figure*}
-    \imgw{350}{graphics/team_10.svg}
+    \myfig{graphics/team_10}{4cm}{380}
   \end{figure*}
   
   \begin{figure*}
-    \imgw{210}{graphics/team_11.svg}
+    \myfig{graphics/team_11}{4cm}{210}
   \end{figure*}
   
   \begin{figure*}
-    \imgw{210}{graphics/team_12.svg}
+    \myfig{graphics/team_12}{4cm}{210}
   \end{figure*}
   
   \begin{figure*}
-    \imgw{210}{graphics/team_13.svg}
+    \myfig{graphics/team_13}{4cm}{210}
   \end{figure*}
 
 \end{notex}
 
-An example of the flooding with congestion control algorithm has been
-show in the Figs.~\ref{fig:team_0}, ...
+%An example of the flooding with congestion control algorithm has been
+%show in the Figs.~\ref{fig:team_0}, ...
 %Notice that in this example
 %all messages are received successfully.
 %As can be seen in the example, when a peer $P_k$ receives a chunk,
