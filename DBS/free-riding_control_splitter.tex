@@ -5,16 +5,16 @@
 
 \label{sec:free_riding_control}
 
-In each team there are a set of \emph{monitors} (trusted peers whose
-behavior is predictable and that are only known by the splitter),
-which complain to their splitter with a $[\mathtt{lost}
-  \text{lost\_chunk\_number}]$ for each lost chunk. The splitter only
-considers these type of messages if they come from a monitor.
+Monitor peers (which are trusted) complain to their splitter with a
+$[\mathtt{lost}~\text{lost\_chunk\_index}]$ for each lost chunk. The
+splitter only considers these type of messages if they come from a
+monitor.
 
-If a peer $P_o$ accumulates more than $L^*$ losts in $R$ rounds, $P_o$
-is removed from the splitter's list of peers. All peers do the same, but
-in this case they also remove the selfish neighbors from the
-$\text{forward}$ and $\text{pending}$ tables.
+If a peer $P_o$ accumulates more than $L^*$ (see
+Tab.~\ref{tab:DBS_nomenclature}) losts in $R$ rounds, $P_o$ is removed
+from the splitter's list of peers. All peers do the same, but in this
+case they also remove the selfish neighbors from the $\text{forward}$
+and $\text{pending}$ tables.
 
 %Notice that $L$ will
 %tend to be proportional to the number $M$ of monitors, especially if
