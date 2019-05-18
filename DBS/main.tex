@@ -21,15 +21,15 @@
 
 DBS provides ALM~\cite{banerjee2002scalable} of a media stream in
 unicast environments~\cite{comer2003computer}. The media is sent by a
-streaming \emph{server}, and received by a \emph{splitter} \note{(see
+streaming server, and received by a splitter \note{(see
   Sec.~\ref{sec:LBS})}. The splitter divides the stream into a
-sequence of chunks of data, and relay them to its \emph{team} using a
-round-robing schema, where it can be up to $N^*$ \emph{peers}. Each
+sequence of chunks of data, and relay them to its team using a
+round-robing schema, where it can be up to $N^*$ peers. Each
 peer gathers the chunks from the splitter and the rest of peers of the
-team, and sends them to at least one \emph{player}\footnote{Peer
+team, and sends them to at least one player\footnote{Peer
   should run even if no player(s) are connected to it.}.
 
-In Tab.~\ref{tab:DBS_nomenclature} the definitions used in the DBS
+In Tab.~\ref{tab:DBS_nomenclature} the definitions used in DBS
 have been summarized.
 
 \begin{comment}

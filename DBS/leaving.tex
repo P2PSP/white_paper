@@ -12,9 +12,10 @@ $[\mathtt{goodbye}]$ from the splitter. In case of timeout, the
 leaving procedure is reset a number of times.
 
 When a peer of the team receives a $[\mathtt{goodbye}]$, removes the
-sender from the $\text{forward}$ table.
+sender from its $\text{forward}$ table.
 
-The splitter removes the outgoing peer from the list of peers.
+The splitter removes the outgoing peer from the list of peers as soon as the
+$[\mathtt{goodbye}]$ is received.
 
 %Outgoing peers does not wait for a any reply from the neighbors to go.
 

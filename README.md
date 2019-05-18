@@ -4,4 +4,4 @@
 
 P2PSP white paper
 
-[Click me](http://P2PSP.github.io)
+[Click me](http://p2psp.org/white_paper/)
