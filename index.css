@@ -38,6 +38,7 @@
 .ecbx-0900{ font-weight: bold;}
 .ecbx-0900{ font-weight: bold;}
 .ecbx-0900{ font-weight: bold;}
+.ecbx-0900{ font-weight: bold;}
 .ectt-0900{font-size:90%; font-family: monospace;}
 .ectt-0900{ font-family: monospace;}
 .ectt-0900{ font-family: monospace;}
@@ -49,6 +50,19 @@
 .ectt-0900{ font-family: monospace;}
 .ectt-0900{ font-family: monospace;}
 .ectt-0900{ font-family: monospace;}
+.ectt-0900{ font-family: monospace;}
+.ecti-0900{font-size:90%; font-style: italic;}
+.ecti-0900{ font-style: italic;}
+.ecti-0900{ font-style: italic;}
+.ecti-0900{ font-style: italic;}
+.ecti-0900{ font-style: italic;}
+.ecti-0900{ font-style: italic;}
+.ecti-0900{ font-style: italic;}
+.ecti-0900{ font-style: italic;}
+.ecti-0900{ font-style: italic;}
+.ecti-0900{ font-style: italic;}
+.ecti-0900{ font-style: italic;}
+.ecti-0900{ font-style: italic;}
 .ectt-1000{ font-family: monospace;}
 .ectt-1000{ font-family: monospace;}
 .ectt-1000{ font-family: monospace;}
@@ -60,6 +74,8 @@
 .ectt-1000{ font-family: monospace;}
 .ectt-1000{ font-family: monospace;}
 .ectt-1000{ font-family: monospace;}
+.ectt-1000{ font-family: monospace;}
+.ecti-1000{ font-style: italic;}
 .ecti-1000{ font-style: italic;}
 .ecti-1000{ font-style: italic;}
 .ecti-1000{ font-style: italic;}
@@ -83,7 +99,9 @@
 .ectt-0800{ font-family: monospace;}
 .ectt-0800{ font-family: monospace;}
 .ectt-0800{ font-family: monospace;}
+.ectt-0800{ font-family: monospace;}
 .cmtt-10{font-family: monospace;}
+.ecbx-1000{ font-weight: bold;}
 .ecbx-1000{ font-weight: bold;}
 .ecbx-1000{ font-weight: bold;}
 .ecbx-1000{ font-weight: bold;}
@@ -210,7 +228,6 @@ mtd.align-even{margin-right:2em; text-align:left;}
 .boxed{border: 1px solid black; padding-left:2px; padding-right:2px;}
 mo.qopname + mi{margin-left:0.3em}
 mi + mo.qopname{margin-left:0.3em}
-.rotatebox{display: inline-block;}
 .figure img.graphics {margin-left:10%;}
 div.tabular, div.center div.tabular {text-align: center; margin-top:0.5em; margin-bottom:0.5em; }
 table.tabular td p{margin-top:0em;}
