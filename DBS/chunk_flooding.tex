@@ -23,13 +23,13 @@ congestion while peers's flooding.
 %chunk for every received one.
 
 Congestion may be avoided by means of a basic idea: \textit{if I have
-  received a chunk, I should send a chunk}. It is easy to see that, in
-a fully connected overlay, this allows to control the data
-flow. However, in more realistic scenarios, peers can be ``connected''
-with a variable number of neighbors and therefore, if the splitter
-follows a pure round-robin strategy, some peers can send more chunks
-that they receive and therefore, the simple rule of sending a chunk
-for each received one will not work.
+  received a chunk, I should send a chunk (not necessary to the
+  sender)}. It is easy to see that, in a fully connected overlay, this
+allows to control the data flow. However, in more realistic scenarios,
+peers can be ``connected'' with a variable number of neighbors and
+therefore, if the splitter follows a pure round-robin strategy, some
+peers can send more chunks that they receive and therefore, the simple
+rule of sending a chunk for each received one will not work.
 
 The previous idea can be adapted to handle a variable connectivity
 degree if each peer uses a table of lists, $\text{pending}[]$, indexed
