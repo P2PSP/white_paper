@@ -3,7 +3,13 @@
 %%% TeX-master: "<none>"
 %%% End:
 
-\label{sec:overlay_organization}
+\label{sec:team_organization}
+
+When a peer $P_i$ is joining the team, it sends a $[\mathtt{hello}]$
+to each other peer of the team, which will add $P_i$ to their
+forwarding tables. So, in absence of communication constraints, the
+team will be organized as a full-connected overlay.
+
 
 Chunks can be lost.\footnote{Chunks are transmitted using a
   unrealiable communication, and therefore, among other transmission
@@ -11,10 +17,10 @@ Chunks can be lost.\footnote{Chunks are transmitted using a
 is considered as lost when it is time to send it to the player and the
 chunk has not been received.  In this situation, for each lost chunk,
 the peer sends a $[\mathtt{request}~\text{lost\_chunk\_index}]$ to a
-randomly selected peer of the team. When a peer $P_x$ receives a
-$[\mathtt{request}~\text{lost\_chunk\_index}]$ from $P_y$, $P_x$ adds
-$P_y$ to $\text{forward}[P_o]$, where $P_o$ is the origin peer of the
-chunk stored in the position
+peer of the team, selected among the most supportive peers. When a
+peer $P_x$ receives a $[\mathtt{request}~\text{lost\_chunk\_index}]$
+from $P_y$, $P_x$ adds $P_y$ to $\text{forward}[P_o]$, where $P_o$ is
+the origin peer of the chunk stored in the position
 $(\text{lost\_chunk\_index}~\mathit{mod}~2B)$ of its buffer.
 
 % As an alternative ...

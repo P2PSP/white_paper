@@ -6,7 +6,7 @@
 \label{sec:feeding_the_team}
 
 The splitter divides the stream into chunks of constant length $C$
-(see Tab.~\ref{tab:DBS_nomenclature}), and sends exclusively each
+(see Tab.~\ref{tab:DBS_parameters}), and sends exclusively each
 chunk to a different \emph{origin peer}\footnote{In the route that a
   chunk trances inside of the team, the origin peer of a chunk is
   first peer that receives that chunk, i.e. the peer selected by the
@@ -31,18 +31,19 @@ are available in Fig.~\ref{fig:chunk_generation}.
 \end{comment}
 
 We define a \emph{round} as the process of transmitting $N\leq N^*$
-(see Tab.~\ref{tab:DBS_nomenclature}) different chunks from the
-splitter to a team of $N$ peers. Therefore, for a team of size $N$,
-the \emph{round-time} is $N$ chunk-times. Notice that the round-time
-is generally variable, and depends on the current number of peers in
-the team ($N$), the chunk size ($C$, see
-Tab.~\ref{tab:DBS_nomenclature}), and the average bit-rate of the
-media stream.
+(see Tab.~\ref{tab:DBS_parameters}) different chunks from the splitter
+to a team of $N$ peers. Therefore, for a team of size $N$, the
+\emph{round-time} $t_R$ (see Tab.~\ref{tab:DBS_nomenclature}) is $N$
+chunk-times. Notice that $t_R$ is generally variable, and depends on
+the current number of peers in the team ($N$) and the chunk time
+($t_C$) which depends on the chunk size ($C$, see
+Tab.~\ref{tab:DBS_parameters}), and the average bit-rate of the media
+stream.
 
-The splitter remembers which chunk, of a list of the last $B$ (see
-Tab.~\ref{tab:DBS_nomenclature}) transmitted chunks, was sent to each
+The splitter remembers which chunk, of a list of the last $B'$ (see
+Tab.~\ref{tab:DBS_parameters}) transmitted chunks, was sent to each
 peer of the team. Notice that, in order to remember the chunk that was
-sent to each peer in each round, $B\ge N$. \note{See
+sent to each peer in each round, must be hold that $B'\ge N$. \note{See
   \href{https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py\#L296}{$\text{destination\_of\_chunk}[]$
     in \texttt{splitter\_dbs.py}}.}
 
