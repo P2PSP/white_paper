@@ -62,15 +62,6 @@ $\mathtt{pending}[P_x]=\{11,22\}$, chunks found at positions $11$ and
 $22$ of the buffer have to be sent to peer $P_x$ (when the pending
 scheduler used by the peer selects $P_x$).
 
-Each time a new chunk has arrived from the splitter (i.e., in each
-round), the pending scheduler selects a different neighbor, using a
-priority scheme, for each new received chunk. In this scheme, each
-(destination) peer maintains a list of (neighbor) peers sorted by the
-time that elapses (latency) since a chunk has been sent by the
-splitter (to an origin) peer until this chunk has arrived to the
-(destination) peer. With this information, peers selects first to
-those neighbors with a smaller latency.
-
 Notice that using this procedure, more than one chunk can be sent to a
 neighbor in transmission burst, which could produce
 congestion. However, except in very unbalanced overlays such as the
@@ -82,8 +73,7 @@ routing.
 
 An example of the temporal evolution of a team using this behaviour
 has been described in the Figures \ref{fig:team_0}, \ref{fig:team_1}
-and \ref{fig:team_2}. Notice that in this example, for the sake of
-simplicity, a simple round-robing pending scheduler has been used.
+and \ref{fig:team_2}.
 
 \begin{figure}
   \myfig{graphics/team_0}{4cm}{250} \caption{A team has been created with a
@@ -166,6 +156,18 @@ simplicity, a simple round-robing pending scheduler has been used.
   \end{figure*}
 
 \end{notex}
+
+Notice that in the previous example, for the sake of simplicity, a
+simple round-robing pending scheduler has been used.  Actually, DBS
+selects the $\mathtt{pending}[]$ entries using the supportivity
+information gathered from the neighbors. This information is stored in
+a $\mathtt{supportivity}[]$ table, which is indexed by the neighbors
+end-points. When the list of peers is received from the splitter, all
+the peers have the same supportivity. These supportivity values are
+incremented each time a chunk is received from the corresponding
+neighbor and decremented each time a chunk is received form the
+splitter (i.e., in each round). Thus, supportive neighbors will tend
+to have a higher supportivity than unsupportive neighbors.
 
 %An example of the flooding with congestion control algorithm has been
 %show in the Figs.~\ref{fig:team_0}, ...
