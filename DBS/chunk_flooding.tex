@@ -36,13 +36,13 @@ peers perform the flooding.
     receive and send the same number of chunks. In a star-shaped DBS
     team such as the shown in the Subfig. (b), $P_1$ should send all
     the chunks of the stream to the rest of the team, except those
-    that the splitter has send directly to the rest of peers.}
+    that the splitter has sent directly to the rest of peers.}
 \end{figure*}
 
-The congestion (caused by the use that the DBS nodes do of the
+The congestion (in particular, the one caused by how DBS nodes use the
 physical links) may be avoided by means of a basic idea: \textit{if I
-  have received a chunk, I should send a chunk (not necessary to the
-  sender)}. It is easy to see that, in a fully connected overlay (see
+have received a chunk, I should send a chunk (not necessary to the
+sender)}. It is easy to see that, in a fully connected overlay (see
 the Fig.~\ref{fig:full_mesh}), this allows to control the data
 flow. However, in more realistic scenarios (such as those in which
 firewalls and symmetric NATS are used), where the physical media
@@ -53,19 +53,19 @@ receive (see the Fig.~\ref{fig:star}). In this case, the simple rule
 of sending a chunk for each received one does not work.
 
 The previous idea can be adapted to handle a variable connectivity
-degree if each peer uses a table of lists, $\mathtt{pending}[]$,
-indexed by the neighbor's end-points, where each list stores the
-positions in the buffer of those chunks that must be transmited to the
-corresponding neighbor, the next time such neighbor be selected in the
-flooding process. Thus, for example, if
-$\mathtt{pending}[P_x]=\{11,22\}$, chunks found at positions $11$ and
-$22$ of the buffer have to be sent to peer $P_x$ (when the pending
-scheduler used by the peer selects $P_x$).
+degree (also called \emph{neighborhood degree}) if each peer uses a
+table of lists, $\mathtt{pending}[]$, indexed by the neighbor's
+end-points, where each list stores the positions in the buffer of
+those chunks that must be transmited to the corresponding neighbor,
+the next time such neighbor be selected in the flooding process. Thus,
+for example, if $\mathtt{pending}[P_x]=\{11,22\}$, chunks found at
+positions $11$ and $22$ of the buffer have to be sent to peer $P_x$
+(when the pending scheduler used by the peer selects $P_x$).
 
 Notice that using this procedure, more than one chunk can be sent to a
 neighbor in transmission burst, which could produce
 congestion. However, except in very unbalanced overlays such as the
-shown in the Fig.~\ref{fig:star}, the bursts use to be very short
+one shown in the Fig.~\ref{fig:star}, the bursts use to be very short
 (only one chunk in most of cases). As an advantage, if a burst is
 produced, all the chunks of the burst travel between the two same
 hosts, which usually increases the performance of the physical
@@ -157,11 +157,11 @@ and \ref{fig:team_2}.
 
 \end{notex}
 
-Notice that in the previous example, for the sake of simplicity, a
-simple round-robing pending scheduler has been used.  Actually, DBS
-selects the $\mathtt{pending}[]$ entries using the supportivity
-information gathered from the neighbors. This information is stored in
-a $\mathtt{supportivity}[]$ table, which is indexed by the neighbors
+Notice that in this example, for the sake of simplicity, a simple
+round-robing pending scheduler has been used.  Actually, DBS selects
+the $\mathtt{pending}[]$ entries using the supportivity information
+gathered from the neighbors. This information is stored in a
+$\mathtt{supportivity}[]$ table, which is indexed by the neighbors
 end-points. When the list of peers is received from the splitter, all
 the peers have the same supportivity. These supportivity values are
 incremented each time a chunk is received from the corresponding

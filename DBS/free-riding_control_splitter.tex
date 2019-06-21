@@ -5,6 +5,13 @@
 
 \label{sec:free_riding_control}
 
+The splitter remembers which chunk, of a list of the last $B'$
+transmitted chunks, was sent to each peer of the team. Notice that, in
+order to remember the chunk that was sent to each peer in each round,
+must be hold that $B'\ge N$. \note{See
+  \href{https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py\#L296}{$\text{destination\_of\_chunk}[]$
+    in \texttt{splitter\_dbs.py}}.}
+
 Monitor peers (which are trusted) complain to their splitter with a
 $[\mathtt{lost}~\text{lost\_chunk\_index}]$ for each lost chunk. The
 splitter only considers these type of messages if they come from a
