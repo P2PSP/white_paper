@@ -12,16 +12,15 @@ must be hold that $B'\ge N$. \note{See
   \href{https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py\#L296}{$\text{destination\_of\_chunk}[]$
     in \texttt{splitter\_dbs.py}}.}
 
-Monitor peers (which are trusted) complain to their splitter with a
-$[\mathtt{lost}~\text{lost\_chunk\_index}]$ for each lost chunk. The
-splitter only considers these type of messages if they come from a
-monitor.
+Monitor peers (which are trusted peers) complain to their splitter
+with a $[\mathtt{lost}~\text{lost\_chunk\_index}]$ for each lost
+chunk. The splitter only considers these type of messages if they come
+from a monitor.
 
-If a peer $P_o$ accumulates more than $L^*$ (see
-Tab.~\ref{tab:DBS_parameters}) losts in $R$ rounds, $P_o$ is removed
-from the splitter's list of peers. All peers do the same, but in this
-case they also remove the selfish neighbors from the $\text{forward}$
-and $\text{pending}$ tables.
+If a peer $P_o$ accumulates more than $L^*$ losts in $R$ rounds, $P_o$
+is removed from the splitter's list of peers. All peers do the same,
+but in this case they also remove the selfish neighbors from the
+$\mathtt{forward}[]$ and $\mathtt{pending}[]$ tables.
 
 %Notice that $L$ will
 %tend to be proportional to the number $M$ of monitors, especially if

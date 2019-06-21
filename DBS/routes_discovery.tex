@@ -5,16 +5,16 @@
 
 \label{sec:routes_discovery}
 
-Chunks can be lost.\footnote{Chunks are transmitted using a
-  unrealiable communication, and therefore, among other transmission
-  problems, network congestion can produce a loss of chunks.} A chunk
-is considered as lost when it is time to send it to the player and the
-chunk has not been received.  In this situation, for each lost chunk,
-the peer sends a $[\mathtt{request}~\text{lost\_chunk\_index}]$ to a
-peer of the team, selected at random among the rest of the team. When
-a peer $P_x$ receives a $[\mathtt{request}~\text{lost\_chunk\_index}]$
-from $P_y$, $P_x$ adds $P_y$ to $\mathtt{forward}[P_o]$, where $P_o$ is
-the origin peer of the chunk stored in the position
+Chunks can be lost under bandwidth and buffering time
+constraints.\footnote{A chunk delay higher than $Bt_C$ will also
+  generate a loss.} A chunk is considered as lost when it is time to
+send it to the player and the chunk has not been received.  In this
+situation, for each lost chunk, the peer sends a
+$[\mathtt{request}~\text{lost\_chunk\_index}]$ to a peer of the team,
+selected at random among the rest of the team. When a peer $P_x$
+receives a $[\mathtt{request}~\text{lost\_chunk\_index}]$ from $P_y$,
+$P_x$ adds $P_y$ to $\mathtt{forward}[P_o]$, where $P_o$ is the origin
+peer of the chunk stored in the position
 $(\text{lost\_chunk\_index}~\mathit{mod}~2B)$ of its buffer.
 
 % As an alternative ...
@@ -39,8 +39,9 @@ routes between an origin peer and itself, and therefore, some chunks
 could be received more than once. If this case, for each duplicate
 chunk, a peer $P_i$ should send a
 $[\mathtt{prune}~\text{duplicate\_chunk\_index}]$ message to those
-neighbors that have sent to it the duplicate chunk. Neighbors
-receiving such message from peer $P_i$ should remove the $P_i$ from
-$\mathtt{forward}[P_o]$, where $P_o$ is the origin peer of the duplicate
-chunk.
+neighbors that have sent to it the duplicate chunk (notice that the
+faster neighbor to send the chunk will not receive such prunning
+message). Neighbors receiving this message from peer $P_i$ should
+remove the $P_i$ from $\mathtt{forward}[P_o]$, where $P_o$ is the
+origin peer of the duplicate chunk.
 

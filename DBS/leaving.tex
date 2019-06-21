@@ -5,14 +5,15 @@
 
 \label{sec:leaving}
 
-An outgoing peer must to: 1) say $[\mathtt{goodbye}]$ to the splitter
-and the neighbor peers (in this order), 2) relay any pending
-(received but yet not sent) chunks, and 3) wait for a
-$[\mathtt{goodbye}]$ from the splitter. In case of timeout, the
-leaving procedure is reset a number of times.
+An outgoing peer must to: (1) say $[\mathtt{goodbye}]$ to the splitter
+and the neighbor peers (in this order), (2) relay any pending
+(received but yet not sent) chunks, and (3) wait for a
+$[\mathtt{goodbye}]$ from the splitter. In case of
+timeout\footnote{All these messages are transmitted using a unreliable
+  protocol.}, the leaving procedure is reset a number of times.
 
 When a peer of the team receives a $[\mathtt{goodbye}]$, removes the
-sender from its $\text{forward}$ table. The splitter removes the
+sender from its $\mathtt{forward}[]$ table. The splitter removes the
 outgoing peer from the list of peers as soon as the
 $[\mathtt{goodbye}]$ is received.
 
