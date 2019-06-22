@@ -3,22 +3,24 @@
 \label{sec:LBS}
 
 \begin{figure}
-  \myfig{graphics/icecast-P2PSP}{6cm}{800} \caption{A possible data-flow in an
-  hybrid CDN(Icecast)/P2PSP network. $S$ represents a splitter and $P_i$ the $i$-th
-  peer.\label{fig:icecast-P2PSP}}
+  \myfig{graphics/icecast-P2PSP}{6cm}{800} %
+  \caption{A possible data-flow in an hybrid CDN(Icecast)/P2PSP
+    network. $S$ represents a splitter and $P_i$ the $i$-th
+    peer.} %
+  \label{fig:icecast-P2PSP}
 \end{figure}
 
 % On channels ...
 P2PSP supposes that there is a collection of \emph{channels} that are
-broadcasted in parallel.\footnote{Channels in P2PSP are
-  similar to channels in DVB (Digital Video Broadcasting): streams of
-  media that are transmitted in parallel with the rest channels.} The
-channels are available at one or more\footnote{Most client/server
-  streaming services provide the possibility of building a CDN
-  (Content Delivery Network), a tree of servers sending the
-  same contents.} streaming \emph{servers}, and each channel has a
-different URL (Universal Resource Locator), usually expressed as a
-Web address with the structure:
+broadcasted in parallel.\footnote{Channels in P2PSP are similar to
+  channels in DVB (Digital Video Broadcasting): streams of media that
+  are transmitted in parallel with the rest channels.} The channels
+are available at one or more\footnote{Most client/server streaming
+  services provide the possibility of building a CDN (Content Delivery
+  Network), a tree of servers sending the same contents.} streaming
+\emph{servers}, and each channel has a different URL (Universal
+Resource Locator), usually expressed as a Web address with the
+structure:
 \begin{verbatim}
   http://server/mount_point
 \end{verbatim}

@@ -42,80 +42,88 @@ peers perform the flooding.
 The congestion (in particular, the one caused by how DBS nodes use the
 physical links) may be avoided by means of a basic idea: \textit{if I
 have received a chunk, I should send a chunk (not necessary to the
-sender)}. It is easy to see that, in a fully connected overlay (see
-the Fig.~\ref{fig:full_mesh}), this allows to control the data
+sender)}. It is easy to see that, in a fully connected overlay
+(Fig.~\ref{fig:full_mesh}), this allows to control the data
 flow. However, in more realistic scenarios (such as those in which
 firewalls and symmetric NATS are used), where the physical media
-imposes communication restrictions, peers can not be ``connected''
+imposes interconnexion constraints, peers can not be ``connected''
 with the rest the team, and therefore, if the splitter follows a pure
 round-robin strategy, some peers can send more chunks that they
-receive (see the Fig.~\ref{fig:star}). In this case, the simple rule
-of sending a chunk for each received one does not work.
+receive (see the Fig.~\ref{fig:star}). In these scenarios, the simple
+rule of sending a chunk for each received one does not work.
 
 The previous idea can be adapted to handle a variable connectivity
 degree (also called \emph{neighborhood degree}) if each peer uses a
-table of lists, $\mathtt{pending}[]$, indexed by the neighbor's
+table of lists, $\mathtt{pending}{}$, indexed by the neighbor's
 end-points, where each list stores the positions in the buffer of
 those chunks that must be transmited to the corresponding neighbor,
 the next time such neighbor be selected in the flooding process. Thus,
-for example, if $\mathtt{pending}[P_x]=\{11,22\}$, chunks found at
+for example, if $\mathtt{pending}\{P_x\}=\{11,22\}$, chunks found at
 positions $11$ and $22$ of the buffer have to be sent to peer $P_x$
 (when the pending scheduler used by the peer selects $P_x$).
 
 Notice that using this procedure, more than one chunk can be sent to a
-neighbor in transmission burst, which could produce
-congestion. However, except in very unbalanced overlays such as the
-one shown in the Fig.~\ref{fig:star}, the bursts use to be very short
-(only one chunk in most of cases). As an advantage, if a burst is
-produced, all the chunks of the burst travel between the two same
-hosts, which usually increases the performance of the physical
-routing.
+neighbor in a transmission burst, which could congest the switching
+devices. However, except in very unbalanced overlays
+(Fig.~\ref{fig:star}), the bursts use to be very short (only one chunk
+in most of cases). As an advantage, if a burst is produced, all the
+chunks of the burst travel between the two same hosts, which usually
+increases the performance of the physical routing.
 
 An example of the temporal evolution of a team using this behaviour
 has been described in the Figures \ref{fig:team_0}, \ref{fig:team_1}
 and \ref{fig:team_2}.
 
 \begin{figure}
-  \myfig{graphics/team_0}{4cm}{250} \caption{A team has been created with a
-    single monitor $M_0$ ($[\mathtt{hello}]$ messages are not
-    shown). Chunks with indexes 0 and 1 (the time $t$ is measured in
-    chunks-time) have been transmitted from the splitter $S$ to
-    $M_0$. $f$ and $p$ represents the $\text{forward}[]$ and the
-    $\text{pending}[]$ structures, respectively. The chunks stored in
-    the buffer are shown below the entity.\label{fig:team_0}}
+  \myfig{graphics/team_0}{4cm}{250} %
+  \caption{A team has been created with a single monitor $M_0$
+    ($[\mathtt{hello}]$ messages are not shown). Chunks with indexes 0
+    and 1 (the time $t$ is measured in chunks-time) have been
+    transmitted from the splitter $S$ to $M_0$. $f$ and $p$ represents
+    the $\text{forward}[]$ and the $\text{pending}[]$ structures,
+    respectively. The chunks stored in the buffer are shown below the
+    entity.} %
+  \label{fig:team_0}
 \end{figure}
 
 \begin{figure}
-  \myfig{graphics/team_1}{4cm}{250} \caption{At $t_2$, peer $P_1$ joins
-    the team (the $[\mathtt{hello}]$'s are not shown). In $M_0$,
-    $f=\{M_0:[P_1]\}$ because when $M_0$ receives the
-    $[\mathtt{hello}]$ from $P_1$, $M_0$ is the origin peer for all
-    chunks received from $S$ and $P_1$ is its neighbor. $P_1$ includes
-    an entry $P_1:[M_0]$ in its forwarding table because $M_0$ is in
-    the list of peers received from the splitter. After that, when the
-    chunk number 2 arrives to $M_0$ from $S$, an entry $P_1:2$ is
-    created in $P\{\}$ for that chunk, and this entry is deleted when
-    the chunk 2 is sent to $P_1$.\label{fig:team_1}}
+  \myfig{graphics/team_1}{4cm}{250} %
+  \caption{At $t_2$, peer $P_1$ joins the team (the
+    $[\mathtt{hello}]$'s are not shown). In $M_0$, $f=\{M_0:[P_1]\}$
+    because when $M_0$ receives the $[\mathtt{hello}]$ from $P_1$,
+    $M_0$ is the origin peer for all chunks received from $S$ and
+    $P_1$ is its neighbor. $P_1$ includes an entry $P_1:[M_0]$ in its
+    forwarding table because $M_0$ is in the list of peers received
+    from the splitter. After that, when the chunk number 2 arrives to
+    $M_0$ from $S$, an entry $P_1:2$ is created in $P\{\}$ for that
+    chunk, and this entry is deleted when the chunk 2 is sent to
+    $P_1$.} %
+  \label{fig:team_1}
 \end{figure}
 
 \begin{figure}
-  \myfig{graphics/team_2}{4cm}{300} \caption{$P_2$ joins the team. $M_0$
-    and $P_1$ includes $P_2$ in their forwarding tables. The chunk 3
-    is received by $P_1$ which decides to send it to $P_2$. Chunk 3
-    remains as pending to be sent to $M_0$ when the next chunk is
-    received by $P_1$. \label{fig:team_2}}
+  \myfig{graphics/team_2}{4cm}{300} %
+  \caption{$P_2$ joins the team. $M_0$ and $P_1$ includes $P_2$ in
+    their forwarding tables. The chunk 3 is received by $P_1$ which
+    decides to send it to $P_2$. Chunk 3 remains as pending to be sent
+    to $M_0$ when the next chunk is received by
+    $P_1$.} %
+  \label{fig:team_2}
 \end{figure}
 %  $P_2$ is the origin peer for $M_0$ and $P_1$ because both of them are in the list of peers that $P_2$ receives from $S$.
     
 \begin{figure}
-  \myfig{graphics/team_3}{4.5cm}{330} \caption{Chunk 4 is received by $P_2$ which
-    relays it to $P_1$, what relays chunk 3 to
-    $M_0$.\label{fig:team_3}}
+  \myfig{graphics/team_3}{4.5cm}{330} %
+  \caption{Chunk 4 is received by $P_2$ which relays it to $P_1$, what
+    relays chunk 3 to $M_0$.} %
+  \label{fig:team_3}
 \end{figure}
 
 \begin{figure}
-  \myfig{graphics/team_4}{4.5cm}{330} \caption{Chunk 5 is received by $M_0$ which
-    relays it to $P_2$.\label{fig:team_4}}
+  \myfig{graphics/team_4}{4.5cm}{330} %
+  \caption{Chunk 5 is received by $M_0$ which
+    relays it to $P_2$.} %
+  \label{fig:team_4}
 \end{figure}
 
 \begin{notex}
@@ -156,18 +164,6 @@ and \ref{fig:team_2}.
   \end{figure*}
 
 \end{notex}
-
-Notice that in this example, for the sake of simplicity, a simple
-round-robing pending scheduler has been used.  Actually, DBS selects
-the $\mathtt{pending}[]$ entries using the supportivity information
-gathered from the neighbors. This information is stored in a
-$\mathtt{supportivity}[]$ table, which is indexed by the neighbors
-end-points. When the list of peers is received from the splitter, all
-the peers have the same supportivity. These supportivity values are
-incremented each time a chunk is received from the corresponding
-neighbor and decremented each time a chunk is received form the
-splitter (i.e., in each round). Thus, supportive neighbors will tend
-to have a higher supportivity than unsupportive neighbors.
 
 %An example of the flooding with congestion control algorithm has been
 %show in the Figs.~\ref{fig:team_0}, ...

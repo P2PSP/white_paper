@@ -7,13 +7,15 @@
 
 After connecting with a splitter, incoming peers request (using a
 reliable communication) to the splitter the current
-\emph{list}\footnote{A structure which implements sequential access
-  efficiently.} of peers in the team. To minimize the joining time,
-the peer sends a $[\mathtt{hello}]$ message to each other peer of the
-team, in parallel with the reception of the list. When a peer of the
-team receives a $[\mathtt{hello}]$, it adds the sender of the message
-to a \emph{table}\footnote{A structure which implements random access
-  efficiently.} of peers called $\mathtt{forward}[]$ \note{(see
+\emph{list}\footnote{We will use list for refering to a data
+  estructure that implements a sequential access efficiently.} of
+peers in the team. To minimize the joining time, the peer sends a
+$[\mathtt{hello}]$ message to each other peer of the team, in parallel
+with the reception of the list. When a peer of the team receives a
+$[\mathtt{hello}]$, it adds the sender of the message to a
+\emph{table}\footnote{We will refer to an estructure which implements
+  a random access efficiently as a table.} of peers called
+$\mathtt{forward}[]$ \note{(see
   \href{https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/peer_dbs.py\#L491}{$\text{forward[]}$
     in \texttt{peer.py}})}. If a peer $P_i$ has an entry
 $\mathtt{forward}[P_j]=P_k$, then each chunk received by $P_i$ and
@@ -21,7 +23,9 @@ originated at $P_j$ will be forwarded to $P_k$. When an incoming peer
 $P_i$ has received the list of peers, its forwarding table has been
 initialized to $\mathtt{forward}[P_i]=\{\text{team}\}$. Notice that,
 as long as the forwarding table contains this information, all chunks
-received from the splitter will be forwarded to the rest of the team.
+received from the splitter will be forwarded to the rest of the
+team. So, in absence of communication constraints, the team will be
+organized as a full-connected overlay (see Fig.~\ref{fig:full_mesh}).
 
 %), initializes
 %the table $\mathrm{debt}[]$ (which stores the chunk debts between
@@ -34,6 +38,7 @@ The splitter, in an infinite loop: (1) listens to the incoming peers,
 incoming peer to the list. Notice that only those peers that are in
 the list of peers of the splitter are considered to be in the team
 served by such splitter.
+
 
 \begin{comment}
 \begin{figure*}

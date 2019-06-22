@@ -1,17 +1,3 @@
-When a peer $P_i$ is joining the team, it sends a $[\mathtt{hello}]$
-to each other peer of the team, which will add $P_i$ to its
-$\mathtt{forward}[]$ table. So, in absence of communication
-constraints, the team will be organized as a full-connected overlay
-(see Fig.~\ref{fig:full_mesh}).
-
-Peers forward chunks to their neighbors in the order in which the
-entries in $\mathtt{pending}[]$ table is accessed, that depends on the
-content of the $\mathtt{supportivity}[]$ table. In each round, peers
-serve first to the supportive neighbors, fact that will increase their
-supportivity in the supportive neighbors, and viceversa. Unsupportive
-neighbors are deleted from $\mathtt{forward}[]$ (and therefore from
-$\mathtt{pending}[]$), decreasing the neighborhood degree.
-
 The neighborhood degree can also grow. When a chunk is lost, the peer
 requests to receive the rest of chunks from the corresponding origin
 peer to a random peer of the team. If duplicates are generated, prune
