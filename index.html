@@ -31,8 +31,8 @@ class="abstract"
 >
 <div class="center" 
 >
-<!--l. 27--><p class="noindent" >
-</p><!--l. 27--><p class="noindent" ><span 
+<!--l. 26--><p class="noindent" >
+</p><!--l. 26--><p class="noindent" ><span 
 class="ecbx-0900">Abstract</span></p></div>
      <!--l. 1--><p class="indent" >    <span 
 class="ecrm-0900">P2PSP (</span><a 
@@ -59,21 +59,21 @@ class="ecrm-0900">bounded latency, deﬁned by the overlay users.</span>
 </div>
    <h3 class="likesectionHead"><a 
  id="x1-1000"></a>Notation</h3>
-<!--l. 32--><p class="noindent" ><span 
+<!--l. 31--><p class="noindent" ><span 
 class="ecti-1000">Cursive is used the ﬁrst time a P2PSP-related term/concept is introduced, and for</span>
 <span 
 class="ecti-1000">key concepts or ideas.</span>
-</p><!--l. 34--><p class="noindent" >
+</p><!--l. 33--><p class="noindent" >
 </p>
    <h3 class="likesectionHead"><a 
  id="x1-2000"></a>Introduction</h3>
                                                                   
 
                                                                   
-<!--l. 35--><p class="noindent" >P2PSP has a modular design organized in <span 
+<!--l. 34--><p class="noindent" >P2PSP has a modular design organized in <span 
 class="ecti-1000">sets of rules</span>, where each module is
 especialized in implementing diﬀerent functionalities.
-</p><!--l. 38--><p class="noindent" >
+</p><!--l. 37--><p class="noindent" >
 </p>
    <h3 class="likesectionHead"><a 
  id="x1-3000"></a>Contents</h3>
@@ -97,11 +97,11 @@ href="#x1-110002.6" id="QQ2-1-19">Routes discovery and topology optimization</a>
 <br />    <span class="subsectionToc" >2.7 <a 
 href="#x1-120002.7" id="QQ2-1-20">Leaving a team</a></span>
 <br />    <span class="subsectionToc" >2.8 <a 
-href="#x1-130002.8" id="QQ2-1-21">Free-riding control</a></span>
+href="#x1-130002.8" id="QQ2-1-21">Free-riding control at the splitter</a></span>
 <br />   <span class="sectionToc" >3 <a 
-href="#x1-140003" id="QQ2-1-22">IMS (Ip Multicast Set)</a></span>
+href="#x1-140003" id="QQ2-1-22">FCS (Free-riding Control Set)</a></span>
 <br />   <span class="sectionToc" >4 <a 
-href="#x1-150004" id="QQ2-1-23">FCS (Free-riding Control Set)</a></span>
+href="#x1-150004" id="QQ2-1-23">IMS (Ip Multicast Set)</a></span>
 <br />   <span class="sectionToc" >5 <a 
 href="#x1-160005" id="QQ2-1-24">TAS (Topology Adaptation Set)</a></span>
 <br />   <span class="sectionToc" >6 <a 
@@ -127,7 +127,7 @@ href="#x1-260009" id="QQ2-1-40">MCS (Multi-Channel Set)</a></span>
 <br />   <span class="sectionToc" >10 <a 
 href="#x1-2700010" id="QQ2-1-41">CIS (Content Integrity Set)</a></span>
    </div>
-<!--l. 40--><p class="noindent" >
+<!--l. 39--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
  id="x1-40001"></a>LBS (Load Balancing Set)</h3>
@@ -260,7 +260,7 @@ id="TBL-2-1" /><col
 id="TBL-2-2" /></colgroup><tr  
  style="vertical-align:baseline;" id="TBL-2-1-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-1-1"  
 class="td11">                                                          Parameter  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-1-2"  
-class="td11"> Meaning                                                                                                                                                                    </td>
+class="td11"> Meaning                                                                                                                                                               </td>
 </tr><tr 
 class="hline"><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-2-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-2-1"  
@@ -272,14 +272,14 @@ display="inline" ><msup><mrow
 ><mo 
 class="MathClass-bin">∗</mo></mrow></msup 
 ></math> </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-2-2"  
-class="td11"> Maximum number of peers in a team                                                                                                                              </td>
+class="td11"> Maximum number of peers in a team                                                                                                                          </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-3-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-3-1"  
 class="td11"> <!--l. 13--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >C</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-3-2"  
-class="td11"> Chunk size                                                                                                                                                                 </td></tr><tr  
+class="td11"> Chunk size                                                                                                                                                            </td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-4-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-4-1"  
 class="td11"> <!--l. 14--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -296,7 +296,7 @@ display="inline" ><msup><mrow
 ><mi 
 >′</mi></mrow></msup 
 ></math> </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-5-2"  
-class="td11"> Length of the list of last <!--l. 15--><math 
+class="td11"> Size of the set of last <!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
@@ -314,7 +314,7 @@ display="inline" ><msup><mrow
 ><mo 
 class="MathClass-bin">∗</mo></mrow></msup 
 ></math> </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-6-2"  
-class="td11"> Maximum allowed number of lost chunks                                                                                                                         </td></tr><tr  
+class="td11"> Maximum allowed number of lost chunks                                                                                                                     </td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-7-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-7-1"  
 class="td11"> <!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -334,11 +334,11 @@ display="inline" ><msup><mrow
 >L</mi></mrow><mrow 
 ><mo 
 class="MathClass-bin">∗</mo></mrow></msup 
-></math>.                              </td>
+></math>.                         </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-9-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-9-1"  
 class="td11">                                                            Variable  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-9-2"  
-class="td11">                                                                                                                </td>
+class="td11">                                                                                                             </td>
 </tr><tr 
 class="hline"><td><hr /></td><td><hr /></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-10-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-10-1"  
@@ -346,7 +346,7 @@ class="td11"> <!--l. 22--><math
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >N</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-10-2"  
-class="td11"> Number of peers in the team                                                                                                                                         </td>
+class="td11"> Number of peers in the team                                                                                                                                     </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-11-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-11-1"  
 class="td11"> <!--l. 23--><math 
@@ -357,7 +357,7 @@ display="inline" ><msub><mrow
 ><mi 
 >C</mi></mrow></msub 
 ></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-11-2"  
-class="td11"> Chunk time                                                                                                                                                               </td>
+class="td11"> Chunk time                                                                                                                                                           </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-12-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-12-1"  
 class="td11"> <!--l. 24--><math 
@@ -368,7 +368,7 @@ display="inline" ><msub><mrow
 ><mi 
 >R</mi></mrow></msub 
 ></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-12-2"  
-class="td11"> Round time                                                                                                                                                               </td>
+class="td11"> Round time                                                                                                                                                           </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-13-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-13-1"  
 class="td11"> <!--l. 25--><math 
@@ -379,21 +379,21 @@ display="inline" ><msub><mrow
 ><mi 
 >B</mi></mrow></msub 
 ></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-13-2"  
-class="td11"> Buﬀering time                                                                                                                                                            </td>
+class="td11"> Buﬀering time                                                                                                                                                        </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-14-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-14-1"  
 class="td11"> <!--l. 26--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >L</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-14-2"  
-class="td11"> Physical network latency                                                                                                                                              </td>
+class="td11"> Physical network latency                                                                                                                                          </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-15-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-15-1"  
 class="td11"> <!--l. 27--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >T</mi></math>  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-15-2"  
-class="td11"> Latency experimented by the end-user                                                                                                                            </td></tr></table>
+class="td11"> Latency experimented by the end-user                                                                                                                        </td></tr></table>
 </div>
 <br /> <div class="caption" 
 ><span class="id">Table 1: </span><span  
@@ -534,40 +534,35 @@ round.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.3   </span> <a 
  id="x1-80002.3"></a>Joining a team</h4>
-<!--l. 7--><p class="noindent" >After connecting with a splitter, incoming peers request
-(using a reliable communication) to the splitter the current
-<span 
-class="ecti-1000">list</span><span class="footnote-mark"><a 
-href="index8.html#fn7x0"><sup class="textsuperscript">7</sup></a></span><a 
- id="x1-8001f7"></a> 
-of peers in the team. To minimize the joining time, the peer sends a
-<!--l. 12--><math 
+<!--l. 7--><p class="noindent" >After connecting with a splitter, incoming peers request (using a reliable communication) to
+the splitter the current set of peers in the team. To minimize the joining time, the peer sends a
+<!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> message to each
-other peer of the team, in parallel with the reception of the list. When a peer of the team receives a
-<!--l. 14--><math 
+other peer of the team, in parallel with the reception of the set. When a peer of the team receives a
+<!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>, it adds the sender of
 the message to a <span 
 class="ecti-1000">table</span><span class="footnote-mark"><a 
-href="index9.html#fn8x0"><sup class="textsuperscript">8</sup></a></span><a 
- id="x1-8002f8"></a> 
-of peers called <!--l. 17--><math 
+href="index8.html#fn7x0"><sup class="textsuperscript">7</sup></a></span><a 
+ id="x1-8001f7"></a> 
+of peers called <!--l. 14--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">forward</mi><mrow ><mo 
 class="MathClass-open">[</mo><mrow></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> (see
 <a 
-href="https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/peer_dbs.py#L491" ><!--l. 19--><math 
+href="https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/peer_dbs.py#L491" ><!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mstyle 
 class="text"><mtext  >forward[]</mtext></mstyle></math> in <span 
 class="ectt-1000">peer.py</span></a>). If a
-peer <!--l. 19--><math 
+peer <!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -575,7 +570,7 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math> has an entry
-<!--l. 20--><math 
+<!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">forward</mi><mrow ><mo 
 class="MathClass-open">[</mo><mrow><msub><mrow 
@@ -591,7 +586,7 @@ class="MathClass-rel">=</mo> <msub><mrow
 ><mi 
 >k</mi></mrow></msub 
 ></math>, then each chunk
-received by <!--l. 20--><math 
+received by <!--l. 17--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -599,7 +594,7 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math> and
-originated at <!--l. 21--><math 
+originated at <!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -607,7 +602,7 @@ display="inline" ><msub><mrow
 ><mi 
 >j</mi></mrow></msub 
 ></math> will be
-forwarded to <!--l. 21--><math 
+forwarded to <!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -615,7 +610,7 @@ display="inline" ><msub><mrow
 ><mi 
 >k</mi></mrow></msub 
 ></math>. When
-an incoming peer <!--l. 22--><math 
+an incoming peer <!--l. 19--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -623,8 +618,8 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math>
-has received the list of peers, its forwarding table has been initialized to
-<!--l. 23--><math 
+has received the set of peers, its forwarding table has been initialized to
+<!--l. 20--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">forward</mi><mrow ><mo 
 class="MathClass-open">[</mo><mrow><msub><mrow 
@@ -649,16 +644,13 @@ received from the splitter will be forwarded to the rest of the team. So, in abs
 communication constraints, the team will be organized as a full-connected overlay
 (see Fig. <a 
 href="#x1-10002r1">2a<!--tex4ht:ref: fig:full_mesh --></a>).
-</p><!--l. 36--><p class="indent" >   The splitter, in an inﬁnite loop: (1) listens to the incoming peers, (2) sends to
-them the list of peers of the team, and (3) adds the incoming peer to the list. Notice
-that only those peers that are in the list of peers of the splitter are considered to be
-                                                                  
-
-                                                                  
-in the team served by such splitter.
-</p><!--l. 53--><p class="indent" >   <span 
+</p><!--l. 33--><p class="indent" >   The splitter, in an inﬁnite loop: (1) listens to the incoming peers, (2) sends to
+them the set of peers of the team, and (3) includes the incoming peer to the set.
+Notice that only those peers that are in the set of peers of the splitter are considered
+to be in the team served by such splitter.
+</p><!--l. 50--><p class="indent" >   <span 
 class="ecbx-1000">Note:  </span>See <a 
-href="https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py#L296" ><!--l. 54--><math 
+href="https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py#L296" ><!--l. 51--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mstyle 
 class="text"><mtext  >destination_of_chunk</mtext></mstyle><mrow ><mo 
@@ -666,6 +658,9 @@ class="MathClass-open">[</mo><mrow></mrow><mo
 class="MathClass-close">]</mo></mrow></math>
 in <span 
 class="ectt-1000">peer_dbs.py</span></a>.
+                                                                  
+
+                                                                  
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.4   </span> <a 
  id="x1-90002.4"></a>Buﬀering chunks</h4>
@@ -719,8 +714,8 @@ Chunks with a higher number (newer chunks) are inserted in the head
 of the buﬀer. The (received) chunk pointed by the tail of the buﬀer is
 sent to the player. This action is carried out each time a new chunk is
 received<span class="footnote-mark"><a 
-href="index10.html#fn9x0"><sup class="textsuperscript">9</sup></a></span><a 
- id="x1-9001f9"></a> .
+href="index9.html#fn8x0"><sup class="textsuperscript">8</sup></a></span><a 
+ id="x1-9001f8"></a> .
 Empty cells in the buﬀer (caused by the chunks that have not been received on time)
 are skipped until to ﬁnd the next cell with content.
 </p><!--l. 28--><p class="indent" >   <!--l. 28--><math 
@@ -776,9 +771,6 @@ should be selected enough large to keep under control this overhead. On the othe
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >B</mi></math> is too small (for
-                                                                  
-
-                                                                  
 example, if <!--l. 35--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
@@ -809,6 +801,9 @@ class="MathClass-rel">&#x003C;</mo> <mn>2</mn><msup><mrow
 class="MathClass-bin">∗</mo></mrow></msup 
 ></math>, because
 the maximum jitter for a given peer (generated by DBS) that a chunk can experiment is
+                                                                  
+
+                                                                  
 the sum of the maximum jitter produced by the splitter for this peer, that can be
 <!--l. 42--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -862,8 +857,8 @@ class="MathClass-bin">+</mo><mi
 >B</mi></mrow></msub 
 ></math> is
 received.<span class="footnote-mark"><a 
-href="index11.html#fn10x0"><sup class="textsuperscript">10</sup></a></span><a 
- id="x1-9002f10"></a> 
+href="index10.html#fn9x0"><sup class="textsuperscript">9</sup></a></span><a 
+ id="x1-9002f9"></a> 
 Lets analyze some interesting cases.
 </p><!--l. 57--><p class="indent" >   Lets suppose that the ﬁrst received chunk is
 <!--l. 57--><math 
@@ -975,9 +970,6 @@ display="inline" ><msub><mrow
 class="MathClass-bin">+</mo><mi 
 >B</mi></mrow></msub 
 ></math> was generated
-                                                                  
-
-                                                                  
 <!--l. 70--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
@@ -1005,6 +997,9 @@ class="MathClass-bin">+</mo> <mi
 </p><!--l. 73--><p class="indent" >   After considering these two extreme situations, we can conclude that
 the end-latency does not depend on the loss chunk ratio during the
 buﬀering time (always that this ratio is smaller than one), but only on
+                                                                  
+
+                                                                  
 <!--l. 76--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
@@ -1028,8 +1023,8 @@ display="inline" ><mi
 retransmitted to a large number of neighbors (depending on the number of diﬀerent
 destinations in its forwarding table). Therefore, even by controlling the chunk rate at the
 servers<span class="footnote-mark"><a 
-href="index12.html#fn11x0"><sup class="textsuperscript">11</sup></a></span><a 
- id="x1-10001f11"></a> ,
+href="index11.html#fn10x0"><sup class="textsuperscript">10</sup></a></span><a 
+ id="x1-10001f10"></a> ,
 some kind of ﬂow control must be performed in order to reduce network congestion
 while peers perform the ﬂooding.
                                                                   
@@ -1085,13 +1080,13 @@ scenarios, the simple rule of sending a chunk for each received one does not
 work.
 </p><!--l. 54--><p class="indent" >   The previous idea can be adapted to handle a variable connectivity
 degree (also called <span 
-class="ecti-1000">neighborhood degree</span>) if each peer uses a table of lists,
+class="ecti-1000">neighborhood degree</span>) if each peer uses a table of sets,
 <!--l. 56--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">pending</mi><mrow ><mo 
 class="MathClass-open">[</mo><mrow></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>,
-indexed by the neighbor’s end-points, where each list stores the positions in the
+indexed by the neighbor’s end-points, where each set indicates the positions in the
 buﬀer of those chunks that must be transmited to the corresponding neighbor, the
 next time such neighbor be selected in the ﬂooding process. For example, if
 <!--l. 60--><math 
@@ -1328,7 +1323,7 @@ display="inline" ><msub><mrow
 >M</mi></mrow><mrow 
 ><mn>0</mn></mrow></msub 
 ></math>
-is      in      the      list      of      peers      received      from      the      splitter.
+is      in      the      set      of      peers      received      from      the      splitter.
 After      that,      when      the      chunk      number      2      arrives      to
 <!--l. 100--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -1634,8 +1629,8 @@ class="ecbx-1000">Note:</span>
  id="x1-110002.6"></a>Routes discovery and topology optimization</h4>
 <!--l. 7--><p class="noindent" >Chunks can be lost under bandwidth and buﬀering time
 constraints.<span class="footnote-mark"><a 
-href="index13.html#fn12x0"><sup class="textsuperscript">12</sup></a></span><a 
- id="x1-11001f12"></a> 
+href="index12.html#fn11x0"><sup class="textsuperscript">11</sup></a></span><a 
+ id="x1-11001f11"></a> 
 A chunk is considered as lost when it is time to send it to the player and the chunk
 has not been received. In this situation, for each lost chunk, the peer sends a
 <!--l. 12--><math 
@@ -1706,7 +1701,7 @@ is the origin peer of the chunk stored in the position
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">(</mo><mrow><mstyle 
-class="text"><mtext  >lost_chunk_index</mtext></mstyle><mspace width="1em" class="nbsp" /><mi mathvariant="italic">mod</mi><mspace width="1em" class="nbsp" /><mn>2</mn><mi 
+class="text"><mtext  >lost_chunk_number</mtext></mstyle><mspace width="1em" class="nbsp" /><mi mathvariant="italic">mod</mi><mspace width="1em" class="nbsp" /><mn>2</mn><mi 
 >B</mi></mrow><mo 
 class="MathClass-close">)</mo></mrow></math> of its
 buﬀer.
@@ -1773,7 +1768,7 @@ display="inline" ><mrow ><mo
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">request</mi><mspace width="1em" class="nbsp" /><mstyle 
 class="text"><mtext  >lost_chunk_number</mtext></mstyle></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> is sent to a
-neighbor peer and a duplicate is received from another neighbor. An increment is produced
+neighbor peer, and a duplicate is received from another neighbor. An increment is produced
 if the <!--l. 34--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
@@ -1782,9 +1777,32 @@ class="text"><mtext  >lost_chunk_number</mtext></mstyle></mrow><mo
 class="MathClass-close">]</mo></mrow></math>
 is sent to a peer that is not a neighbor, and a duplicate is received from a neighbor,
 that still keeps sending chunks at least from a diﬀerent origin.
+</p><!--l. 39--><p class="indent" >   As peers select (randomly) <!--l. 40--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow ><mo 
+class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">request</mi><mspace width="1em" class="nbsp" /><mstyle 
+class="text"><mtext  >lost_chunk_number</mtext></mstyle></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>’s
+destinations of the team, the list of known peers of the team should be up to date. This
                                                                   
 
                                                                   
+list is populated in ﬁrst instance when peers join a team. Peers also add to this list the
+sender of a <!--l. 43--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow ><mo 
+class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>
+or a chunk. Unfortunately, these rules do not guarantee that that all
+peers know the end-points of the rest of the team, because all the
+<!--l. 46--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mrow ><mo 
+class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>s and
+the chunks sent to a already incorporated peer can be lost. To solve this, peers also
+add to the list the new origin peers of the all received chunks, except for those
+received from the splitter.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.7   </span> <a 
  id="x1-120002.7"></a>Leaving a team</h4>
@@ -1801,8 +1819,8 @@ display="inline" ><mrow ><mo
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">goodbye</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> from the splitter. In
 case of timeout<span class="footnote-mark"><a 
-href="index14.html#fn13x0"><sup class="textsuperscript">13</sup></a></span><a 
- id="x1-12001f13"></a> ,
+href="index13.html#fn12x0"><sup class="textsuperscript">12</sup></a></span><a 
+ id="x1-12001f12"></a> ,
 the leaving procedure is reset a number of times.
 </p><!--l. 15--><p class="indent" >   When a peer of the team receives a
 <!--l. 15--><math 
@@ -1815,7 +1833,7 @@ sender from its <!--l. 16--><math
 display="inline" ><mi mathvariant="monospace">forward</mi><mrow ><mo 
 class="MathClass-open">[</mo><mrow></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
-table. The splitter removes the outgoing peer from the list of peers as soon as the
+table. The splitter removes the outgoing peer from the set of peers as soon as the
 <!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
@@ -1824,9 +1842,9 @@ class="MathClass-close">]</mo></mrow></math> is
 received.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.8   </span> <a 
- id="x1-130002.8"></a>Free-riding control</h4>
-<!--l. 8--><p class="noindent" >The splitter remembers which chunk, of a list of the last
-<!--l. 8--><math 
+ id="x1-130002.8"></a>Free-riding control at the splitter</h4>
+<!--l. 7--><p class="noindent" >The splitter remembers which chunk, of a list of the last
+<!--l. 7--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
@@ -1836,7 +1854,7 @@ display="inline" ><msup><mrow
 ></math>
 transmitted chunks, was sent to each peer of the team. Notice that, in order to
 remember the chunk that was sent to each peer in each round, must be hold that
-<!--l. 11--><math 
+<!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
@@ -1847,7 +1865,7 @@ display="inline" ><msup><mrow
 class="MathClass-rel">≥</mo> <mi 
 >N</mi></math>. See
 <a 
-href="https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py#L296" ><!--l. 13--><math 
+href="https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py#L296" ><!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mstyle 
 class="text"><mtext  >destination_of_chunk</mtext></mstyle><mrow ><mo 
@@ -1855,67 +1873,251 @@ class="MathClass-open">[</mo><mrow></mrow><mo
 class="MathClass-close">]</mo></mrow></math> in
 <span 
 class="ectt-1000">splitter_dbs.py</span></a>.
-</p><!--l. 15--><p class="indent" >   Monitor peers (which are trusted peers) complain to their splitter with a
-<!--l. 16--><math 
+</p><!--l. 14--><p class="indent" >   Monitor peers (which are trusted peers) complain to their splitter with a
+<!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">lost</mi><mspace width="1em" class="nbsp" /><mstyle 
-class="text"><mtext  >lost_chunk_index</mtext></mstyle></mrow><mo 
+class="text"><mtext  >lost_chunk_number</mtext></mstyle></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> for
 each lost chunk. The splitter only considers these type of messages if they come from
 a monitor.
-</p><!--l. 20--><p class="indent" >   If a peer <!--l. 20--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->o</mi></mrow></msub 
-></math>
-accumulates more than <!--l. 20--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msup><mrow 
-><mi 
->L</mi></mrow><mrow 
-><mo 
-class="MathClass-bin">∗</mo></mrow></msup 
-></math>
-losts in <!--l. 20--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->R</mi></math>
-rounds, <!--l. 20--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->o</mi></mrow></msub 
-></math>
-is removed from the splitter’s list of peers. All peers do the same,
-but in this case they also remove the selﬁsh neighbors from the
-<!--l. 23--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">forward</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow></mrow><mo 
-class="MathClass-close">]</mo></mrow></math> and
-<!--l. 23--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">pending</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>
-tables.
-</p><!--l. 30--><p class="indent" >   <span 
+</p><!--l. 24--><p class="indent" >   <span 
 class="ecbx-1000">Note:  </span>This last functionality has not been implemented, at least, as it has been
 explained here. The forget() thread is controlled by a timer, not by a counter of
 rounds.
                                                                   
 
                                                                   
-</p><!--l. 46--><p class="noindent" >
+</p><!--l. 45--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">3   </span> <a 
- id="x1-140003"></a>IMS (Ip Multicast Set)</h3>
+ id="x1-140003"></a>FCS (Free-riding Control Set)</h3>
+<!--l. 20--><p class="noindent" >DBS does not imposes any control over the grade of solidarity of the peers. This
+means that selﬁsh peers (or simply peers with reduced connectivity) can stay in the
+team thanks to the generosity of the rest of peers, even if they never achive to deliver
+a chunk to any peer of the team. This set or rules preclude this possible
+behavior, by impossing a minimum degree of solidarity between neighbor
+peers.
+</p><!--l. 27--><p class="indent" >   To know the level of solidarity between neighbor peers, each peer uses a table of chunk debts,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">debt</mi><mrow ><mo 
+class="MathClass-open">[</mo><mrow></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>. Every time
+a peer <!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math> sends
+a chunk to <!--l. 29--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math>,
+<!--l. 29--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math> increments
+<!--l. 29--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">debt</mi><mrow ><mo 
+class="MathClass-open">[</mo><mrow><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>, and on the
+contrary, decrements <!--l. 30--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">debt</mi><mrow ><mo 
+class="MathClass-open">[</mo><mrow><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>
+when <!--l. 30--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math> receives
+a chunk from <!--l. 31--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math>.
+</p><!--l. 33--><p class="indent" >   Peers forward chunks to their neighbors in the order in which the entries of
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">pending</mi><mrow ><mo 
+class="MathClass-open">[</mo><mrow></mrow><mo 
+class="MathClass-close">]</mo></mrow></math> are
+accessed (a round-robing scheduling in DBS). Considering this, FCS modiﬁes this
+behavior:
+     </p><ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-14002x1">To go through <!--l. 37--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">pending</mi><mrow ><mo 
+class="MathClass-open">[</mo><mrow></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>
+     in the order provided by <!--l. 38--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">debt</mi><mrow ><mo 
+class="MathClass-open">[</mo><mrow></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>,
+     selecting ﬁrst those entries with a smaller debts.
+     </li>
+     <li 
+  class="enumerate" id="x1-14004x2">To reset the run of <!--l. 40--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">pending</mi><mrow ><mo 
+class="MathClass-open">[</mo><mrow></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>
+     in each round (when a chunk is received from the splitter).
+     </li>
+     <li 
+  class="enumerate" id="x1-14006x3">If <!--l. 42--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math>
+     realises that <!--l. 42--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">debt</mi><mrow ><mo 
+class="MathClass-open">[</mo><mrow><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></mrow><mo 
+class="MathClass-close">]</mo></mrow> <mo 
+class="MathClass-rel">&#x003E;</mo> <msup><mrow 
+><mi 
+>L</mi></mrow><mrow 
+><mo 
+class="MathClass-bin">∗</mo></mrow></msup 
+></math>,
+     <!--l. 42--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math>
+     removes <!--l. 43--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math>
+     from <!--l. 43--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">forward</mi><mrow ><mo 
+class="MathClass-open">[</mo><mrow><mo 
+class="MathClass-op">∀</mo><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>k</mi></mrow></msub 
+> <mo 
+class="MathClass-rel">∈</mo><mrow ><mo 
+class="MathClass-open">{</mo><mrow><mi mathvariant="normal">team</mi> <mo 
+class="MathClass-bin">∪</mo> <msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></mrow><mo 
+class="MathClass-close">}</mo></mrow></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>,
+     from <!--l. 44--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="monospace">pending</mi><mrow ><mo 
+class="MathClass-open">[</mo><mrow></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>,
+     and from the team. Notice that this action decreases the neighborhood
+     degree of <!--l. 45--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math>
+     and, soon or later of <!--l. 46--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math>
+     that will consider <!--l. 46--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math>
+     as unsupportive.
+                                                                  
+
+                                                                  
+     </li>
+     <li 
+  class="enumerate" id="x1-14008x4">In  DBS,  request  messages  are  sent  selecting  the  destination  peer  at
+     random. In FCS, request messages are sent to those peers with a higher
+     debt. Thus, if the insolidarity is produced by a overlay topology imbalance,
+     badly  connected  peers  peers  could  have  the  chance  of  mitigating  this
+     problem by forwarding more chunks to their neighbors. Si consideramos
+     en debt todos los peers del team y asignamos inicialmente una deuda
+     máxima y si los peers nunca se borran de debt, es posible que los request
+     se envíen a peers que no son vecinos y por tanto se aumente el grado de
+     vecindad.</li></ol>
+<!--l. 55--><p class="indent" >   Using FCS, supportive peers will be served ﬁrst, incrementing the QoE of the
+corresponding peers. On the other hand, those peers with a higher chunk debt will
+tend to be unserved if no enough bandwidth is available.
+</p><!--l. 89--><p class="indent" >   <span 
+class="ecbx-1000">Note:  </span>The prioritized round-robin neighbor selection has
+not yet been implemented as it has been explained here. The
+<!--l. 91--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+class="text"><mtext  >debt</mtext></mstyle><mrow ><mo 
+class="MathClass-open">[</mo><mrow></mrow><mo 
+class="MathClass-close">]</mo></mrow></math>
+structure exists, but is used for a diﬀerent purporse.
+</p><!--l. 48--><p class="noindent" >
+</p>
+   <h3 class="sectionHead"><span class="titlemark">4   </span> <a 
+ id="x1-150004"></a>IMS (Ip Multicast Set)</h3>
 <!--l. 8--><p class="noindent" >IPM is available by default in LANs (Local Are Network)s and VLANs (Virtual
 LANs) <span class="cite">[<a 
 href="#Xshabtay2011ip">6</a>]</span>, but not in the Internet <span class="cite">[<a 
@@ -1949,269 +2151,16 @@ to multicast (only) the chunks received from the splitter. Therefore, all peers 
 the same local network communicate using this multicast group address
 and port. The rest of external peers will be referenced using their public
 end-points.
-</p><!--l. 49--><p class="noindent" >
+</p><!--l. 51--><p class="noindent" >
 </p>
-   <h3 class="sectionHead"><span class="titlemark">4   </span> <a 
- id="x1-150004"></a>FCS (Free-riding Control Set)</h3>
-<!--l. 20--><p class="noindent" >DBS does not imposes any control over the grade of solidarity of the peers. This
-means that selﬁsh peers (or simply peers with reduced connectivity) can stay in the
-team thanks to the generosity of the rest of peers, even if they never achive to
-deliver a chunk to any peer of the team. This set or rules try to minimize this
-behavior, by impossing a minimum degree of solidarity between neighbor
-peers.
-</p><!--l. 27--><p class="indent" >   To know the level of solidarity between neighbor peers, each peer uses a table of chunk debts,
-<!--l. 28--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">debt</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>. Every time
-a peer <!--l. 28--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->i</mi></mrow></msub 
-></math> sends
-a chunk to <!--l. 29--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msub 
-></math>,
-<!--l. 29--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->i</mi></mrow></msub 
-></math> runs
-<!--l. 29--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">debt</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msub 
-></mrow><mo 
-class="MathClass-close">]</mo></mrow> <mo 
-class="MathClass-rel">=</mo> <mi mathvariant="monospace">debt</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msub 
-></mrow><mo 
-class="MathClass-close">]</mo></mrow> <mo 
-class="MathClass-bin">+</mo> <mn>1</mn></math>, and
-<!--l. 30--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msub 
-></math> runs
-<!--l. 30--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">debt</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->i</mi></mrow></msub 
-></mrow><mo 
-class="MathClass-close">]</mo></mrow> <mo 
-class="MathClass-rel">=</mo> <mi mathvariant="monospace">debt</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->i</mi></mrow></msub 
-></mrow><mo 
-class="MathClass-close">]</mo></mrow><mspace width="1em" class="nbsp" /><mstyle 
-class="text"><mtext  >div</mtext></mstyle><mspace width="1em" class="nbsp" /><mn>2</mn></math>
-(<!--l. 31--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mstyle 
-class="text"><mtext  >div</mtext></mstyle></math> represents the
-integer division) if <!--l. 32--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msub 
-></math>
-receives a chunk from <!--l. 32--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->i</mi></mrow></msub 
-></math>.
-So, peers increment the solidarity measurement incrementally and decreases it
-exponentially towards zero. This respond to the idea of that, if a peer keeps sending
-chunks to their neighbors, we suppose it is trying to do its best in retransmitting the
-chunks it must forward.
-</p><!--l. 38--><p class="indent" >   Peers forward chunks to their neighbors in the order in which the entries of the
-<!--l. 39--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">pending</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow></mrow><mo 
-class="MathClass-close">]</mo></mrow></math> table
-are accessed (a round-robing scheduling in DBS). Considering this, FCS
-                                                                  
-
-                                                                  
-deﬁnes:
-     </p><ol  class="enumerate1" >
-     <li 
-  class="enumerate" id="x1-15002x1">To go through <!--l. 42--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">pending</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>
-     in the order provided by <!--l. 43--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">debt</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>,
-     selecting ﬁrst those entries with a smaller debt.
-     </li>
-     <li 
-  class="enumerate" id="x1-15004x2">To reset the run of <!--l. 45--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">pending</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>
-     in each round (when a chunk is received from the splitter).
-     </li>
-     <li 
-  class="enumerate" id="x1-15006x3">If <!--l. 47--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->i</mi></mrow></msub 
-></math>
-     realises that <!--l. 47--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">debt</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msub 
-></mrow><mo 
-class="MathClass-close">]</mo></mrow> <mo 
-class="MathClass-rel">&#x003E;</mo> <msup><mrow 
-><mi 
->L</mi></mrow><mrow 
-><mo 
-class="MathClass-bin">∗</mo></mrow></msup 
-></math>,
-     <!--l. 47--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->i</mi></mrow></msub 
-></math>
-     removes <!--l. 48--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msub 
-></math>
-     from <!--l. 48--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">forward</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow><mo 
-class="MathClass-op">∀</mo><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->k</mi></mrow></msub 
-> <mo 
-class="MathClass-rel">∈</mo><mi mathvariant="monospace">team</mi></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>,
-     from <!--l. 49--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">pending</mi><mrow ><mo 
-class="MathClass-open">[</mo><mrow></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>,
-     and from <!--l. 49--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi mathvariant="monospace">team</mi></math>.
-     Notice that this action decreases the neighborhood degree of <!--l. 50--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->i</mi></mrow></msub 
-></math>
-     and, soon or later of <!--l. 51--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->j</mi></mrow></msub 
-></math>
-     that will consider <!--l. 51--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->P</mi></mrow><mrow 
-><mi 
->i</mi></mrow></msub 
-></math>
-     as unsupportive.
-     </li>
-     <li 
-  class="enumerate" id="x1-15008x4">In  DBS,  request  messages  are  sent  selecting  the  destination  peer  at
-     random. In FCS, request messages are sent to those peers with a higher
-     debt. Thus, if the insolidarity is produced by a overlay topology imbalance,
-     badly  connected  peers  peers  could  have  the  chance  of  mitigating  this
-     problem by forwarding more chunks to their neighbors. Si consideramos
-     en debt todos los peers del team y asignamos inicialmente una deuda
-     máxima y si los peers nunca se borran de debt, es posible que los request
-     se envíen a peers que no son vecinos y por tanto se aumente el grado de
-     vecindad.</li></ol>
-<!--l. 60--><p class="indent" >   Using FCS, supportive peers will be served ﬁrst, incrementing the QoE of the
-corresponding peers. On the other hand, those peers with a higher chunk debt will
-tend to be unserved if no enough bandwidth is available.
-</p><!--l. 94--><p class="indent" >   <span 
-class="ecbx-1000">Note:  </span>The prioritized round-robin neighbor selection has
-not yet been implemented as it has been explained here. The
-<!--l. 96--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mstyle 
-class="text"><mtext  >debt</mtext></mstyle><mrow ><mo 
-class="MathClass-open">[</mo><mrow></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>
-structure exists, but is used for a diﬀerent purporse.
-</p><!--l. 52--><p class="noindent" >
-</p>
-                                                                  
-
-                                                                  
    <h3 class="sectionHead"><span class="titlemark">5   </span> <a 
  id="x1-160005"></a>TAS (Topology Adaptation Set)</h3>
 <!--l. 8--><p class="noindent" >In TAS, the splitter request to each peer of the team the list of neighbors
 (peers that send chunks directly, in one hop). This communication is reliable
 (TCP) and transmits the lists as a collection of end-points. The number of
+                                                                  
+
+                                                                  
 requests per round is limited by the available bandwidth in the overlay, and by
 the request-ratio deﬁned at the splitter. Obviously, the higher the ratio, a
 more accurate description of the real connectivity in the overlay will be
@@ -2219,7 +2168,7 @@ obtained.
 </p><!--l. 26--><p class="indent" >   After knowing the connectivity degree of each peer, the slitter can adapt the
 round-robin scheduling of the origin peers by sending a number of chunks
 proportional to the inverse of the degree of the origin peer.
-</p><!--l. 55--><p class="noindent" >
+</p><!--l. 54--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">6   </span> <a 
  id="x1-170006"></a>MRS (Massively-lost chunk Recovery Set)</h3>
@@ -2233,7 +2182,7 @@ chunk (by normal peers), monitors halves the number of chunks in their buﬀers 
 relation to common peers. Notice that MRS only modiﬁes the behavior of the
 splitters and the monitors (normal peers does no need to implement LRS or its
 extensions).
-</p><!--l. 58--><p class="noindent" >
+</p><!--l. 57--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">7   </span> <a 
  id="x1-180007"></a>ACS (Adaptive Capacity Set)</h3>
@@ -2248,22 +2197,22 @@ href="#x1-130002.8">2.8<!--tex4ht:ref: sec:free_riding_control --></a>), to send
 reliable peers a higher number of chunks than to the others. In other words, ACS
 adapts the round-time of each peer to its capacity.
 </p><!--l. 20--><p class="indent" >   Notice that ACS only aﬀects the behavior of the splitter.
-</p><!--l. 61--><p class="noindent" >
-                                                                  
-
-                                                                  
+</p><!--l. 60--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">8   </span> <a 
  id="x1-190008"></a>NTS (NAT Traversal Set)</h3>
 <!--l. 8--><p class="noindent" >Most of the peers run inside of “private” networks, i.e. behind NAT devices.
+                                                                  
+
+                                                                  
 NTS<span class="footnote-mark"><a 
-href="index15.html#fn14x0"><sup class="textsuperscript">14</sup></a></span><a 
- id="x1-19001f14"></a> 
+href="index14.html#fn13x0"><sup class="textsuperscript">13</sup></a></span><a 
+ id="x1-19001f13"></a> 
 is an DBS extension which provides peer connectivity for some
 NAT conﬁgurations where DBS can not provide direct peer
 communication.<span class="footnote-mark"><a 
-href="index16.html#fn15x0"><sup class="textsuperscript">15</sup></a></span><a 
- id="x1-19002f15"></a> 
+href="index15.html#fn14x0"><sup class="textsuperscript">14</sup></a></span><a 
+ id="x1-19002f14"></a> 
 </p><!--l. 22--><p class="indent" >   Peers behind the same NAT will use the same external (also called “public”,
 because in most cases we have not nested NAT conﬁgurations) IP address of the
 NAT. Basically, there exist two diﬀerent types of NATs: (1) <span 
@@ -2351,9 +2300,6 @@ display="inline" ><msub><mrow
 ><mi 
 >e</mi></mrow></msub 
 ></math>’s host. When source
-                                                                  
-
-                                                                  
 end-point ﬁltering is used, <!--l. 45--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
@@ -2367,6 +2313,9 @@ display="inline" ><msub><mrow
 ><mi 
 >e</mi></mrow></msub 
 ></math>’s
+                                                                  
+
+                                                                  
 end-point.
 </p>
    <hr class="figure" /><div class="figure" 
@@ -4070,7 +4019,7 @@ incoming peer and <!--l. 312--><math
 display="inline" ><mi 
 >Δ</mi></math>
 is the (maximum) port step measured for the incoming peer’s NAT.
-</p><!--l. 64--><p class="noindent" >
+</p><!--l. 63--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">9   </span> <a 
  id="x1-260009"></a>MCS (Multi-Channel Set)</h3>
@@ -4090,7 +4039,7 @@ same stream (the same chunks and headers), it could move between teams seamless
 </p><!--l. 23--><p class="indent" >   A pure CS service could be provided if the corresponding splitter announces one
 empty team and sends each chunk so many times as teams (with one peer/team)
 there are.
-</p><!--l. 67--><p class="noindent" >
+</p><!--l. 66--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">10   </span> <a 
  id="x1-2700010"></a>CIS (Content Integrity Set)</h3>

@@ -21,34 +21,29 @@ DBS does not imposes any control over the grade of solidarity of the
 peers. This means that selfish peers (or simply peers with reduced
 connectivity) can stay in the team thanks to the generosity of the
 rest of peers, even if they never achive to deliver a chunk to any
-peer of the team. This set or rules try to minimize this behavior,
+peer of the team. This set or rules preclude this possible behavior,
 by impossing a minimum degree of solidarity between neighbor peers.
 
 To know the level of solidarity between neighbor peers, each peer uses
 a table of chunk debts, $\mathtt{debt}[]$. Every time a peer $P_i$
-sends a chunk to $P_j$, $P_i$ runs $\mathtt{debt}[P_j] =
-\mathtt{debt}[P_j]+1$, and $P_j$ runs $\mathtt{debt}[P_i] =
-\mathtt{debt}[P_i]~\text{div}~2$ ($\text{div}$ represents the integer
-division) if $P_j$ receives a chunk from $P_i$. So, peers increment
-the solidarity measurement incrementally and decreases it
-exponentially towards zero. This respond to the idea of that, if a
-peer keeps sending chunks to their neighbors, we suppose it is trying
-to do its best in retransmitting the chunks it must forward.
+sends a chunk to $P_j$, $P_i$ increments $\mathtt{debt}[P_j]$, and on
+the contrary, decrements $\mathtt{debt}[P_j]$ when $P_i$ receives a
+chunk from $P_j$.
 
 Peers forward chunks to their neighbors in the order in which the
-entries of the $\mathtt{pending}[]$ table are accessed (a round-robing
-scheduling in DBS). Considering this, FCS defines:
+entries of $\mathtt{pending}[]$ are accessed (a round-robing
+scheduling in DBS). Considering this, FCS modifies this behavior:
 \begin{enumerate}
 \item To go through $\mathtt{pending}[]$ in the order provided by
   $\mathtt{debt}[]$, selecting first those entries with a smaller
-  debt.
+  debts.
 \item To reset the run of $\mathtt{pending}[]$ in each round (when a
   chunk is received from the splitter).
 \item If $P_i$ realises that $\mathtt{debt}[P_j]>L^*$, $P_i$ removes
-  $P_j$ from $\mathtt{forward}[\forall P_k\in\mathtt{team}]$, from
-  $\mathtt{pending}[]$, and from $\mathtt{team}$. Notice that this action
-  decreases the neighborhood degree of $P_i$ and, soon or later of
-  $P_j$ that will consider $P_i$ as unsupportive.
+  $P_j$ from $\mathtt{forward}[\forall P_k\in\{\text{team}\cup
+  P_i\}]$, from $\mathtt{pending}[]$, and from the team. Notice that
+  this action decreases the neighborhood degree of $P_i$ and, soon or
+  later of $P_j$ that will consider $P_i$ as unsupportive.
 \item In DBS, request messages are sent selecting the destination peer
   at random. In FCS, request messages are sent to those peers with a
   higher debt. Thus, if the insolidarity is produced by a overlay

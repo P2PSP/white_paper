@@ -10,9 +10,8 @@ the team. To minimize the joining time, the peer sends a
 $[\mathtt{hello}]$ message to each other peer of the team, in parallel
 with the reception of the set. When a peer of the team receives a
 $[\mathtt{hello}]$, it adds the sender of the message to a
-\emph{table}\footnote{We will refer to an estructure which implements
-  a random access efficiently as a table.} of peers called
-$\mathtt{forward}[]$ \note{(see
+\emph{table}\footnote{A structure which implements a random access
+  efficiently.} of peers called $\mathtt{forward}[]$ \note{(see
   \href{https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/peer_dbs.py\#L491}{$\text{forward[]}$
     in \texttt{peer.py}})}. If a peer $P_i$ has an entry
 $\mathtt{forward}[P_j]=P_k$, then each chunk received by $P_i$ and
