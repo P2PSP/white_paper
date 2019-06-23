@@ -1,15 +1,21 @@
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "<none>"
-%%% End:
+% Emacs, this is -*-latex-*-
+
+% Team Definition
 
 \label{sec:team_def}
 
-A team is a set of one or more peers that share the same stream. By
-definition, in a team of size one (the corresponding splitter is
-considered out of the team if feeds), the only peer is known as a
-\emph{monitor peer}, and in a team with more than one peer, at least
-one of them must be a monitor peer. Monitors are instantiated by the
-team administrator to monitorize different aspects of the
-broadcasting, such as, the expected quality of the rendered video at
-the peers or the expected average end-user latency.
+A team is a set of one or more peers (referenced by their end-points)
+that share the same stream. By definition, in a team of size one (the
+corresponding splitter is considered out of the team if feeds), the
+only peer is known as a \emph{monitor peer}, and in a team with more
+than one peer, at least one of them must be a monitor, which
+are instantiated by the overlay administrator to monitorize different
+aspects of the broadcasting, such as, the expected quality of the
+rendered video at the peers or the expected average end-user latency.
+
+The number of peers (normal peers and monitors) in a team has a
+maximum $N^*$ (see Tab.~\ref{tab:DBS_nomenclature}). This parameter
+has a impact on the latency of the protocol (see
+Sec.~\ref{sec:buffering_chunks}) and usually is defined by the
+administrator of the overlay.
+

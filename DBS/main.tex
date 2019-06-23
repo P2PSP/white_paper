@@ -1,7 +1,6 @@
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "<none>"
-%%% End:
+% Emacs, this is -*-latex-*-
+
+% Data Broadcasting Set of rules
 
 \label{sec:DBS}
 
@@ -13,7 +12,7 @@
     $N^*$  & Maximum number of peers in a team \\
     $C$    & Chunk size \\
     $B$    & Buffer size in chunks in the peers \\
-    $B'$   & Length of the list of last $B'$ peers served by the splitter \\ 
+    $B'$   & Size of the set of last $B'$ peers served by the splitter \\ 
     %$D^*$  & Maximum chunk debt between peers \\
     $L^*$  & Maximum allowed number of lost chunks \\
     $M$    & Number of monitors \\
@@ -32,15 +31,15 @@
 \end{table}
 
 DBS provides ALM~\cite{banerjee2002scalable} of a media stream in
-unicast environments~\cite{comer2003computer}. The media is sent by a
-streaming \emph{server}, and received by a \emph{splitter} \note{(see
-  Sec.~\ref{sec:LBS})}. The splitter divides the stream into a
-sequence of chunks of data, and relay them to its \emph{team} using a
-round-robing schema, where it can be up to $N^*$ \emph{peers} (see
-Tab.~\ref{tab:DBS_nomenclature}). Each peer gathers the chunks from
-the splitter and the rest of peers of the team, and sends them to at
-least one \emph{player}\footnote{Peer should run even if no player(s)
-  are connected to it.}.
+unicast environments~\cite{comer2003computer}. First, the media is
+sent by a streaming \emph{server}, and received by a \emph{splitter}
+\note{(see Sec.~\ref{sec:LBS})}. Then, the splitter divides the stream
+into a sequence of chunks of data, and relay them to its \emph{team}
+using a round-robing schema. A \emph{team} is composed by peers and
+each peer gathers the chunks from the splitter and the rest of peers
+of the team, and sends them to at least one
+\emph{player}\footnote{Peer should run even if no player(s) are
+  connected to it.}.
 
 \begin{comment}
 In single layered streams\footnote{Each layer of a

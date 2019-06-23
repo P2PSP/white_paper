@@ -1,7 +1,6 @@
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "<none>"
-%%% End:
+% Emacs, this is -*-latex-*-
+
+% Chunk Flooding
 
 \label{sec:chunk_flooding}
 
@@ -16,7 +15,7 @@
 DBS implements a push-based protocol. When a peer receives a chunk, it
 can be retransmitted to a large number of neighbors (depending on the
 number of different destinations in its forwarding table). Therefore,
-even by controlling the chunk rate in the servers\footnote{Using DBS
+even by controlling the chunk rate at the servers\footnote{Using DBS
   the data-flow can not be controlled in the peers or the splitter
   because they don't understand the stream.}, some kind of flow
 control must be performed in order to reduce network congestion while
@@ -28,47 +27,48 @@ peers perform the flooding.
 \begin{figure*}
   \centering
   \subfloat[A full-connected overlay.]{\label{fig:full_mesh}
-    \vbox{\myfig{graphics/full-mesh}{6cm}{250}}}
+    \vbox{\myfig{graphics/full-mesh}{6cm}{400}}}
   \quad
   \subfloat[A star-shaped overlay.]{\label{fig:star}
-    \vbox{\myfig{graphics/star}{6cm}{250}}}
+    \vbox{\myfig{graphics/star}{6cm}{400}}}
   \caption{In a full-connected DBS team (see Subfig. (a)), all peers
     receive and send the same number of chunks. In a star-shaped DBS
-    team such as the shown in the Subfig. (b), $P_1$ should send all
-    the chunks of the stream to the rest of the team, except those
-    that the splitter has sent directly to the rest of peers.}
+    team (Subfig. (b)), $P_1$ should send all the chunks of the stream
+    to the rest of the team, except those that the splitter has sent
+    directly to the rest of peers.}
 \end{figure*}
 
 The congestion (in particular, the one caused by how DBS nodes use the
-physical links) may be avoided by means of a basic idea: \textit{if I
-have received a chunk, I should send a chunk (not necessary to the
-sender)}. It is easy to see that, in a fully connected overlay
-(Fig.~\ref{fig:full_mesh}), this allows to control the data
-flow. However, in more realistic scenarios (such as those in which
-firewalls and symmetric NATS are used), where the physical media
+physical links) may be avoided by means of a basic idea: \textit{only
+  if I have received a chunk, I send a chunk (not necessary to the
+  sender neither the same chunk)}. It is easy to see that, in a fully
+connected overlay (Fig.~\ref{fig:full_mesh}), this allows to control
+the data flow. However, in more realistic scenarios (such as those in
+which firewalls and symmetric NATS are used), where the physical media
 imposes interconnexion constraints, peers can not be ``connected''
 with the rest the team, and therefore, if the splitter follows a pure
 round-robin strategy, some peers can send more chunks that they
-receive (see the Fig.~\ref{fig:star}). In these scenarios, the simple
+receive (Fig.~\ref{fig:star}). In these scenarios, the simple
 rule of sending a chunk for each received one does not work.
 
 The previous idea can be adapted to handle a variable connectivity
 degree (also called \emph{neighborhood degree}) if each peer uses a
-table of lists, $\mathtt{pending}{}$, indexed by the neighbor's
-end-points, where each list stores the positions in the buffer of
+table of sets, $\mathtt{pending}[]$, indexed by the neighbor's
+end-points, where each set indicates the positions in the buffer of
 those chunks that must be transmited to the corresponding neighbor,
-the next time such neighbor be selected in the flooding process. Thus,
-for example, if $\mathtt{pending}\{P_x\}=\{11,22\}$, chunks found at
-positions $11$ and $22$ of the buffer have to be sent to peer $P_x$
-(when the pending scheduler used by the peer selects $P_x$).
+the next time such neighbor be selected in the flooding process. For
+example, if $\mathtt{pending}[P_x]=\{11,22\}$, chunks found at
+positions $11$ and $22$ of the buffer have to be sent to peer $P_x$.
 
 Notice that using this procedure, more than one chunk can be sent to a
 neighbor in a transmission burst, which could congest the switching
 devices. However, except in very unbalanced overlays
-(Fig.~\ref{fig:star}), the bursts use to be very short (only one chunk
-in most of cases). As an advantage, if a burst is produced, all the
-chunks of the burst travel between the two same hosts, which usually
-increases the performance of the physical routing.
+(Fig.~\ref{fig:star}), the bursts are very short on average (only one
+chunk in most of cases). As an advantage, if a burst is produced, all
+the chunks of the burst travel between the two same hosts, which
+usually increases the performance of the physical routing. In this
+case, chunks can be grouped in one packet, reducing the protocol
+overhead.
 
 An example of the temporal evolution of a team using this behaviour
 has been described in the Figures \ref{fig:team_0}, \ref{fig:team_1}
@@ -93,7 +93,7 @@ and \ref{fig:team_2}.
     because when $M_0$ receives the $[\mathtt{hello}]$ from $P_1$,
     $M_0$ is the origin peer for all chunks received from $S$ and
     $P_1$ is its neighbor. $P_1$ includes an entry $P_1:[M_0]$ in its
-    forwarding table because $M_0$ is in the list of peers received
+    forwarding table because $M_0$ is in the set of peers received
     from the splitter. After that, when the chunk number 2 arrives to
     $M_0$ from $S$, an entry $P_1:2$ is created in $P\{\}$ for that
     chunk, and this entry is deleted when the chunk 2 is sent to
