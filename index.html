@@ -24,7 +24,7 @@ src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLor
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">June 23, 2019</span></div>
+class="ecrm-1200">June 24, 2019</span></div>
    </div>
    <div 
 class="abstract" 
@@ -2047,7 +2047,8 @@ class="MathClass-op">∀</mo><msub><mrow
 >k</mi></mrow></msub 
 > <mo 
 class="MathClass-rel">∈</mo><mrow ><mo 
-class="MathClass-open">{</mo><mrow><mi mathvariant="normal">team</mi> <mo 
+class="MathClass-open">{</mo><mrow><mstyle 
+class="text"><mtext  >team</mtext></mstyle> <mo 
 class="MathClass-bin">∪</mo> <msub><mrow 
 ><mi 
 >P</mi></mrow><mrow 
@@ -2055,14 +2056,13 @@ class="MathClass-bin">∪</mo> <msub><mrow
 >i</mi></mrow></msub 
 ></mrow><mo 
 class="MathClass-close">}</mo></mrow></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>,
-     from <!--l. 44--><math 
+class="MathClass-close">]</mo></mrow></math>
+     and <!--l. 44--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">pending</mi><mrow ><mo 
 class="MathClass-open">[</mo><mrow></mrow><mo 
-class="MathClass-close">]</mo></mrow></math>,
-     and from the team. Notice that this action decreases the neighborhood
-     degree of <!--l. 45--><math 
+class="MathClass-close">]</mo></mrow></math>.
+     Notice that this action decreases the neighborhood degree of <!--l. 45--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -2070,7 +2070,7 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math>
-     and, soon or later of <!--l. 46--><math 
+     and, soon or later of <!--l. 45--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -2094,13 +2094,11 @@ display="inline" ><msub><mrow
      <li 
   class="enumerate" id="x1-14008x4">In  DBS,  request  messages  are  sent  selecting  the  destination  peer  at
      random. In FCS, request messages are sent to those peers with a higher
-     debt. Thus, if the insolidarity is produced by a overlay topology imbalance,
-     badly  connected  peers  peers  could  have  the  chance  of  mitigating  this
-     problem by forwarding more chunks to their neighbors. Si consideramos
-     en debt todos los peers del team y asignamos inicialmente una deuda
-     máxima y si los peers nunca se borran de debt, es posible que los request
-     se envíen a peers que no son vecinos y por tanto se aumente el grado de
-     vecindad.</li></ol>
+     debt. Thus, if the insolidarity is produced by a overlay topology imbalance
+     (an extreme example is in Fig. <a 
+href="#x1-10003r2">2b<!--tex4ht:ref: fig:star --></a>), badly connected peers peers could
+     have the chance of mitigating this problem by forwarding more chunks to
+     their neighbors.</li></ol>
 <!--l. 55--><p class="indent" >   Using FCS, supportive peers will be served ﬁrst, incrementing the QoE of the
 corresponding peers. On the other hand, those peers with a higher chunk debt will
 tend to be unserved if no enough bandwidth is available.
@@ -2158,12 +2156,12 @@ end-points.
 <!--l. 8--><p class="noindent" >In TAS, the splitter request to each peer of the team the list of neighbors
 (peers that send chunks directly, in one hop). This communication is reliable
 (TCP) and transmits the lists as a collection of end-points. The number of
-                                                                  
-
-                                                                  
 requests per round is limited by the available bandwidth in the overlay, and by
 the request-ratio deﬁned at the splitter. Obviously, the higher the ratio, a
 more accurate description of the real connectivity in the overlay will be
+                                                                  
+
+                                                                  
 obtained.
 </p><!--l. 26--><p class="indent" >   After knowing the connectivity degree of each peer, the slitter can adapt the
 round-robin scheduling of the origin peers by sending a number of chunks
@@ -2202,12 +2200,12 @@ adapts the round-time of each peer to its capacity.
    <h3 class="sectionHead"><span class="titlemark">8   </span> <a 
  id="x1-190008"></a>NTS (NAT Traversal Set)</h3>
 <!--l. 8--><p class="noindent" >Most of the peers run inside of “private” networks, i.e. behind NAT devices.
-                                                                  
-
-                                                                  
 NTS<span class="footnote-mark"><a 
 href="index14.html#fn13x0"><sup class="textsuperscript">13</sup></a></span><a 
  id="x1-19001f13"></a> 
+                                                                  
+
+                                                                  
 is an DBS extension which provides peer connectivity for some
 NAT conﬁgurations where DBS can not provide direct peer
 communication.<span class="footnote-mark"><a 
@@ -2313,9 +2311,6 @@ display="inline" ><msub><mrow
 ><mi 
 >e</mi></mrow></msub 
 ></math>’s
-                                                                  
-
-                                                                  
 end-point.
 </p>
    <hr class="figure" /><div class="figure" 
