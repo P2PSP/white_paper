@@ -10,23 +10,22 @@
 
 \begin{figure}
   \myfig{graphics/icecast-P2PSP}{6cm}{800} %
-  \caption{A possible data-flow in an hybrid CDN(Icecast)/P2PSP
+  \caption{A possible data-flow in an hybrid CDN/P2PSP
     network. $S$ represents a splitter and $P_i$ the $i$-th
     peer.} %
   \label{fig:icecast-P2PSP}
 \end{figure}
 
 % On channels ...
-P2PSP supposes that there is a collection of \emph{channels} that are
-broadcasted in parallel.\footnote{Channels in P2PSP are similar to
-  channels in DVB (Digital Video Broadcasting): streams of media that
-  are transmitted in parallel with the rest channels.} The channels
-are available at one or more\footnote{Most client/server streaming
-  services provide the possibility of building a CDN (Content Delivery
-  Network), a tree of servers sending the same contents.} streaming
-\emph{servers}, and each channel has a different URL (Universal
-Resource Locator), usually expressed as a Web address with the
-structure:
+P2PSP supposes that there is a collection of \glspl{stream} (usually,
+video) that are broadcasted in parallel.\footnote{Streams in P2PSP are
+  similar to channels in DVB (Digital Video Broadcasting): streams of
+  media that are transmitted in parallel with the rest channels.}  The
+\glspl{stream} are available at one or more\footnote{Most
+  client/server streaming services provide the possibility of building
+  a CDN (Content Delivery Network), a tree of servers sending the same
+  contents.} streaming \glspl{server}, and each stream has a different
+\acrlong{URL}, usually expressed as a Web address with the structure:
 \begin{verbatim}
   http://server/mount_point
 \end{verbatim}
@@ -167,7 +166,7 @@ $[\text{list of splitters}]$ response.
 
 %The Fig.~\ref{fig:STS} describes in more accurately the algorithms run
 %by the different entities that participate in STS.
-The Fig.~\ref{fig:STS_example} shown an example of an LBS
+The Fig.~\ref{fig:STS_example} shown an example of an \LBS
 communication. When the peer is created, it sends a $[\mathtt{hello}]$
 message to the load balancer telling that a player is running in the
 same host that the peer and therefore, the peers should be redirected

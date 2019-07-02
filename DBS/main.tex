@@ -1,6 +1,6 @@
 % Emacs, this is -*-latex-*-
 
-% Data Broadcasting Set of rules (main)
+\newacronym{DBS}{DBS}{Data Broadcasting Set of rules}
 
 \label{sec:DBS}
 
@@ -30,14 +30,14 @@
   \label{tab:DBS_nomenclature}
 \end{table}
 
-DBS provides ALM~\cite{banerjee2002scalable} of a media stream in
-unicast environments~\cite{comer2003computer}. First, the media is
-sent by a streaming \emph{server}, and received by a \emph{splitter}
-\note{(see Sec.~\ref{sec:LBS})}. Then, the splitter divides the stream
-into a sequence of chunks of data, and relay them to its \emph{team}
-using a round-robing schema. A \emph{team} is composed by peers and
-each peer gathers the chunks from the splitter and the rest of peers
-of the team, and sends them to at least one
+\acrshort{DBS} provides ALM~\cite{banerjee2002scalable} of a media
+stream in unicast environments~\cite{comer2003computer}. First, the
+media is sent by a streaming \emph{server}, and received by a
+\emph{splitter} \note{(see Sec.~\ref{sec:LBS})}. Then, the splitter
+divides the stream into a sequence of chunks of data, and relay them
+to its \emph{team} using a round-robing schema. A \emph{team} is
+composed by peers and each peer gathers the chunks from the splitter
+and the rest of peers of the team, and sends them to at least one
 \emph{player}\footnote{Peer should run even if no player(s) are
   connected to it.}.
 
