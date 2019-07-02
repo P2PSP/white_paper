@@ -1,0 +1,3 @@
+Known team: a dictionary of endpoints, learned from the reception of
+the list of peers, the reception of the [hello]s, and the reception of
+the chunks using their origins.

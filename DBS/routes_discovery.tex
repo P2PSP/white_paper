@@ -1,0 +1,67 @@
+% Emacs, this is -*-latex-*-
+
+% Routes Discovery and Topology Optimization
+
+\label{sec:routes_discovery}
+
+Chunks can be lost under bandwidth and buffering time
+constraints.\footnote{A chunk delay higher than $Bt_C$ will also
+  generate a loss.} A chunk is considered as lost when it is time to
+send it to the player and the chunk has not been received.  In this
+situation, for each lost chunk, the peer sends a
+$[\mathtt{request}~\text{lost\_chunk\_number}]$ to a peer of the team,
+selected at random among the rest of the team. When a peer $P_x$
+receives a $[\mathtt{request}~\text{lost\_chunk\_number}]$ from $P_y$,
+$P_x$ adds $P_y$ to $\mathtt{forward}[P_o]$, where $P_o$ is the origin
+peer of the chunk stored in the position
+$(\text{lost\_chunk\_number}~\mathit{mod}~2B)$ of its buffer.
+
+In this situation, it can happen that some peers request redundant
+routes between an origin peer and itself, and therefore, some chunks
+could be received more than once. If this case, for each duplicate
+chunk, a peer $P_i$ should send a
+$[\mathtt{prune}~\text{duplicate\_chunk\_index}]$ message to those
+neighbors that have sent to it the duplicate chunk (notice that the
+faster neighbor to send the chunk will not receive such prunning
+message). Neighbors receiving this message from peer $P_i$ should
+remove the $P_i$ from $\mathtt{forward}[P_o]$, where $P_o$ is the
+origin peer of the duplicate chunk.
+
+As a consequence of these rules, the neighborhood degree of peers can
+decrease or increase. A decrement is produced if the
+$[\mathtt{request}~\text{lost\_chunk\_number}]$ is sent to a neighbor
+peer, and a duplicate is received from another neighbor. An increment
+is produced if the $[\mathtt{request}~\text{lost\_chunk\_number}]$ is
+sent to a peer that is not a neighbor, and a duplicate is received
+from a neighbor, that still keeps sending chunks at least from a
+different origin.
+
+As peers select (randomly)
+$[\mathtt{request}~\text{lost\_chunk\_number}]$'s destinations of the
+team, the list of known peers of the team should be up to date. This
+list is populated in first instance when peers join a team. Peers also
+add to this list the sender of a $[\mathtt{hello}]$ or a
+chunk. Unfortunately, these rules do not guarantee that that all peers
+know the end-points of the rest of the team, because all the
+$[\mathtt{hello}]$s and the chunks sent to a already incorporated peer
+can be lost. To solve this, peers also add to the list the new origin
+peers of the all received chunks, except for those received from the
+splitter.
+
+% As an alternative ...
+\begin{comment}
+origin peer of the next chunk stored in the
+buffer. This peer has to characteristics: (1) it is not necessary a
+neighbor peer, and (2) there is a high probability that this chunk has
+been stored in the buffer ``for a long time'', so, if it is not a
+neighbor, the link between it and the peer is working fairly well.
+\end{comment}
+
+%\begin{notex}
+%  In the current implementation, the destination of the
+%  $[\mathtt{request} ...]$ message is the neighbor with the smaller
+%  chunk debt. This, a priori, has the drawback that this peer will
+%  always selected for relaying all the lost chunks because i will have
+%  a smaller debt as a consequence of the requests.
+%\end{notex}
+  

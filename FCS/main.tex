@@ -1,40 +1,60 @@
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "<none>"
-%%% End:
+% Emacs, this is -*-latex-*-
+
+% Data Broadcasting Set of rules
 
 DBS does not imposes any control over the grade of solidarity of the
-peers. This means that selfish peers (or simply peers with
-reduced connectivity as a consecuence, for example, of NAT issues) can
-stay in the team thanks to the generosity of the rest of peers. If
-this is unnaceptable, this set of rules try to that all the peers of the
-team to share the same number of chunks that they receive.
+peers. This means that selfish peers (or simply peers with reduced
+connectivity) can stay in the team thanks to the generosity of the
+rest of peers, even if they never achive to deliver a chunk to any
+peer of the team. This set or rules preclude this possible behavior,
+by impossing a minimum degree of solidarity between neighbor peers.
 
-To know the level of solidarity between neighbor peers, each peer
-implements a table of chunk debts, $\text{debt}[]$. Every time $P_k$
-sends a chunk to $P_l$, $P_k$ runs $\text{debt}[P_l] =
-\text{debt}[P_l]+1$, and $P_l$ runs $\text{debt}[P_k] =
-\text{debt}[P_k]/2$. So, peers increment the insolidarity measurement
-incrementally and decreases it exponentially towards zero. This
-respond to the idea of that, if a peer keeps sending chunks to their
-neighbors, it has doing its best in retransmitting the chunks it must
-forward.
+To know the level of solidarity between neighbor peers, each peer uses
+a table of chunk debts, $\mathtt{debt}[]$. Every time a peer $P_i$
+sends a chunk to $P_j$, $P_i$ increments $\mathtt{debt}[P_j]$, and on
+the contrary, decrements $\mathtt{debt}[P_j]$ when $P_i$ receives a
+chunk from $P_j$.
 
-With the $\text{debt}[]$ information, peers modify the way the
-neighbor are selected during the flooding procedure. Now, the
-$\text{pending}[]$ list is sorted by debts (those peers with a lower
-debt will appear in the first positions of $\text{pending}[]$), and
-when a peer receives a chunk from the splitter, the run over the
-$\text{pending}[]$ list will be reset. In this way, supportive peers
-will be served first, incrementing the QoE of the corresponding
-users. On the other hand, those peers with a higher chunk debt will
-tend to be unserved if no enough bandwidth is available.
+Peers forward chunks to their neighbors in the order in which the
+entries of $\mathtt{pending}[]$ are accessed (a round-robing
+scheduling in DBS). Considering this, FCS modifies this behavior:
+\begin{enumerate}
+\item To go through $\mathtt{pending}[]$ in the order provided by
+  $\mathtt{debt}[]$, selecting first those entries with a smaller
+  debts.
+\item To reset the run of $\mathtt{pending}[]$ in each round (when a
+  chunk is received from the splitter).
+\item If $P_i$ realises that $\mathtt{debt}[P_j]>L^*$, $P_i$ removes
+  $P_j$ from $\mathtt{forward}[\forall P_k\in\{\text{team}\cup P_i\}]$
+  and $\mathtt{pending}[]$. Notice that this action decreases the
+  neighborhood degree of $P_i$ and, soon or later of $P_j$ that will
+  consider $P_i$ as unsupportive.
+\item In DBS, request messages are sent selecting the destination peer
+  at random. In FCS, request messages are sent to those peers with a
+  higher debt. Thus, if the insolidarity is produced by a overlay
+  topology imbalance (an extreme example is in Fig.~\ref{fig:star}),
+  badly connected peers peers could have the chance of mitigating this
+  problem by forwarding more chunks to their neighbors.
+\end{enumerate}
 
-The second mechanism to increase the grade of solidarity is to send
-the $[\mathtt{request} \text{lost\_chunk\_number}]$ to those peers
-with a higher debt. So, if the insolidarity is produced by a overlay
-topology imbalance, badly connected peers peers can mitigate this
-problem forwarding more chunks to their neighbors.
+Using FCS, supportive peers will be served first, incrementing the
+QoE of the corresponding peers. On the other hand, those peers with a
+higher chunk debt will tend to be unserved if no enough bandwidth is
+available. 
+
+\begin{comment}
+Notice that in this example, for the sake of simplicity, a simple
+round-robing pending scheduler has been used.  Actually, DBS selects
+the $\mathtt{pending}[]$ entries using the supportivity information
+gathered from the neighbors. This information is stored in a
+$\mathtt{supportivity}[]$ table, which is indexed by the neighbors
+end-points. When the list of peers is received from the splitter, all
+the peers have the same supportivity. These supportivity values are
+incremented each time a chunk is received from the corresponding
+neighbor and decremented each time a chunk is received form the
+splitter (i.e., in each round). Thus, supportive neighbors will tend
+to have a higher supportivity than unsupportive neighbors.
+\end{comment}
 
 \begin{comment}
 To achieve this behavior, FCS defines that, if ${\cal P}^j_k$ realises
