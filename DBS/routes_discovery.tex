@@ -51,10 +51,10 @@ in the known team.
 
 To force to the optimization the topology of the overlay (i.e., to
 reduce as much as possible the loss of chunks), in each round, peers
-send $[\mathtt{request}~\text{lost\_chunk\_number}]$ to random
-peers, where the requested chunks are selected as the chunk that
-when is received, its position in the buffer has the smallest distance
-to the tail of the buffer (that is the next chunk to be played).
+send $[\mathtt{request}~\text{lost\_chunk\_number}]$'s to random peers,
+where the requested chunks are selected as those that when they are
+received, their distances in the buffer to the tail (that points to the
+next played chunk) are smaller than a given threshold $H$.
 
 % As an alternative ...
 \begin{comment}
