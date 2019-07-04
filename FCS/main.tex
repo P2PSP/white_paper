@@ -11,24 +11,24 @@ by impossing a minimum degree of solidarity between neighbor peers.
 
 To know the level of solidarity between neighbor peers, each peer uses
 a table of chunk debts, $\mathtt{debt}[]$. Every time a peer $P_i$
-sends a chunk to $P_j$, $P_i$ increments $\mathtt{debt}[P_j]$, and on
-the contrary, decrements $\mathtt{debt}[P_j]$ when $P_i$ receives a
-chunk from $P_j$.
+sends a chunk to $P_j$, $P_i$ increments $\mathtt{debt}[P_j]$, and
+decrements $\mathtt{debt}[P_j]$ when $P_i$ receives a chunk from
+$P_j$.
 
 Peers forward chunks to their neighbors in the order in which the
 entries of $\mathtt{pending}[]$ are accessed (a round-robing
-scheduling in DBS). Considering this, FCS modifies this behavior:
+scheduling in DBS). FCS modifies this behavior:
 \begin{enumerate}
-\item To go through $\mathtt{pending}[]$ in the order provided by
+\item $\mathtt{pending}[]$ is gone through in the order provided by
   $\mathtt{debt}[]$, selecting first those entries with a smaller
   debts.
-\item To reset the run of $\mathtt{pending}[]$ in each round (when a
+\item The run of $\mathtt{pending}[]$ is reset in each round (when a
   chunk is received from the splitter).
 \item If $P_i$ realises that $\mathtt{debt}[P_j]>L^*$, $P_i$ removes
   $P_j$ from $\mathtt{forward}[\forall P_k\in\{\text{team}\cup P_i\}]$
   and $\mathtt{pending}[]$. Notice that this action decreases the
-  neighborhood degree of $P_i$ and, soon or later of $P_j$ that will
-  consider $P_i$ as unsupportive.
+  neighborhood degree of $P_i$ and, soon or later, of $P_j$ because of
+  it will consider $P_i$ as unsupportive.
 \item In DBS, request messages are sent selecting the destination peer
   at random. In FCS, request messages are sent to those peers with a
   higher debt. Thus, if the insolidarity is produced by a overlay
@@ -37,10 +37,10 @@ scheduling in DBS). Considering this, FCS modifies this behavior:
   problem by forwarding more chunks to their neighbors.
 \end{enumerate}
 
-Using FCS, supportive peers will be served first, incrementing the
-QoE of the corresponding peers. On the other hand, those peers with a
-higher chunk debt will tend to be unserved if no enough bandwidth is
-available. 
+Using FCS, supportive peers will be served first, incrementing the QoE
+of the users of the corresponding peers. On the other hand, those
+peers with a higher chunk debt will tend to be unserved if no enough
+bandwidth is available.
 
 \begin{comment}
 Notice that in this example, for the sake of simplicity, a simple
