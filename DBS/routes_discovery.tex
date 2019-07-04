@@ -49,6 +49,13 @@ peers of the all received chunks, except for those received from the
 splitter, because of in this case the peer would be including itself
 in the known team.
 
+To force to the optimization the topology of the overlay (i.e., to
+reduce as much as possible the loss of chunks), in each round, peers
+send a $[\mathtt{request}~\text{lost\_chunk\_number}]$ to a random
+peer, where $\text{lost\_chunk\_number}$ is selected as the chunk that
+when is received, its position in the buffer has the smallest distance
+to the tail of the buffer (that is the next chunk to be played).
+
 % As an alternative ...
 \begin{comment}
 origin peer of the next chunk stored in the

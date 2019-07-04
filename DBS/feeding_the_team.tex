@@ -32,9 +32,13 @@ We define a \emph{round} as the process of transmitting $N$ different
 chunks from the splitter to a team of $N\leq N^*$ peers. Therefore,
 for a team of size $N$, the \emph{round time} $t_R=Nt_C$. Notice that
 $t_R$ is generally variable, and depends on the current number of
-peers in the team ($N$), and the \emph{chunk time} ($t_C$) (which
-depends on the chunk size ($C$) and the average bit-rate of the media
-stream).
+peers in the team ($N$), and the \emph{chunk time}
+\begin{equation}
+  \label{eq:chunk_time}
+  t_C=\frac{C}{R}
+\end{equation}
+which depends on the chunk size $C$ and the average bit-rate of the
+media stream $R$.
 
 In DBS, all the peers of the team are origin of a different chunk, in
 each round.
