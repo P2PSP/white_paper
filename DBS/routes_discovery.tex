@@ -4,72 +4,58 @@
 
 \label{sec:routes_discovery}
 
-Chunks can be lost\footnote{A chunk is lost when it is time to send it
-  to the player and the chunk has not been received.} under bandwidth
-and buffering time constraints.  In this situation, for each lost
-chunk, the peer sends a
-$[\mathtt{request}~\text{lost\_chunk\_number}]$ to a peer of the team,
-selected at random among the rest of the team. When a peer $P_x$
-receives a $[\mathtt{request}~\text{lost\_chunk\_number}]$ from $P_y$,
-$P_x$ adds $P_y$ to $\mathtt{forward}[P_o]$, where $P_o$ is the origin
-peer of the chunk stored in the position
+Chunks can be lost under bandwidth and buffering time constraints (a
+chunk is lost when it is time to send it to the player, i.e. when it
+is pointed by $P$, and the chunk has not been received). In this
+situation, for each lost chunk, the peer sends a
+$[\mathtt{request}~\text{lost\_chunk\_number}]$ to a random peer of
+the team. When a peer $P_i$ receives a
+$[\mathtt{request}~\text{lost\_chunk\_number}]$ from $P_j$, $P_i$ adds
+$P_j$ to $\mathtt{forward}[P_k]$, where $P_k$ is the origin peer of
+the chunk stored in the position
 $(\text{lost\_chunk\_number}~\mathit{mod}~2B)$ of its buffer.
 
-In this situation, it can happen that some peers request redundant
-routes between an origin peer and itself, and therefore, some chunks
-could be received more than once. If this case, for each duplicate
-chunk, a peer $P_i$ should send a
-$[\mathtt{prune}~\text{duplicate\_chunk\_index}]$ message to those
-neighbors that have sent to it the duplicate chunk (notice that the
-faster neighbor to send the chunk will not receive such prunning
-message). Neighbors receiving this message from peer $P_i$ should
-remove the $P_i$ from $\mathtt{forward}[P_o]$, where $P_o$ is the
-origin peer of the duplicate chunk.
+Chunks are also requested using a pre-fetching strategy, which has the
+objective of reducing the convergence time of the overlay to its
+optimal structure (i.e., to reduce as much as possible the loss of
+chunks). Peers request those chunks that are in the position $P+O$ of
+their buffers, where $O\geq 0$ is an optimization threshold configured
+by the user. Notice that if $O=0$, the pre-fetching is disabled. The
+higher the $O$, the faster the convergente but also a larger number of
+requests messages will be generated, increasing the overhead of the
+protocol. Notice also that $O$ can be different between peers and
+variable in time.
 
-As a consequence of these rules, the neighborhood degree of peers can
-decrease or increase. A decrement is produced if the
-$[\mathtt{request}~\text{lost\_chunk\_number}]$ is sent to a neighbor
-peer, and a duplicate is received from another neighbor that was only
-forwarding chunks from the origin of the duplicate. An increment is
-produced if the $[\mathtt{request}~\text{lost\_chunk\_number}]$ is
-sent to a peer that is not a neighbor, and the duplicate is received
-from a neighbor, that still keeps sending chunks at least from a
-different origin (and therefore, continues beeing a neighbor).
+When request messages are used, redundant routes can be created
+between an origin peer and itself, and therefore, some chunks could be
+received more than once. Obviously, this is also an overhead that must
+be minimized. For this, for each chunk stored in the buffer there is a
+set of counters that counts the number of times the chunk has been
+received as a duplicate from the corresponding neighbor. When a peer
+$P_i$ plays a chunk, $P_i$ send a
+$[\mathtt{prune}~\text{duplicate\_chunk\_index}]$ to every neighbor
+whose counter is higher than a threshold $D$ (the maximum number of
+duplicates per chunk per neighbor, also controlled by the used as a
+part of the optimization of the position of its peer in the overlay),
+and removes the counter. Neighbors receiving this message from peer
+$P_i$ remove the $P_i$ from $\mathtt{forward}[P_k]$, where $P_k$ is
+the origin peer of the duplicate chunk.
 
-As peers select (randomly)
-$[\mathtt{request}~\text{lost\_chunk\_number}]$'s destinations, the
-list of known peers of the team should be up to date. This list is
-populated in first instance when peers join a team. Peers also add to
-this list the sender of a $[\mathtt{hello}]$ or a
-chunk. Unfortunately, these rules do not guarantee that that all peers
-know the end-points of the rest of the team, because all the
-$[\mathtt{hello}]$s and the chunks sent to a already incorporated peer
-can be lost. To solve this, peers also add to the list the new origin
-peers of the all received chunks, except for those received from the
-splitter, because of in this case the peer would be including itself
-in the known team.
+In Sec.~\ref{sec:chunk_flooding} was introduced the concept of
+neighborhood degree. Now, we define this value as the number of
+different destination peers for each possible origin that a peer
+forwards. For example, if peer $P_i$ forwards chunks from origin $P_i$
+to 10 neighbors, the neighborhood degree of $P_i$ for the origin $P_i$
+is 10, and if the peer $P_i$ also forwards chunks from origin $P_j$ to 5
+neighbors, the neighborhood degree of $P_i$ for the origin $P_j$ is 5.
 
-To force to the optimization the topology of the overlay (i.e., to
-reduce as much as possible the loss of chunks), in each round, peers
-send $[\mathtt{request}~\text{lost\_chunk\_number}]$'s to random peers,
-where the requested chunks are selected as those that when they are
-received, their distances in the buffer to the tail (that points to the
-next played chunk) are smaller than a given threshold $H$.
-
-% As an alternative ...
-\begin{comment}
-origin peer of the next chunk stored in the
-buffer. This peer has to characteristics: (1) it is not necessary a
-neighbor peer, and (2) there is a high probability that this chunk has
-been stored in the buffer ``for a long time'', so, if it is not a
-neighbor, the link between it and the peer is working fairly well.
-\end{comment}
-
-%\begin{notex}
-%  In the current implementation, the destination of the
-%  $[\mathtt{request} ...]$ message is the neighbor with the smaller
-%  chunk debt. This, a priori, has the drawback that this peer will
-%  always selected for relaying all the lost chunks because i will have
-%  a smaller debt as a consequence of the requests.
-%\end{notex}
-  
+Considering the rules described before, the neighborhood degrees of
+peers can decrease or increase to optimize the topology of the
+overlay. An increment in the degree for the origin of a requested
+chunk $\text{lost\_chunk\_number}$ in $P_i$ is produced when $P_i$
+recives a $[\mathtt{request}~\text{lost\_chunk\_number}]$ from a peer
+that is not a neighbor yet. On the contrary, a decrement in the degree
+for the origin of a pruned chunk $\text{duplicate\_chunk\_index}$ in
+$P_i$ is produced when $P_i$ receives a
+$[\mathtt{prune}~\text{duplicate\_chunk\_index}]$ from a neighbor
+peer, for that origin.

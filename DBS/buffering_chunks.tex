@@ -16,13 +16,15 @@ size.
 The buffer is implemented as a circular queue of $2B$ chunks, which is
 filled up to only $B$ chunks during the \emph{buffering time} $t_B$,
 which is the main part of the \emph{start-up time} that the users
-experiment. Chunks with a higher number (newer chunks) are inserted in
-the head of the buffer. The (received) chunk pointed by the tail of
-the buffer is sent to the player. This action is carried out each time
-a new chunk is received\footnote{DBS does not know nothing about the
-  content and therefore, about the timing of the chunks.}. Empty cells
-in the buffer (caused by the chunks that have not been received on
-time) are skipped until to find the next cell with content.
+experiment. Chunks with a higher number (newer chunks) are inserted
+near of (depending on the order in which the chunks arrive to the
+peer) the head of the buffer. The (received) chunk pointed by the tail
+of the buffer $P$ (the playing pointer) is sent to the player. This
+action is carried out each time a new chunk is received\footnote{DBS
+  does not know nothing about the content and therefore, about the
+  timing of the chunks.}. Empty cells in the buffer (caused by the
+chunks that have not been received on time) are skipped until to find
+the next cell with content.
 
 % Hablar de la relación entre B y el tamaño del team. Tal vez, cuando
 % se presente la expresión de la latencia en función del grado de

@@ -19,7 +19,7 @@ Peers forward chunks to their neighbors in the order in which the
 entries of $\mathtt{pending}[]$ are accessed (a round-robing
 scheduling in DBS). FCS modifies this behavior:
 \begin{enumerate}
-\item $\mathtt{pending}[]$ is gone through in the order provided by
+\item $\mathtt{pending}[]$ is run in the order provided by
   $\mathtt{debt}[]$, selecting first those entries with a smaller
   debts.
 \item The run of $\mathtt{pending}[]$ is reset in each round (when a

@@ -20,9 +20,9 @@ $P_i$ has received the set of peers, its forwarding table has been
 initialized to $\mathtt{forward}[P_i]=\{\text{team}\setminus
 P_i\}$. Notice that, as long as the forwarding table contains this
 information, all chunks received from the splitter will be forwarded
-to the rest of the team. So, in absence of communication constraints,
-the team will be organized as a full-connected overlay (see
-Fig.~\ref{fig:full_mesh}).
+to the rest of the team, directly (in one protocol hop). So, in
+absence of communication constraints, the team will be organized as a
+full-connected overlay (see Fig.~\ref{fig:full_mesh}).
 
 %), initializes
 %the table $\mathrm{debt}[]$ (which stores the chunk debts between
