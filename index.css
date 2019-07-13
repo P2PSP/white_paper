@@ -26,7 +26,6 @@
 .ecrm-1200{font-size:120%;}
 .cmr-6{font-size:60%;}
 .cmmi-8{font-size:80%;font-style: italic;}
-.cmmi-6{font-size:60%;font-style: italic;}
 .ecrm-0900{font-size:90%;}
 .ecbx-0900{font-size:90%; font-weight: bold;}
 .ecbx-0900{ font-weight: bold;}
@@ -167,9 +166,8 @@ span.LATEX span.TEX{ position:relative; left: -0.4em; }
 div.float, div.figure {margin-left: auto; margin-right: auto;}
 div.float img {text-align:center;}
 div.figure img {text-align:center;}
-.marginpar,.reversemarginpar {width:20%; float:right; text-align:left; margin-left:auto; margin-top:0.5em; font-size:85%; text-decoration:underline;}
-.marginpar p,.reversemarginpar p{margin-top:0.4em; margin-bottom:0.4em;}
-.reversemarginpar{float:left;}
+.marginpar {width:20%; float:right; text-align:left; margin-left:auto; margin-top:0.5em; font-size:85%; text-decoration:underline;}
+.marginpar p{margin-top:0.4em; margin-bottom:0.4em;}
 .equation td{text-align:center; vertical-align:middle; }
 td.eq-no{ width:5%; }
 table.equation { width:100%; } 
