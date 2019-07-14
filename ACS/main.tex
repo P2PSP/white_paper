@@ -20,6 +20,13 @@ Sec~\ref{sec:free_riding_control}), to send to those more reliable
 peers a higher number of chunks than to the others. In other words,
 ACS adapts the round-time of each peer to its capacity.
 
+Because monitors never should lost chunks (supposely they are running
+in hosts deployed by the contents provider which should have enough
+capacity), the cadence of chunks received from the splitter should
+have the highest frequency that the current team size allows to
+achieve. Thus, the number of chunks sent by the provider's hosts can
+be controlled by using ACS, and a high enough number of monitor peers.
+
 Notice that ACS only affects the behavior of the splitter.
 
 \begin{comment}
