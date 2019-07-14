@@ -8,24 +8,24 @@
 
 ACS modifies the functionality of DBS.
 
-ACS relaxes the peer's upload requirements imposed by DBS. It should
-be used in if it is known that some peers can provide the capacity
-than others cannot, or when we want to mix the CS and P2P models,
-sending more chunks from the splitter to one or more monitors
-controlled by the contents provider.
+Basically, ACS relaxes the peer's uploading requirements imposed by
+DBS. ACS is based on the idea of using the information that the
+splitter knows about the number of chunks that each peer has lost (see
+Sec~\ref{sec:free_riding_control}), to send to the more reliable peers
+a higher number of chunks. In other words, ACS adapts the round-time
+of each peer to its capacity, in such a way that the higher the
+capacity, the lower the round-time.
 
-ACS is based on the idea of using the information that the splitter
-knows about the number of chunks that each peer has lost (see
-Sec~\ref{sec:free_riding_control}), to send to those more reliable
-peers a higher number of chunks than to the others. In other words,
-ACS adapts the round-time of each peer to its capacity.
-
-Because monitors never should lost chunks (supposely they are running
-in hosts deployed by the contents provider which should have enough
-capacity), the cadence of chunks received from the splitter should
-have the highest frequency that the current team size allows to
-achieve. Thus, the number of chunks sent by the provider's hosts can
-be controlled by using ACS, and a high enough number of monitor peers.
+ACS should be used if we want that some peers to put the uploading
+capacity than others cannot provide. A possible situation could be
+when we want to mix the CS and P2P models, sending more chunks from
+the contents provider's hosts to the users's peers, with the
+objective, for example, of incrementing the QoS. Because monitors
+should lost a minimum number of chunks (supposely the hosts of the
+contents provider should have enough capacity), the ratio of chunks
+emitted by the contents provider's hosts can be controlled by using
+ACS, and a high enough number of monitor peers (the more monitors, the
+higher the ratio).
 
 Notice that ACS only affects the behavior of the splitter.
 
