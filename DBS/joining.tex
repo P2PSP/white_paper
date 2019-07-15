@@ -6,11 +6,14 @@
 
 After connecting with a splitter, incoming peers request (using a
 reliable communication) to the splitter the current list of peers in
-the team. To minimize the \gls{joining-time}, the peer sends a
+the team. To minimize the \gls{joining-time}, the peer sends a short
 $[\mathtt{hello}]$ message to each other peer of the team, in parallel
 with the reception of the list. When a peer of the team receives a
-$[\mathtt{hello}]$, it adds the sender of the message to a table of
-peers called $\mathtt{forward}[]$ \note{(see
+$[\mathtt{hello}]$, it adds the sender of the message to the team
+list\footnote{Peers also updates their team list every time a chunk is
+  received from a peer, incorporating the sender and the origin of the
+  chunk.}  and to a table of peers called $\mathtt{forward}[]$
+\note{(see
   \href{https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/peer_dbs.py\#L491}{$\text{forward[]}$
     in \texttt{peer.py}})}. If a peer $P_i$ has an entry
 $\mathtt{forward}[P_j]=P_k$, then each chunk received by $P_i$ and
@@ -22,6 +25,7 @@ information, all chunks received from the splitter will be forwarded
 to the rest of the team, directly (in one single hop). So, in absence
 of communication constraints, the team will be organized as a
 full-connected overlay (see Fig.~\ref{fig:full_mesh}).
+
 
 %), initializes
 %the table $\mathrm{debt}[]$ (which stores the chunk debts between

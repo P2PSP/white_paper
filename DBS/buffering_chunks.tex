@@ -13,15 +13,15 @@ stores. In a peer's life, $B$ is a constant especified by the user,
 but it is not compulsory that all peers of a team use the same buffer
 size.
 
-The buffer is implemented as a circular queue of $2B$ chunks, which is
+The buffer is implemented as a circular queue of $2B$ chunks, what is
 filled with up to $B$ chunks during the \gls{buffering-time} $t_b$,
 which is the main part of the \gls{start-up-time} that the users
 experiment. Chunks with a higher number (newer chunks) are inserted
 near of (depending on the order in which the chunks arrive to the
-peer) the head of the buffer. The (received) chunk pointed by the tail
-of the buffer $P$ (the playing pointer) is sent to the player. This
+peer) the head of the buffer. The (received) chunks pointed by the tail
+of the buffer $P$ (the playing pointer) are sent to the player. This
 action is carried out each time a new chunk is received\footnote{DBS
-  does not know nothing about the content and therefore, about the
+  does not know anything about the content and therefore, about the
   timing of the chunks.}. During the playing process, empty cells in
 the buffer (caused by the chunks that have not been received on time)
 are skipped until to find the next cell with content.
