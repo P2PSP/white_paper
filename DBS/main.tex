@@ -1,14 +1,12 @@
 % Emacs, this is -*-latex-*-
 
-\newacronym{DBS}{DBS}{Data Broadcasting Set of rules}
-
 \label{sec:DBS}
 
 \begin{notex}
   Finished and implemented.
 \end{notex}
 
-DBS is the most basic set of rules. The rest of sets extends or modify
+\acrshort{DBS} is the most basic set of rules. The rest of sets extends or modify
 its functionality.
 
 \begin{table}
@@ -37,15 +35,15 @@ its functionality.
   \label{tab:DBS_nomenclature}
 \end{table}
 
-\acrshort{DBS} provides ALM~\cite{banerjee2002scalable} of a media
-stream in unicast environments~\cite{comer2003computer}. First, the
-media is sent by a streaming \emph{server}, and received by a
-\emph{splitter} \note{(see Sec.~\ref{sec:LBS})}. Then, the splitter
-divides the stream into a sequence of chunks of data, and relay them
-to its \emph{team} using a round-robing schema. A \emph{team} is
-composed by peers and each peer gathers the chunks from the splitter
-and the rest of peers of the team, and sends them to at least one
-\emph{player}\footnote{Peer should run even if no player(s) are
+DBS provides \acrshort{ALM} of a \gls{media} \gls{stream} in an
+\gls{unicast} environment. First, the media is sent by a streaming
+\gls{server} (which is an external P2PSP entity), and received by a
+\gls{splitter}\note{(see Sec.~\ref{sec:LBS})}. Then, the splitter
+divides the stream into a sequence of \gls{chunk}s of data, and relay
+them to a \gls{team}, following a round-robing schema. A team
+is composed by \gls{peer}s and each peer gathers the chunks from the
+splitter and the rest of peers of the team, and sends them to at least
+one \gls{player}\footnote{Peer should run even if no player(s) are
   connected to it.}.
 
 \begin{comment}
