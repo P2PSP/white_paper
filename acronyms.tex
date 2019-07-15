@@ -1,38 +1,15 @@
+% Emacs, this is -*-latex-*-
+
 \newacronym{ALM}{ALM}{Application Layer Multicast}
 \newacronym{DBS}{DBS}{Data Broadcasting Set of rules}
 \newacronym{LBS}{LBS}{Load Balancing Set of rules}
 \newacronym{URL}{URL}{Universal Resource Locator}
 
-\newglossaryentry{stream} {
-    name={Stream},
-    text={stream},
-    description={\href{https://en.wikipedia.org/wiki/Streaming_media}{A sequence of data that is consumed while it is received}}
-}
-
-\newglossaryentry{server} {
-    name={Server},
-    text={server},
-    description={\href{https://en.wikipedia.org/wiki/Server_(computing)}{A process running on the Internet that is able to send data upon requests}},
-    plural={servers}
-}
-
-\newglossaryentry{unicast} {
-    name={Unicast},
-    text={unicat},
-    description={\href{https://en.wikipedia.org/wiki/Unicast}{A point-to-point communication}}
-}
-
-\newglossaryentry{media} {
-    name={Media},
-    text={media},
-    description={\href{https://en.wikipedia.org/wiki/Multimedia}{Data expresing information usually interpreted by humans}}
-}
-
-\newglossaryentry{splitter} {
-    name={Splitter},
-    text={splitter},
-    description={P2PSP entity responsible for splitting the \gls{media} into chunks and sending the to the team},
-    plural={splitters}
+\newglossaryentry{buffering-time}{
+    name={Buffering-time},
+    text={buffering-time},
+    description={The time required receive at least two chunks separated by the buffer size},
+    plural={buffering-times}
 }
 
 \newglossaryentry{chunk}{
@@ -42,11 +19,38 @@
     plural={chunks}
 }
 
-\newglossaryentry{team}{
-    name={Team},
-    text={team},
-    description={The set of peers in an P2PSP overlay},
-    plural={teams}
+\newglossaryentry{chunk-time}{
+    name={Chunk-time},
+    text={chunk-time},
+    description={The time required to play a chunk},
+    plural={chunk-times}
+}
+
+\newglossaryentry{joining-time}{
+    name={Joining-time},
+    text={joining-time},
+    description={The time required by a peer to receive the list of peers of the team from the splitter},
+    plural={joining-times}
+}
+
+\newglossaryentry{media} {
+    name={Media},
+    text={media},
+    description={\href{https://en.wikipedia.org/wiki/Multimedia}{Data expresing information usually interpreted by humans}}
+}
+
+\newglossaryentry{monitor}{
+    name={Monitor},
+    text={monitor},
+    description={A trusted and reliable peer of a team},
+    plural={monitors}
+}
+
+\newglossaryentry{origin} {
+    name={Origin},
+    text={origin},
+    description={The first peer in the path that each chunk follows between the splitter and the team},
+    plural={origins}
 }
 
 \newglossaryentry{peer} {
@@ -61,5 +65,59 @@
     text={player},
     description={\href{https://en.wikipedia.org/wiki/Media_player_software}{An application that is able to reproduce a media stream}},
     plural={peers}
+}
+
+\newglossaryentry{round} {
+    name={Round},
+    text={round},
+    description={The process of sending a (usually different) chunk from the splitter to all the peers of the team},
+    plural={rounds}
+}
+
+\newglossaryentry{round-time} {
+    name={Round-time},
+    text={round-time},
+    description={The time required to complete a round},
+    plural={round-times}
+}
+
+\newglossaryentry{server} {
+    name={Server},
+    text={server},
+    description={\href{https://en.wikipedia.org/wiki/Server_(computing)}{A process running on the Internet that is able to send data upon requests}},
+    plural={servers}
+}
+
+\newglossaryentry{splitter} {
+    name={Splitter},
+    text={splitter},
+    description={P2PSP entity responsible for splitting the \gls{media} into chunks and sending the to the team},
+    plural={splitters}
+}
+
+\newglossaryentry{stream} {
+    name={Stream},
+    text={stream},
+    description={\href{https://en.wikipedia.org/wiki/Streaming_media}{A sequence of data that is consumed while it is received}}
+}
+
+\newglossaryentry{start-up-time}{
+    name={Start-up-time},
+    text={start-up-time},
+    description={The time required by a peer to start playing the stream},
+    plural={start-up-times}
+}
+
+\newglossaryentry{team}{
+    name={Team},
+    text={team},
+    description={The set of peers in an P2PSP overlay},
+    plural={teams}
+}
+
+\newglossaryentry{unicast} {
+    name={Unicast},
+    text={unicat},
+    description={\href{https://en.wikipedia.org/wiki/Unicast}{A point-to-point communication}}
 }
 

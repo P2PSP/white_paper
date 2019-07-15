@@ -36,15 +36,14 @@ its functionality.
 \end{table}
 
 DBS provides \acrshort{ALM} of a \gls{media} \gls{stream} in an
-\gls{unicast} environment. First, the media is sent by a streaming
+\gls{unicast} environment. The media is sent by a streaming
 \gls{server} (which is an external P2PSP entity), and received by a
-\gls{splitter}\note{(see Sec.~\ref{sec:LBS})}. Then, the splitter
-divides the stream into a sequence of \gls{chunk}s of data, and relay
-them to a \gls{team}, following a round-robing schema. A team
-is composed by \gls{peer}s and each peer gathers the chunks from the
-splitter and the rest of peers of the team, and sends them to at least
-one \gls{player}\footnote{Peer should run even if no player(s) are
-  connected to it.}.
+\gls{splitter}\note{(see Sec.~\ref{sec:LBS})}~. The splitter divides
+the stream into a sequence of \gls{chunk}s of data, and relay them to
+a \gls{team} of peers, following a round-robing schema. Each peer of a
+team gathers the chunks from the splitter and the rest of peers of the
+team, and sends them to at least one \gls{player}\note{Peer should
+  run even if no player(s) are connected to it.}~.
 
 \begin{comment}
 In single layered streams\footnote{Each layer of a
