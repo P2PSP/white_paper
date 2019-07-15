@@ -6,8 +6,15 @@
 
 Chunks can be lost under bandwidth and buffering time constraints (a
 chunk is lost when it is time to send it to the player, i.e. when it
-is pointed by $P$, and the chunk has not been received). In this
-situation, for each lost chunk, the peer sends a
+is pointed by $p_p$, and the chunk has not been received). Because of
+realizing that the chunk pointed by $p_p$ has not been received cannot
+recover it on time, peers pre-fetch ``potentially lost chunks'' at the
+buffer position $p_p+p_h$, where $p_h\geq 0$ is the pre-feching
+horizon. Notice that if $p_h=0$, the pre-fetching is disabled and only
+those chunks that really are lost will be requeted. On the contrary,
+the higher the $p_h$, the more agressive the pre-fetching.
+
+In this situation, for each (potentially) lost chunk, the peer sends a
 $[\mathtt{request}~\text{lost\_chunk\_number}]$ to a random peer of
 the team. When a peer $P_i$ receives a
 $[\mathtt{request}~\text{lost\_chunk\_number}]$ from $P_j$, $P_i$ adds

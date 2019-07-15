@@ -19,7 +19,7 @@ which is the main part of the \gls{start-up-time} that the users
 experiment. Chunks with a higher number (newer chunks) are inserted
 near of (depending on the order in which the chunks arrive to the
 peer) the head of the buffer. The (received) chunks pointed by the tail
-of the buffer $P$ (the playing pointer) are sent to the player. This
+of the buffer $p_p$ (the playing pointer) are sent to the player. This
 action is carried out each time a new chunk is received\footnote{DBS
   does not know anything about the content and therefore, about the
   timing of the chunks.}. During the playing process, empty cells in
