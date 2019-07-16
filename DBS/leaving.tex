@@ -1,7 +1,4 @@
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "<none>"
-%%% End:
+% Emacs, this is -*-latex-*-
 
 \label{sec:leaving}
 
@@ -12,10 +9,11 @@ $[\mathtt{goodbye}]$ from the splitter. In case of
 timeout\footnote{All these messages are transmitted using a unreliable
   protocol.}, the leaving procedure is reset a number of times.
 
-When a peer of the team receives a $[\mathtt{goodbye}]$, removes the
-sender from its $\mathtt{forward}[]$ table. The splitter removes the
-outgoing peer from the set of peers as soon as the
-$[\mathtt{goodbye}]$ is received.
+When a peer $P_i$ receives a $[\mathtt{goodbye}]$ from $P_j$, $P_i$
+removes $P_j$ from all the lists (all the posible origins) of
+$\mathtt{forward}[]$ table. The splitter removes the outgoing peer
+from the list of peers as soon as the $[\mathtt{goodbye}]$ is
+received, to avoid sending chunks to it.
 
 %Outgoing peers does not wait for a any reply from the neighbors to go.
 

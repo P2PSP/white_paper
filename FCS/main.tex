@@ -22,21 +22,21 @@ sends a chunk to $P_j$, $P_i$ increments $\mathtt{debt}[P_j]$, and
 decrements $\mathtt{debt}[P_j]$ when $P_i$ receives a chunk from
 $P_j$.
 
-Peers forward chunks to their neighbors in the order in which the
-entries of $\mathtt{pending}[]$ are accessed (a round-robing
-scheduling in DBS). FCS modifies this behavior:
+Using DBS, peers forward chunks to their neighbors using a simple round-robing scheduer) FCS modifies this behavior:
 \begin{enumerate}
-\item $\mathtt{pending}[]$ is run in the order provided by
+\item The $\mathtt{pending}[]$ table is run in the order provided by
   $\mathtt{debt}[]$, selecting first those entries with a smaller
   debts.
 \item The run of $\mathtt{pending}[]$ is reset in each round (when a
-  chunk is received from the splitter).
+  chunk is received from the splitter). This means that each round
+  starts sending the pending chunks to those peers with a smaller
+  debt.
 \item If $P_i$ realises that $\mathtt{debt}[P_j]>L^*$, $P_i$ removes
   $P_j$ from $\mathtt{forward}[\forall P_k\in\{\text{team}\cup P_i\}]$
-  and $\mathtt{pending}[]$. Notice that this action decreases the
-  neighborhood degree of $P_i$ and, soon or later, of $P_j$ because of
-  it will consider $P_i$ as unsupportive.
-\item In DBS, request messages are sent selecting the destination peer
+  and from $\mathtt{pending}[]$. Notice that this action decreases the
+  \gls{neighborhood-degree} of $P_i$ and, soon or later, of $P_j$
+  because of it will consider $P_i$ as unsupportive.
+\item In DBS, request messages are sent selecting the destination peers
   at random. In FCS, request messages are sent to those peers with a
   higher debt. Thus, if the insolidarity is produced by a overlay
   topology imbalance (an extreme example is in Fig.~\ref{fig:star}),
@@ -47,7 +47,7 @@ scheduling in DBS). FCS modifies this behavior:
 Using FCS, supportive peers will be served first, incrementing the QoE
 of the users of the corresponding peers. On the other hand, those
 peers with a higher chunk debt will tend to be unserved if no enough
-bandwidth is available.
+bandwidth is available. Notice that FCS is incompatible with ACS.
 
 \begin{comment}
 Notice that in this example, for the sake of simplicity, a simple
