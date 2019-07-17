@@ -1,4 +1,4 @@
-include $(HOME)/Makefile_templates/Makefile
+include $(MAKEFILE_TEMPLATES)/Makefile
 
 STS.pdf:	STS.tex splitters_tracker.pdf load_balancer.pdf STS_peer.pdf STS_splitter.pdf
 TMPs += chunk_generation_and_flooding.png
