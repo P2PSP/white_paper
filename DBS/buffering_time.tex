@@ -6,7 +6,7 @@
 The buffering-time, estimated by
 \begin{equation}
   \label{eq:t_b}
-  t_b = Bt_c,  # <--------------- Y el tiempo de ser servido por el splitter?
+  t_b = Bt_c,  % # <--------------- Y el tiempo de ser servido por el splitter?
 \end{equation}
 determines how long the peers must wait for start playing the
 chunks. For real-time communications, $t_b$ should be as small as
@@ -48,7 +48,7 @@ Lets suppose that the first received chunk is $x_1$ and that the rest
 of chunks of the buffer of size $B$ are received, being the chunk
 $x_{1+B}$ the last one (this is the ideal scenario). In this case, the
 stream can be played without artifacts. Because the playing of the
-chunks starts after the buffering process, the \gls{tart-up-time}
+chunks starts after the buffering process, the \gls{start-up-time}
 experimented by users in the ideal case can be estimated by
 \begin{equation}
   t_s = t_b + t_p,
