@@ -19,3 +19,29 @@ has an impact on the latency of the protocol (see
 Sec.~\ref{sec:buffering_chunks}), and usually is defined by the
 administrator of the overlay.
 
+\begin{table}[hbt]
+  \centering
+  \begin{tabular}{rl}
+    Parameter & Meaning \\
+    \hline
+    $N^*$  & Maximum number of peers in a team \\
+    $C$    & Chunk size \\
+    $B$    & Buffer size, in chunks, in the peers \\
+    $B'$   & Length of the list of the last $B'$ peers served by the splitter \\ 
+    $D$    & Diameter of the flooding tree \\
+    $L^*$  & Maximum allowed number of lost chunks \\
+    $M$    & Number of monitors \\
+    $R$    & Average bit-rate of the media \\
+    Variable & \\
+    \hline
+    $N$    & Number of peers in the team \\
+    $t_c$  & Chunk time \\
+    $t_r$  & Round time \\
+    $t_b$  & Buffering time \\
+    $t_p$  & Physical network latency \\
+    $t_s$  & Start-up time
+  \end{tabular}
+  \caption{Nomenclature used in DBS.} %
+  \label{tab:DBS_nomenclature}
+\end{table}
+
