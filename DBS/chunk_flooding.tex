@@ -23,19 +23,7 @@ are flooded.
 %Moreover, to achieve an ideal I/O ratio of $1$, peers should send one
 %chunk for every received one.
 
-\begin{figure*}
-  \centering
-  \subfloat[A full-connected overlay.]{\label{fig:full_mesh}
-    \vbox{\myfig{graphics/full-mesh}{6cm}{400}}}
-  \quad
-  \subfloat[A star-shaped overlay.]{\label{fig:star}
-    \vbox{\myfig{graphics/star}{6cm}{400}}}
-  \caption{In a full-connected DBS team (see Subfig. (a)), all peers
-    receive and send the same number of chunks. In a star-shaped DBS
-    team (Subfig. (b)), $P_1$ should send all the chunks of the stream
-    to the rest of the team, except those that the splitter has sent
-    directly to them.}
-\end{figure*}
+
 
 The congestion (in particular, the one caused by how DBS nodes use the
 physical links) may be avoided by means of a basic idea: \textit{only
