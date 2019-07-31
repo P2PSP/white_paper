@@ -53,14 +53,12 @@ devices in very unbalanced overlays (see the Fig.~\ref{fig:star}). Therefore, on
 average short bursts are desired. As an advantage, all the chunks of the burst travel between the two
 same hosts when a burst is produced, which usually increases the performance of the layer-3
 routing. Additionally, those chunks could be grouped in one single packet, reducing the protocol overhead.
-\leorem{Voy por aquí}.
 
 An example of the temporal evolution of a team using the flooding
-algorithm has been described in the Figures \ref{fig:team_0},
-\ref{fig:team_1} and \ref{fig:team_2}.
+algorithm has been described in the Figures \ref{fig:team_0} to \ref{fig:team_4}\leorem{Mejor usar captions pequeños ($t_0$ y $t_1$) y describir en el texto, usar subfiguras}.
 
 \begin{figure}
-  \myfig{graphics/team_0}{4cm}{250} %
+  \myfig{graphics/team_0}{5cm}{250} %
   \caption{A team has been created with a single monitor $M_0$
     ($[\mathtt{hello}]$ messages are not shown). Chunks with numbers 0
     and 1 (the time $t$ is measured in chunks-time) have been
@@ -72,7 +70,7 @@ algorithm has been described in the Figures \ref{fig:team_0},
 \end{figure}
 
 \begin{figure}
-  \myfig{graphics/team_1}{4cm}{250} %
+  \myfig{graphics/team_1}{5cm}{250} %
   \caption{At $t_2$, peer $P_1$ joins the team (the
     $[\mathtt{hello}]$'s are not shown). In $M_0$, $f=\{M_0:[P_1]\}$
     because when $M_0$ receives the $[\mathtt{hello}]$ from $P_1$,
@@ -80,14 +78,14 @@ algorithm has been described in the Figures \ref{fig:team_0},
     $P_1$ is its neighbor. $P_1$ includes an entry $P_1:[M_0]$ in its
     forwarding table because $M_0$ is in the set of peers received
     from the splitter. After that, when the chunk number 2 arrives to
-    $M_0$ from $S$, an entry $P_1:2$ is created in $P\{\}$ for that
+    $M_0$ from $S$, an entry $P_1:2$ is created in $p$ for that
     chunk, and this entry is deleted when the chunk 2 is sent to
     $P_1$.} %
   \label{fig:team_1}
 \end{figure}
 
 \begin{figure}
-  \myfig{graphics/team_2}{4cm}{300} %
+  \myfig{graphics/team_2}{6cm}{250} %
   \caption{$P_2$ joins the team. $M_0$ and $P_1$ includes $P_2$ in
     their forwarding tables. The chunk 3 is received by $P_1$ which
     decides to send it to $P_2$. Chunk 3 remains as pending to be sent
@@ -98,14 +96,14 @@ algorithm has been described in the Figures \ref{fig:team_0},
 %  $P_2$ is the origin peer for $M_0$ and $P_1$ because both of them are in the list of peers that $P_2$ receives from $S$.
     
 \begin{figure}
-  \myfig{graphics/team_3}{4.5cm}{330} %
+  \myfig{graphics/team_3}{6cm}{250} %
   \caption{Chunk 4 is received by $P_2$ which relays it to $P_1$, what
     relays chunk 3 to $M_0$.} %
   \label{fig:team_3}
 \end{figure}
 
 \begin{figure}
-  \myfig{graphics/team_4}{4.5cm}{330} %
+  \myfig{graphics/team_4}{6cm}{250} %
   \caption{Chunk 5 is received by $M_0$ which
     relays it to $P_2$.} %
   \label{fig:team_4}
