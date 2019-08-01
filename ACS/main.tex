@@ -12,12 +12,12 @@ ACS modifies the functionality of DBS.
 Basically, ACS relaxes the peer's uploading requirements imposed by
 DBS. ACS is based on the idea of using the information that the
 splitter knows about the number of chunks that each peer has lost (see
-Sec.~\ref{sec:free_riding_control}), to send to the more reliable peers
+Sec.~\ref{sec:free_riding_control}), in order to send to the more reliable peers
 a higher number of chunks. In other words, ACS adapts the round-time
 of each peer to its capacity, in such a way that the higher the
-capacity, the lower the \gls{round-time}.
+capacity, the lower the \gls{round-time}. \leo{\hl{leo:} Si tiene qie mandar más, ¿cómo va a tener menor round time?}
 
-ACS should be used if we want that some peers to put the uploading
+ACS should be used if we want some peers to \leochange{put}{contriuute with} the uploading
 capacity than others cannot provide. A possible situation could be
 when we want to mix the CS and P2P models, sending more chunks from
 the contents provider's hosts to the users's peers, with the
@@ -26,7 +26,7 @@ should lost a minimum number of chunks (supposely the hosts of the
 contents provider should have enough capacity), the ratio of chunks
 emitted by the contents provider's hosts can be controlled if a high
 enough number of monitor peers (the more monitors, the higher the
-ratio).
+ratio). \leo{\hl{leo:} me lo explique.}
 
 Notice that ACS only affects the behavior of the splitter.
 
