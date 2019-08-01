@@ -6,28 +6,46 @@
 
 Chunks can be lost under bandwidth and buffering time constraints. A
 chunk is lost when it is time to send it to the player, i.e. when it
-is pointed by $p_p$, and the chunk has not been received. 
-When a peer realizes that a chunk pointed by $p_p$ has been lost,
-nothing can be done to recover it. Peers pre-fetch ``potentially
-lost'' chunks at the buffer position $p_p+p_h$, where $p_h\geq 0$ is
-the pre-feching horizon. Setting $p_h=0$, the pre-fetching is
-disabled and only those chunks that really are lost will be
-requested \leorem{no entiendo para que se piden}. 
-On the contrary, the higher the $p_h$, the more aggressive
-the pre-fetching is.  
+is pointed by $p_p$, and the chunk has not been received.  When a peer
+realizes that a chunk pointed by $p_p$ has been lost, nothing can be
+done to recover it. Peers pre-fetch ``potentially lost'' chunks at the
+buffer position $p_p+p_h$, where $p_h\geq 0$ is the pre-feching
+horizon. Setting $p_h=0$, the pre-fetching is disabled and only those
+chunks that really are lost will be requested \leorem{no entiendo para
+  que se piden}. {\color{red} Se piden aquellos chunks que no han sido
+  recibidos y su posición en el buffer se acerca al punto de
+  reproducción} On the contrary, the higher the $p_h$, the more
+aggressive the pre-fetching is.
 
 For each (potentially) lost chunk with number
 $\text{lost\_chunk\_number}$, peers send a
 $[\mathtt{request}~\text{lost\_chunk\_number}]$ message to a random
-peer of the team\leorem{solo uno? cuando se produce pruning?}. When a peer $P_i$ receives such message from 
-$P_j$, $P_i$ adds $P_j$ to $\mathtt{forward}[P_k]$. $P_k$ is the
-origin peer of the chunk stored in the position
-$(\text{lost\_chunk\_number}~\mathit{mod}~2B)$ of $P_i$'s buffer in case this
-chunks has been received. Otherwise, the request is ignored \leorem{y cómo se recupera?}. Notice
-that, although request messages are very short, they are an overhead.
+peer of the team\leorem{solo uno? cuando se produce pruning?}
+{\color{red} Sí, sólo a uno. No he investigado si pedir a varios es
+  mejor o peor. Sí te puedo decir que aumentando el número de
+  peticiones, vamos a aumentar el overhead}. When a peer $P_i$
+receives such message from $P_j$, $P_i$ adds $P_j$ to
+$\mathtt{forward}[P_k]$, where $P_k$ is the origin peer of the chunk
+stored in the position $(\text{lost\_chunk\_number}~\mathit{mod}~2B)$
+of $P_i$'s buffer in case this chunks has been received (otherwise,
+the request is ignored \leorem{y cómo se recupera?} {\color{red} Si el
+  peer que recibe la petición no tiene ese chunk, pues mala suerte. La
+  próxima vez que se pierda un chunk desde el mismo origen, se
+  realizará una petición a otro peer del team y quizás haya más
+  suerte}). Notice that, although request messages are very short,
+they are an overhead.
 
 When request messages are used, redundant routes can be created and
-therefore, some chunks could be received more than once. This is an overhead to be minimized. \leo{Upon the reception of the lost chunk, a peer send a pruning message to the other requested peers}. The receiver of the pruning message counts the number of times that a origin peer has been pruned, and when this counter is higher than a threshold $T$ (the maximum number of generated duplicates \leo{at requester's side}), the corresponding entry in the $\text{forward}[]$ table is deleted \leorem{Es por chunk o por origen?}.
+therefore, some chunks could be received more than once. This is an
+overhead to be minimized. Upon the reception of the lost chunk, a peer
+send a pruning message to the other requested peers. The receiver of
+the pruning message counts the number of times that a origin peer has
+been pruned, and when this counter is higher than a threshold $T$ (the
+maximum number of generated duplicates \leo{at requester's side}), the
+corresponding entry in the $\text{forward}[]$ table is deleted
+\leorem{Es por chunk o por origen?} {\color{red} Los duplicados son de
+  chunks. Lo que se podan son las reglas de encaminamiento que se
+  indexan por origen.}
 
 Now, we can define more accurately the \gls{neighborhood-degree} (see
 Sec.~\ref{sec:chunk_flooding}) as the number of different destination
@@ -35,7 +53,10 @@ peers for each possible origin that a peer forwards. For example, if a
 peer $P_i$ forwards chunks from the origin $P_i$ to 10 neighbors, the
 neighborhood degree of $P_i$ for the origin $P_i$ is 10, and if the
 peer $P_i$ also forwards chunks from an origin $P_j$ to 5 neighbors,
-the neighborhood degree of $P_i$ for the origin $P_j$ is 5\leorem{yo definiría dos tipos de grado de vecindad, el mio y el de reenvio}.
+the neighborhood degree of $P_i$ for the origin $P_j$ is 5\leorem{yo
+  definiría dos tipos de grado de vecindad, el mio y el de reenvio}
+{\color{red} Leo, no te entiendo. Cada peer, para cada posible
+  origen, tiene un grado distinto, dinámico}.
 
 Considering the rules described before, the neighborhood degrees of
 peers can decrease or increase to optimize the topology of the

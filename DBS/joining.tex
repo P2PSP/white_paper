@@ -12,7 +12,7 @@ with the reception of the list. When a peer of the team receives a
 $[\mathtt{hello}]$, it adds the sender of the message to the team
 list\footnote{Peers also updates their team list every time a chunk is
   received from a peer, incorporating the sender and the origin of the
-  chunk.}  and to a \leochange{table}{jagged array} of peers called $\mathtt{forward}[]$
+  chunk.} and to a jagged array of peers called $\mathtt{forward}[]$
 \note{(see
   \href{https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/peer_dbs.py\#L491}{$\text{forward[]}$
     in \texttt{peer.py}})}. If a peer $P_i$ has an entry
@@ -26,13 +26,16 @@ to the rest of the team, directly (in one single hop). So, in absence
 of communication constraints, the team will be organized as a
 full-connected overlay (see Fig.~\ref{fig:full_mesh}).
 %
+% A ver si alguno es capaz de aumentar los subcaptions!
 \begin{figure*}[h!]
   \centering
-  \subfloat[A full-connected overlay.]{\label{fig:full_mesh}
-    \vbox{\myfig{graphics/full-mesh}{6cm}{400}}}
-  \quad
-  \subfloat[A star-shaped overlay.]{\label{fig:star}
-    \vbox{\myfig{graphics/star}{6cm}{400}}}
+  \resizebox{1.0\textwidth}{!}{
+    \subfloat[A full-connected overlay.]{\label{fig:full_mesh}
+      \vbox{\myfig{graphics/full-mesh}{0.9\textwidth}{400}}}
+    \quad
+    \subfloat[A star-shaped overlay.]{\label{fig:star}
+      \vbox{\myfig{graphics/star}{0.9\textwidth}{400}}}
+  }
   \caption{In a full-connected DBS team (see Subfig. (a)), all peers
     receive and send the same number of chunks. In a star-shaped DBS
     team (Subfig. (b)), $P_1$ should send all the chunks of the stream
@@ -48,10 +51,10 @@ full-connected overlay (see Fig.~\ref{fig:full_mesh}).
 %Sec.~\ref{sec:chunk_DBS_processing}).
 
 The splitter, in an infinite loop: (1) listens to the incoming peers,
-(2) sends to them the list of peers of the team, and (3) includes the
-incoming peer to the list and \leo{(4) send a chunk to each peer in its list}. Notice that only those peers that are in
-the list of peers of the splitter are considered to be in the team
-served by such splitter.
+(2) sends to them the list of peers of the team, (3) includes the
+incoming peer to the list, and (4) send a chunk to each peer in its
+list. Notice that only those peers that are in the list of peers of
+the splitter are considered to be in the team served by such splitter.
 
 \begin{comment}
 \begin{figure*}
