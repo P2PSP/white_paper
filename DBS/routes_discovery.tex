@@ -11,7 +11,7 @@ realizes that a chunk pointed by $p_p$ has been lost, nothing can be
 done to recover it. Peers pre-fetch ``potentially lost'' chunks at the
 buffer position $p_p+p_h$, where $p_h\geq 0$ is the pre-feching
 horizon. Setting $p_h=0$, the pre-fetching is disabled and only those
-chunks that really are lost will be requested \leo{\{no entiendo para
+chunks that really are lost will be requested \leorem{no entiendo para
   que se piden si $p_h=0$, es decir, se ha llegado al $p_p$}.  
   On the contrary, the higher the $p_h$, the more
 aggressive the pre-fetching is.
@@ -19,19 +19,18 @@ aggressive the pre-fetching is.
 For each (potentially) lost chunk with number
 $\text{lost\_chunk\_number}$, peers send a
 $[\mathtt{request}~\text{lost\_chunk\_number}]$ message to a random
-peer of the team. \leo{It may happens the requested peer has not the chunk. \hl{In such case, the chunk will not be recovered}.} \leo{\hl{Leo:}Se podría ir eliminando a aquellos que no han respondido o a los que se les ha mandado prunning de una posible lista de donde coger el peer aleatorio.} Although request messages are very short, they are an overhead.
-When a peer $P_i$
-receives such message from $P_j$, $P_i$ adds $P_j$ to
+peer of the team. \leo{It may happens the requested peer has not the chunk. In such case, the chunk will not be recovered. An alternative to the random selection is shown in Sect. \ref{sec:FCS}.} \leorem{Se podría ir eliminando a aquellos que no han respondido o a los que se les ha mandado prunning de una posible lista de donde coger el peer aleatorio.} Although request messages are very short, they are an overhead.
+
+When a peer $P_i$ receives a request message from $P_j$, $P_i$ adds $P_j$ to
 $\mathtt{forward}[P_k]$, where $P_k$ is the origin peer of the chunk
 stored in the position $(\text{lost\_chunk\_number}~\mathit{mod}~2B)$
 of $P_i$'s buffer in case this chunks has been received (otherwise,
-the request is ignored). \leo{This produces peer $P_i$ continues forwarding $P_x$'s chunks to $P_j$}. 
+the request is ignored). \leo{This produces peer $P_i$ continues forwarding $P_x$'s chunks to $P_j$ in next rounds}. 
 
-\leo{Due to the random selection of the} request messages, redundant routes can be created. Therefore, some chunks could be received more than once. This is an overhead to be minimized. A peer send a pruning message to a peer \leo{that sends a duplicated chunk}. The receiver of
-the pruning message counts the number of times that a origin peer has
+\leo{Due to the random selection of the destination of} the request messages, redundant routes can be created. Therefore, some chunks could be received more than once. \leochange{This is an overhead to be minimized. A}{To avoid future chunk duplicates, a} peer send a pruning message to a peer \leo{that sends a duplicated chunk}. The receiver of the pruning message counts the number of times that a origin peer has
 been \leo{asked to be} pruned. When this counter is higher than a threshold $T$ (the
-maximum number of generated duplicates, the corresponding entry in the $\text{forward}[]$ table is deleted.
-\leo{\hl{Leo:} No bastaría con quitar el que envía el prunning del forward para ese origen?}
+maximum number of generated duplicates) the corresponding entry in the $\text{forward}[]$ table is deleted.
+\leorem{No bastaría con quitar el par que envía el prunning del forward para ese origen?}
 
 Now, we can define more accurately the \gls{neighborhood-degree} (see
 Sec.~\ref{sec:chunk_flooding}) as the number of different destination
@@ -43,15 +42,14 @@ the neighborhood degree of $P_i$ for the origin $P_j$ is 5.
 
 Considering the rules described before, the neighborhood degrees of
 peers can decrease or increase to optimize the topology of the
-overlay, by minimizing $\Delta t_b$. An increment in the degree for the origin of a requested
-chunk $\text{lost\_chunk\_number}$ in $P_i$ is produced when $P_i$
+overlay, \leochange{by minimizing $\Delta t_b$}{trying to minimize $t_b$}. An increment in the degree for the origin of a requested
+chunk with $\text{lost\_chunk\_number}$ in $P_i$ is produced when $P_i$
 receives a $[\mathtt{request}~\text{lost\_chunk\_number}]$ from a peer
-that is not a neighbor, yet. On the contrary, a decrement in the
-degree for the origin of a pruned chunk
+that is not a neighbor, yet. \leorem{Podría ser un vecino (conectado) al que no le lleguen los chunks del origen. No entiendo porqué no tiene que ser un vecino.} On the contrary, a decrement in the
+degree for the origin of a pruned chunk with 
 $\text{duplicate\_chunk\_index}$ in $P_i$ is produced when $P_i$
 receives a $[\mathtt{prune}~\text{duplicate\_chunk\_index}]$ from a
-neighbor peer, for that origin \leo{(it can be itself)}. 
+neighbor peer, for that origin. \leo{The origin could also be $P_i$ itself in case a neighbor of $P_i$ forwards a requested chunk with origin $P_i$ before the chunk of $P_i$ reach the destination peer}. 
 
-The continued reception of requesting and pruning messages at peer $P_i$ produces the list
-$\text{forward}[P_i]$ gets shorter \leo{because chunks having $P_i$ as origin reach other peer sooner from a requested peer than from $P_i$} (smaller \gls{neighborhood-degree})
-and new entries in the table $\text{forward}[]$ are created.
+The continued reception of pruning and requesting messages at peer $P_i$ produces the jagged array
+$\mathtt{forward}[]$ gets shorter (smaller \gls{neighborhood-degree}s) and larger, respectively.

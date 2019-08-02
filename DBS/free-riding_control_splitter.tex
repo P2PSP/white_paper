@@ -5,17 +5,16 @@
 \label{sec:free_riding_control}
 
 The splitter remembers which chunk, of a list of the last $B'$
-transmitted chunks, was sent to each peer of the team. Notice that, in
-order to remember the chunk that was sent to each peer in each round,
-it must be hold that $B'\ge N$. \note{See
+transmitted chunks, was sent to each \leo{origin} peer of the team. \st{Notice that, in
+order to remember the chunk that was sent to each peer in each round,}
+It must be hold that $B'\ge N$. \note{See
   \href{https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py\#L296}{$\text{destination\_of\_chunk}[]$
     in \texttt{splitter\_dbs.py}}.}
 
 Monitor peers (which are trusted peers) complain to their splitter
 with a $[\mathtt{lost}~\text{lost\_chunk\_number}]$ for each lost
 chunk. The splitter only considers these type of messages if they come
-from a monitor.
-\leo{\hl{leo:} y qué se hace con los chunks perdidos y con el free-rider?}
+from a monitor. \leo{FCS module is shown in Sect. \ref{sec:FCS} and it is used to control free-riders.}
 
 %Notice that $L$ will
 %tend to be proportional to the number $M$ of monitors, especially if
