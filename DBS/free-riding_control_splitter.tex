@@ -4,17 +4,27 @@
 
 \label{sec:free_riding_control}
 
+Monitor peers (which are trusted peers) complain to their splitter
+with a $[\mathtt{lost}~\text{lost\_chunk\_number}]$ for each lost
+chunk that they detect. The splitter only considers these type of
+messages if they come from a monitor. FCS (see Sec. \ref{sec:FCS}) is
+used to control free-riders at peers.
+
 The splitter remembers which chunk, of a list of the last $B'$
 transmitted chunks, was sent to each \leo{origin} peer of the team. \st{Notice that, in
-order to remember the chunk that was sent to each peer in each round,}
+order to remember the chunk that was sent to each peer in each round,} {\color{red} Por qué no vale esto?}
 It must be hold that $B'\ge N$. \note{See
   \href{https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py\#L296}{$\text{destination\_of\_chunk}[]$
     in \texttt{splitter\_dbs.py}}.}
 
-Monitor peers (which are trusted peers) complain to their splitter
-with a $[\mathtt{lost}~\text{lost\_chunk\_number}]$ for each lost
-chunk. The splitter only considers these type of messages if they come
-from a monitor. \leo{FCS module is shown in Sect. \ref{sec:FCS} and it is used to control free-riders.}
+The splitter counts of lost chunks for each peer of the team. The
+corresponding counter is incremented for each lost chunk reported and
+all counters are decremented at the end of each round (clipping at
+zero). When a counter is greater than a threshold, the corresponding
+peer is deleted from the list of peers. Controlling the threshold,
+this procedure allows to reject from the team those peers that are not
+able to forward the chunks received from the splitter with more of
+less belligerence.
 
 %Notice that $L$ will
 %tend to be proportional to the number $M$ of monitors, especially if
