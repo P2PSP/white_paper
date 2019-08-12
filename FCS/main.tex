@@ -11,9 +11,9 @@ FCS extends the functionality of DBS.
 
 DBS does not imposes any control over the grade of solidarity of the
 peers. This means that selfish peers (or simply peers with reduced
-\leochange{connectivity}{upload capacity}) can stay in the team thanks to the generosity of the
+upload capacity) can stay in the team thanks to the generosity of the
 rest of peers, even if they never achieve to deliver a chunk to any
-peer of the team. This set or rules preclude this possible behavior
+peer of the team. This set or rules precludes this possible behavior
 by imposing a minimum degree of solidarity between neighbor peers.
 
 To know the level of solidarity between neighbor peers, each peer uses
@@ -22,7 +22,8 @@ sends a chunk to $P_j$, $P_i$ increments $\mathtt{debt}[P_j]$, and
 decrements $\mathtt{debt}[P_j]$ when $P_i$ receives a chunk from
 $P_j$. 
 
-Using DBS, peers forward chunks to their neighbors using a simple round-robing scheduler. FCS modifies this behavior:
+Using DBS, peers forward chunks to their neighbors using a simple
+round-robing scheduler. FCS modifies this behavior:
 \begin{enumerate}
 \item The $\mathtt{pending}[]$ table is run in the order provided by
   $\mathtt{debt}[]$, selecting first those entries with a smaller
