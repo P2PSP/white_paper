@@ -11,37 +11,38 @@ FCS extends the functionality of DBS.
 
 DBS does not imposes any control over the grade of solidarity of the
 peers. This means that selfish peers (or simply peers with reduced
-connectivity) can stay in the team thanks to the generosity of the
-rest of peers, even if they never achive to deliver a chunk to any
-peer of the team. This set or rules preclude this possible behavior,
-by impossing a minimum degree of solidarity between neighbor peers.
+upload capacity) can stay in the team thanks to the generosity of the
+rest of peers, even if they never achieve to deliver a chunk to any
+peer of the team. This set or rules precludes this possible behavior
+by imposing a minimum degree of solidarity between neighbor peers.
 
 To know the level of solidarity between neighbor peers, each peer uses
 a table of chunk debts, $\mathtt{debt}[]$. Every time a peer $P_i$
 sends a chunk to $P_j$, $P_i$ increments $\mathtt{debt}[P_j]$, and
 decrements $\mathtt{debt}[P_j]$ when $P_i$ receives a chunk from
-$P_j$.
+$P_j$. 
 
-Using DBS, peers forward chunks to their neighbors using a simple round-robing scheduer) FCS modifies this behavior:
+Using DBS, peers forward chunks to their neighbors using a simple
+round-robing scheduler. FCS modifies this behavior:
 \begin{enumerate}
 \item The $\mathtt{pending}[]$ table is run in the order provided by
   $\mathtt{debt}[]$, selecting first those entries with a smaller
   debts.
-\item The run of $\mathtt{pending}[]$ is reset in each round (when a
-  chunk is received from the splitter). This means that each round
+\item The \leo{ list $\mathtt{debt}[]$ and therefore the} run of $\mathtt{pending}[]$ is \leochange{reset}{updated} in each round (when a
+  chunk is received from the splitter). \st{This means that each round
   starts sending the pending chunks to those peers with a smaller
-  debt.
+  debt.} 
 \item If $P_i$ realises that $\mathtt{debt}[P_j]>L^*$, $P_i$ removes
   $P_j$ from $\mathtt{forward}[\forall P_k\in\{\text{team}\cup P_i\}]$
-  and from $\mathtt{pending}[]$. Notice that this action decreases the
-  \gls{neighborhood-degree} of $P_i$ and, soon or later, of $P_j$
-  because of it will consider $P_i$ as unsupportive.
+  and from $\mathtt{pending}[]$. This decreases the
+  \gls{neighborhood-degree} of $P_i$. $P_j$ will decrease its \gls{neighborhood-degree} as well
+  because it will consider $P_i$ as unsupportive peer.
 \item In DBS, request messages are sent selecting the destination peers
   at random. In FCS, request messages are sent to those peers with a
-  higher debt. Thus, if the insolidarity is produced by a overlay
+  higher debt \leorem{a los que he enviado y no me han enviado? Debería ser al revés}. Thus, if the \leochange{insolidarity}{lack of solidarity} is produced by an overlay
   topology imbalance (an extreme example is in Fig.~\ref{fig:star}),
-  badly connected peers peers could have the chance of mitigating this
-  problem by forwarding more chunks to their neighbors.
+  \leochange{badly connected peers peers}{peers poorly connected} could have the chance of mitigating this
+  problem by forwarding more chunks to their neighbors. \leorem{Me lo explique mejor}.
 \end{enumerate}
 
 Using FCS, supportive peers will be served first, incrementing the QoE
