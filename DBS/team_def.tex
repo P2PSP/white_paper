@@ -7,11 +7,11 @@
 For the splitter, a team is a set of one or more peers (referenced by
 their end-points) that share the same stream. By definition, in a team
 of size one (the corresponding splitter is considered out of the team
-that it feeds), the only peer is known as a \gls{monitor} peer, and in
-a team with more than one peer, at least one of them must be a
-monitor. Monitors are deployed by the overlay administrator to
-check different aspects of the broadcasting, such as, the quality of
-the rendered video at the peers or the end-user latency.
+that it feeds), the only peer is a \gls{monitor}, and in a team with
+more than one peer, at least one of them must be a monitor. Monitors
+are deployed by the overlay administrator to check different aspects
+of the broadcasting, such as, the quality of the rendered video at the
+peers or the estimated end-user latency.
 
 The number of peers (normal peers and monitors) in a team has a
 maximum $N^*$ (see Tab.~\ref{tab:DBS_nomenclature}). This parameter
@@ -19,7 +19,7 @@ has an impact on the latency of the protocol (see
 Sec.~\ref{sec:buffering_chunks}), and usually is defined by the
 administrator of the overlay.
 
-\begin{table}[hbt]
+\begin{table}[t]
   \centering
   \begin{tabular}{rl}
     Parameter & Meaning \\
