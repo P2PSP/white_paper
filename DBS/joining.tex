@@ -25,46 +25,23 @@ information, all the chunks received from the splitter will be forwarded
 to the rest of the team, directly (in one single hop). So, in absence
 of communication constraints, the team will be organized as a
 full-connected overlay (see Fig.~\ref{fig:full_mesh}).
-%
-% A ver si alguno es capaz de aumentar los subcaptions!
-\begin{figure*}[h!]
+
+\begin{figure}%
   \centering
-  \resizebox{1.0\textwidth}{!}{
-    \subfloat[A full-connected overlay.]{\label{fig:full_mesh}
-      \vbox{\myfig{graphics/full-mesh}{0.9\textwidth}{400}}}
-    \quad
-    \subfloat[A star-shaped overlay.]{\label{fig:star}
-      \vbox{\myfig{graphics/star}{0.9\textwidth}{400}}}
-  }
-  \caption{In a full-connected DBS team (see Subfig. (a)), all peers
-    receive and send the same number of chunks. In a star-shaped DBS
-    team (Subfig. (b)), $P_1$ should send all the chunks of the stream
-    to the rest of the team, except those that the splitter has sent
-    directly to them.}
-  \label{fig:connections}  
-\end{figure*}
-%
-\begin{figure*}[h!]
-  \centering
-  \begin{tabular}{cc}
-    \subfloat[A full-connected overlay.]{\label{fig:full_mesh}
-      \vbox{\myfig{graphics/full-mesh}{0.4\textwidth}{400}}}
-    }
-    &
-    \resizebox{0.4\textwidth}{!}{
-    \subfloat[A star-shaped overlay.]{\label{fig:star}
-      \vbox{\myfig{graphics/star}{0.4\textwidth}{400}}}
-    }
-    \end{tabular}
-  }
-  \caption{In a full-connected DBS team (see Subfig. (a)), all peers
-    receive and send the same number of chunks. In a star-shaped DBS
-    team (Subfig. (b)), $P_1$ should send all the chunks of the stream
-    to the rest of the team, except those that the splitter has sent
-    directly to them.}
-  \label{fig:connections}  
-\end{figure*}
-%
+  \subfigure[A full-connected overlay.]{%
+    \label{fig:full}%
+    \includegraphics[height=2in]{graphics/full-mesh}}%
+  \qquad
+  \subfigure[A star-shaped overlay.]{%
+    \label{fig:star}%
+    \includegraphics[height=2in]{graphics/star}}%
+  \caption{In a full-connected DBS team (see Subfig.~\ref{fig:full}),
+    all peers receive and send the same number of chunks. In a
+    star-shaped DBS team (Subfig.~\ref{fig:star}), $P_1$ should send
+    all the chunks of the stream to the rest of the team, except those
+    that the splitter has sent directly to them.}
+  \label{fig:connections}
+\end{figure}
 
 %), initializes
 %the table $\mathrm{debt}[]$ (which stores the chunk debts between

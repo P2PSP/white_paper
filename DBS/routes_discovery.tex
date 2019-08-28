@@ -8,12 +8,11 @@ Chunks can be lost under bandwidth and buffering time constraints. A
 chunk is lost when it is time to send it to the player, i.e. when it
 is pointed by $p_p$, and the chunk has not been received.  When a peer
 realizes that a chunk pointed by $p_p$ has been lost, nothing can be
-done to recover it. Peers pre-fetch ``potentially lost'' chunks at the
-buffer position $p_p+p_h$, where $p_h\geq 0$ is the pre-feching
-horizon. Setting $p_h=0$, the pre-fetching is disabled and only those
-chunks that really are lost will be requested \leorem{no entiendo para
-  que se piden si $p_h=0$, es decir, se ha llegado al $p_p$}.  
-  On the contrary, the higher the $p_h$, the more
+done to recover it. In order to avoid this, peers pre-fetch
+``potentially lost'' chunks at the buffer position $p_p+p_h$, where
+$p_h\geq 0$ is the pre-feching horizon. Setting $p_h=0$, the
+pre-fetching is disabled and only those chunks that really are lost
+will be requested.  On the contrary, the higher the $p_h$, the more
 aggressive the pre-fetching is.
 
 For each (potentially) lost chunk with number
