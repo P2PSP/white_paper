@@ -28,21 +28,21 @@ round-robing scheduler. FCS modifies this behavior:
 \item The $\mathtt{pending}[]$ table is run in the order provided by
   $\mathtt{debt}[]$, selecting first those entries with a smaller
   debts.
-\item The \leo{ list $\mathtt{debt}[]$ and therefore the} run of $\mathtt{pending}[]$ is \leochange{reset}{updated} in each round (when a
-  chunk is received from the splitter). \st{This means that each round
-  starts sending the pending chunks to those peers with a smaller
-  debt.} 
-\item If $P_i$ realises that $\mathtt{debt}[P_j]>L^*$, $P_i$ removes
-  $P_j$ from $\mathtt{forward}[\forall P_k\in\{\text{team}\cup P_i\}]$
-  and from $\mathtt{pending}[]$. This decreases the
-  \gls{neighborhood-degree} of $P_i$. $P_j$ will decrease its \gls{neighborhood-degree} as well
-  because it will consider $P_i$ as unsupportive peer.
-\item In DBS, request messages are sent selecting the destination peers
-  at random. In FCS, request messages are sent to those peers with a
-  higher debt \leorem{a los que he enviado y no me han enviado? Debería ser al revés}. Thus, if the \leochange{insolidarity}{lack of solidarity} is produced by an overlay
-  topology imbalance (an extreme example is in Fig.~\ref{fig:star}),
-  \leochange{badly connected peers peers}{peers poorly connected} could have the chance of mitigating this
-  problem by forwarding more chunks to their neighbors. \leorem{Me lo explique mejor}.
+\item If $P_i$ realises that $\mathtt{debt}[P_j]>L^*$ (the maximum
+  number of lost chunks threshold), $P_i$ removes $P_j$ from
+  $\mathtt{forward}[]$ and from $\mathtt{pending}[]$. This decreases
+  the \gls{neighborhood-degree} of $P_i$. $P_j$ will decrease its
+  \gls{neighborhood-degree} as well because it will consider $P_i$ as
+  unsupportive peer.
+\item In DBS, request messages are sent selecting the destination
+  peers at random. In FCS, request messages are sent to those peers
+  with a higher debt. Thus, if the lack of solidarity is produced by
+  an overlay topology imbalance (an extreme example is in
+  Fig.~\ref{fig:star}), peers poorly connected could have the chance
+  of mitigating this problem by forwarding more chunks to their
+  neighbors. \leorem{Me lo explique mejor}. {\color{red} Si haces
+    request con quien ya estás conectado, no vas a conseguir evitar el
+    free-riding de los que menos transmiten}.
 \end{enumerate}
 
 Using FCS, supportive peers will be served first, incrementing the QoE
