@@ -15,21 +15,27 @@ pre-fetching is disabled and only those chunks that really are lost
 will be requested.  On the contrary, the higher the $p_h$, the more
 aggressive the pre-fetching is.
 
+% \leorem{Se podría ir eliminando a aquellos que no han respondido o a los que se les ha mandado prunning de una posible lista de donde coger el peer aleatorio.}
+
 For each (potentially) lost chunk with number
 $\text{lost\_chunk\_number}$, peers send a
 $[\mathtt{request}~\text{lost\_chunk\_number}]$ message to a random
-peer of the team. \leo{It may happens the requested peer has not the chunk. In such case, the chunk will not be recovered. An alternative to the random selection is shown in Sect. \ref{sec:FCS}.} \leorem{Se podría ir eliminando a aquellos que no han respondido o a los que se les ha mandado prunning de una posible lista de donde coger el peer aleatorio.} Although request messages are very short, they are an overhead.
+peer of the team. It may happens the requested peer has not the
+chunk. In such case, the chunk will not be recovered. An alternative
+to the random selection is shown in Sect. \ref{sec:FCS}.
 
-When a peer $P_i$ receives a request message from $P_j$, $P_i$ adds $P_j$ to
-$\mathtt{forward}[P_k]$, where $P_k$ is the origin peer of the chunk
-stored in the position $(\text{lost\_chunk\_number}~\mathit{mod}~2B)$
-of $P_i$'s buffer in case this chunks has been received (otherwise,
-the request is ignored). \leo{This produces peer $P_i$ continues forwarding $P_x$'s chunks to $P_j$ in next rounds}. 
+When a peer $P_i$ receives a request message from $P_j$, $P_i$ adds
+$P_j$ to $\mathtt{forward}[P_k]$, where $P_k$ is the origin peer of
+the chunk stored in the position
+$(\text{lost\_chunk\_number}~\mathit{mod}~2B)$ of $P_i$'s buffer in
+case this chunks has been received (otherwise, the request is
+ignored). \leo{This produces peer $P_i$ continues forwarding $P_x$'s
+  chunks to $P_j$ in next rounds}.
 
-\leo{Due to the random selection of the destination of} the request messages, redundant routes can be created. Therefore, some chunks could be received more than once. \leochange{This is an overhead to be minimized. A}{To avoid future chunk duplicates, a} peer send a pruning message to a peer \leo{that sends a duplicated chunk}. The receiver of the pruning message counts the number of times that a origin peer has
+\leo{Due to the random selection of the destination of} the request messages, redundant routes can be created. Therefore, some chunks could be received more than once. To avoid future chunk duplicates, a peer send a pruning message to a peer \leo{that sends a duplicated chunk}. The receiver of the pruning message counts the number of times that a origin peer has
 been \leo{asked to be} pruned. When this counter is higher than a threshold $T$ (the
 maximum number of generated duplicates) the corresponding entry in the $\text{forward}[]$ table is deleted.
-\leorem{No bastaría con quitar el par que envía el prunning del forward para ese origen?}
+\leorem{No bastaría con quitar el par que envía el prunning del forward para ese origen?}{\color{red} No te comprendo bien. Eso es justamente lo que hacemos.}
 
 Now, we can define more accurately the \gls{neighborhood-degree} (see
 Sec.~\ref{sec:chunk_flooding}) as the number of different destination

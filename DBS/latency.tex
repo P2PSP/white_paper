@@ -26,9 +26,10 @@ where
 \end{equation}
 is the time that has elapsed since the peer receives two chunks
 distanced at least $B$ positions in the buffer, being $B$ the buffer
-size (in chunks) and $t_c$ the chunk time (considering $t_c$ a
+size (in chunks), and $t_c$ the chunk time (considering $t_c$ a
 constant\footnote{When $R$ is time-variying, $t_b$ would be the sum of
-  the $t_c$ for each received chunk.}).
+  the $t_c$ for each received chunk.}). Notice that Eq.~\ref{eq:t_b}
+does not means that the chunks fill the buffer in order.
 
 To minimize $t_l$, $t_b$ should be as small as possible. To achieve
 this, we can reduce $t_c$ and/or $B$, but these reductions can have
@@ -45,7 +46,7 @@ for this peer, that can be $N$, and the jitter produced by the
 flooding of the chunk to the rest of the team, that can also be has
 high as $N$. Notice that this jitter is the same for two extreme
 topologies of the overlay: (1) a full-connected mesh
-(Fig.~\ref{fig:full}) or (2) a ring
+(Fig.~\ref{fig:full}), or (2) a ring
 (Fig.~\ref{fig:ring}). Therefore, peers have to use
 \begin{equation}
   \label{eq:minimum_B}
