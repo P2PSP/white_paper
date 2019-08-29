@@ -15,7 +15,10 @@ pre-fetching is disabled and only those chunks that really are lost
 will be requested.  On the contrary, the higher the $p_h$, the more
 aggressive the pre-fetching is.
 
-% \leorem{Se podría ir eliminando a aquellos que no han respondido o a los que se les ha mandado prunning de una posible lista de donde coger el peer aleatorio.}
+% \leorem{Se podría ir eliminando a aquellos que no han respondido o a
+% los que se les ha mandado prunning de una posible lista de donde
+% coger el peer aleatorio.} -> Supongo, pero ni idea de cómo rendiría
+% esto. Habría que implementarlo y experimentar.
 
 For each (potentially) lost chunk with number
 $\text{lost\_chunk\_number}$, peers send a
@@ -46,15 +49,14 @@ peer $P_i$ also forwards chunks from an origin $P_j$ to 5 neighbors,
 the neighborhood degree of $P_i$ for the origin $P_j$ is 5.
 
 Considering the rules described before, the neighborhood degrees of
-peers can decrease or increase to optimize the topology of the
-overlay, \leochange{by minimizing $\Delta t_b$}{trying to minimize $t_b$}. An increment in the degree for the origin of a requested
+peers can decrease or increase to minimize the number of (potentially) lost chunks. An increment in the degree for the origin of a requested
 chunk with $\text{lost\_chunk\_number}$ in $P_i$ is produced when $P_i$
 receives a $[\mathtt{request}~\text{lost\_chunk\_number}]$ from a peer
-that is not a neighbor, yet. \leorem{Podría ser un vecino (conectado) al que no le lleguen los chunks del origen. No entiendo porqué no tiene que ser un vecino.} On the contrary, a decrement in the
+that is not a neighbor, yet. \leorem{Podría ser un vecino (conectado) al que no le lleguen los chunks del origen. No entiendo porqué no tiene que ser un vecino.}{\color{red} Porque si fuera ya un vecino para ese origen, el grado de vecidad no aumentaría} On the contrary, a decrement in the
 degree for the origin of a pruned chunk with 
 $\text{duplicate\_chunk\_index}$ in $P_i$ is produced when $P_i$
 receives a $[\mathtt{prune}~\text{duplicate\_chunk\_index}]$ from a
-neighbor peer, for that origin. \leo{The origin could also be $P_i$ itself in case a neighbor of $P_i$ forwards a requested chunk with origin $P_i$ before the chunk of $P_i$ reach the destination peer}. 
+neighbor peer, for that origin. \leo{The origin could also be $P_i$ itself in case a neighbor of $P_i$ forwards a requested chunk with origin $P_i$ before the chunk of $P_i$ reach the destination peer}. {\color{red} Esta \'ultima frase es m\'ia? (no la entiendo)}
 
 The continued reception of pruning and requesting messages at peer $P_i$ produces the jagged array
 $\mathtt{forward}[]$ gets shorter (smaller \gls{neighborhood-degree}s) and larger, respectively.
