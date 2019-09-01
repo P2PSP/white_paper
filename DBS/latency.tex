@@ -46,8 +46,9 @@ for this peer, that can be $N$, and the jitter produced by the
 flooding of the chunk to the rest of the team, that can also be has
 high as $N$. Notice that this jitter is the same for two extreme
 topologies of the overlay: (1) a full-connected mesh
-(Fig.~\ref{fig:full}), or (2) a ring
-(Fig.~\ref{fig:ring}). Therefore, peers have to use
+(Fig.~\ref{fig:full}), or (2) a ring (Fig.~\ref{fig:ring}), where the
+chunks travel only in one direction\footnote{Othersize we have a
+  tree.}. Therefore, peers have to use
 \begin{equation}
   \label{eq:minimum_B}
   B\ge 2N^*.
