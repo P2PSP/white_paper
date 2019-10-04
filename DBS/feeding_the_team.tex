@@ -7,8 +7,8 @@
 The splitter divides the stream into chunks of constant length $C$,
 and sends exclusively each chunk to a different
 \gls{origin}\footnote{In the route that a chunk traces from the
-  splitter to all peers of the team, the origin peer is the first of
-  this route i.e. the peer selected by the splitter for that chunk.}
+  splitter to all peers of the team, the origin peer is the first in
+  this route i.e., the peer selected by the splitter for that chunk.}
 peer, using a round-robin schema. Chunks are enumerated to distinguish
 them. This information is transmitted as a part of a chunk header.
 
@@ -34,17 +34,18 @@ all the peers of the team are origin of a different chunk, in each
 round). For a team of size $N$, the \gls{round-time} can be estimated
 as
 \begin{equation}
-  t_r=Nt_c.
+  t_r=Nt_c,
 \end{equation}
-Notice that $t_r$ is generally variable, and depends on
-the current number of peers in the team ($N$). The
-\gls{chunk-time} is defined as 
+where $t_c$ is the \gls{chunk-time}.  Notice that $t_r$ is generally
+variable, and depends on the current number of peers in the team
+($N$) and $t_c$, defined simply as
 \begin{equation}
   \label{eq:chunk_time}
   t_c=\frac{C}{R},
 \end{equation}
-which depends on the chunk size $C$ and the average bit-rate of the
-media stream $R$.
+supossing that the chunk size $C$ and a average bit-rate of the media
+stream $R$ are constants. In general, a $R(t)$ should be considered,
+although this will not improve our anaylsis.
 
 \begin{comment}
 (in a team) as the time necessary to send two consecutive chunks from

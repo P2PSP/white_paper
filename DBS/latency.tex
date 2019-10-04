@@ -11,38 +11,40 @@
   \label{fig:ring}
 \end{figure}
 
-The latency is the time required to provide a seamless playing of
-the stream that travels from the source to the peers. This latency,
-$t_l$, is the sum of the physical delay $t_p$ and the buffering time
-$t_b$,
+The start-up time $t_l$ is the latency that the end-user experiments
+during the redering of the media. $t_l$, defined as
 \begin{equation}
   \label{eq:t_l}
   t_l = t_p + t_b,
 \end{equation}
-where
+is the sum of the physical
+delay $t_p$ and the buffering time $t_b$, where
 \begin{equation}
   \label{eq:t_b}
   t_b = Bt_c,
 \end{equation}
 is the time that has elapsed since the peer receives two chunks
-distanced $B$ positions in the buffer, being $B$ the buffer
-size (in chunks), and $t_c$ the chunk time (considering $t_c$ a
-constant\footnote{When $R$ is time-variying, $t_b$ would be the sum of
-  the $t_c$ for each received chunk.}). Notice that Eq.~\ref{eq:t_b}
-does not means that the chunks fill the buffer in order.
+distanced $B$ positions in the buffer, being $B$ the buffer size (in
+chunks), and $t_c$ the chunk time (considering $t_c$ a
+constant\footnote{If $R$ were time-variying, $t_b$ would be the sum of
+  the $t_c$ for each received chunk.}). In other words, the buffering
+time is the delay in the rendering of the media required to expect a
+seamless playing. Notice that Eq.~\ref{eq:t_b} does not assume that the
+chunks fill the buffer in order during the buffering time.
 
-To minimize $t_l$, $t_b$ should be as small as possible. To achieve
-this, we can reduce $t_c$ and/or $B$, but these reductions can have
-negative consequences. On the one hand, $t_c$ should be large enough
-to reduce the overhead of the headers used by the transport
-protocol. On the other hand, if $B$ is too small (for instance $B<N$)
-in a round, the peer will not have enough space to buffer all the
-chunks of this round. Thus, some chunks could overwrite others before
+To minimize $t_l$, $t_p$ and $t_b$ should be as small as possible. How
+to minimize $t_p$ is out of the scope of this discussion). However, to
+minimize $t_b$, we can reduce $t_c$ and/or $B$, but these reductions
+can produce negative consequences. On the one hand, $t_c$ should be
+large enough to reduce the overhead of the headers used by the
+transport protocol. On the other hand, if $B$ is too small (for
+instance $B<N$), the peer will not have enough space to buffer all the
+chunks of a round. Thus, some chunks could overwrite others before
 they can be played due to a low probability of receiving chunks in
 order. This problem can also happen even if $N\leq B<2N$, because the
-jitter for a given peer that DBS can generate, $\Delta t_b$, that a
+jitter, $\Delta t_b$, for a given peer that DBS can generate that a
 chunk can experiment is the sum of the jitter produced by the splitter
-for this peer, that can be $N$, and the jitter produced by the
+for this peer, that can as high as $Nt_c$, and the jitter produced by the
 flooding of the chunk to the rest of the team, that can also be has
 high as $N$. Notice that this jitter is the same for two extreme
 topologies of the overlay: (1) a full-connected mesh
