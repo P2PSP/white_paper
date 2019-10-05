@@ -4,12 +4,12 @@
 
 \label{sec:latency}
 
-\begin{figure}
-  \centering
-  \vbox{\myfig{graphics/ring}{6cm}{400}}
-  \caption{A ring-shaped overlay.}
-  \label{fig:ring}
-\end{figure}
+%\begin{figure}
+%  \centering
+%  \vbox{\myfig{graphics/ring}{6cm}{400}}
+%  \caption{A ring-shaped overlay.}
+%  \label{fig:ring}
+%\end{figure}
 
 The start-up time $t_l$ is the latency that the end-user experiments
 during the redering of the media. $t_l$, defined as
@@ -29,59 +29,58 @@ chunks), and $t_c$ the chunk time (considering $t_c$ a
 constant\footnote{If $R$ were time-variying, $t_b$ would be the sum of
   the $t_c$ for each received chunk.}). In other words, the buffering
 time is the delay in the rendering of the media required to expect a
-seamless playing. Notice that Eq.~\ref{eq:t_b} does not assume that the
-chunks fill the buffer in order during the buffering time.
+seamless playing. Notice that Eq.~\ref{eq:t_b} does not assume that
+the chunks fill the buffer in order during the buffering time.
 
 To minimize $t_l$, $t_p$ and $t_b$ should be as small as possible. How
-to minimize $t_p$ is out of the scope of this discussion). However, to
-minimize $t_b$, we can reduce $t_c$ and/or $B$, but these reductions
-can produce negative consequences. On the one hand, $t_c$ should be
-large enough to reduce the overhead of the headers used by the
-transport protocol. On the other hand, if $B$ is too small (for
-instance $B<N$), the peer will not have enough space to buffer all the
-chunks of a round. Thus, some chunks could overwrite others before
-they can be played due to a low probability of receiving chunks in
+to minimize $t_p$ is out of the scope of this discussion. However, to
+minimize $t_b$, we can reduce $t_c$ and/or $B$, but these actions can
+carry negative consequences. On the one hand, $t_c$ should be large
+enough to reduce the overhead of the headers used by the transport
+protocol. On the other hand, if $B$ is too small (for instance $B<N$),
+the peer will not have enough space to buffer all the chunks of a
+round, causing that incoming chunks to overwrite others before they
+can be played due to a low probability of receiving chunks in
 order. This problem can also happen even if $N\leq B<2N$, because the
-jitter, $\Delta t_b$, for a given peer that DBS can generate that a
-chunk can experiment is the sum of the jitter produced by the splitter
-for this peer, that can as high as $Nt_c$, and the jitter produced by the
-flooding of the chunk to the rest of the team, that can also be has
-high as $N$. Notice that this jitter is the same for two extreme
-topologies of the overlay: (1) a full-connected mesh
-(Fig.~\ref{fig:full}), or (2) a ring (Fig.~\ref{fig:ring}), where the
-chunks travel only in one direction\footnote{Othersize we have a
-  tree.}. Therefore, peers have to use
+protocol jitter, $\Delta t_b$, that a chunk can experiment is the sum
+of the jitter produced by the splitter for this peer, that can as high
+as $Nt_c$, and the jitter produced by the flooding of the chunk to the
+rest of the team, that also can be has high as $Nt_c$. Notice that
+this jitter is the same for two extreme topologies of the overlay: (1)
+a full-connected mesh (Fig.~\ref{fig:full}), or (2) a ring
+(Fig.~\ref{fig:ring}), when the chunks travel only in one
+direction\footnote{Notice that if chunks can travel in both
+  directions, we whould have a tree.}. Therefore, peers have to use
 \begin{equation}
   \label{eq:minimum_B}
   B\ge 2N^*.
 \end{equation}
 As a rule of thumb, the larger the buffer size the lower the
 probability of losing chunks, as a consequence of a high $\Delta t_p$
-(physical jitter) \leo{\{Incremento de la latencia??\}} {\color{red}
-  Leo, no entiendo tu pregunta. El jitter es la variación de la
-  latencia, que puede ser un incremento o un decremento}.
+(physical jitter).
 
-Lets analyze $t_b$ in two interesting cases. Lets suppose that the
-first received chunk is $x_1$ and that the rest of chunks of the
-buffer of size $B$ are received, being the chunk $x_{1+B}$ the last
-one (this is the ideal scenario).\footnote{All the chunks received
-  with an number smaller than $x_1$ will be discarded.} In this case,
-the buffering time can still be estimated by Eq.~\ref{eq:t_b}. Lets
-imagine now that after receiving $x_1$ the chunk $x_{1+B}$ is received
-(chunks $x_2, \cdots x_{1+B-1}$ have been lost or delayed), and the
-playing starts (probably, with severe artifacts). In this case, the
-buffering time also corresponds to Eq.~\ref{eq:t_b}, because the chunk
-$x_{1+B}$ was generated $B$ chunk times after $x_1$, and we cannot
-wait more during the buffering time if we want to dimension
-$t_b$. After considering these two extreme situations, we can deduce
-that the start-up time, $t_s$, does not depend on the chunk loss ratio
-during the buffering-time (for loss ratios smaller than one), but only
-on $B$, $t_c$ and $t_p$.
+Lets analyze the buffering time $t_b$ in two interesting cases. Lets
+suppose that the number of the first received chunk is $x_1$ and that
+the rest of chunks of the buffer of size $B$ are received\footnote{All
+  the chunks received with an number smaller than $x_1$ will be
+  discarded. Notice also that chunks can arrive in any order.}, being
+the chunk $x_{1+B}$ the last one (the best scenario). In this case,
+the $t_b$ can still be estimated by Eq.~\ref{eq:t_b}. Lets imagine now
+that after receiving $x_1$ the chunk $x_{1+B}$ is received (chunks
+$x_2, \cdots x_{1+B-1}$ have been lost or delayed too much), and the
+playing starts (probably, with severe artifacts). In this case, $t_b$
+also corresponds to Eq.~\ref{eq:t_b}, because the chunk $x_{1+B}$ was
+generated $B$ chunk times after $x_1$, and we cannot wait more during
+the buffering time if we want to dimension $t_b$. After considering
+these two extreme situations, we can deduce that the start-up time
+$t_s$ does not depend on the chunk loss ratio during the
+buffering-time (for loss ratios smaller than one), but only on $B$,
+$t_c$ and $t_p$.
 
 Finally, notice that the time that passes from an incoming peer
 request to join a team to a splitter until it accepts the peer, and
 the buffering time that the player can require, have not been
 considered in this discussion. However, both times should be, in
 general, significantly lower than $t_b$, that in the case of P2PSP
-corresponds to the start-up time that end-users experiment.
+corresponds to the $t_s$ that end-users experiment.
 

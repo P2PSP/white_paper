@@ -10,35 +10,12 @@ chunk that they detect. The splitter only considers these type of
 messages if they come from a monitor. FCS (see Sec. \ref{sec:FCS}) is
 used to control free-riders at peers.
 
-The splitter remembers which chunk, of a list of the last $B'$
-transmitted chunks, was sent to each \leo{origin} peer of the team. \st{Notice that, in
-order to remember the chunk that was sent to each peer in each round,} {\color{red} Por qué no vale esto?}
-It must be hold that $B'\ge N$. \note{See
-  \href{https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py\#L296}{$\text{destination\_of\_chunk}[]$
-    in \texttt{splitter\_dbs.py}}.}
-
-The splitter counts of lost chunks for each peer of the team. The
-corresponding counter is incremented for each lost chunk reported and
-all counters are decremented at the end of each round (clipping at
-zero). When a counter is greater than a threshold, the corresponding
-peer is deleted from the list of peers. Controlling the threshold,
-this procedure allows to reject from the team those peers that are not
-able to forward the chunks received from the splitter with more of
-less belligerence.
-
-%Notice that $L$ will
-%tend to be proportional to the number $M$ of monitors, especially if
-%those cases where $P_o$ is a gone peer that was unable to transmit the
-%$[\mathtt{goodbye}]$ messages.
-
-\begin{notex}
-This last functionality has not been implemented, at least, as it has
-been explained here. The forget() thread is controlled by a timer, not
-by a counter of rounds.
-\end{notex}
-
-%Peers also control that at least one chunk is received from a neighbor
-%in each round.\footnote{Peers recognize that a new round has started
-%  when a new chunk is received from the splitter.} If happens that a
-%peer $P_x$ does not receives a chunk from peer $P_y$ between $D^*$
-%consecutive rounds, $P_x$ removes $P_y$ of its forwaring table.
+The splitter remembers which chunk, of a list of the last $B'>N^*$
+transmitted chunks, was sent to each origin peer of the team. The
+splitter also counts of lost chunks for each peer of the team. The
+corresponding counter is incremented for each lost chunk reported by a
+monitor and, if the counter of a peer goes over a threshold $L^*$, the
+corresponding peer is removed from the list of peers, and the rest of
+counters are reset. Notice that the smaller the $L^*$, the higher the
+belligerence with the selfish peers. The selection of $L^*$ should be
+also proportional to the number of monitor peers $M$.

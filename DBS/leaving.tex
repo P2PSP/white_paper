@@ -6,8 +6,9 @@ An outgoing peer must to: (1) say $[\mathtt{goodbye}]$ to the splitter
 and the neighbor peers (in this order), (2) relay any pending
 (received but yet not sent) chunks, and (3) wait for a
 $[\mathtt{goodbye}]$ from the splitter. In case of
-timeout\footnote{All these messages are transmitted using a unreliable
-  protocol.}, the leaving procedure is reset a number of times.
+timeout\footnote{All these messages are transmitted using an
+  unreliable protocol.}, the leaving procedure is reset a number of
+times.
 
 When a peer $P_i$ receives a $[\mathtt{goodbye}]$ from $P_j$, $P_i$
 removes $P_j$ from all the lists (all the possible origins) of

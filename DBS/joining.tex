@@ -28,18 +28,27 @@ a full-connected overlay (see Fig.~\ref{fig:full}).
 
 \begin{figure}%
   \centering
-  \subfigure[A full-connected overlay.]{%
+%  \subfigure[A full-connected overlay.]{%
+%    \label{fig:full}%
+%    \includegraphics[width=0.45\textwidth]{graphics/full-mesh}}%
+%  \qquad
+%  \subfigure[A star-shaped overlay.]{%
+%    \label{fig:star}%
+%    \includegraphics[width=0.45\textwidth]{graphics/star}}%
+\begin{tabular}{ccc}
+  \subfigure[Full-connected.]{%
     \label{fig:full}%
-    \includegraphics[height=2in]{graphics/full-mesh}}%
-  \qquad
-  \subfigure[A star-shaped overlay.]{%
+    \includegraphics[width=0.3\textwidth]{graphics/full-mesh}}%
+  &
+  \subfigure[Star-shaped.]{%
     \label{fig:star}%
-    \includegraphics[height=2in]{graphics/star}}%
-  \caption{In a full-connected DBS team (see Subfig.~\ref{fig:full}),
-    all peers receive and send the same number of chunks. In a
-    star-shaped DBS team (Subfig.~\ref{fig:star}), $P_1$ should send
-    all the chunks of the stream to the rest of the team, except those
-    that the splitter has sent directly to them.}
+    \includegraphics[width=0.3\textwidth]{graphics/star}}%
+  &
+  \subfigure[Ring-shaped.]{%
+    \label{fig:star}%
+    \includegraphics[width=0.3\textwidth]{graphics/ring}}%
+\end{tabular}
+  \caption{Different overlay (team) topologies.}
   \label{fig:connections}
 \end{figure}
 
