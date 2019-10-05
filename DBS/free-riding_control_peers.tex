@@ -1,0 +1,13 @@
+% Emacs, this is -*-latex-*-
+
+% Free-riding Control at peers
+
+\label{sec:free_riding_control}
+
+Peers update the \gls{activity} of the origin peer of each received
+chunk, removing from their list of peers those whose activity falls
+below of a threshold $L^+$. When the origin of the chunk is a peer of
+the team, the activity counter is incremented by one. However, if the
+origin is itself (i.e. once per round), the activity counter is
+decreased by one, and all peers with an activity smaller than $L^+$
+are ignored.

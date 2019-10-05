@@ -7,15 +7,15 @@
   Sec.~\ref{sec:FCS}).
 \end{notex}
 
-ACS modifies the functionality of DBS.
+ACS relaxes the peer's uploading requirements imposed by DBS. ACS is
+based on the idea of using the information that the splitter knows
+about the number of chunks that each peer has lost (see
+Sec.~\ref{sec:free_riding_control}), to send to the more reliable
+peers a higher number of chunks. In other words, ACS adapts the
+round-time of each peer to its capacity, in such a way that the higher
+the capacity, the lower the \gls{round-time}. Notice that ACS only
+affects the behavior of the splitter.
 
-Basically, ACS relaxes the peer's uploading requirements imposed by
-DBS. ACS is based on the idea of using the information that the
-splitter knows about the number of chunks that each peer has lost (see
-Sec.~\ref{sec:free_riding_control}), to send to the more reliable peers
-a higher number of chunks. In other words, ACS adapts the round-time
-of each peer to its capacity, in such a way that the higher the
-capacity, the lower the \gls{round-time}. \leorem{Si tiene qie mandar más, ¿cómo va a tener menor round time?} {\color{red} Claro, a menor round-time, mayor capacidad}
 
 ACS should be used if we want some peers to contribute with the
 uploading capacity than others cannot provide. A possible situation
@@ -26,11 +26,7 @@ should lost a minimum number of chunks (supposedly the hosts of the
 contents provider should have enough capacity), the ratio of chunks
 emitted by the contents provider's hosts can be controlled if a high
 enough number of monitor peers (the more monitors, the higher the
-ratio). \leo{\hl{leo:} me lo explique mejor.} {\color{red} Si un
-  monitor no pierde chunks, entonces recibe m\'as chunks del splitter
-  y por tanto, el resto de peers no tienen que transmitir tanto.}
-
-Notice that ACS only affects the behavior of the splitter.
+ratio).
 
 \begin{comment}
 In most overlay configurations (which should exhibit a full-(or
