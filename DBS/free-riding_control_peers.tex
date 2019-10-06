@@ -4,10 +4,15 @@
 
 \label{sec:free_riding_control}
 
-Peers update the \gls{activity} of the origin peer of each received
-chunk, removing from their list of peers those whose activity falls
-below of a threshold $L^+$. When the origin of the chunk is a peer of
-the team, the activity counter is incremented by one. However, if the
-origin is itself (i.e. once per round), the activity counter is
-decreased by one, and all peers with an activity smaller than $L^+$
-are ignored.
+Peers check the sending \gls{activity} of the rest of peers of the
+team, with the objective of stop sending chunks to selfish peers. Such
+activities are represented by an array of counters, indexed by the
+origin of the received chunks. For each chunk received by $P_i$ and
+originated at $P_o$, $P_i$ increases $\mathtt{activity}[P_o]$. In each
+new round (when a chunk is received from the splitter), $P_i$
+decreases $\mathtt{activity}[P_o]\forall P_o\in T$, and if
+$\mathtt{activity}[P_o]<L^*$ (in this case, $L^*$ is the maximum
+allowed number of chunks that a peer can ``lost'' with other peer), no
+more chunks nor control messages will be delivered to $P_o$. However,
+notice that this last consequence can be reversed if $P_o$ resumes its
+sending activity with $P_i$.
