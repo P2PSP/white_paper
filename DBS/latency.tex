@@ -50,14 +50,17 @@ this jitter is the same for two extreme topologies of the overlay: (1)
 a full-connected mesh (Fig.~\ref{fig:full}), or (2) a ring
 (Fig.~\ref{fig:ring}), when the chunks travel only in one
 direction\footnote{Notice that if chunks can travel in both
-  directions, we whould have a tree.}. Therefore, peers have to use
+  directions, we whould have a tree.}. Therefore, in the case of a full-connected mesh, peers have to use a
 \begin{equation}
   \label{eq:minimum_B}
-  B\ge 2N^*.
+  B\ge 2N^*
 \end{equation}
-As a rule of thumb, the larger the buffer size the lower the
-probability of losing chunks, as a consequence of a high $\Delta t_p$
-(physical jitter).
+in order to avoid the loss of chunks due to high $\Delta t_p$. We will
+refeer to $B=2N^*$ as the critical buffer size.
+
+% As a rule of thumb, the larger the buffer size the lower the
+% probability of losing chunks, as a consequence of a high $\Delta
+% t_p$ (physical jitter).
 
 Lets analyze the buffering time $t_b$ in two interesting cases. Lets
 suppose that the number of the first received chunk is $x_1$ and that
