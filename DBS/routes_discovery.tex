@@ -33,7 +33,7 @@ $[\mathtt{request}~\text{lost\_chunk\_number}]$ message to a
 random\footnote{An alternative to the random selection is defined in
   FCS (Sect. \ref{sec:FCS}).} peer of the team. When a peer $P_i$
 receives a request message from $P_j$, $P_i$ adds $P_j$ to
-$\mathtt{forward}[P_k]$, where $P_k$ is the origin peer of the chunk
+$\mathtt{f}[P_k]$, where $P_k$ is the origin peer of the chunk
 stored in the position $(\text{lost\_chunk\_number}~\mathit{mod}~2B)$
 of $P_i$'s buffer, in case this chunk has been received (otherwise,
 the request is ignored because $P_i$ cannot determine
@@ -46,7 +46,7 @@ created. Therefore, some chunks could be received more than once. To
 avoid future chunk duplicates, peers send pruning messages to those
 peers that send duplicates. The receiver $P_i$ of a
 $[\mathtt{prune}~\text{duplicate\_chunk\_number}]$ message received
-from $P_j$, removes $P_j$ of $\mathtt{forward}[P_k]$, where $P_k$ is
+from $P_j$, removes $P_j$ of $\mathtt{f}[P_k]$, where $P_k$ is
 the origin peer of the chunk stored in the position
 $(\text{lost\_chunk\_number}~\mathit{mod}~2B)$ of $P_i$'s buffer.
 
@@ -61,7 +61,7 @@ $5$.
 
 Initially, peers have, for the chunks originated in themselves, a
 \gls{neighborhood-degree} equal to $K=N-1$, and the
-$\mathtt{forward}[]$ table has only one entry. As long as the topology
+$\mathtt{f}[]$ table has only one entry. As long as the topology
 of the overlay is optimized by the route discovery algorithm, peers
 insert new entries in the forwarding table and the length of this
 entry tend to be smaller. Therefore, the lists of forwarded peers for

@@ -12,50 +12,80 @@ with the reception of the list. When a peer of the team receives a
 $[\mathtt{hello}]$, it adds the sender of the message to the team
 list\footnote{Peers also updates their team list every time a chunk is
   received from a peer, incorporating the sender and the origin of the
-  chunk.} and to a jagged array of peers called $\mathtt{forward}[]$
+  chunk.} and to a jagged array of peers called $\mathtt{f}[]$
 \note{(see
-  \href{https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/peer_dbs.py\#L491}{$\text{forward[]}$
+  \href{https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/peer_dbs.py\#L491}{$\text{f[]}$
     in \texttt{peer.py}})}. If a peer $P_i$ has an entry
-$\mathtt{forward}[P_j]=\{P_k\}$, then each chunk received by $P_i$ and
+$\mathtt{f}[P_j]=\{P_k\}$, then each chunk received by $P_i$ and
 originated at $P_j$ will be forwarded to $P_k$. When an incoming peer
 $P_i$ has received the list of peers, its forwarding table has been
-initialized to $\mathtt{forward}[P_i]=\{T\setminus P_i\}$. Notice
+initialized to $\mathtt{f}[P_i]=\{T\setminus P_i\}$. Notice
 that, as long as the forwarding table contains this information, all
 the chunks received from the splitter will be forwarded to the rest of
 the team, directly (in one single hop/chunk). So, in absence of
 communication constraints, the team will be organized as a
 full-connected overlay (see Fig.~\ref{fig:full}).
 
-\begin{figure}%
+
+
+\begin{figure}
   \centering
-%  \subfigure[A full-connected overlay.]{%
-%    \label{fig:full}%
-%    \includegraphics[width=0.45\textwidth]{graphics/full-mesh}}%
-%  \qquad
-%  \subfigure[A star-shaped overlay.]{%
-%    \label{fig:star}%
-%    \includegraphics[width=0.45\textwidth]{graphics/star}}%
-\begin{tabular}{ccc}
-  \subfigure[Full-connected.]{%
-    \label{fig:full}%
-    \includegraphics[width=0.3\textwidth]{graphics/full-mesh}}%
-  &
-  \subfigure[Star-shaped.]{%
-    \label{fig:star}%
-    \includegraphics[width=0.3\textwidth]{graphics/star}}%
-  &
-  \subfigure[Ring-shaped.]{%
-    \label{fig:ring}%
-    \includegraphics[width=0.3\textwidth]{graphics/ring}}%
-\end{tabular}
+  \begin{subfigure}[t]{0.3\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{graphics/full-mesh}
+    \caption{Full-connected.\newline $\forall P_i, \mathtt{f}[P_i]=T-P_i$.}
+    \label{fig:full}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.3\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{graphics/star}
+    \caption{Star-shaped.  \newline $\begin{array}{l} \mbox{In $P_1$}, \mathtt{f}[*] = T-P_1; \\ \mbox{$\forall P_i\neq P_1$}, \mathtt{f}[P_i] = P_1. \end{array}$}
+    \label{fig:star}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.3\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{graphics/ring}
+    \caption{Ring-shaped. \newline $\forall P_i, \mathtt{f}[P_i]=P_{(i+1)\%N}$.}
+    \label{fig:ring}
+  \end{subfigure}
   \caption{Different overlay (team) topologies.}
-  \label{fig:connections}
+  \label{fig:three_topos}
 \end{figure}
+
+%\begin{figure}%
+%  \centering
+%%  \subfigure[A full-connected overlay.]{%
+%%    \label{fig:full}%
+%%    \includegraphics[width=0.45\textwidth]{graphics/full-mesh}}%
+%%  \qquad
+%%  \subfigure[A star-shaped overlay.]{%
+%%    \label{fig:star}%
+%%    \includegraphics[width=0.45\textwidth]{graphics/star}}%
+%\begin{tabular}{ccc}
+%  %\subfigure[Full-connected. $\forall P_i\in T, \mathtt{f}[P_i]=T\setminus P_i$]{%
+%  %\subfigure{Full-connected. \newline $\forall P_i\in T, \mathtt{f}$[$P_i$]}{%
+%  \subfigure{Full-connected}{%
+%    \label{fig:full}%
+%    \includegraphics[width=0.3\textwidth]{graphics/full-mesh}}%
+%  &
+%  \subfigure[Star-shaped.]{%
+%    \label{fig:star}%
+%    \includegraphics[width=0.3\textwidth]{graphics/star}}%
+%  &
+%  \subfigure[Ring-shaped.]{%
+%    \label{fig:ring}%
+%    \includegraphics[width=0.3\textwidth]{graphics/ring}}%
+%\end{tabular}
+%  \caption{Different overlay (team) topologies.}
+%  \label{fig:connections}
+%\end{figure}
 
 %), initializes
 %the table $\mathrm{debt}[]$ (which stores the chunk debts between
 %neighbor peers), and (3) sets the variable $\mathrm{neighbor}$ with an
-%index to $\mathrm{forward}[]$ (see
+%index to $\mathrm{f}[]$ (see
 %Sec.~\ref{sec:chunk_DBS_processing}).
 
 The splitter, in an infinite loop: (1) listens to the incoming peers,

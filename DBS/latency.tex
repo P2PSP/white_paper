@@ -30,27 +30,27 @@ constant\footnote{If $R$ were time-variying, $t_b$ would be the sum of
   the $t_c$ for each received chunk.}). In other words, the buffering
 time is the delay in the rendering of the media required to expect a
 seamless playing. Notice that Eq.~\ref{eq:t_b} does not assume that
-the chunks fill the buffer in order during the buffering time.
+the chunks completely fill the buffer during the buffering time.
 
 To minimize $t_l$, $t_p$ and $t_b$ should be as small as possible. How
 to minimize $t_p$ is out of the scope of this discussion. However, to
-minimize $t_b$, we can reduce $t_c$ and/or $B$, but these actions can
-carry negative consequences. On the one hand, $t_c$ should be large
+minimize $t_b$, we can reduce $t_c$ and/or $B$, but these actions
+carry two main drawbacks. On the one hand, $t_c$ should be large
 enough to reduce the overhead of the headers used by the transport
 protocol. On the other hand, if $B$ is too small (for instance $B<N$),
 the peer will not have enough space to buffer all the chunks of a
-round, causing that incoming chunks to overwrite others before they
-can be played due to a low probability of receiving chunks in
-order. This problem can also happen even if $N\leq B<2N$, because the
-protocol jitter, $\Delta t_b$, that a chunk can experiment is the sum
-of the jitter produced by the splitter for this peer, that can as high
-as $Nt_c$, and the jitter produced by the flooding of the chunk to the
-rest of the team, that also can be has high as $Nt_c$. Notice that
-this jitter is the same for two extreme topologies of the overlay: (1)
-a full-connected mesh (Fig.~\ref{fig:full}), or (2) a ring
-(Fig.~\ref{fig:ring}), when the chunks travel only in one
-direction\footnote{Notice that if chunks can travel in both
-  directions, we whould have a tree.}. Therefore, in the case of a full-connected mesh, peers have to use a
+round, causing that some incoming chunks overwrite others before they
+can be played. This problem also arises even if $N\leq B<2N$, because
+the maximum protocol jitter, $\Delta^* t_b$, that a chunk can
+experiment is the sum of the jitter produced by the splitter for this
+peer, that can as high as $Nt_c$, and the jitter produced by the
+flooding of the chunk to the rest of the team, that also can be has
+high as $Nt_c$. Notice that this jitter is the same for two extreme
+topologies of the overlay: (1) a full-connected mesh
+(Fig.~\ref{fig:full}), or (2) a ring (Fig.~\ref{fig:ring}), when the
+chunks travel only in one direction\footnote{Notice that if chunks can
+  travel in both directions, we whould have a tree.}. Therefore, in
+the case of a full-connected mesh, peers have to use a
 \begin{equation}
   \label{eq:minimum_B}
   B\ge 2N^*
