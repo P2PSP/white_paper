@@ -11,14 +11,14 @@ extends or modify its functionality.
 
 DBS provides \acrshort{ALM} of a \gls{media} \gls{stream} in an
 \gls{unicast} environment. The media is sent by a streaming
-\gls{server} (which is not related to P2PSP), and it
-is received by a \gls{splitter}.~\note{(see Sec.~\ref{sec:LBS})}~The
-splitter divides the stream into a sequence of \gls{chunk}s of data,
-and relays them to a \gls{team} of peers, following a round-robing
-schema. Each peer of a team gathers the chunks from the splitter and
-the rest of peers of the team, and sends them to at least one
-\gls{player}.\note{Peer should run even if no player(s) are connected
-  to it.}
+\gls{server} (which is not related to P2PSP), and it is received by a
+\gls{splitter}.~\note{(see Sec.~\ref{sec:LBS})}~The splitter divides
+the stream into a sequence of \gls{chunk}s of data, and relays them to
+a \gls{team} of peers, following a round-robing schema. Each peer of a
+team gathers the chunks from the splitter and the rest of peers of the
+team, and sends them to at least one \gls{player}.\note{Peer should
+  run even if no player(s) are connected to it.} Peers are organized
+in a unstructured topology (all peers perform the same tasks).
 
 \begin{comment}
 In single layered streams\footnote{Each layer of a
