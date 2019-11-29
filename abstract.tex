@@ -5,14 +5,13 @@
 \href{https://p2psp.github.io}{P2PSP (Peer-to-Peer Straighforward
   Protocol)} is an application-layer multicast protocol that provides
 real-time broadcasting of media streams in the Internet. The peers
-relay the stream split into chunks, using a push communication
+relay the stream split into chunks, using an UDP push communication
 model. The data flow is controlled by the source(s) of the stream, and
 the peers use a congestion control method based on the relaying of
 chunks, only when chunks are received. The topology of the overlay is
-dynamic and adapted to the requirements of the physical topology and
+dynamic and adapts to the requirements of the physical topology and
 startup latency required, which is proportional to the maximum number
 of peers in the P2P overlay. In absence of connectivity restrictions
-(such as the imposed by NATs) and selfish peers, all peers have a I/O
-ratio close to 1, although this ratio can be controlled for each
-peer. P2PSP can use unicast and IPM (IP Multicast) communications,
-when available.
+(such as the imposed by NATs) and selfish peers, all peers have an
+input/output ratio close to 1. P2PSP can use IP Multicast
+communications, when available.
