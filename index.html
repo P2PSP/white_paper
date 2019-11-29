@@ -24,7 +24,7 @@ src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLor
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">November 17, 2019</span></div>
+class="ecrm-1200">November 28, 2019</span></div>
    </div>
    <div 
 class="abstract" 
@@ -148,7 +148,9 @@ href="#x1-2900010" id="QQ2-1-43">CIS (Content Integrity Set)</a></span>
  id="x1-40001"></a>LBS (Load Balancing Set)</h3>
 <!--l. 7--><p class="noindent" ><span 
 class="ecbx-1000">Note:  </span>Finished but not implemented.
-</p><!--l. 11--><p class="noindent" >LBS is an standalone set of rules, and it is compatible with any other set.
+</p><!--l. 11--><p class="noindent" >LBS describes the bootstrap procedure that peers must follow in order to join the
+overlay. LBS is an standalone set of rules, and it is compatible with any other
+set.
 </p>
    <hr class="figure" /><div class="figure" 
 >
@@ -160,15 +162,15 @@ class="ecbx-1000">Note:  </span>Finished but not implemented.
                                                                   
 
                                                                   
-<!--l. 15--><p class="noindent" ><div style="text-align:center;"> <img width=800 src="graphics/icecast-P2PSP.svg" /> </div> 
+<!--l. 16--><p class="noindent" ><div style="text-align:center;"> <img width=800 src="graphics/icecast-P2PSP.svg" /> </div> 
 <br />  </p><div class="caption" 
 ><span class="id">Figure 1:   </span><span  
 class="content">A   possible   data-ﬂow   in   an   hybrid   CDN/P2PSP   network.
-<!--l. 18--><math 
+<!--l. 19--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >S</mi></math>
-represents a splitter and <!--l. 18--><math 
+represents a splitter and <!--l. 19--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -176,7 +178,7 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math>
-the <!--l. 18--><math 
+the <!--l. 19--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >i</mi></math>-th
@@ -185,7 +187,7 @@ peer.</span></div><!--tex4ht:label?: x1-40011 -->
 
                                                                   
    </div><hr class="endfigure" />
-<!--l. 23--><p class="indent" >   P2PSP supposes that there is a collection of <a 
+<!--l. 24--><p class="indent" >   P2PSP supposes that there is a collection of <a 
 href="#glo:stream">streams</a> (usually, video) that are broadcasted in
 parallel.<span class="footnote-mark"><a 
 href="index2.html#fn1x0"><sup class="textsuperscript">1</sup></a></span><a 
@@ -205,8 +207,8 @@ usually expressed as a Web address with the structure:
    <div class="verbatim" id="verbatim-1">
   http://server/mount_point
 </div>
-<!--l. 34--><p class="nopar" > Notice that a server can be serving several channels.
-</p><!--l. 38--><p class="indent" >   P2PSP does not perform data-ﬂow control over the stream. The transmission
+<!--l. 35--><p class="nopar" > Notice that a server can be serving several channels.
+</p><!--l. 39--><p class="indent" >   P2PSP does not perform data-ﬂow control over the stream. The transmission
 bit-rate between P2PSP entities is controlled by the servers (Icecast servers, for
 example), which provides the stream to the P2PSP <span 
 class="ecti-1000">teams</span>. Fig. <a 
@@ -218,7 +220,7 @@ class="ecti-1000">splitter</span>, a P2PSP
 entity that sends the received stream (a single channel) to a set of P2PSP
 <span 
 class="ecti-1000">peers</span>.
-</p><!--l. 63--><p class="indent" >   In a pure CDN system, users request the channels directly to the servers.
+</p><!--l. 64--><p class="indent" >   In a pure CDN system, users request the channels directly to the servers.
 Unfortunately, this simple procedure has a drawback: normally, users do not know
 the load nor the distance to the servers. This problem can be solved by using a <span 
 class="ecti-1000">load</span>
@@ -226,7 +228,7 @@ class="ecti-1000">load</span>
 class="ecti-1000">balancer</span>. The listeners, which know the URL of the required channel, connects ﬁrst
 to a load balancer which redirects them (with an HTTP 302 code) to a suitable
 server.
-</p><!--l. 72--><p class="indent" >   This idea can be extended to minimize the response time of hybrid CDN/P2PSP
+</p><!--l. 73--><p class="indent" >   This idea can be extended to minimize the response time of hybrid CDN/P2PSP
 structures. When a user (who knows an URL of the channel) runs a local peer, it
 provides to his peer the URL of the channel (the URL pointing to a server and a
 mount point). Then, the peer (as any other listener does) contacts a load
@@ -239,7 +241,7 @@ establised connection determines the selected splitter (the rest of connections 
 closed). If only those splitters with space in their teams answer to the peer, this
 procedure should select the “nearest” splitter for the peer in terms of response
 time.
-</p><!--l. 89--><p class="indent" >   For the case of the incorporation of new splitters to the network, the
+</p><!--l. 90--><p class="indent" >   For the case of the incorporation of new splitters to the network, the
 procedure is similar. A new splitter (which is instantiated knowing an URL of
 a channel) contacts the load balancer which returns a list of servers and
 peers, which are serving the channel. Then, the splitter tries to connect
@@ -250,12 +252,12 @@ href="index5.html#fn4x0"><sup class="textsuperscript">4</sup></a></span><a
                                                                   
 
                                                                   
-</p><!--l. 99--><p class="indent" >   Using the idea of the extended load balancer, when a <span 
+</p><!--l. 100--><p class="indent" >   Using the idea of the extended load balancer, when a <span 
 class="ecti-1000">player </span>(listener) connects
 to it, if there is a local peer running in the same host or the same private
 network that the player, the balancer will redirect the player to the local
 peer.
-</p><!--l. 104--><p class="indent" >   Finally, it is compulsory that all the splitters associated to the same channel to
+</p><!--l. 105--><p class="indent" >   Finally, it is compulsory that all the splitters associated to the same channel to
 generate exactly the same chunks (content and header). See Section <a 
 href="#x1-280009">9<!--tex4ht:ref: sec:MCS --></a> for more
 information.
@@ -283,7 +285,8 @@ href="#glo:team">team</a> of peers, following a round-robing schema. Each peer
 of a team gathers the chunks from the splitter and the rest of peers of the team, and
 sends them to at least one <a 
 href="#glo:player">player</a>.Peer should run even if no player(s) are connected
-to it.
+to it. Peers are organized in a unstructured topology (all peers perform the same
+tasks).
 </p><!--l. 8--><p class="noindent" >
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.1   </span> <a 
@@ -825,7 +828,7 @@ position <!--l. 10--><math
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">(</mo><mrow><mi 
->x</mi><mspace width="1em" class="nbsp" /><mi mathvariant="italic">mod</mi><mspace width="1em" class="nbsp" /><mn>2</mn><mi 
+>x</mi><mspace width="0.33em" class="nbsp" /><mi mathvariant="italic">mod</mi><mspace width="0.33em" class="nbsp" /><mn>2</mn><mi 
 >B</mi></mrow><mo 
 class="MathClass-close">)</mo></mrow></math> of the
 buﬀer, where <!--l. 11--><math 
@@ -1955,7 +1958,7 @@ class="text"><mtext  >lost_chunk_number</mtext></mstyle></math>,
 peers send a <!--l. 32--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
-class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">request</mi><mspace width="1em" class="nbsp" /><mstyle 
+class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">request</mi><mspace width="0.33em" class="nbsp" /><mstyle 
 class="text"><mtext  >lost_chunk_number</mtext></mstyle></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> message to
 a random<span class="footnote-mark"><a 
@@ -2016,7 +2019,7 @@ is the origin peer of the chunk stored in the position
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">(</mo><mrow><mstyle 
-class="text"><mtext  >lost_chunk_number</mtext></mstyle><mspace width="1em" class="nbsp" /><mi mathvariant="italic">mod</mi><mspace width="1em" class="nbsp" /><mn>2</mn><mi 
+class="text"><mtext  >lost_chunk_number</mtext></mstyle><mspace width="0.33em" class="nbsp" /><mi mathvariant="italic">mod</mi><mspace width="0.33em" class="nbsp" /><mn>2</mn><mi 
 >B</mi></mrow><mo 
 class="MathClass-close">)</mo></mrow></math> of
 <!--l. 38--><math 
@@ -2097,7 +2100,7 @@ display="inline" ><msub><mrow
 <!--l. 48--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
-class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">prune</mi><mspace width="1em" class="nbsp" /><mstyle 
+class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">prune</mi><mspace width="0.33em" class="nbsp" /><mstyle 
 class="text"><mtext  >duplicate_chunk_number</mtext></mstyle></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> message
 received from <!--l. 49--><math 
@@ -2139,7 +2142,7 @@ is the origin peer of the chunk stored in the position
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">(</mo><mrow><mstyle 
-class="text"><mtext  >lost_chunk_number</mtext></mstyle><mspace width="1em" class="nbsp" /><mi mathvariant="italic">mod</mi><mspace width="1em" class="nbsp" /><mn>2</mn><mi 
+class="text"><mtext  >lost_chunk_number</mtext></mstyle><mspace width="0.33em" class="nbsp" /><mi mathvariant="italic">mod</mi><mspace width="0.33em" class="nbsp" /><mn>2</mn><mi 
 >B</mi></mrow><mo 
 class="MathClass-close">)</mo></mrow></math> of
 <!--l. 51--><math 
@@ -2321,7 +2324,7 @@ received, to avoid sending chunks to it.
 <!--l. 8--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
-class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">lost</mi><mspace width="1em" class="nbsp" /><mstyle 
+class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">lost</mi><mspace width="0.33em" class="nbsp" /><mstyle 
 class="text"><mtext  >lost_chunk_number</mtext></mstyle></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> for
 each lost chunk that they detect. The splitter only considers these type of messages if
