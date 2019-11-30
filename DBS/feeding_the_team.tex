@@ -7,10 +7,11 @@
 The splitter divides the stream into chunks of constant length $C$,
 and sends exclusively each chunk to a different
 \gls{origin}\footnote{In the route that a chunk traces from the
-  splitter to all peers of the team, the origin peer is the first in
-  this route i.e., the peer selected by the splitter for that chunk.}
-peer, using a round-robin schema. Chunks are enumerated to distinguish
-them. This information is transmitted as a part of a chunk header.
+  splitter to all peers of the team, the origin peer is the first one
+  in this route i.e., the peer selected by the splitter for that
+  chunk.}  peer, using a round-robin schema. Chunks are enumerated to
+distinguish them, and this information is transmitted as a part of a chunk
+header.
 
 \begin{comment}
 More details about the implementation
@@ -28,31 +29,23 @@ are available in Fig.~\ref{fig:chunk_generation}.
 \end{figure*}
 \end{comment}
 
-We define a \gls{round} as the process of transmitting $N$ different
+A \gls{round} is defined as the process of transmitting $N$ different
 chunks from the splitter to a team of $N\leq N^*$ peers (therefore,
 all the peers of the team are origin of a different chunk, in each
-round). For a team of size $N$, the \gls{round-time} can be estimated
-as
+round). For a team of size $N$, the average \gls{round-time} can be
+estimated as
 \begin{equation}
-  t_r=Nt_c,
+  t^{\mathrm{round}}=Nt^{\mathrm{chunk}},
 \end{equation}
-where $t_c$ is the \gls{chunk-time}.  Notice that $t_r$ is generally
-variable, and depends on the current number of peers in the team
-($N$) and $t_c$, defined simply as
+where $t^{\mathrm{chunk}}$ is the \gls{chunk-time}, defined as
 \begin{equation}
   \label{eq:chunk_time}
-  t_c=\frac{C}{R},
+  t^{\mathrm{chunk}}=\frac{l^{\mathrm{chunk}}}{R},
 \end{equation}
-supossing that the chunk size $C$ and a average bit-rate of the media
-stream $R$ are constants. In general, a $R(t)$ should be considered,
-although this will not improve our anaylsis.
-
-\begin{comment}
-(in a team) as the time necessary to send two consecutive chunks from
-  the splitter (of such team) to the same peer, using the
-  round-robing. This time is variable and depends on $|T|$, $C$, and
-  the average bit-rate of the media, $A$.
-\end{comment}
+where $l^{\mathrm{chunk}}$ is the length of the chunks (all the chunks are
+split with the same length) and $R$ is the average transmission
+bit-rate, that should match the average bit-rate of the stream in
+order to achieve a seamsless playing.
 
 \begin{comment}
 The round-time is defined by:

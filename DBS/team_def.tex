@@ -6,10 +6,9 @@
 
 A team is a set of one or more peers (referenced by their end-points)
 that share the same stream. By definition, in a team at least one peer
-is a \gls{monitor} (peer). Monitors are deployed by the overlay
-administrator to check different aspects of the broadcasting, such as,
-the expeted quality of the rendered video at the peers or the
-estimated end-user latency.
+is a \gls{monitor}. Monitors are deployed by the overlay administrator
+to check different aspects of the broadcasting, such as, the expected
+quality of the rendered video at the peers or the estimated latency.
 
 The number of peers (normal peers and monitors) in a team has a
 maximum $N^*$ (see Tab.~\ref{tab:DBS_nomenclature}). This parameter
@@ -17,35 +16,5 @@ has an significative impact on the maximum latency of the protocol (see
 Sec.~\ref{sec:buffering_chunks}), and is usually defined by the
 administrator of the overlay.
 
-\begin{table}[t]
-  \centering
-  \begin{tabular}{rl}
-    Parameter & Meaning \\
-    \hline
-    $N^*$ :  & Maximum number of peers in a team \\
-    $C$ :    & Chunk size \\
-    $B$ :    & Buffer size, in chunks, used by the peers \\
-    $B'$ :   & Length of the list of the last $B'$ peers served by the splitter \\ 
-    $D$ :    & Diameter of the flooding tree \\
-    $L^*$ :  & Maximum allowed number of lost chunks \\
-    $M$ :    & Number of monitors \\
-    $R$ :    & Average bit-rate of the media \\
-    $H$ :    & Pre-fetching horizon \\
-    $T$ :    & The list of peers in the team \\
-    Variable & \\
-    \hline
-    $N$ :    & Number of peers in the team \\
-    $L$ :    & Number of lost chunks \\
-    $t_c$ :  & Chunk time \\
-    $t_r$ :  & Round time \\
-    $t_b$ :  & Buffering time \\
-    $\Delta t_b$ : & Protocol (buffering) jitter \\ 
-    $t_p$ :  & Physical (network) latency \\
-    $\Delta t_p$ : & Physical jitter \\
-    $t_s$ :  & Start-up time \\
-    $i_p$ :  & The played chunk index 
-  \end{tabular}
-  \caption{Nomenclature used in DBS.} %
-  \label{tab:DBS_nomenclature}
-\end{table}
+\input{DBS/definitions_table}
 
