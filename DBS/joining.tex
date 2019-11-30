@@ -4,27 +4,30 @@
 
 \label{sec:joining}
 
-After connecting with a splitter, incoming peers request (using a
-reliable communication) to the splitter the current list of peers in
-the team $T$. To minimize the \gls{joining-time}, the peer sends a
-$[\mathtt{hello}]$ message to each other peer of the team, in parallel
-with the reception of the list. When a peer of the team receives a
-$[\mathtt{hello}]$, it adds the sender of the message to the team
-list\footnote{Peers also updates their team list every time a chunk is
-  received from a peer, incorporating the sender and the origin of the
-  chunk.} and to a jagged array of peers called $\mathtt{f}[]$
-\note{(see
+After connecting with a splitter\footnote{A team can be fed by more
+  than one splitter in order to introduce redundancy in single-layer
+  stream to deal with the loss of chunks, or when using MDC each
+  stream description is transmitted by a different splitter.},
+incoming peers request (using a reliable communication) to the
+splitter the current list of peers in the team $T$. To minimize the
+\gls{joining-time}, the peer sends a $[\mathtt{hello}]$ message to
+each other peer of the team, in parallel with the reception of the
+list. When a peer of the team receives a $[\mathtt{hello}]$, it adds
+the sender of the message to the team list\footnote{Peers also updates
+  their team list every time a chunk is received from a peer,
+  incorporating the sender and the origin of the chunk.} and to a
+jagged array of peers called $\mathtt{f}[]$ \note{(see
   \href{https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/peer_dbs.py\#L491}{$\text{f[]}$
     in \texttt{peer.py}})}. If a peer $P_i$ has an entry
 $\mathtt{f}[P_j]=\{P_k\}$, then each chunk received by $P_i$ and
 originated at $P_j$ will be forwarded to $P_k$. When an incoming peer
 $P_i$ has received the list of peers, its forwarding table has been
-initialized to $\mathtt{f}[P_i]=\{T\setminus P_i\}$. Notice
-that, as long as the forwarding table contains this information, all
-the chunks received from the splitter will be forwarded to the rest of
-the team, directly (in one single hop/chunk). So, in absence of
-communication constraints, the team will be organized as a
-full-connected overlay (see Fig.~\ref{fig:full}).
+initialized to $\mathtt{f}[P_i]=\{T\setminus P_i\}$. Notice that, as
+long as the forwarding table contains this information, all the chunks
+received from the splitter will be forwarded to the rest of the team,
+directly (in one single hop/chunk). So, in absence of communication
+constraints, the team will be organized as a full-connected overlay
+(see Fig.~\ref{fig:full}).
 
 \begin{figure}
   \centering
@@ -69,9 +72,10 @@ full-connected overlay (see Fig.~\ref{fig:full}).
 
 The splitter, in an infinite loop: (1) listens to the incoming peers,
 (2) sends to them the list of peers of the team, (3) includes the
-incoming peer to the list, and (4) send a chunk to each peer in its
-list. Notice that only those peers that are in the list of peers of
-the splitter are considered to be in the team served by such splitter.
+incoming peer to the list, and (4) send a copy of the stream to the
+team using a round-robing, as a sequence of chunks. Notice that only
+those peers that are in the list of peers of the splitter are
+considered to be in the team served by such splitter.
 
 \begin{comment}
 \begin{figure*}
