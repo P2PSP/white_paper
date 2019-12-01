@@ -14,9 +14,14 @@ a constant specified by the user, but it is not compulsory that all
 peers of a team use the same buffer size.
 
 The buffer is implemented as a circular array of $2B$ chunks, that is
-filled with up to $B$ chunks during the \gls{buffering-time} $t_b$.
-Such time is the main component of the \gls{start-up-time} $t_s$
-experienced by users. Chunks with a higher number (newer chunks) are
+filled with up to $B$ chunks during the \gls{buffering-time}
+$t^{\mathrm{buffer}}$.  Such time is the main component of the
+\gls{start-up-time} $t^{\mathrm{start-up}}$ experienced by users. The
+oldest chunk in the buffer is sent to the player each time a new chunk
+is received.
+
+\begin{comment}
+Chunks with a higher number (newer chunks) are
 inserted near of the head of the buffer. The (received) chunks pointed
 by the tail of the buffer $i_p$ (the played chunk index) are sent to
 the player. This action is carried out each time a new chunk is
@@ -25,6 +30,7 @@ received\footnote{DBS does not know anything about the content and
 process, empty cells in the buffer (caused by the no reception on time
 of the corresponding chunks) are filled with zeros, and sent to the
 player.
+\end{comment}
 
 % Hablar de la relación entre B y el tamaño del team. Tal vez, cuando
 % se presente la expresión de la latencia en función del grado de

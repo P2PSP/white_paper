@@ -11,21 +11,20 @@
 %  \label{fig:ring}
 %\end{figure}
 
-The start-up time $t_l$ is the latency that the end-user experiments
-during the redering of the media. $t_l$, defined as
+$t^{\mathrm{start-up}}$ is the latency that the end-user experiments
+during the redering of the media, defined as
 \begin{equation}
-  \label{eq:t_l}
-  t_l = t_p + t_b,
+  \label{eq:t_startup}
+  t^{\mathrm{start-up}} = t^{\mathrm{physical}} + t^{\mathrm{buffer}},
 \end{equation}
 is the sum of the physical
-delay $t_p$ and the buffering time $t_b$, where
+delay $t^{\mathrm{physical}}$ and the buffering time $t^{\mathrm{buffer}}$, where
 \begin{equation}
   \label{eq:t_b}
-  t_b = Bt_c,
+  t^{\mathrm{buffer}} = Bt^{\mathrm{cbunk}},
 \end{equation}
 is the time that has elapsed since the peer receives two chunks
-distanced $B$ positions in the buffer, being $B$ the buffer size (in
-chunks), and $t_c$ the chunk time (considering $t_c$ a
+distanced $B$ positions in the buffer, being $t_c$ the chunk time (considering $t_c$ a
 constant\footnote{If $R$ were time-variying, $t_b$ would be the sum of
   the $t_c$ for each received chunk.}). In other words, the buffering
 time is the delay in the rendering of the media required to expect a

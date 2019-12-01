@@ -24,7 +24,7 @@ src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLor
  <div class="author" ><span 
 class="ecrm-1200">The P2PSP team</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">November 30, 2019</span></div>
+class="ecrm-1200">December 1, 2019</span></div>
    </div>
    <div 
 class="abstract" 
@@ -255,9 +255,7 @@ to it, if there is a local peer running in the same host or the same private
 network that the player, the balancer will redirect the player to the local
 peer.
 </p><!--l. 105--><p class="indent" >   Finally, it is compulsory that all the splitters associated to the same channel to
-generate exactly the same chunks (content and header). See Section <a 
-href="#x1-280009">9<!--tex4ht:ref: sec:MCS --></a> for more
-information.
+generate exactly the same chunks (content and header).
 </p>
    <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
  id="x1-50002"></a>DBS (Data Broadcasting Set)</h3>
@@ -344,29 +342,37 @@ class="td11"> Maximum number of peers in a team                                 
  style="vertical-align:baseline;" id="TBL-2-3-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-3-1"  
 class="td11"> <!--l. 7--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>T</mi></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-3-2"  
+class="td11"> Average round-time                                                                                                                                                          </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-4-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-4-1"  
+class="td11"> <!--l. 8--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
 >l</mi></mrow><mrow 
 ><mi mathvariant="normal">chunk</mi></mrow></msup 
-></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-3-2"  
-class="td11"> Chunk size                                                                                                                                                                      </td></tr><tr  
- style="vertical-align:baseline;" id="TBL-2-4-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-4-1"  
-class="td11"> <!--l. 8--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->B</mi></math> : </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-4-2"  
-class="td11"> Buﬀer size, in chunks, used by the peers</td>
+></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-4-2"  
+class="td11"> Chunk length                                                                                                                                                                  </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-5-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-5-1"  
 class="td11"> <!--l. 9--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>B</mi></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-5-2"  
+class="td11"> Buﬀer size, in chunks, used by the peers                                                                                                                               </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-6-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-6-1"  
+class="td11"> <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
 >B</mi></mrow><mrow 
 ><mi 
 >′</mi></mrow></msup 
-></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-5-2"  
-class="td11"> Length of the list of the last <!--l. 9--><math 
+></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-6-2"  
+class="td11"> Length of the list of the last <!--l. 10--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
@@ -375,80 +381,69 @@ display="inline" ><msup><mrow
 >′</mi></mrow></msup 
 ></math> peers served by the splitter  </td>
 </tr><tr  
- style="vertical-align:baseline;" id="TBL-2-6-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-6-1"  
-class="td11"> <!--l. 10--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->D</mi></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-6-2"  
-class="td11"> Diameter of the ﬂooding tree                                                                                                                                              </td>
-</tr><tr  
  style="vertical-align:baseline;" id="TBL-2-7-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-7-1"  
 class="td11"> <!--l. 11--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>D</mi></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-7-2"  
+class="td11"> Diameter of the ﬂooding tree                                                                                                                                              </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-8-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-8-1"  
+class="td11"> <!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msup><mrow 
 ><mi 
 >L</mi></mrow><mrow 
 ><mo 
 class="MathClass-bin">∗</mo></mrow></msup 
-></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-7-2"  
+></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-8-2"  
 class="td11"> Maximum allowed number of lost chunks                                                                                                                              </td></tr><tr  
- style="vertical-align:baseline;" id="TBL-2-8-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-8-1"  
-class="td11"> <!--l. 12--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->M</mi></math> : </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-8-2"  
-class="td11"> Number of monitors</td>
-</tr><tr  
  style="vertical-align:baseline;" id="TBL-2-9-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-9-1"  
 class="td11"> <!--l. 13--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->R</mi></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-9-2"  
-class="td11"> Average bit-rate of the media                                                                                                                                              </td>
+>M</mi></math> : </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-9-2"  
+class="td11"> Number of monitors</td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-10-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-10-1"  
 class="td11"> <!--l. 14--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->H</mi></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-10-2"  
-class="td11"> Pre-fetching horizon                                                                                                                                                          </td>
+>R</mi></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-10-2"  
+class="td11"> Average bit-rate of the media                                                                                                                                              </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-11-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-11-1"  
 class="td11"> <!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->T</mi></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-11-2"  
-class="td11"> The list of peers in the team                                                                                                                                               </td>
+>H</mi></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-11-2"  
+class="td11"> Pre-fetching horizon                                                                                                                                                          </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-12-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-12-1"  
-class="td11">                                                             Variable  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-12-2"  
+class="td11"> <!--l. 16--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>P</mi></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-12-2"  
+class="td11"> The list of peers in the team                                                                                                                                               </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-13-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-13-1"  
+class="td11">                                                             Variable  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-13-2"  
 class="td11">                                                                                                                   </td>
 </tr><tr 
 class="hline"><td><hr /></td><td><hr /></td></tr><tr  
- style="vertical-align:baseline;" id="TBL-2-13-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-13-1"  
-class="td11"> <!--l. 18--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->N</mi></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-13-2"  
-class="td11"> Number of peers in the team                                                                                                                                              </td>
-</tr><tr  
  style="vertical-align:baseline;" id="TBL-2-14-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-14-1"  
 class="td11"> <!--l. 19--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->L</mi></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-14-2"  
-class="td11"> Number of lost chunks                                                                                                                                                      </td>
+>N</mi></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-14-2"  
+class="td11"> Number of peers in the team                                                                                                                                              </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-15-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-15-1"  
 class="td11"> <!--l. 20--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->t</mi></mrow><mrow 
-><mi 
->c</mi></mrow></msub 
-></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-15-2"  
-class="td11"> Chunk time                                                                                                                                                                     </td>
+display="inline" ><mi 
+>L</mi></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-15-2"  
+class="td11"> Number of lost chunks                                                                                                                                                      </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-16-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-16-1"  
 class="td11"> <!--l. 21--><math 
@@ -457,9 +452,9 @@ display="inline" ><msub><mrow
 ><mi 
 >t</mi></mrow><mrow 
 ><mi 
->r</mi></mrow></msub 
+>c</mi></mrow></msub 
 ></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-16-2"  
-class="td11"> Round time                                                                                                                                                                     </td>
+class="td11"> Chunk time                                                                                                                                                                     </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-17-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-17-1"  
 class="td11"> <!--l. 22--><math 
@@ -468,35 +463,46 @@ display="inline" ><msub><mrow
 ><mi 
 >t</mi></mrow><mrow 
 ><mi 
->b</mi></mrow></msub 
+>r</mi></mrow></msub 
 ></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-17-2"  
-class="td11"> Buﬀering time                                                                                                                                                                 </td>
+class="td11"> Round time                                                                                                                                                                     </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-18-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-18-1"  
 class="td11"> <!--l. 23--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><mi 
->Δ</mi><msub><mrow 
+display="inline" ><msub><mrow 
 ><mi 
 >t</mi></mrow><mrow 
 ><mi 
 >b</mi></mrow></msub 
 ></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-18-2"  
-class="td11"> Protocol (buﬀering) jitter                                                                                                                                                  </td>
+class="td11"> Buﬀering time                                                                                                                                                                 </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-19-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-19-1"  
 class="td11"> <!--l. 24--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>Δ</mi><msub><mrow 
+><mi 
+>t</mi></mrow><mrow 
+><mi 
+>b</mi></mrow></msub 
+></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-19-2"  
+class="td11"> Protocol (buﬀering) jitter                                                                                                                                                  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-20-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-20-1"  
+class="td11"> <!--l. 25--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
 >t</mi></mrow><mrow 
 ><mi 
 >p</mi></mrow></msub 
-></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-19-2"  
+></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-20-2"  
 class="td11"> Physical (network) latency                                                                                                                                                 </td>
 </tr><tr  
- style="vertical-align:baseline;" id="TBL-2-20-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-20-1"  
-class="td11"> <!--l. 25--><math 
+ style="vertical-align:baseline;" id="TBL-2-21-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-21-1"  
+class="td11"> <!--l. 26--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >Δ</mi><msub><mrow 
@@ -504,29 +510,29 @@ display="inline" ><mi
 >t</mi></mrow><mrow 
 ><mi 
 >p</mi></mrow></msub 
-></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-20-2"  
-class="td11"> Physical jitter                                                                                                                                                                  </td>
-</tr><tr  
- style="vertical-align:baseline;" id="TBL-2-21-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-21-1"  
-class="td11"> <!--l. 26--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->t</mi></mrow><mrow 
-><mi 
->s</mi></mrow></msub 
 ></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-21-2"  
-class="td11"> Start-up time                                                                                                                                                                  </td>
+class="td11"> Physical jitter                                                                                                                                                                  </td>
 </tr><tr  
  style="vertical-align:baseline;" id="TBL-2-22-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-22-1"  
 class="td11"> <!--l. 27--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
+>t</mi></mrow><mrow 
+><mi 
+>s</mi></mrow></msub 
+></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-22-2"  
+class="td11"> Start-up time                                                                                                                                                                  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-23-"><td  style="text-align:right; white-space:nowrap;" id="TBL-2-23-1"  
+class="td11"> <!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
 >i</mi></mrow><mrow 
 ><mi 
 >p</mi></mrow></msub 
-></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-22-2"  
+></math> :  </td><td  style="text-align:left; white-space:nowrap;" id="TBL-2-23-2"  
 class="td11"> The played chunk index                                                                                                                                                     </td></tr></table>
 </div>
 <br /> <div class="caption" 
@@ -546,7 +552,7 @@ display="inline" ><mi
 >C</mi></math>, and sends exclusively each
 chunk to a diﬀerent <a 
 href="#glo:origin">origin</a><span class="footnote-mark"><a 
-href="#fn5x0"><sup class="textsuperscript">5</sup></a></span><a 
+href="index6.html#fn5x0"><sup class="textsuperscript">5</sup></a></span><a 
  id="x1-7001f5"></a> 
 peer, using a round-robin schema. Chunks are enumerated to distinguish them, and
 this information is transmitted as a part of a chunk header.
@@ -572,16 +578,13 @@ a team of size <!--l. 35--><math
 display="inline" ><mi 
 >N</mi></math>,
 the average <a 
-href="#glo:round-time">round time</a> can be estimated as </p><table class="equation"><tr><td> <a 
+href="#glo:round-time">round-time</a> can be estimated as </p><table class="equation"><tr><td> <a 
  id="x1-7002r1"></a>
 <!--l. 37--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
-                          <msup><mrow 
-><mi 
->t</mi></mrow><mrow 
-><mi mathvariant="normal">round</mi></mrow></msup 
-> <mo 
+                           <mi 
+>T</mi> <mo 
 class="MathClass-rel">=</mo> <mi 
 >N</mi><msup><mrow 
 ><mi 
@@ -639,40 +642,42 @@ order to achieve a seamsless playing.
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.3   </span> <a 
  id="x1-80002.3"></a>Joining a team</h4>
-<!--l. 7--><p class="noindent" >After connecting with a splitter, incoming peers request (using a reliable
-communication) to the splitter the current list of peers in the team
-<!--l. 9--><math 
+<!--l. 7--><p class="noindent" >After connecting with a splitter<span class="footnote-mark"><a 
+href="index7.html#fn6x0"><sup class="textsuperscript">6</sup></a></span><a 
+ id="x1-8001f6"></a> ,
+incoming peers request (using a reliable communication) to the splitter the current list of peers in the team
+<!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >T</mi></math>. To minimize the <a 
 href="#glo:joining-time">joining
-time</a>, the peer sends a <!--l. 10--><math 
+time</a>, the peer sends a <!--l. 13--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
 message to each other peer of the team, in parallel with the reception of the list. When a peer of the
-team receives a <!--l. 12--><math 
+team receives a <!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow ><mo 
 class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">hello</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>,
 it adds the sender of the message to the team
 list<span class="footnote-mark"><a 
-href="#fn6x0"><sup class="textsuperscript">6</sup></a></span><a 
- id="x1-8001f6"></a>  and to a jagged
-array of peers called <!--l. 15--><math 
+href="index8.html#fn7x0"><sup class="textsuperscript">7</sup></a></span><a 
+ id="x1-8002f7"></a>  and to a jagged
+array of peers called <!--l. 19--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">f</mi><mrow ><mo 
 class="MathClass-open">[</mo><mrow></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>
 (see <a 
-href="https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/peer_dbs.py#L491" ><!--l. 18--><math 
+href="https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/peer_dbs.py#L491" ><!--l. 21--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mstyle 
 class="text"><mtext  >f[]</mtext></mstyle></math> in <span 
 class="ectt-1000">peer.py</span></a>). If
-a peer <!--l. 18--><math 
+a peer <!--l. 21--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -680,7 +685,7 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math> has an entry
-<!--l. 19--><math 
+<!--l. 22--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">f</mi><mrow ><mo 
 class="MathClass-open">[</mo><mrow><msub><mrow 
@@ -698,7 +703,7 @@ class="MathClass-open">{</mo><mrow><msub><mrow
 >k</mi></mrow></msub 
 ></mrow><mo 
 class="MathClass-close">}</mo></mrow></math>, then each chunk
-received by <!--l. 19--><math 
+received by <!--l. 22--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -706,7 +711,7 @@ display="inline" ><msub><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></math> and
-originated at <!--l. 20--><math 
+originated at <!--l. 23--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -714,7 +719,7 @@ display="inline" ><msub><mrow
 ><mi 
 >j</mi></mrow></msub 
 ></math> will be
-forwarded to <!--l. 20--><math 
+forwarded to <!--l. 23--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -722,7 +727,7 @@ display="inline" ><msub><mrow
 ><mi 
 >k</mi></mrow></msub 
 ></math>. When
-an incoming peer <!--l. 21--><math 
+an incoming peer <!--l. 24--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
 ><mi 
@@ -731,7 +736,7 @@ display="inline" ><msub><mrow
 >i</mi></mrow></msub 
 ></math>
 has received the list of peers, its forwarding table has been initialized to
-<!--l. 22--><math 
+<!--l. 25--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi mathvariant="monospace">f</mi><mrow ><mo 
 class="MathClass-open">[</mo><mrow><msub><mrow 
@@ -763,26 +768,26 @@ class="ecbx-1000">??</span>).
 
                                                                   
 <a 
- id="x1-80022"></a>
+ id="x1-80032"></a>
                                                                   
 
                                                                   
-<!--l. 31--><p class="noindent" ><div style="text-align:center;"> <img width=800 src="graphics/topologies.svg" /> </div> 
+<!--l. 34--><p class="noindent" ><div style="text-align:center;"> <img width=800 src="graphics/topologies.svg" /> </div> 
 <br /> </p><div class="caption" 
 ><span class="id">Figure 2: </span><span  
-class="content">Diﬀerent overlay (team) topologies.</span></div><!--tex4ht:label?: x1-80022 -->
+class="content">Diﬀerent overlay (team) topologies.</span></div><!--tex4ht:label?: x1-80032 -->
                                                                   
 
                                                                   
    </div><hr class="endfigure" />
-<!--l. 70--><p class="indent" >   The splitter, in an inﬁnite loop: (1) listens to the incoming peers, (2) sends to
+<!--l. 73--><p class="indent" >   The splitter, in an inﬁnite loop: (1) listens to the incoming peers, (2) sends to
 them the list of peers of the team, (3) includes the incoming peer to the list, and (4)
-send a chunk to each peer in its list. Notice that only those peers that are in the
-list of peers of the splitter are considered to be in the team served by such
-splitter.
-</p><!--l. 87--><p class="indent" >   <span 
+send a copy of the stream to the team using a round-robing, as a sequence of chunks.
+Notice that only those peers that are in the list of peers of the splitter are considered
+to be in the team served by such splitter.
+</p><!--l. 91--><p class="indent" >   <span 
 class="ecbx-1000">Note:  </span>See <a 
-href="https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py#L296" ><!--l. 88--><math 
+href="https://github.com/P2PSP/simulator/blob/f0c73be1817e7d3b816cc61cd2c8e59b17f9a0e6/src/core/splitter_dbs.py#L296" ><!--l. 92--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mstyle 
 class="text"><mtext  >destination_of_chunk</mtext></mstyle><mrow ><mo 
@@ -810,14 +815,14 @@ class="MathClass-close">)</mo></mrow></math> of the
 buﬀer, where <!--l. 11--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->B</mi></math>
-is the maximum number of chunks that the buﬀer stores before start playing. In a peer’s
-life, <!--l. 12--><math 
+>B</mi></math> is
+the maximum number of chunks that the buﬀer stores before start playing the ﬁrst chunk. In
+a peer’s life, <!--l. 12--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
->B</mi></math> is
-a constant speciﬁed by the user, but it is not compulsory that all peers of a team use
-the same buﬀer size.
+>B</mi></math>
+is a constant speciﬁed by the user, but it is not compulsory that all peers of a team
+use the same buﬀer size.
 </p><!--l. 16--><p class="indent" >   The buﬀer is implemented as a circular array of
 <!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -828,41 +833,25 @@ with up to <!--l. 17--><math
 display="inline" ><mi 
 >B</mi></math> chunks during
 the <a 
-href="#glo:buffering-time">buﬀering time</a> <!--l. 17--><math 
+href="#glo:buffering-time">buﬀering time</a> <!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
+display="inline" ><msup><mrow 
 ><mi 
 >t</mi></mrow><mrow 
-><mi 
->b</mi></mrow></msub 
+><mi mathvariant="normal">buﬀer</mi></mrow></msup 
 ></math>.
 Such time is the main component of the <a 
 href="#glo:start-up-time">start-up time</a>
-<!--l. 18--><math 
+<!--l. 19--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
+display="inline" ><msup><mrow 
 ><mi 
 >t</mi></mrow><mrow 
-><mi 
->s</mi></mrow></msub 
+><mi mathvariant="normal">start−up</mi></mrow></msup 
 ></math>
-experienced by users. Chunks with a higher number (newer chunks) are inserted near
-of the head of the buﬀer. The (received) chunks pointed by the tail of the buﬀer
-<!--l. 21--><math 
- xmlns="http://www.w3.org/1998/Math/MathML"  
-display="inline" ><msub><mrow 
-><mi 
->i</mi></mrow><mrow 
-><mi 
->p</mi></mrow></msub 
-></math> (the played
-chunk index) are sent to the player. This action is carried out each time a new chunk is
-received<span class="footnote-mark"><a 
-href="#fn7x0"><sup class="textsuperscript">7</sup></a></span><a 
- id="x1-9001f7"></a> .
-During the playing process, empty cells in the buﬀer (caused by the no reception
-on time of the corresponding chunks) are ﬁlled with zeros, and sent to the
-player.
+experienced by users. The oldest chunk in the buﬀer is sent to the player each time a
+new chunk is received.
+</p><!--l. 20--><p class="noindent" >
 </p>
    <h4 class="subsectionHead"><span class="titlemark">2.5   </span> <a 
  id="x1-100002.5"></a>Buﬀering time estimation</h4>
@@ -874,9 +863,6 @@ display="inline" ><msub><mrow
 ><mi 
 >l</mi></mrow></msub 
 ></math>
-                                                                  
-
-                                                                  
 is the latency that the end-user experiments during the redering of the media.
 <!--l. 15--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -888,6 +874,9 @@ display="inline" ><msub><mrow
 ></math>,
 deﬁned as </p><table class="equation"><tr><td> <a 
  id="x1-10001r3"></a>
+                                                                  
+
+                                                                  
 <!--l. 16--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
@@ -973,7 +962,7 @@ display="inline" ><msub><mrow
 >c</mi></mrow></msub 
 ></math>
 a constant<span class="footnote-mark"><a 
-href="#fn8x0"><sup class="textsuperscript">8</sup></a></span><a 
+href="index9.html#fn8x0"><sup class="textsuperscript">8</sup></a></span><a 
  id="x1-10003f8"></a> ).
 In other words, the buﬀering time is the delay in the rendering of the media required
 to expect a seamless playing. Notice that Eq. <a 
@@ -1003,9 +992,6 @@ display="inline" ><msub><mrow
 ><mi 
 >b</mi></mrow></msub 
 ></math> should be as small as
-                                                                  
-
-                                                                  
 possible. How to minimize <!--l. 36--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
@@ -1045,6 +1031,9 @@ display="inline" ><msub><mrow
 >c</mi></mrow></msub 
 ></math> should be large
 enough to reduce the overhead of the headers used by the transport protocol. On the other hand,
+                                                                  
+
+                                                                  
 if <!--l. 40--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
@@ -1103,7 +1092,7 @@ full-connected mesh (Fig. <span
 class="ecbx-1000">??</span>), or (2) a ring (Fig. <span 
 class="ecbx-1000">??</span>), when the chunks travel only in one
 direction<span class="footnote-mark"><a 
-href="#fn9x0"><sup class="textsuperscript">9</sup></a></span><a 
+href="index10.html#fn9x0"><sup class="textsuperscript">9</sup></a></span><a 
  id="x1-10004f9"></a> .
 Therefore, in the case of a full-connected mesh, peers have to use a </p><table class="equation"><tr><td> <a 
  id="x1-10005r5"></a>
@@ -1160,11 +1149,8 @@ chunks of the buﬀer of size <!--l. 67--><math
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mi 
 >B</mi></math>
-                                                                  
-
-                                                                  
 are received<span class="footnote-mark"><a 
-href="#fn10x0"><sup class="textsuperscript">10</sup></a></span><a 
+href="index11.html#fn10x0"><sup class="textsuperscript">10</sup></a></span><a 
  id="x1-10006f10"></a> ,
 being the chunk <!--l. 70--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -1193,6 +1179,9 @@ display="inline" ><msub><mrow
 >x</mi></mrow><mrow 
 ><mn>1</mn></mrow></msub 
 ></math> the chunk
+                                                                  
+
+                                                                  
 <!--l. 72--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><msub><mrow 
@@ -1324,9 +1313,6 @@ class="ecti-1000">chunk, I send (not necessary to the sender) a chunk (and not n
 class="ecti-1000">chunk)</span>. In a fully connected overlay (see Fig. <span 
 class="ecbx-1000">??</span>), this allows to control the
 data ﬂow. However, in more realistic scenarios, where the physical media
-                                                                  
-
-                                                                  
 imposes interconnection constraints (such as those generated by ﬁrewalls and
 symmetric NATs), peers could not be directly “connected” with the rest the team.
 Therefore, if the splitter follows a pure round-robin strategy, some peers will send
@@ -1343,6 +1329,9 @@ display="inline" ><mi mathvariant="monospace">p</mi><mrow ><mo
 class="MathClass-open">[</mo><mrow></mrow><mo 
 class="MathClass-close">]</mo></mrow></math>, indexed
 by the neighbor’s end-points, where each list references the indexes in the buﬀer of those
+                                                                  
+
+                                                                  
 chunks in the current peer that must be transmitted to the corresponding neighbor
 the next time such neighbor is selected in the ﬂooding process. For example, if
 <!--l. 45--><math 
@@ -1915,7 +1904,7 @@ display="inline" ><mi
 class="MathClass-rel">=</mo> <mn>0</mn></math>,
 the pre-fetching is disabled and only those chunks that really are lost will be
 “requested”<span class="footnote-mark"><a 
-href="#fn11x0"><sup class="textsuperscript">11</sup></a></span><a 
+href="index12.html#fn11x0"><sup class="textsuperscript">11</sup></a></span><a 
  id="x1-12001f11"></a> . On the
 contrary, the higher the <!--l. 22--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -1938,7 +1927,7 @@ class="MathClass-open">[</mo><mrow><mi mathvariant="monospace">request</mi><mspa
 class="text"><mtext  >lost_chunk_number</mtext></mstyle></mrow><mo 
 class="MathClass-close">]</mo></mrow></math> message to
 a random<span class="footnote-mark"><a 
-href="#fn12x0"><sup class="textsuperscript">12</sup></a></span><a 
+href="index13.html#fn12x0"><sup class="textsuperscript">12</sup></a></span><a 
  id="x1-12002f12"></a>  peer of the
 team. When a peer <!--l. 34--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
@@ -2241,7 +2230,7 @@ class="MathClass-close">]</mo></mrow></math> from the splitter. In
 
                                                                   
 case of timeout<span class="footnote-mark"><a 
-href="#fn13x0"><sup class="textsuperscript">13</sup></a></span><a 
+href="index14.html#fn13x0"><sup class="textsuperscript">13</sup></a></span><a 
  id="x1-13001f13"></a> ,
 the leaving procedure is reset a number of times.
 </p><!--l. 13--><p class="indent" >   When a peer <!--l. 13--><math 
@@ -2491,7 +2480,7 @@ href="#x1-150002.10">2.10<!--tex4ht:ref: sec:free_riding_control --></a>), to se
 reliable peers a higher number of chunks. In other words, ACS adapts the
 round-time of each peer to its capacity, in such a way that the higher the capacity,
 the lower the <a 
-href="#glo:round-time">round time</a>. Notice that ACS only aﬀects the behavior of the
+href="#glo:round-time">round-time</a>. Notice that ACS only aﬀects the behavior of the
 splitter.
 </p><!--l. 20--><p class="indent" >   ACS should be used if we want some peers to contribute with the uploading
 capacity than others cannot provide. A possible situation could be when we want to
@@ -2789,12 +2778,12 @@ LRS or its extensions).
 class="ecbx-1000">Note:  </span>Finished but not implemented.
 </p><!--l. 9--><p class="noindent" >Most of the peers run inside of “private” networks, i.e. behind NAT devices.
 NTS<span class="footnote-mark"><a 
-href="#fn14x0"><sup class="textsuperscript">14</sup></a></span><a 
+href="index15.html#fn14x0"><sup class="textsuperscript">14</sup></a></span><a 
  id="x1-21001f14"></a> 
 is an DBS extension which provides peer connectivity for some
 NAT conﬁgurations where DBS can not provide direct peer
 communication.<span class="footnote-mark"><a 
-href="#fn15x0"><sup class="textsuperscript">15</sup></a></span><a 
+href="index16.html#fn15x0"><sup class="textsuperscript">15</sup></a></span><a 
  id="x1-21002f15"></a> 
 </p><!--l. 23--><p class="indent" >   Peers behind the same NAT will use the same external (also called “public”,
 because in most cases we have not nested NAT conﬁgurations) IP address of the
